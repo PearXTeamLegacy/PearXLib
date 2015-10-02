@@ -40,20 +40,17 @@ namespace PearXLib
                 return result;
             }
         }
-        /// <summary>
-        /// Converts string to integer. This is alias for Convert.ToInt32(param).
-        /// </summary>
-        /// <param name="s">String</param>
-        /// <returns></returns>
-        public static int cTI(string s)
-        {
-            return Convert.ToInt32(s);
-        }
 
         /// <summary>
         /// Folder "My Documents".
         /// </summary>
         public static string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+        /// <summary>
+        /// PearX Team's Directory.
+        /// </summary>
+        public static string pxDir = documents + s + "PearX";
+
         /// <summary>
         /// Folder "Application Data".
         /// </summary>
@@ -63,5 +60,20 @@ namespace PearXLib
         /// Directory sepator.
         /// </summary>
         public static char s = Path.DirectorySeparatorChar;
+
+        /// <summary>
+        /// Desktop folder.
+        /// </summary>
+        public static string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+        /// <summary>
+        /// Creates dir if not exists.
+        /// </summary>
+        /// <param name="path">Directory path.</param>
+        public static void createDir(string path)
+        {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+        }
     }
 }
