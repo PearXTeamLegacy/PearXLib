@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PearXLib
 {
@@ -47,11 +48,6 @@ namespace PearXLib
         public static string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         /// <summary>
-        /// PearX Team's Directory.
-        /// </summary>
-        public static string pxDir = documents + s + "PearX";
-
-        /// <summary>
         /// Folder "Application Data".
         /// </summary>
         public static string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -75,5 +71,19 @@ namespace PearXLib
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
         }
+
+        public static bool isNumberKey(KeyPressEventArgs e)
+        {
+            if(!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// PearX Team's Directory.
+        /// </summary>
+        public static string pxDir = documents + s + "PearX";
     }
 }
