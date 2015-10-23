@@ -14,7 +14,7 @@ namespace PearXLib
         /// <summary>
         /// Log path.
         /// </summary>
-        public static string logPath = PXL.pxDir + PXL.s + "pearxApp.log";
+        public static string logPath = d.pxDir + PXL.s + "pearxApp.log";
 
         /// <summary>
         /// Log string

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,24 +44,9 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Folder "My Documents".
-        /// </summary>
-        public static string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-        /// <summary>
-        /// Folder "Application Data".
-        /// </summary>
-        public static string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
-        /// <summary>
         /// Directory sepator.
         /// </summary>
         public static char s = Path.DirectorySeparatorChar;
-
-        /// <summary>
-        /// Desktop folder.
-        /// </summary>
-        public static string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         /// <summary>
         /// Creates dir if not exists.
@@ -72,6 +58,11 @@ namespace PearXLib
                 Directory.CreateDirectory(path);
         }
 
+        /// <summary>
+        /// For TextBox.
+        /// </summary>
+        /// <param name="e">Args</param>
+        /// <returns>True or false.</returns>
         public static bool isNumberKey(KeyPressEventArgs e)
         {
             if(!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
@@ -82,8 +73,18 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// PearX Team's Directory.
+        /// Creates shortcut.
         /// </summary>
-        public static string pxDir = documents + s + "PearX";
+        /// <param name="path">Path to exe.</param>
+        /// <param name="filePath">Path to new shortcut.</param>
+        public static void createShortcut(string path, string filePath)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("[InternetShortcut]");
+            sb.AppendLine("URL=file://" + path);
+            sb.AppendLine("IconFile=" + path);
+            sb.AppendLine("IconIndex=0");
+            File.WriteAllText(filePath + ".url", sb.ToString());
+        }
     }
 }
