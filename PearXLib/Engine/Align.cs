@@ -7,6 +7,6 @@ namespace PearXLib.Engine
 {
     public enum Align
     {
-        RIGHT, CENTER, LEFT
+        RIGHT, CENTER, LEFT, TOP, BOTTOM
     }
 }

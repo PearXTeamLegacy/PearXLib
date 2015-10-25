@@ -25,6 +25,8 @@ namespace PearXLib.Engine
             int _bHeight2 = b.Size.Height / 2;
             int _bWidth = b.Size.Width;
             int _tWidth = labelText.Size.Width;
+            int _bHeight = b.Size.Height;
+            int _tHeight = labelText.Size.Height;
 
             if (XAlign == Align.CENTER)
             {
@@ -37,6 +39,14 @@ namespace PearXLib.Engine
             else if (XAlign == Align.LEFT)
             {
                 labelText.Location = new Point(0, _bHeight2 - _tHeight2);
+            }
+            else if (XAlign == Align.TOP)
+            {
+                labelText.Location = new Point(_bWidth2 - _tWidth2, 0);
+            }
+            else if (XAlign == Align.BOTTOM)
+            {
+                labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight - _tHeight);
             }
         }
 
@@ -78,6 +88,7 @@ namespace PearXLib.Engine
             {
                 _XFont = value;
                 labelText.Font = XFont;
+                AlignText();
             }
         }
         /// <summary>
