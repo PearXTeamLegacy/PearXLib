@@ -55,7 +55,7 @@
             this.labelText.ForeColor = System.Drawing.Color.Black;
             this.labelText.Location = new System.Drawing.Point(40, 27);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(48, 13);
+            this.labelText.Size = new System.Drawing.Size(52, 15);
             this.labelText.TabIndex = 1;
             this.labelText.Text = "A Button";
             this.labelText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.setToXButtonPressed);
