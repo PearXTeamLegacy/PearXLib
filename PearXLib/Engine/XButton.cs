@@ -193,5 +193,68 @@ namespace PearXLib.Engine
             AlignText();
             AlignImage();
         }
+
+        #region Overriding Props
+        [Browsable(false)]
+        public override bool AutoScroll
+        {
+            get
+            {
+                return base.AutoScroll;
+            }
+            set
+            {
+                base.AutoScroll = value;
+            }
+        }
+        [Browsable(false)]
+        public override Color ForeColor
+        {
+            get
+            {
+                return base.ForeColor;
+            }
+            set
+            {
+                base.ForeColor = value;
+            }
+        }
+        [Browsable(false)]
+        public override Font Font
+        {
+            get
+            {
+                return base.Font;
+            }
+            set
+            {
+                base.Font = value;
+            }
+        }
+        [Browsable(false)]
+        public override Color BackColor
+        {
+            get
+            {
+                return base.BackColor;
+            }
+            set
+            {
+                base.BackColor = value;
+            }
+        }
+        [Browsable(false)]
+        public override Image BackgroundImage
+        {
+            get
+            {
+                return base.BackgroundImage;
+            }
+            set
+            {
+                base.BackgroundImage = value;
+            }
+        }
+        #endregion
     }
 }
