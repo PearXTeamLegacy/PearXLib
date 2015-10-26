@@ -30,7 +30,9 @@
         {
             this.b = new System.Windows.Forms.PictureBox();
             this.labelText = new System.Windows.Forms.Label();
+            this.image = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.b)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.SuspendLayout();
             // 
             // b
@@ -55,7 +57,7 @@
             this.labelText.ForeColor = System.Drawing.Color.Black;
             this.labelText.Location = new System.Drawing.Point(40, 27);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(52, 15);
+            this.labelText.Size = new System.Drawing.Size(48, 13);
             this.labelText.TabIndex = 1;
             this.labelText.Text = "A Button";
             this.labelText.MouseDown += new System.Windows.Forms.MouseEventHandler(this.setToXButtonPressed);
@@ -63,16 +65,31 @@
             this.labelText.MouseLeave += new System.EventHandler(this.setToXButton);
             this.labelText.MouseUp += new System.Windows.Forms.MouseEventHandler(this.setToXButtonFocused);
             // 
+            // image
+            // 
+            this.image.Location = new System.Drawing.Point(3, 9);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(48, 48);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.image.TabIndex = 2;
+            this.image.TabStop = false;
+            this.image.MouseDown += new System.Windows.Forms.MouseEventHandler(this.setToXButtonPressed);
+            this.image.MouseEnter += new System.EventHandler(this.setToXButtonFocused);
+            this.image.MouseLeave += new System.EventHandler(this.setToXButton);
+            this.image.MouseUp += new System.Windows.Forms.MouseEventHandler(this.setToXButtonFocused);
+            // 
             // XButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.labelText);
+            this.Controls.Add(this.image);
             this.Controls.Add(this.b);
             this.Name = "XButton";
             this.Size = new System.Drawing.Size(128, 64);
             ((System.ComponentModel.ISupportInitialize)(this.b)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,6 +99,7 @@
 
         public System.Windows.Forms.PictureBox b;
         private System.Windows.Forms.Label labelText;
+        private System.Windows.Forms.PictureBox image;
 
     }
 }

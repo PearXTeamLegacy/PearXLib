@@ -15,7 +15,16 @@ namespace PearXLib.Engine
     {
         private string _XText = "A Button";
         private Font _XFont = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204)));
-        private Align _XAlign = Align.CENTER;
+        private Align _XAlignText = Align.CENTER;
+        private Align _XAlignImage = Align.LEFT;
+        private Image _XImage;
+
+        public XButton()
+        {
+            InitializeComponent();
+            labelText.Parent = b;
+            image.Parent = b;
+        }
 
         void AlignText()
         {
@@ -28,39 +37,86 @@ namespace PearXLib.Engine
             int _bHeight = b.Size.Height;
             int _tHeight = labelText.Size.Height;
 
-            if (XAlign == Align.CENTER)
+            if (XAlignText == Align.CENTER)
             {
                 labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight2 - _tHeight2);
             }
-            else if (XAlign == Align.RIGHT)
+            else if (XAlignText == Align.RIGHT)
             {
                 labelText.Location = new Point(_bWidth - _tWidth, _bHeight2 - _tHeight2);
             }
-            else if (XAlign == Align.LEFT)
+            else if (XAlignText == Align.LEFT)
             {
                 labelText.Location = new Point(0, _bHeight2 - _tHeight2);
             }
-            else if (XAlign == Align.TOP)
+            else if (XAlignText == Align.TOP)
             {
                 labelText.Location = new Point(_bWidth2 - _tWidth2, 0);
             }
-            else if (XAlign == Align.BOTTOM)
+            else if (XAlignText == Align.BOTTOM)
             {
                 labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight - _tHeight);
             }
         }
+        void AlignImage()
+        {
+            int _bWidth2 = b.Size.Width / 2;
+            int _iWidth2 = image.Size.Width / 2;
+            int _iHeight2 = image.Size.Height / 2;
+            int _bHeight2 = b.Size.Height / 2;
+            int _bWidth = b.Size.Width;
+            int _iWidth = image.Size.Width;
+            int _bHeight = b.Size.Height;
+            int _iHeight = image.Size.Height;
+            if (XAlignImage == Align.CENTER)
+            {
+                image.Location = new Point(_bWidth2 - _iWidth2, _bHeight2 - _iHeight2);
+            }
+            else if (XAlignImage == Align.LEFT)
+            {
+                image.Location = new Point(0, _bHeight2 - _iHeight2);
+            }
+            else if (XAlignImage == Align.RIGHT)
+            {
+                image.Location = new Point(_bWidth - _iWidth, _bHeight2 - _iHeight2);
+            }
+            else if (XAlignImage == Align.TOP)
+            {
+                image.Location = new Point(_bWidth2 - _iWidth2, 0);
+            }
+            else if (XAlignImage == Align.BOTTOM)
+            {
+                image.Location = new Point(_bWidth2 - _iWidth2, _bHeight - _iHeight);
+            }
+        }
+
+        #region Params
 
         /// <summary>
-        /// Button's Align
+        /// Button's Align.
         /// </summary>
-        [Description("Button's Align")]
-        public Align XAlign
+        [Description("Button's Align.")]
+        public Align XAlignText
         {
-            get { return _XAlign; }
+            get { return _XAlignText; }
             set
             {
-                _XAlign = value;
+                _XAlignText = value;
                 AlignText();
+            }
+        }
+
+        /// <summary>
+        /// Image's Align.
+        /// </summary>
+        [Description("Image's Align.")]
+        public Align XAlignImage
+        {
+            get { return _XAlignImage; }
+            set
+            {
+                _XAlignImage = value;
+                AlignImage();
             }
         }
         /// <summary>
@@ -97,15 +153,24 @@ namespace PearXLib.Engine
         [Description("Click Event.")]
         public event EventHandler Clicked
         {
-            add { b.Click += value; labelText.Click += value; }
-            remove { b.Click -= value; labelText.Click -= value; }
-        }
-        public XButton()
-        {
-            InitializeComponent();
-            labelText.Parent = b;
+            add { b.Click += value; labelText.Click += value; image.Click += value; }
+            remove { b.Click -= value; labelText.Click -= value; image.Click -= value; }
         }
 
+        public Image XImage
+        {
+            get { return _XImage; }
+            set
+            {
+                _XImage = value;
+                image.Image = XImage;
+                AlignImage();
+            }
+        }
+
+        #endregion
+
+        #region Button's Background Functions
         void setToXButton(object sender, EventArgs e)
         {
             b.Image = Resources.XButton;
@@ -121,9 +186,12 @@ namespace PearXLib.Engine
             b.Image = Resources.XButtonPressed;
         }
 
+        #endregion
+
         private void b_Resize(object sender, EventArgs e)
         {
             AlignText();
+            AlignImage();
         }
     }
 }
