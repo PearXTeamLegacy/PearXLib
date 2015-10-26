@@ -256,5 +256,11 @@ namespace PearXLib.Engine
             }
         }
         #endregion
+
+        private void XButton_Load(object sender, EventArgs e)
+        {
+            AlignImage();
+            AlignText();
+        }
     }
 }

@@ -88,6 +88,7 @@
             this.Controls.Add(this.b);
             this.Name = "XButton";
             this.Size = new System.Drawing.Size(128, 64);
+            this.Load += new System.EventHandler(this.XButton_Load);
             ((System.ComponentModel.ISupportInitialize)(this.b)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
