@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -115,7 +116,8 @@ namespace PearXLib
         /// <returns>Random character.</returns>
         public static char GenChar()
         {
-            Random r = new Random();
+            Thread.Sleep(1);
+            Random r = new Random((int)DateTime.Now.Ticks);
             int i = r.Next(1, 27);
             switch(i)
             {
@@ -174,6 +176,30 @@ namespace PearXLib
                 default:
                     return '!';
             }
+        }
+
+        /// <summary>
+        /// Generates random number.
+        /// </summary>
+        /// <returns>Random number</returns>
+        public static int GenNumber()
+        {
+            Thread.Sleep(1);
+            Random rand = new Random((int)DateTime.Now.Ticks);
+            return rand.Next(0, 10);
+        }
+
+        /// <summary>
+        /// Replaces first occurrence of string.
+        /// </summary>
+        /// <param name="str">Input string.</param>
+        /// <param name="replaceFrom">Replace from...</param>
+        /// <param name="replaceTo">Replace to...</param>
+        /// <returns></returns>
+        public static string ReplaceFirst(string str, string replaceFrom, string replaceTo)
+        {
+            int p = str.IndexOf(replaceFrom);
+            return str.Substring(0, p) + replaceTo + str.Substring(p + replaceFrom.Length);
         }
     }
 }
