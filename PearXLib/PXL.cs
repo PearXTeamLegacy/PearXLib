@@ -190,6 +190,19 @@ namespace PearXLib
         }
 
         /// <summary>
+        /// Generate random number.
+        /// </summary>
+        /// <param name="min">Minimal random number (inclusive).</param>
+        /// <param name="max">Maximal random number (inclusive).</param>
+        /// <returns></returns>
+        public static int GenNumber(int min, int max)
+        {
+            Thread.Sleep(1);
+            Random rand = new Random((int)DateTime.Now.Ticks);
+            return rand.Next(min, max + 1);
+        }
+
+        /// <summary>
         /// Replaces first occurrence of string.
         /// </summary>
         /// <param name="str">Input string.</param>
