@@ -1,0 +1,95 @@
+[33mcommit 1472ffc2d359f0cb7b117f8a529f847232501c1f[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Sun Nov 1 11:21:29 2015 +0500
+
+    11a: GetCharFromInt and GetIntFromChar functions, removed HashCheck function
+
+[33mcommit 0b0d019ff3ed6513c3b454ee7372df7d33e76b8d[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Sat Oct 31 12:50:10 2015 +0500
+
+    .
+
+[33mcommit 0cf94e18e957372164bae56143f972068cdeaebb[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Sat Oct 31 12:43:33 2015 +0500
+
+    Auto-building, more random generators.
+
+[33mcommit 7d0f64f13a0a6f769f53a5a6036634dcc1de307c[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Fri Oct 30 19:26:18 2015 +0500
+
+    Random generators, replace first occurrence in string function
+
+[33mcommit 2db7dac53c0453d3730a8335b5fed36477c57645[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Fri Oct 30 16:37:34 2015 +0500
+
+    Saves, loads, random character generation
+
+[33mcommit 2539e1e7ef17a74a1bc8f5fcc4b3f2a8d57e16c4[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Mon Oct 26 17:34:31 2015 +0500
+
+    Fix
+
+[33mcommit 7dab196fc2dc5213d9993e43291637ab49413101[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Mon Oct 26 17:24:48 2015 +0500
+
+    Removed unnecessary properties from Visual Editor
+
+[33mcommit 63c523c9825013bbd61433e653281f244332aca7[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Mon Oct 26 17:14:15 2015 +0500
+
+    Image on XButton
+
+[33mcommit 634d5c11dc136e7eb0114859d320b76cc071b7e9[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Sun Oct 25 14:15:24 2015 +0500
+
+    More Alignments!
+
+[33mcommit 0a01505ff050f1f30101e68b38e8db17c5cf7c32[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Sun Oct 25 13:56:52 2015 +0500
+
+    Text Align
+
+[33mcommit 743b288eedf8149e364aceb6016d06e63cd0c1f6[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Fri Oct 23 21:30:15 2015 +0600
+
+    Removed old files
+
+[33mcommit 422f464b132bc3b64427f970173df8c42e7042ab[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Fri Oct 23 21:28:00 2015 +0600
+
+    XEngine: XButton
+
+[33mcommit fcc75b5ab4e00e3b3c598dc8a83f8eb07639ee9d[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Sat Oct 3 09:02:29 2015 +0600
+
+    Changed logging.
+
+[33mcommit 7c4f235942b27efc57411675614125c450eebd51[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Fri Oct 2 16:27:21 2015 +0600
+
+    Logging utils, fix
+
+[33mcommit 2c3167f6946880e8ec1dd77d076497a67e66c526[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Fri Oct 2 15:54:43 2015 +0600
+
+    Desktop folder, PearX Team's folder, removed cTI void, createDir
+
+[33mcommit 32addf72887e439b12480c8505f103626ba7833a[m
+Author: mrAppleXZ <mr.applexz@gmail.com>
+Date:   Thu Sep 10 13:57:39 2015 +0600
+
+    First commit
