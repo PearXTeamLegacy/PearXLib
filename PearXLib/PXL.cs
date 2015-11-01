@@ -26,23 +26,6 @@ namespace PearXLib
 
 
 
-        /// <summary>
-        /// Checks file's hash. Returns hash.
-        /// </summary>
-        /// <param name="path">Path to file.</param>
-        /// <returns></returns>
-        public static string hashCheck(string path)
-        {
-            using (FileStream fs = File.OpenRead(path))
-            {
-                MD5 md5 = new MD5CryptoServiceProvider();
-                byte[] fileData = new byte[fs.Length];
-                fs.Read(fileData, 0, (int)fs.Length);
-                byte[] checkSum = md5.ComputeHash(fileData);
-                string result = BitConverter.ToString(checkSum).Replace("-", String.Empty);
-                return result;
-            }
-        }
 
         /// <summary>
         /// Directory sepator.
@@ -119,7 +102,115 @@ namespace PearXLib
             Thread.Sleep(1);
             Random r = new Random((int)DateTime.Now.Ticks);
             int i = r.Next(1, 27);
-            switch(i)
+            return GetCharFromInt(i);
+        }
+
+        /// <summary>
+        /// Generates random number.
+        /// </summary>
+        /// <returns>Random number</returns>
+        public static int GenNumber()
+        {
+            Thread.Sleep(1);
+            Random rand = new Random((int)DateTime.Now.Ticks);
+            return rand.Next(0, 10);
+        }
+
+        /// <summary>
+        /// Generate random number.
+        /// </summary>
+        /// <param name="min">Minimal random number (inclusive).</param>
+        /// <param name="max">Maximal random number (inclusive).</param>
+        /// <returns></returns>
+        public static int GenNumber(int min, int max)
+        {
+            Thread.Sleep(1);
+            Random rand = new Random((int)DateTime.Now.Ticks);
+            return rand.Next(min, max + 1);
+        }
+
+        /// <summary>
+        /// Replaces first occurrence of string.
+        /// </summary>
+        /// <param name="str">Input string.</param>
+        /// <param name="replaceFrom">Replace from...</param>
+        /// <param name="replaceTo">Replace to...</param>
+        /// <returns></returns>
+        public static string ReplaceFirst(string str, string replaceFrom, string replaceTo)
+        {
+            int p = str.IndexOf(replaceFrom);
+            return str.Substring(0, p) + replaceTo + str.Substring(p + replaceFrom.Length);
+        }
+
+        /// <summary>
+        /// Gets an integer from a char.
+        /// </summary>
+        /// <param name="input">Input byte.</param>
+        /// <returns>Integer.</returns>
+        public static int GetIntFromChar(char input)
+        {
+            switch(input)
+            {
+                case 'a':
+                    return 1;
+                case 'b':
+                    return 2;
+                case 'c':
+                    return 3;
+                case 'd':
+                    return 4;
+                case 'e':
+                    return 5;
+                case 'f':
+                    return 6;
+                case 'g':
+                    return 7;
+                case 'h':
+                    return 8;
+                case 'i':
+                    return 9;
+                case 'j':
+                    return 10;
+                case 'k':
+                    return 11;
+                case 'l':
+                    return 12;
+                case 'm':
+                    return 13;
+                case 'n':
+                    return 14;
+                case 'o':
+                    return 15;
+                case 'p':
+                    return 16;
+                case 'q':
+                    return 17;
+                case 'r':
+                    return 18;
+                case 's':
+                    return 19;
+                case 't':
+                    return 20;
+                case 'u':
+                    return 21;
+                case 'v':
+                    return 22;
+                case 'w':
+                    return 23;
+                case 'x':
+                    return 24;
+                case 'y':
+                    return 25;
+                case 'z':
+                    return 26;
+                default:
+                    return 0;
+            }
+        }
+
+        public static char GetCharFromInt(int input)
+        {
+            switch (input)
             {
                 case 1:
                     return 'a';
@@ -176,43 +267,6 @@ namespace PearXLib
                 default:
                     return '!';
             }
-        }
-
-        /// <summary>
-        /// Generates random number.
-        /// </summary>
-        /// <returns>Random number</returns>
-        public static int GenNumber()
-        {
-            Thread.Sleep(1);
-            Random rand = new Random((int)DateTime.Now.Ticks);
-            return rand.Next(0, 10);
-        }
-
-        /// <summary>
-        /// Generate random number.
-        /// </summary>
-        /// <param name="min">Minimal random number (inclusive).</param>
-        /// <param name="max">Maximal random number (inclusive).</param>
-        /// <returns></returns>
-        public static int GenNumber(int min, int max)
-        {
-            Thread.Sleep(1);
-            Random rand = new Random((int)DateTime.Now.Ticks);
-            return rand.Next(min, max + 1);
-        }
-
-        /// <summary>
-        /// Replaces first occurrence of string.
-        /// </summary>
-        /// <param name="str">Input string.</param>
-        /// <param name="replaceFrom">Replace from...</param>
-        /// <param name="replaceTo">Replace to...</param>
-        /// <returns></returns>
-        public static string ReplaceFirst(string str, string replaceFrom, string replaceTo)
-        {
-            int p = str.IndexOf(replaceFrom);
-            return str.Substring(0, p) + replaceTo + str.Substring(p + replaceFrom.Length);
         }
     }
 }

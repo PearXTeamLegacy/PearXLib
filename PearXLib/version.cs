@@ -8,6 +8,6 @@ namespace PearXLib
 {
     class version
     {
-        string ver = "10a";
+        string ver = "11a";
     }
 }
