@@ -311,6 +311,12 @@ namespace PearXLib
                     return 79;
                 case '!':
                     return 80;
+                case ' ':
+                    return 81;
+                case ',':
+                    return 82;
+                case '.':
+                    return 83;
                 default:
                     return 0;
             }
@@ -480,6 +486,12 @@ namespace PearXLib
                     return '/';
                 case 80:
                     return '!';
+                case 81:
+                    return ' ';
+                case 82:
+                    return ',';
+                case 83:
+                    return '.';
                 default:
                     return '!';
             }

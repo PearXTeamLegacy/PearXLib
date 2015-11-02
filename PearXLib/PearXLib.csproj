@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crypting\PX1.cs" />
     <Compile Include="d.cs" />
     <Compile Include="Engine\Align.cs" />
     <Compile Include="Engine\XButton.cs">
@@ -80,9 +81,7 @@
   <ItemGroup>
     <None Include="Resources\XButtonFocused.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Crypting\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy PearXLib.dll "../../../builded/"</PostBuildEvent>
