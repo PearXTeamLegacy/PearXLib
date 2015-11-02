@@ -5,20 +5,24 @@ using System.Text;
 
 namespace PearXLib.Crypting
 {
-    public class PX1
+    public class CA_PXM
     {
-        public static string Enrypt(string input)
+        public static string Enrypt(string input, int salt)
         {
             char[] ca = input.ToCharArray();
             int[] ia = new int[ca.Length];
-            for (int i = 0; i < ca.Length; i++ )
+            for (int i = 0; i < ca.Length; i++)
             {
                 ia[i] = PXL.GetIntFromChar(ca[i]);
             }
-            return string.Join(" ", ia);
+            for (int i = 0; i < ia.Length; i++)
+            {
+                ia[i] *= salt;
+            }
+                return string.Join(" ", ia);
         }
 
-        public static string Decrypt(string input)
+        public static string Decrypt(string input, int salt)
         {
             string[] s = input.Split(' ');
             int[] ia = new int[s.Length];
@@ -27,9 +31,13 @@ namespace PearXLib.Crypting
             {
                 ia[i] = int.Parse(s[i]);
             }
+            for (int i = 0; i < s.Length; i++)
+            {
+                ia[i] /= salt;
+            }
             for (int i = 0; i < ia.Length; i++)
             {
-                ca[i] = PXL.GetCharFromInt(ia[i]);
+                 ca[i] = PXL.GetCharFromInt(ia[i]);
             }
             return new string(ca);
         }

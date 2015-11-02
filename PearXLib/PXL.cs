@@ -33,7 +33,7 @@ namespace PearXLib
         public static char s = Path.DirectorySeparatorChar;
 
         /// <summary>
-        /// Creates dir if not exists.
+        /// Creates dir if it does not exists.
         /// </summary>
         /// <param name="path">Directory path.</param>
         public static void createDir(string path)
@@ -317,6 +317,30 @@ namespace PearXLib
                     return 82;
                 case '.':
                     return 83;
+                case '1':
+                    return 84;
+                case '2':
+                    return 85;
+                case '3':
+                    return 86;
+                case '4':
+                    return 87;
+                case '5':
+                    return 88;
+                case '6':
+                    return 89;
+                case '7':
+                    return 90;
+                case '8':
+                    return 91;
+                case '9':
+                    return 92;
+                case '0':
+                    return 93;
+                case '\n':
+                    return 94;
+                case '\\':
+                    return 95;
                 default:
                     return 0;
             }
@@ -492,6 +516,30 @@ namespace PearXLib
                     return ',';
                 case 83:
                     return '.';
+                case 84:
+                    return '1';
+                case 85:
+                    return '2';
+                case 86:
+                    return '3';
+                case 87:
+                    return '4';
+                case 88:
+                    return '5';
+                case 89:
+                    return '6';
+                case 90:
+                    return '7';
+                case 91:
+                    return '8';
+                case 92:
+                    return '9';
+                case 93:
+                    return '0';
+                case 94:
+                    return '\n';
+                case 95:
+                    return '\\';
                 default:
                     return '!';
             }
