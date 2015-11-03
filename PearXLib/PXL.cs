@@ -111,7 +111,7 @@ namespace PearXLib
         /// <returns>Random number</returns>
         public static int GenNumber()
         {
-            Thread.Sleep(1);
+            Thread.Sleep(3);
             Random rand = new Random((int)DateTime.Now.Ticks);
             return rand.Next(0, 10);
         }
@@ -124,7 +124,7 @@ namespace PearXLib
         /// <returns></returns>
         public static int GenNumber(int min, int max)
         {
-            Thread.Sleep(1);
+            Thread.Sleep(3);
             Random rand = new Random((int)DateTime.Now.Ticks);
             return rand.Next(min, max + 1);
         }
@@ -145,7 +145,7 @@ namespace PearXLib
         /// <summary>
         /// Gets an integer from a char.
         /// </summary>
-        /// <param name="input">Input byte.</param>
+        /// <param name="input">Input char.</param>
         /// <returns>Integer.</returns>
         public static int GetIntFromChar(char input)
         {
@@ -346,6 +346,11 @@ namespace PearXLib
             }
         }
 
+        /// <summary>
+        /// Gets a char from an integer.
+        /// </summary>
+        /// <param name="input">Input int.</param>
+        /// <returns>Char.</returns>
         public static char GetCharFromInt(int input)
         {
             switch (input)
@@ -543,6 +548,99 @@ namespace PearXLib
                 default:
                     return '!';
             }
+        }
+
+        public static char GenSymbol()
+        {
+            Thread.Sleep(3);
+            Random r = new Random((int)DateTime.Now.Ticks);
+            int i = r.Next(0, 26);
+            switch(i)
+            {
+                case 0:
+                    return '!';
+                case 1:
+                    return '@';
+                case 2:
+                    return '"';
+                case 3:
+                    return '#';
+                case 4:
+                    return '№';
+                case 5:
+                    return '$';
+                case 6:
+                    return ';';
+                case 7:
+                    return '%';
+                case 8:
+                    return '^';
+                case 9:
+                    return ':';
+                case 10:
+                    return '&';
+                case 11:
+                    return '?';
+                case 12:
+                    return '*';
+                case 13:
+                    return '(';
+                case 14:
+                    return ')';
+                case 15:
+                    return '-';
+                case 16:
+                    return '_';
+                case 17:
+                    return '+';
+                case 18:
+                    return '=';
+                case 19:
+                    return '\\';
+                case 20:
+                    return '|';
+                case 21:
+                    return '/';
+                case 22:
+                    return '\'';
+                case 23:
+                    return '~';
+                case 24:
+                    return '.';
+                case 25:
+                    return ',';
+                default:
+                    return '!';
+            }
+        }
+
+        /// <summary>
+        /// Generates random number/char/symbol.
+        /// </summary>
+        /// <returns>Random.</returns>
+        public static char GenRandom(bool useSymbols)
+        {
+            Thread.Sleep(2);
+            Random r = new Random((int)DateTime.Now.Ticks);
+            int i;
+            if (useSymbols)
+                i = r.Next(0, 4);
+            else
+                i = r.Next(0, 3);
+            switch(i)
+            {
+                case 0:
+                    return Convert.ToChar(GenNumber().ToString());
+                case 1:
+                    return GenChar();
+                case 2:
+                    return Convert.ToChar(GenChar().ToString().ToUpper());
+                case 3:
+                    return GenSymbol();
+                default:
+                    return '0';
+            }
+
         }
     }
 }

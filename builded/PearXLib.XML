@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PearXLib</name>
+    </assembly>
+    <members>
+        <member name="M:PearXLib.Crypting.CA_PX1.Enrypt(System.String)">
+            <summary>
+            Encrypts string by algorithm "PX1" (Convert every char to int).
+            </summary>
+            <param name="input">Input string.</param>
+            <returns>Encrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PX1.Decrypt(System.String)">
+            <summary>
+            Decrypts string by algorithm "PX1" (Convert every int to char).
+            </summary>
+            <param name="input">Encrypted string.</param>
+            <returns>Decrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXMx.Enrypt(System.String,System.Int16,System.Byte)">
+            <summary>
+            Encrypts string by algorithm "PXMx" (1.Convert char to int. 2. Result * 'salt' 3. Repeat 'multipliplier' times).
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt.</param>
+            <param name="multiplier">Multiplier.</param>
+            <returns>Encrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXMx.Decrypt(System.String,System.Int16,System.Byte)">
+            <summary>
+            Decrypts string by algorithm "PXMx" (1.Convert int to char. 2. Result / 'salt' 3. Repeat 'multipliplier' times).
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt.</param>
+            <param name="multiplier">Multiplier.</param>
+            <returns>Decrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXM.Enrypt(System.String,System.Int32)">
+            <summary>
+            Encrypts string by algorithm "PXM" (1. Convert char to int. 2. Result * 'salt').
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt</param>
+            <returns>Encrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXM.Decrypt(System.String,System.Int32)">
+            <summary>
+            Decrypts string by algorithm "PXM" (1. Convert int to char. 2. Result / 'salt').
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt</param>
+            <returns>Decrypted string.</returns>
+        </member>
+        <member name="F:PearXLib.d.documents">
+            <summary>
+            Folder "My Documents".
+            </summary>
+        </member>
+        <member name="F:PearXLib.d.appData">
+            <summary>
+            Folder "Application Data".
+            </summary>
+        </member>
+        <member name="F:PearXLib.d.desktop">
+            <summary>
+            Desktop folder.
+            </summary>
+        </member>
+        <member name="F:PearXLib.d.pxDir">
+            <summary>
+            PearX Team's Directory.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.XAlignText">
+            <summary>
+            Button's Align.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.XAlignImage">
+            <summary>
+            Image's Align.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.XText">
+            <summary>
+            Text on Button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.XFont">
+            <summary>
+            Button's Font.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XButton.Clicked">
+            <summary>
+            Button Click Event.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Logging.logPath">
+            <summary>
+            Log path.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Logging.log">
+            <summary>
+            Log string
+            </summary>
+        </member>
+        <member name="M:PearXLib.Logging.add(System.String,PearXLib.Logging.LogType)">
+            <summary>
+            Adds a line to log.
+            </summary>
+            <param name="line">Message text</param>
+            <param name="lt">Log type</param>
+        </member>
+        <member name="F:PearXLib.PXL.s">
+            <summary>
+            Directory sepator.
+            </summary>
+        </member>
+        <member name="M:PearXLib.PXL.createDir(System.String)">
+            <summary>
+            Creates dir if it does not exists.
+            </summary>
+            <param name="path">Directory path.</param>
+        </member>
+        <member name="M:PearXLib.PXL.isNumberKey(System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            For TextBox.
+            </summary>
+            <param name="e">Args</param>
+            <returns>True or false.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.createShortcut(System.String,System.String)">
+            <summary>
+            Creates shortcut.
+            </summary>
+            <param name="path">Path to exe.</param>
+            <param name="filePath">Path to new shortcut.</param>
+        </member>
+        <member name="M:PearXLib.PXL.Save(System.String,System.String,System.String[])">
+            <summary>
+            Saves the app.
+            </summary>
+            <param name="appname">App name.</param>
+            <param name="savename">Save name.</param>
+            <param name="save">Save (string array).</param>
+        </member>
+        <member name="M:PearXLib.PXL.Load(System.String,System.String)">
+            <summary>
+            Loads the app.
+            </summary>
+            <param name="appname">App name.</param>
+            <param name="savename">Save name.</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GenChar">
+            <summary>
+            Generates random character.
+            </summary>
+            <returns>Random character.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GenNumber">
+            <summary>
+            Generates random number.
+            </summary>
+            <returns>Random number</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GenNumber(System.Int32,System.Int32)">
+            <summary>
+            Generate random number.
+            </summary>
+            <param name="min">Minimal random number (inclusive).</param>
+            <param name="max">Maximal random number (inclusive).</param>
+            <returns></returns>
+        </member>
+        <member name="M:PearXLib.PXL.ReplaceFirst(System.String,System.String,System.String)">
+            <summary>
+            Replaces first occurrence of string.
+            </summary>
+            <param name="str">Input string.</param>
+            <param name="replaceFrom">Replace from...</param>
+            <param name="replaceTo">Replace to...</param>
+            <returns></returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetIntFromChar(System.Char)">
+            <summary>
+            Gets an integer from a char.
+            </summary>
+            <param name="input">Input char.</param>
+            <returns>Integer.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetCharFromInt(System.Int32)">
+            <summary>
+            Gets a char from an integer.
+            </summary>
+            <param name="input">Input int.</param>
+            <returns>Char.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GenRandom(System.Boolean)">
+            <summary>
+            Generates random number/char/symbol.
+            </summary>
+            <returns>Random.</returns>
+        </member>
+    </members>
+</doc>
