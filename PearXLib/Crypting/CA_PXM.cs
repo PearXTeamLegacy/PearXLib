@@ -7,6 +7,12 @@ namespace PearXLib.Crypting
 {
     public class CA_PXM
     {
+        /// <summary>
+        /// Encrypts string by algorithm "PXM" (1. Convert char to int. 2. Result * 'salt').
+        /// </summary>
+        /// <param name="input">Input string.</param>
+        /// <param name="salt">Salt</param>
+        /// <returns>Encrypted string.</returns>
         public static string Enrypt(string input, int salt)
         {
             char[] ca = input.ToCharArray();
@@ -22,6 +28,12 @@ namespace PearXLib.Crypting
                 return string.Join(" ", ia);
         }
 
+        /// <summary>
+        /// Decrypts string by algorithm "PXM" (1. Convert int to char. 2. Result / 'salt').
+        /// </summary>
+        /// <param name="input">Input string.</param>
+        /// <param name="salt">Salt</param>
+        /// <returns>Decrypted string.</returns>
         public static string Decrypt(string input, int salt)
         {
             string[] s = input.Split(' ');

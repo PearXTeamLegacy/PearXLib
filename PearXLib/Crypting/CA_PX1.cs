@@ -7,6 +7,11 @@ namespace PearXLib.Crypting
 {
     public class CA_PX1
     {
+        /// <summary>
+        /// Encrypts string by algorithm "PX1" (Convert every char to int).
+        /// </summary>
+        /// <param name="input">Input string.</param>
+        /// <returns>Encrypted string.</returns>
         public static string Enrypt(string input)
         {
             char[] ca = input.ToCharArray();
@@ -18,6 +23,11 @@ namespace PearXLib.Crypting
             return string.Join(" ", ia);
         }
 
+        /// <summary>
+        /// Decrypts string by algorithm "PX1" (Convert every int to char).
+        /// </summary>
+        /// <param name="input">Encrypted string.</param>
+        /// <returns>Decrypted string.</returns>
         public static string Decrypt(string input)
         {
             string[] s = input.Split(' ');
