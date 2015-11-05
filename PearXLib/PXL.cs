@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PearXLib.Crypting;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -111,9 +112,9 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Generates random number.
+        /// Generates random digit.
         /// </summary>
-        /// <returns>Random number</returns>
+        /// <returns>Random digit</returns>
         public static int GenNumber(Random rand)
         {
             return rand.Next(0, 10);
@@ -124,7 +125,8 @@ namespace PearXLib
         /// </summary>
         /// <param name="min">Minimal random number (inclusive).</param>
         /// <param name="max">Maximal random number (inclusive).</param>
-        /// <returns></returns>
+        /// <param name="rand">Your random.</param>
+        /// <returns>Random number.</returns>
         public static int GenNumber(Random rand, int min, int max)
         {
             return rand.Next(min, max + 1);
@@ -551,6 +553,11 @@ namespace PearXLib
             }
         }
 
+        /// <summary>
+        /// Generates random symbol.
+        /// </summary>
+        /// <param name="rand"></param>
+        /// <returns></returns>
         public static char GenSymbol(Random rand)
         {
             int i = rand.Next(0, 26);
@@ -638,6 +645,68 @@ namespace PearXLib
                     return '0';
             }
 
+        }
+
+        /// <summary>
+        /// Gets a string[] from string, uses new line(\n).
+        /// </summary>
+        /// <param name="s"></param>
+        public static string[] GetArrayFromString(string s)
+        {
+            return s.Split('\n');
+        }
+
+        /// <summary>
+        /// Gets a string from string[], uses new line(\n).
+        /// </summary>
+        /// <param name="s"></param>
+        public static string GetStringFromArray(string[] s)
+        {
+            return String.Join("\n", s);
+        }
+
+        /// <summary>
+        /// Saves the app with using encryption.
+        /// </summary>
+        /// <param name="appname">Application name.</param>
+        /// <param name="savename">Save name.</param>
+        /// <param name="save">Strings to save.</param>
+        /// <param name="salt">Encryption salt.</param>
+        /// <param name="useMultiple">Use multiple encryption?</param>
+        public static void SaveEnc(string appname, string savename, string[] save, short salt, bool useMultiple)
+        {
+            string saveEncrypted = "";
+            if (!useMultiple)
+            {
+                saveEncrypted = CA_PXM.Enrypt(GetStringFromArray(save), salt);
+            }
+            else
+            {
+                saveEncrypted = CA_PXMx.Enrypt(GetStringFromArray(save), salt, 2);
+            }
+            File.WriteAllText(d.pxDir + s + appname + s + savename + ".save", saveEncrypted);
+        }
+
+        /// <summary>
+        /// Loads the app with using encryption.
+        /// </summary>
+        /// <param name="appname">Application name.</param>
+        /// <param name="savename">Save name.</param>
+        /// <param name="salt">Encryption salt.</param>
+        /// <param name="useMultiple">Use multiple encryption?</param>
+        /// <returns>Loaded string array.</returns>
+        public static string[] LoadEnc(string appname, string savename, short salt, bool useMultiple)
+        {
+            string decrypted = "";
+            if (!useMultiple)
+            {
+                decrypted = CA_PXM.Decrypt(File.ReadAllText(d.pxDir + s + appname + s + savename + ".save"), salt);
+            }
+            else
+            {
+                decrypted = CA_PXMx.Decrypt(File.ReadAllText(d.pxDir + s + appname + s + savename + ".save"), salt, 2);
+            }
+            return GetArrayFromString(decrypted);
         }
     }
 }

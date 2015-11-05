@@ -11,8 +11,23 @@ namespace PearXLib
     /// </summary>
     public class Logging
     {
-
-        public enum LogType {Warning, Error, Info};
+        /// <summary>
+        /// Log type enum.
+        /// </summary>
+        public enum LogType {
+            /// <summary>
+            /// Warning!
+            /// </summary>
+            Warning,
+            /// <summary>
+            /// Error!
+            /// </summary>
+            Error,
+            /// <summary>
+            /// Information.
+            /// </summary>
+            Info
+        };
 
         /// <summary>
         /// Log path.

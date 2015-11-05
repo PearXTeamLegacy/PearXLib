@@ -160,6 +160,10 @@ namespace PearXLib.Engine
             remove { b.Click -= value; labelText.Click -= value; image.Click -= value; }
         }
 
+        /// <summary>
+        /// Image on XButton.
+        /// </summary>
+        [Description("Image on XButton.")]
         public Image XImage
         {
             get { return _XImage; }

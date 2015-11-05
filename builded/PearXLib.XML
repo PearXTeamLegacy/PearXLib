@@ -97,6 +97,41 @@
             Alignment enum.
             </summary>
         </member>
+        <member name="F:PearXLib.Engine.Align.RIGHT">
+            <summary>
+            # # #
+            # # *
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.CENTER">
+            <summary>
+            # # #
+            # * #
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.LEFT">
+            <summary>
+            # # #
+            * # #
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.TOP">
+            <summary>
+            # * #
+            # # #
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.BOTTOM">
+            <summary>
+            # # #
+            # # #
+            # * #
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XButton">
             <summary>
             A fancy button from PearX Engine.
@@ -127,6 +162,11 @@
             Button Click Event.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XButton.XImage">
+            <summary>
+            Image on XButton.
+            </summary>
+        </member>
         <member name="T:PearXLib.Logging">
             <summary>
             PearXLib logging utils.
@@ -148,6 +188,26 @@
             </summary>
             <param name="line">Message text</param>
             <param name="lt">Log type</param>
+        </member>
+        <member name="T:PearXLib.Logging.LogType">
+            <summary>
+            Log type enum.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Logging.LogType.Warning">
+            <summary>
+            Warning!
+            </summary>
+        </member>
+        <member name="F:PearXLib.Logging.LogType.Error">
+            <summary>
+            Error!
+            </summary>
+        </member>
+        <member name="F:PearXLib.Logging.LogType.Info">
+            <summary>
+            Information.
+            </summary>
         </member>
         <member name="T:PearXLib.Properties.Resources">
             <summary>
@@ -239,9 +299,9 @@
         </member>
         <member name="M:PearXLib.PXL.GenNumber(System.Random)">
             <summary>
-            Generates random number.
+            Generates random digit.
             </summary>
-            <returns>Random number</returns>
+            <returns>Random digit</returns>
         </member>
         <member name="M:PearXLib.PXL.GenNumber(System.Random,System.Int32,System.Int32)">
             <summary>
@@ -249,7 +309,8 @@
             </summary>
             <param name="min">Minimal random number (inclusive).</param>
             <param name="max">Maximal random number (inclusive).</param>
-            <returns></returns>
+            <param name="rand">Your random.</param>
+            <returns>Random number.</returns>
         </member>
         <member name="M:PearXLib.PXL.ReplaceFirst(System.String,System.String,System.String)">
             <summary>
@@ -274,11 +335,50 @@
             <param name="input">Input int.</param>
             <returns>Char.</returns>
         </member>
+        <member name="M:PearXLib.PXL.GenSymbol(System.Random)">
+            <summary>
+            Generates random symbol.
+            </summary>
+            <param name="rand"></param>
+            <returns></returns>
+        </member>
         <member name="M:PearXLib.PXL.GenRandom(System.Random,System.Boolean)">
             <summary>
             Generates random number/char/symbol.
             </summary>
             <returns>Random.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetArrayFromString(System.String)">
+            <summary>
+            Gets a string[] from string, uses new line(\n).
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:PearXLib.PXL.GetStringFromArray(System.String[])">
+            <summary>
+            Gets a string from string[], uses new line(\n).
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:PearXLib.PXL.SaveEnc(System.String,System.String,System.String[],System.Int16,System.Boolean)">
+            <summary>
+            Saves the app with using encryption.
+            </summary>
+            <param name="appname">Application name.</param>
+            <param name="savename">Save name.</param>
+            <param name="save">Strings to save.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+        </member>
+        <member name="M:PearXLib.PXL.LoadEnc(System.String,System.String,System.Int16,System.Boolean)">
+            <summary>
+            Loads the app with using encryption.
+            </summary>
+            <param name="appname">Application name.</param>
+            <param name="savename">Save name.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+            <returns>Loaded string array.</returns>
         </member>
     </members>
 </doc>

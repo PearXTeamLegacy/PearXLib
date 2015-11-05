@@ -10,6 +10,35 @@ namespace PearXLib.Engine
     /// </summary>
     public enum Align
     {
-        RIGHT, CENTER, LEFT, TOP, BOTTOM
+        /// <summary>
+        /// # # #
+        /// # # *
+        /// # # #
+        /// </summary>
+        RIGHT,
+        /// <summary>
+        /// # # #
+        /// # * #
+        /// # # #
+        /// </summary>
+        CENTER,
+        /// <summary>
+        /// # # #
+        /// * # #
+        /// # # #
+        /// </summary>
+        LEFT,
+        /// <summary>
+        /// # * #
+        /// # # #
+        /// # # #
+        /// </summary>
+        TOP,
+        /// <summary>
+        /// # # #
+        /// # # #
+        /// # * #
+        /// </summary>
+        BOTTOM
     }
 }
