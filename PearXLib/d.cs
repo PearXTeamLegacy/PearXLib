@@ -5,6 +5,9 @@ using System.Text;
 
 namespace PearXLib
 {
+    /// <summary>
+    /// Directories
+    /// </summary>
     public class d
     {
 

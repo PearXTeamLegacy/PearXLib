@@ -5,10 +5,13 @@ using System.Text;
 
 namespace PearXLib.Crypting
 {
+    /// <summary>
+    /// PXM encrypting algorithm (1. Convert char to int. 2. Result * 'salt').
+    /// </summary>
     public class CA_PXM
     {
         /// <summary>
-        /// Encrypts string by algorithm "PXM" (1. Convert char to int. 2. Result * 'salt').
+        /// Encrypts string by algorithm "PXM".
         /// </summary>
         /// <param name="input">Input string.</param>
         /// <param name="salt">Salt</param>
@@ -29,7 +32,7 @@ namespace PearXLib.Crypting
         }
 
         /// <summary>
-        /// Decrypts string by algorithm "PXM" (1. Convert int to char. 2. Result / 'salt').
+        /// Decrypts string by algorithm "PXM".
         /// </summary>
         /// <param name="input">Input string.</param>
         /// <param name="salt">Salt</param>

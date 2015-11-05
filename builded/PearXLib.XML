@@ -4,23 +4,33 @@
         <name>PearXLib</name>
     </assembly>
     <members>
+        <member name="T:PearXLib.Crypting.CA_PX1">
+            <summary>
+            PX1 encrypting algorithm (Convert every char to int and back).
+            </summary>
+        </member>
         <member name="M:PearXLib.Crypting.CA_PX1.Enrypt(System.String)">
             <summary>
-            Encrypts string by algorithm "PX1" (Convert every char to int).
+            Encrypts string by algorithm "PX1".
             </summary>
             <param name="input">Input string.</param>
             <returns>Encrypted string.</returns>
         </member>
         <member name="M:PearXLib.Crypting.CA_PX1.Decrypt(System.String)">
             <summary>
-            Decrypts string by algorithm "PX1" (Convert every int to char).
+            Decrypts string by algorithm "PX1".
             </summary>
             <param name="input">Encrypted string.</param>
             <returns>Decrypted string.</returns>
         </member>
+        <member name="T:PearXLib.Crypting.CA_PXMx">
+            <summary>
+            PXMx encrypting algorithm (1.Convert char to int. 2. Result * 'salt' 3. Repeat 'multipliplier' times).
+            </summary>
+        </member>
         <member name="M:PearXLib.Crypting.CA_PXMx.Enrypt(System.String,System.Int16,System.Byte)">
             <summary>
-            Encrypts string by algorithm "PXMx" (1.Convert char to int. 2. Result * 'salt' 3. Repeat 'multipliplier' times).
+            Encrypts string by algorithm "PXMx".
             </summary>
             <param name="input">Input string.</param>
             <param name="salt">Salt.</param>
@@ -29,16 +39,21 @@
         </member>
         <member name="M:PearXLib.Crypting.CA_PXMx.Decrypt(System.String,System.Int16,System.Byte)">
             <summary>
-            Decrypts string by algorithm "PXMx" (1.Convert int to char. 2. Result / 'salt' 3. Repeat 'multipliplier' times).
+            Decrypts string by algorithm "PXMx".
             </summary>
             <param name="input">Input string.</param>
             <param name="salt">Salt.</param>
             <param name="multiplier">Multiplier.</param>
             <returns>Decrypted string.</returns>
         </member>
+        <member name="T:PearXLib.Crypting.CA_PXM">
+            <summary>
+            PXM encrypting algorithm (1. Convert char to int. 2. Result * 'salt').
+            </summary>
+        </member>
         <member name="M:PearXLib.Crypting.CA_PXM.Enrypt(System.String,System.Int32)">
             <summary>
-            Encrypts string by algorithm "PXM" (1. Convert char to int. 2. Result * 'salt').
+            Encrypts string by algorithm "PXM".
             </summary>
             <param name="input">Input string.</param>
             <param name="salt">Salt</param>
@@ -46,11 +61,16 @@
         </member>
         <member name="M:PearXLib.Crypting.CA_PXM.Decrypt(System.String,System.Int32)">
             <summary>
-            Decrypts string by algorithm "PXM" (1. Convert int to char. 2. Result / 'salt').
+            Decrypts string by algorithm "PXM".
             </summary>
             <param name="input">Input string.</param>
             <param name="salt">Salt</param>
             <returns>Decrypted string.</returns>
+        </member>
+        <member name="T:PearXLib.d">
+            <summary>
+            Directories
+            </summary>
         </member>
         <member name="F:PearXLib.d.documents">
             <summary>
@@ -70,6 +90,16 @@
         <member name="F:PearXLib.d.pxDir">
             <summary>
             PearX Team's Directory.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.Align">
+            <summary>
+            Alignment enum.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XButton">
+            <summary>
+            A fancy button from PearX Engine.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XButton.XAlignText">
@@ -95,6 +125,11 @@
         <member name="E:PearXLib.Engine.XButton.Clicked">
             <summary>
             Button Click Event.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Logging">
+            <summary>
+            PearXLib logging utils.
             </summary>
         </member>
         <member name="F:PearXLib.Logging.logPath">
@@ -143,6 +178,16 @@
         <member name="P:PearXLib.Properties.Resources.XButtonPressed">
             <summary>
               Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:PearXLib.PXL">
+            <summary>
+            PearXLib main class.
+            </summary>
+        </member>
+        <member name="F:PearXLib.PXL.ver">
+            <summary>
+            PearXLib version.
             </summary>
         </member>
         <member name="F:PearXLib.PXL.s">

@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace PearXLib
 {
+    /// <summary>
+    /// PearXLib main class.
+    /// </summary>
     public class PXL
     {
         /* 
@@ -26,6 +29,10 @@ namespace PearXLib
 
 
 
+        /// <summary>
+        /// PearXLib version.
+        /// </summary>
+        public static string ver = "17a";
 
         /// <summary>
         /// Directory sepator.

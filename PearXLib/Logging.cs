@@ -6,6 +6,9 @@ using System.Text;
 
 namespace PearXLib
 {
+    /// <summary>
+    /// PearXLib logging utils.
+    /// </summary>
     public class Logging
     {
 

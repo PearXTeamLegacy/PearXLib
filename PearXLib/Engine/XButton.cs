@@ -10,6 +10,9 @@ using PearXLib.Properties;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// A fancy button from PearX Engine.
+    /// </summary>
     [DefaultEvent("Clicked")]
     public partial class XButton : UserControl
     {
