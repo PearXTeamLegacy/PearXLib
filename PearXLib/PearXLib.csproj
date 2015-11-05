@@ -85,7 +85,6 @@
   <ItemGroup>
     <None Include="Resources\XButtonFocused.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy PearXLib.dll "../../../builded/"

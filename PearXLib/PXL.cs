@@ -97,11 +97,9 @@ namespace PearXLib
         /// Generates random character.
         /// </summary>
         /// <returns>Random character.</returns>
-        public static char GenChar()
+        public static char GenChar(Random rand)
         {
-            Thread.Sleep(1);
-            Random r = new Random((int)DateTime.Now.Ticks);
-            int i = r.Next(1, 27);
+            int i = rand.Next(1, 27);
             return GetCharFromInt(i);
         }
 
@@ -109,10 +107,8 @@ namespace PearXLib
         /// Generates random number.
         /// </summary>
         /// <returns>Random number</returns>
-        public static int GenNumber()
+        public static int GenNumber(Random rand)
         {
-            Thread.Sleep(3);
-            Random rand = new Random((int)DateTime.Now.Ticks);
             return rand.Next(0, 10);
         }
 
@@ -122,10 +118,8 @@ namespace PearXLib
         /// <param name="min">Minimal random number (inclusive).</param>
         /// <param name="max">Maximal random number (inclusive).</param>
         /// <returns></returns>
-        public static int GenNumber(int min, int max)
+        public static int GenNumber(Random rand, int min, int max)
         {
-            Thread.Sleep(3);
-            Random rand = new Random((int)DateTime.Now.Ticks);
             return rand.Next(min, max + 1);
         }
 
@@ -550,11 +544,9 @@ namespace PearXLib
             }
         }
 
-        public static char GenSymbol()
+        public static char GenSymbol(Random rand)
         {
-            Thread.Sleep(3);
-            Random r = new Random((int)DateTime.Now.Ticks);
-            int i = r.Next(0, 26);
+            int i = rand.Next(0, 26);
             switch(i)
             {
                 case 0:
@@ -618,25 +610,23 @@ namespace PearXLib
         /// Generates random number/char/symbol.
         /// </summary>
         /// <returns>Random.</returns>
-        public static char GenRandom(bool useSymbols)
+        public static char GenRandom(Random rand, bool useSymbols)
         {
-            Thread.Sleep(2);
-            Random r = new Random((int)DateTime.Now.Ticks);
             int i;
             if (useSymbols)
-                i = r.Next(0, 4);
+                i = rand.Next(0, 4);
             else
-                i = r.Next(0, 3);
+                i = rand.Next(0, 3);
             switch(i)
             {
                 case 0:
-                    return Convert.ToChar(GenNumber().ToString());
+                    return Convert.ToChar(GenNumber(rand).ToString());
                 case 1:
-                    return GenChar();
+                    return GenChar(rand);
                 case 2:
-                    return Convert.ToChar(GenChar().ToString().ToUpper());
+                    return Convert.ToChar(GenChar(rand).ToString().ToUpper());
                 case 3:
-                    return GenSymbol();
+                    return GenSymbol(rand);
                 default:
                     return '0';
             }

@@ -114,6 +114,37 @@
             <param name="line">Message text</param>
             <param name="lt">Log type</param>
         </member>
+        <member name="T:PearXLib.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.XButton">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.XButtonFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.XButtonPressed">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="F:PearXLib.PXL.s">
             <summary>
             Directory sepator.
@@ -155,19 +186,19 @@
             <param name="savename">Save name.</param>
             <returns>Loaded string array.</returns>
         </member>
-        <member name="M:PearXLib.PXL.GenChar">
+        <member name="M:PearXLib.PXL.GenChar(System.Random)">
             <summary>
             Generates random character.
             </summary>
             <returns>Random character.</returns>
         </member>
-        <member name="M:PearXLib.PXL.GenNumber">
+        <member name="M:PearXLib.PXL.GenNumber(System.Random)">
             <summary>
             Generates random number.
             </summary>
             <returns>Random number</returns>
         </member>
-        <member name="M:PearXLib.PXL.GenNumber(System.Int32,System.Int32)">
+        <member name="M:PearXLib.PXL.GenNumber(System.Random,System.Int32,System.Int32)">
             <summary>
             Generate random number.
             </summary>
@@ -198,7 +229,7 @@
             <param name="input">Input int.</param>
             <returns>Char.</returns>
         </member>
-        <member name="M:PearXLib.PXL.GenRandom(System.Boolean)">
+        <member name="M:PearXLib.PXL.GenRandom(System.Random,System.Boolean)">
             <summary>
             Generates random number/char/symbol.
             </summary>
