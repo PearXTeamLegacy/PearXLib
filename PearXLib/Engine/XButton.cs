@@ -203,63 +203,48 @@ namespace PearXLib.Engine
 
         #region Overriding Props
         [Browsable(false)]
+        [Obsolete("Not working", true)]
         public override bool AutoScroll
         {
             get
             {
-                return base.AutoScroll;
-            }
-            set
-            {
-                base.AutoScroll = value;
+                return false;
             }
         }
         [Browsable(false)]
+        [Obsolete("Not working.", true)]
         public override Color ForeColor
         {
             get
             {
-                return base.ForeColor;
-            }
-            set
-            {
-                base.ForeColor = value;
+                return Color.Transparent;
             }
         }
         [Browsable(false)]
+        [Obsolete("Not working.", true)]
         public override Font Font
         {
             get
             {
-                return base.Font;
-            }
-            set
-            {
-                base.Font = value;
+                return _XFont;
             }
         }
         [Browsable(false)]
+        [Obsolete("Not working.", true)]
         public override Color BackColor
         {
             get
             {
-                return base.BackColor;
-            }
-            set
-            {
-                base.BackColor = value;
+                return Color.Transparent;
             }
         }
         [Browsable(false)]
+        [Obsolete("Not working", true)]
         public override Image BackgroundImage
         {
             get
             {
-                return base.BackgroundImage;
-            }
-            set
-            {
-                base.BackgroundImage = value;
+                return null;
             }
         }
         #endregion
