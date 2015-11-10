@@ -3,6 +3,10 @@
     partial class XButton
     {
         private System.ComponentModel.IContainer components = null;
+        /// <summary> 
+        /// Dispose all using resources.
+        /// </summary>
+        /// <param name="disposing">true, if controlled resource should be disposed; else false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -76,7 +80,6 @@
             this.Controls.Add(this.b);
             this.Name = "XButton";
             this.Size = new System.Drawing.Size(128, 64);
-            this.Load += new System.EventHandler(this.XButton_Load);
             ((System.ComponentModel.ISupportInitialize)(this.b)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
@@ -86,7 +89,7 @@
 
         #endregion
 
-        public System.Windows.Forms.PictureBox b;
+        private System.Windows.Forms.PictureBox b;
         private System.Windows.Forms.Label labelText;
         private System.Windows.Forms.PictureBox image;
 

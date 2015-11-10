@@ -99,49 +99,54 @@
         </member>
         <member name="F:PearXLib.Engine.Align.RIGHT">
             <summary>
-            # # #
-            # # *
+            # # #<para/>
+            # # *<para/>
             # # #
             </summary>
         </member>
         <member name="F:PearXLib.Engine.Align.CENTER">
             <summary>
-            # # #
-            # * #
+            # # #<para/>
+            # * #<para/>
             # # #
             </summary>
         </member>
         <member name="F:PearXLib.Engine.Align.LEFT">
             <summary>
-            # # #
-            * # #
+            # # #<para/>
+            * # #<para/>
             # # #
             </summary>
         </member>
         <member name="F:PearXLib.Engine.Align.TOP">
             <summary>
-            # * #
-            # # #
+            # * #<para/>
+            # # #<para/>
             # # #
             </summary>
         </member>
         <member name="F:PearXLib.Engine.Align.BOTTOM">
             <summary>
-            # # #
-            # # #
+            # # #<para/>
+            # # #<para/>
             # * #
             </summary>
         </member>
-        <member name="F:PearXLib.Engine.GameObject.components">
-            <summary> 
-            Требуется переменная конструктора.
+        <member name="T:PearXLib.Engine.GameObject">
+            <summary>
+            TODO: Make this component.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.GameObject.#ctor">
+            <summary>
+            Initializates new GameObject component.
             </summary>
         </member>
         <member name="M:PearXLib.Engine.GameObject.Dispose(System.Boolean)">
             <summary> 
-            Освободить все используемые ресурсы.
+            Dispose all using resources.
             </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
         </member>
         <member name="M:PearXLib.Engine.GameObject.InitializeComponent">
             <summary> 
@@ -149,16 +154,21 @@
             содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
-        <member name="F:PearXLib.Engine.InvItem.components">
-            <summary> 
-            Требуется переменная конструктора.
+        <member name="T:PearXLib.Engine.InvItem">
+            <summary>
+            A control to display the item.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.InvItem.#ctor">
+            <summary>
+            Initializes new InvItem component.
             </summary>
         </member>
         <member name="M:PearXLib.Engine.InvItem.Dispose(System.Boolean)">
             <summary> 
-            Освободить все используемые ресурсы.
+            Dispose all using resources.
             </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
         </member>
         <member name="M:PearXLib.Engine.InvItem.InitializeComponent">
             <summary> 
@@ -166,10 +176,66 @@
             содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemImage">
+            <summary>
+            Item's image.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemDesc">
+            <summary>
+            Item's description.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemAmount">
+            <summary>
+            Item amount.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemName">
+            <summary>
+            Item name.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ColorName">
+            <summary>
+            Name label color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ColorDesc">
+            <summary>
+            Description label color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ColorAmount">
+            <summary>
+            Amount label color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.Font">
+            <summary>
+            Control Font
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ForeColor">
+            <summary>
+            Not working property. Don't use it.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XButton">
             <summary>
             A fancy button from PearX Engine.
             </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XButton.#ctor">
+            <summary>
+            Initializes new XButton component.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XButton.Dispose(System.Boolean)">
+            <summary> 
+            Dispose all using resources.
+            </summary>
+            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
         </member>
         <member name="P:PearXLib.Engine.XButton.XAlignText">
             <summary>
@@ -191,14 +257,34 @@
             Button's Font.
             </summary>
         </member>
-        <member name="E:PearXLib.Engine.XButton.Clicked">
-            <summary>
-            Button Click Event.
-            </summary>
-        </member>
         <member name="P:PearXLib.Engine.XButton.XImage">
             <summary>
             Image on XButton.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.AutoScroll">
+            <summary>
+            Not working property. Don't use it.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.ForeColor">
+            <summary>
+            Not working property. Don't use it.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.Font">
+            <summary>
+            Not working property. Don't use it.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.BackColor">
+            <summary>
+            Not working property. Don't use it.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.BackgroundImage">
+            <summary>
+            Not working property. Don't use it.
             </summary>
         </member>
         <member name="T:PearXLib.Logging">

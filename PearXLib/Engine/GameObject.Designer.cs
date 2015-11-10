@@ -2,15 +2,12 @@
 {
     partial class GameObject
     {
-        /// <summary> 
-        /// Требуется переменная конструктора.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Освободить все используемые ресурсы.
+        /// Dispose all using resources.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true, if controlled resource should be disposed; else false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))

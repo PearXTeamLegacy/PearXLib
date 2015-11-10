@@ -13,7 +13,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A fancy button from PearX Engine.
     /// </summary>
-    [DefaultEvent("Clicked")]
+    [DefaultEvent("Click")]
     public partial class XButton : UserControl
     {
         private string _XText = "A Button";
@@ -22,13 +22,78 @@ namespace PearXLib.Engine
         private Align _XAlignImage = Align.LEFT;
         private Image _XImage;
 
+        /// <summary>
+        /// Initializes new XButton component.
+        /// </summary>
         public XButton()
         {
             InitializeComponent();
             labelText.Parent = b;
             image.Parent = b;
+            foreach (Control c in Controls)
+            {
+                c.Click += c_Click;
+                c.DoubleClick += c_DoubleClick;
+                c.MouseEnter += c_MouseEnter;
+                c.MouseLeave += c_MouseLeave;
+                c.MouseDoubleClick += c_MouseDoubleClick;
+                c.MouseDown += c_MouseDown;
+                c.MouseUp += c_MouseUp;
+                c.MouseHover += c_MouseHover;
+                c.MouseMove += c_MouseMove;
+            }
+            AlignImage();
+            AlignText();
         }
 
+        #region Fixed events
+        void c_MouseMove(object sender, MouseEventArgs e)
+        {
+            OnMouseMove(e);
+        }
+
+        void c_MouseHover(object sender, EventArgs e)
+        {
+            OnMouseHover(e);
+        }
+
+        void c_MouseUp(object sender, MouseEventArgs e)
+        {
+            OnMouseUp(e);
+        }
+
+        void c_MouseDown(object sender, MouseEventArgs e)
+        {
+            OnMouseDown(e);
+        }
+
+        void c_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            OnMouseDoubleClick(e);
+        }
+
+        void c_MouseLeave(object sender, EventArgs e)
+        {
+            OnMouseLeave(e);
+        }
+
+        void c_MouseEnter(object sender, EventArgs e)
+        {
+            OnMouseEnter(e);
+        }
+
+        void c_DoubleClick(object sender, EventArgs e)
+        {
+            OnDoubleClick(e);
+        }
+
+        void c_Click(object sender, EventArgs e)
+        {
+            OnClick(e);
+        }
+        #endregion
+
+        #region Methods
         void AlignText()
         {
             int _bWidth2 = b.Size.Width / 2;
@@ -39,26 +104,23 @@ namespace PearXLib.Engine
             int _tWidth = labelText.Size.Width;
             int _bHeight = b.Size.Height;
             int _tHeight = labelText.Size.Height;
-
-            if (XAlignText == Align.CENTER)
+            switch(XAlignText)
             {
-                labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight2 - _tHeight2);
-            }
-            else if (XAlignText == Align.RIGHT)
-            {
-                labelText.Location = new Point(_bWidth - _tWidth, _bHeight2 - _tHeight2);
-            }
-            else if (XAlignText == Align.LEFT)
-            {
-                labelText.Location = new Point(0, _bHeight2 - _tHeight2);
-            }
-            else if (XAlignText == Align.TOP)
-            {
-                labelText.Location = new Point(_bWidth2 - _tWidth2, 0);
-            }
-            else if (XAlignText == Align.BOTTOM)
-            {
-                labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight - _tHeight);
+                case Align.CENTER:
+                    labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight2 - _tHeight2);
+                    break;
+                case Align.RIGHT:
+                    labelText.Location = new Point(_bWidth - _tWidth, _bHeight2 - _tHeight2);
+                    break;
+                case Align.LEFT:
+                    labelText.Location = new Point(0, _bHeight2 - _tHeight2);
+                    break;
+                case Align.BOTTOM:
+                    labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight - _tHeight);
+                    break;
+                case Align.TOP:
+                    labelText.Location = new Point(_bWidth2 - _tWidth2, 0);
+                    break;
             }
         }
         void AlignImage()
@@ -71,27 +133,40 @@ namespace PearXLib.Engine
             int _iWidth = image.Size.Width;
             int _bHeight = b.Size.Height;
             int _iHeight = image.Size.Height;
-            if (XAlignImage == Align.CENTER)
+            switch(XAlignImage)
             {
-                image.Location = new Point(_bWidth2 - _iWidth2, _bHeight2 - _iHeight2);
-            }
-            else if (XAlignImage == Align.LEFT)
-            {
-                image.Location = new Point(0, _bHeight2 - _iHeight2);
-            }
-            else if (XAlignImage == Align.RIGHT)
-            {
-                image.Location = new Point(_bWidth - _iWidth, _bHeight2 - _iHeight2);
-            }
-            else if (XAlignImage == Align.TOP)
-            {
-                image.Location = new Point(_bWidth2 - _iWidth2, 0);
-            }
-            else if (XAlignImage == Align.BOTTOM)
-            {
-                image.Location = new Point(_bWidth2 - _iWidth2, _bHeight - _iHeight);
+                case Align.CENTER:
+                    image.Location = new Point(_bWidth2 - _iWidth2, _bHeight2 - _iHeight2);
+                    break;
+                case Align.LEFT:
+                    image.Location = new Point(0, _bHeight2 - _iHeight2);
+                    break;
+                case Align.RIGHT:
+                    image.Location = new Point(_bWidth - _iWidth, _bHeight2 - _iHeight2);
+                    break;
+                case Align.BOTTOM:
+                    image.Location = new Point(_bWidth2 - _iWidth2, _bHeight - _iHeight);
+                    break;
+                case Align.TOP:
+                    image.Location = new Point(_bWidth2 - _iWidth2, 0);
+                    break;
             }
         }
+        void setToXButton(object sender, EventArgs e)
+        {
+            b.Image = Resources.XButton;
+        }
+
+        void setToXButtonFocused(object sender, EventArgs e)
+        {
+            b.Image = Resources.XButtonFocused;
+        }
+
+        void setToXButtonPressed(object sender, EventArgs e)
+        {
+            b.Image = Resources.XButtonPressed;
+        }
+        #endregion
 
         #region Params
 
@@ -150,15 +225,6 @@ namespace PearXLib.Engine
                 AlignText();
             }
         }
-        /// <summary>
-        /// Button Click Event.
-        /// </summary>
-        [Description("Click Event.")]
-        public event EventHandler Clicked
-        {
-            add { b.Click += value; labelText.Click += value; image.Click += value; }
-            remove { b.Click -= value; labelText.Click -= value; image.Click -= value; }
-        }
 
         /// <summary>
         /// Image on XButton.
@@ -177,33 +243,11 @@ namespace PearXLib.Engine
 
         #endregion
 
-        #region Button's Background Functions
-        void setToXButton(object sender, EventArgs e)
-        {
-            b.Image = Resources.XButton;
-        }
-
-        void setToXButtonFocused(object sender, EventArgs e)
-        {
-            b.Image = Resources.XButtonFocused;
-        }
-
-        void setToXButtonPressed(object sender, EventArgs e)
-        {
-            b.Image = Resources.XButtonPressed;
-        }
-
-        #endregion
-
-        private void b_Resize(object sender, EventArgs e)
-        {
-            AlignText();
-            AlignImage();
-        }
-
         #region Overriding Props
+        /// <summary>
+        /// Not working property. Don't use it.
+        /// </summary>
         [Browsable(false)]
-        [Obsolete("Not working", true)]
         public override bool AutoScroll
         {
             get
@@ -211,8 +255,10 @@ namespace PearXLib.Engine
                 return false;
             }
         }
+        /// <summary>
+        /// Not working property. Don't use it.
+        /// </summary>
         [Browsable(false)]
-        [Obsolete("Not working.", true)]
         public override Color ForeColor
         {
             get
@@ -220,8 +266,10 @@ namespace PearXLib.Engine
                 return Color.Transparent;
             }
         }
+        /// <summary>
+        /// Not working property. Don't use it.
+        /// </summary>
         [Browsable(false)]
-        [Obsolete("Not working.", true)]
         public override Font Font
         {
             get
@@ -229,8 +277,10 @@ namespace PearXLib.Engine
                 return _XFont;
             }
         }
+        /// <summary>
+        /// Not working property. Don't use it.
+        /// </summary>
         [Browsable(false)]
-        [Obsolete("Not working.", true)]
         public override Color BackColor
         {
             get
@@ -238,8 +288,10 @@ namespace PearXLib.Engine
                 return Color.Transparent;
             }
         }
+        /// <summary>
+        /// Not working property. Don't use it.
+        /// </summary>
         [Browsable(false)]
-        [Obsolete("Not working", true)]
         public override Image BackgroundImage
         {
             get
@@ -249,10 +301,10 @@ namespace PearXLib.Engine
         }
         #endregion
 
-        private void XButton_Load(object sender, EventArgs e)
+        private void b_Resize(object sender, EventArgs e)
         {
-            AlignImage();
             AlignText();
+            AlignImage();
         }
     }
 }
