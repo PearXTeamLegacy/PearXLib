@@ -33,22 +33,12 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static string ver = "18a";
+        public static string ver = "19a";
 
         /// <summary>
         /// Directory sepator.
         /// </summary>
         public static char s = Path.DirectorySeparatorChar;
-
-        /// <summary>
-        /// Creates dir if it does not exists.
-        /// </summary>
-        /// <param name="path">Directory path.</param>
-        public static void createDir(string path)
-        {
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-        }
 
         /// <summary>
         /// For TextBox.
@@ -77,59 +67,6 @@ namespace PearXLib
             sb.AppendLine("IconFile=" + path);
             sb.AppendLine("IconIndex=0");
             File.WriteAllText(filePath + ".url", sb.ToString());
-        }
-
-        /// <summary>
-        /// Saves the app.
-        /// </summary>
-        /// <param name="appname">App name.</param>
-        /// <param name="savename">Save name.</param>
-        /// <param name="save">Save (string array).</param>
-        public static void Save(string appname, string savename, string[] save)
-        {
-            File.WriteAllLines(d.pxDir + s + appname + s + savename + ".save", save);
-        }
-
-        /// <summary>
-        /// Loads the app.
-        /// </summary>
-        /// <param name="appname">App name.</param>
-        /// <param name="savename">Save name.</param>
-        /// <returns>Loaded string array.</returns>
-        public static string[] Load(string appname, string savename)
-        {
-            return File.ReadAllLines(d.pxDir + s + appname + s + savename + ".save");
-        }
-
-        /// <summary>
-        /// Generates random character.
-        /// </summary>
-        /// <returns>Random character.</returns>
-        public static char GenChar(Random rand)
-        {
-            int i = rand.Next(1, 27);
-            return GetCharFromInt(i);
-        }
-
-        /// <summary>
-        /// Generates random digit.
-        /// </summary>
-        /// <returns>Random digit</returns>
-        public static int GenNumber(Random rand)
-        {
-            return rand.Next(0, 10);
-        }
-
-        /// <summary>
-        /// Generate random number.
-        /// </summary>
-        /// <param name="min">Minimal random number (inclusive).</param>
-        /// <param name="max">Maximal random number (inclusive).</param>
-        /// <param name="rand">Your random.</param>
-        /// <returns>Random number.</returns>
-        public static int GenNumber(Random rand, int min, int max)
-        {
-            return rand.Next(min, max + 1);
         }
 
         /// <summary>
@@ -554,100 +491,6 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Generates random symbol.
-        /// </summary>
-        /// <param name="rand"></param>
-        /// <returns></returns>
-        public static char GenSymbol(Random rand)
-        {
-            int i = rand.Next(0, 26);
-            switch(i)
-            {
-                case 0:
-                    return '!';
-                case 1:
-                    return '@';
-                case 2:
-                    return '"';
-                case 3:
-                    return '#';
-                case 4:
-                    return '№';
-                case 5:
-                    return '$';
-                case 6:
-                    return ';';
-                case 7:
-                    return '%';
-                case 8:
-                    return '^';
-                case 9:
-                    return ':';
-                case 10:
-                    return '&';
-                case 11:
-                    return '?';
-                case 12:
-                    return '*';
-                case 13:
-                    return '(';
-                case 14:
-                    return ')';
-                case 15:
-                    return '-';
-                case 16:
-                    return '_';
-                case 17:
-                    return '+';
-                case 18:
-                    return '=';
-                case 19:
-                    return '\\';
-                case 20:
-                    return '|';
-                case 21:
-                    return '/';
-                case 22:
-                    return '\'';
-                case 23:
-                    return '~';
-                case 24:
-                    return '.';
-                case 25:
-                    return ',';
-                default:
-                    return '!';
-            }
-        }
-
-        /// <summary>
-        /// Generates random number/char/symbol.
-        /// </summary>
-        /// <returns>Random.</returns>
-        public static char GenRandom(Random rand, bool useSymbols)
-        {
-            int i;
-            if (useSymbols)
-                i = rand.Next(0, 4);
-            else
-                i = rand.Next(0, 3);
-            switch(i)
-            {
-                case 0:
-                    return Convert.ToChar(GenNumber(rand).ToString());
-                case 1:
-                    return GenChar(rand);
-                case 2:
-                    return Convert.ToChar(GenChar(rand).ToString().ToUpper());
-                case 3:
-                    return GenSymbol(rand);
-                default:
-                    return '0';
-            }
-
-        }
-
-        /// <summary>
         /// Gets a string[] from string, uses new line(\n).
         /// </summary>
         /// <param name="s"></param>
@@ -663,50 +506,6 @@ namespace PearXLib
         public static string GetStringFromArray(string[] s)
         {
             return String.Join("\n", s);
-        }
-
-        /// <summary>
-        /// Saves the app with using encryption.
-        /// </summary>
-        /// <param name="appname">Application name.</param>
-        /// <param name="savename">Save name.</param>
-        /// <param name="save">Strings to save.</param>
-        /// <param name="salt">Encryption salt.</param>
-        /// <param name="useMultiple">Use multiple encryption?</param>
-        public static void SaveEnc(string appname, string savename, string[] save, short salt, bool useMultiple)
-        {
-            string saveEncrypted = "";
-            if (!useMultiple)
-            {
-                saveEncrypted = CA_PXM.Enrypt(GetStringFromArray(save), salt);
-            }
-            else
-            {
-                saveEncrypted = CA_PXMx.Enrypt(GetStringFromArray(save), salt, 2);
-            }
-            File.WriteAllText(d.pxDir + s + appname + s + savename + ".save", saveEncrypted);
-        }
-
-        /// <summary>
-        /// Loads the app with using encryption.
-        /// </summary>
-        /// <param name="appname">Application name.</param>
-        /// <param name="savename">Save name.</param>
-        /// <param name="salt">Encryption salt.</param>
-        /// <param name="useMultiple">Use multiple encryption?</param>
-        /// <returns>Loaded string array.</returns>
-        public static string[] LoadEnc(string appname, string savename, short salt, bool useMultiple)
-        {
-            string decrypted = "";
-            if (!useMultiple)
-            {
-                decrypted = CA_PXM.Decrypt(File.ReadAllText(d.pxDir + s + appname + s + savename + ".save"), salt);
-            }
-            else
-            {
-                decrypted = CA_PXMx.Decrypt(File.ReadAllText(d.pxDir + s + appname + s + savename + ".save"), salt, 2);
-            }
-            return GetArrayFromString(decrypted);
         }
     }
 }

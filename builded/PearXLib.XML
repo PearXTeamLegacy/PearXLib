@@ -287,6 +287,53 @@
             Not working property. Don't use it.
             </summary>
         </member>
+        <member name="T:PearXLib.FileUtils">
+            <summary>
+            PearXLib File Utilities.
+            </summary>
+        </member>
+        <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String,System.String[],System.Int16,System.Boolean)">
+            <summary>
+            Saves the app with using encryption.
+            </summary>
+            <param name="appname">Application name.</param>
+            <param name="savename">Save name.</param>
+            <param name="save">Strings to save.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.String,System.Int16,System.Boolean)">
+            <summary>
+            Loads the app with using encryption.
+            </summary>
+            <param name="appname">Application name.</param>
+            <param name="savename">Save name.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.Save(System.String,System.String,System.String[])">
+            <summary>
+            Saves the app.
+            </summary>
+            <param name="appname">App name.</param>
+            <param name="savename">Save name.</param>
+            <param name="save">Save (string array).</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.Load(System.String,System.String)">
+            <summary>
+            Loads the app.
+            </summary>
+            <param name="appname">App name.</param>
+            <param name="savename">Save name.</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.createDir(System.String)">
+            <summary>
+            Creates dir if it does not exists.
+            </summary>
+            <param name="path">Directory path.</param>
+        </member>
         <member name="T:PearXLib.Logging">
             <summary>
             PearXLib logging utils.
@@ -375,12 +422,6 @@
             Directory sepator.
             </summary>
         </member>
-        <member name="M:PearXLib.PXL.createDir(System.String)">
-            <summary>
-            Creates dir if it does not exists.
-            </summary>
-            <param name="path">Directory path.</param>
-        </member>
         <member name="M:PearXLib.PXL.isNumberKey(System.Windows.Forms.KeyPressEventArgs)">
             <summary>
             For TextBox.
@@ -394,43 +435,6 @@
             </summary>
             <param name="path">Path to exe.</param>
             <param name="filePath">Path to new shortcut.</param>
-        </member>
-        <member name="M:PearXLib.PXL.Save(System.String,System.String,System.String[])">
-            <summary>
-            Saves the app.
-            </summary>
-            <param name="appname">App name.</param>
-            <param name="savename">Save name.</param>
-            <param name="save">Save (string array).</param>
-        </member>
-        <member name="M:PearXLib.PXL.Load(System.String,System.String)">
-            <summary>
-            Loads the app.
-            </summary>
-            <param name="appname">App name.</param>
-            <param name="savename">Save name.</param>
-            <returns>Loaded string array.</returns>
-        </member>
-        <member name="M:PearXLib.PXL.GenChar(System.Random)">
-            <summary>
-            Generates random character.
-            </summary>
-            <returns>Random character.</returns>
-        </member>
-        <member name="M:PearXLib.PXL.GenNumber(System.Random)">
-            <summary>
-            Generates random digit.
-            </summary>
-            <returns>Random digit</returns>
-        </member>
-        <member name="M:PearXLib.PXL.GenNumber(System.Random,System.Int32,System.Int32)">
-            <summary>
-            Generate random number.
-            </summary>
-            <param name="min">Minimal random number (inclusive).</param>
-            <param name="max">Maximal random number (inclusive).</param>
-            <param name="rand">Your random.</param>
-            <returns>Random number.</returns>
         </member>
         <member name="M:PearXLib.PXL.ReplaceFirst(System.String,System.String,System.String)">
             <summary>
@@ -455,19 +459,6 @@
             <param name="input">Input int.</param>
             <returns>Char.</returns>
         </member>
-        <member name="M:PearXLib.PXL.GenSymbol(System.Random)">
-            <summary>
-            Generates random symbol.
-            </summary>
-            <param name="rand"></param>
-            <returns></returns>
-        </member>
-        <member name="M:PearXLib.PXL.GenRandom(System.Random,System.Boolean)">
-            <summary>
-            Generates random number/char/symbol.
-            </summary>
-            <returns>Random.</returns>
-        </member>
         <member name="M:PearXLib.PXL.GetArrayFromString(System.String)">
             <summary>
             Gets a string[] from string, uses new line(\n).
@@ -480,25 +471,44 @@
             </summary>
             <param name="s"></param>
         </member>
-        <member name="M:PearXLib.PXL.SaveEnc(System.String,System.String,System.String[],System.Int16,System.Boolean)">
+        <member name="T:PearXLib.RandomUtils">
             <summary>
-            Saves the app with using encryption.
+            PearXLib Random Utilities.
             </summary>
-            <param name="appname">Application name.</param>
-            <param name="savename">Save name.</param>
-            <param name="save">Strings to save.</param>
-            <param name="salt">Encryption salt.</param>
-            <param name="useMultiple">Use multiple encryption?</param>
         </member>
-        <member name="M:PearXLib.PXL.LoadEnc(System.String,System.String,System.Int16,System.Boolean)">
+        <member name="M:PearXLib.RandomUtils.GenChar(System.Random)">
             <summary>
-            Loads the app with using encryption.
+            Generates random character.
             </summary>
-            <param name="appname">Application name.</param>
-            <param name="savename">Save name.</param>
-            <param name="salt">Encryption salt.</param>
-            <param name="useMultiple">Use multiple encryption?</param>
-            <returns>Loaded string array.</returns>
+            <returns>Random character.</returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenNumber(System.Random)">
+            <summary>
+            Generates random digit.
+            </summary>
+            <returns>Random digit</returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenNumber(System.Random,System.Int32,System.Int32)">
+            <summary>
+            Generate random number.
+            </summary>
+            <param name="min">Minimal random number (inclusive).</param>
+            <param name="max">Maximal random number (inclusive).</param>
+            <param name="rand">Your random.</param>
+            <returns>Random number.</returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenSymbol(System.Random)">
+            <summary>
+            Generates random symbol.
+            </summary>
+            <param name="rand"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenRandom(System.Random,System.Boolean)">
+            <summary>
+            Generates random number/char/symbol.
+            </summary>
+            <returns>Random.</returns>
         </member>
     </members>
 </doc>
