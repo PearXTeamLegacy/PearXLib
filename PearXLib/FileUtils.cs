@@ -8,7 +8,7 @@ using System.Text;
 namespace PearXLib
 {
     /// <summary>
-    /// PearXLib File Utilities.
+    /// PearXLib file utilities.
     /// </summary>
     public class FileUtils
     {

@@ -178,12 +178,12 @@
         </member>
         <member name="P:PearXLib.Engine.InvItem.ItemImage">
             <summary>
-            Item's image.
+            Item image.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.InvItem.ItemDesc">
             <summary>
-            Item's description.
+            Item description.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.InvItem.ItemAmount">
@@ -213,7 +213,7 @@
         </member>
         <member name="P:PearXLib.Engine.InvItem.Font">
             <summary>
-            Control Font
+            Control font.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.InvItem.ForeColor">
@@ -287,9 +287,26 @@
             Not working property. Don't use it.
             </summary>
         </member>
+        <member name="F:PearXLib.Engine.XIcon.components">
+            <summary> 
+            Требуется переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XIcon.Dispose(System.Boolean)">
+            <summary> 
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XIcon.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
+            </summary>
+        </member>
         <member name="T:PearXLib.FileUtils">
             <summary>
-            PearXLib File Utilities.
+            PearXLib file utilities.
             </summary>
         </member>
         <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String,System.String[],System.Int16,System.Boolean)">
@@ -376,6 +393,25 @@
             Information.
             </summary>
         </member>
+        <member name="T:PearXLib.MathsUtils">
+            <summary>
+            PearXLib mathematics utilities.
+            </summary>
+        </member>
+        <member name="M:PearXLib.MathsUtils.GetAverage(System.Int32[])">
+            <summary>
+            Gets an arithmetical averange.
+            </summary>
+            <param name="ints">Input integers.</param>
+            <returns>Arithmetical averange.</returns>
+        </member>
+        <member name="M:PearXLib.MathsUtils.GetAverageExactly(System.Double[])">
+            <summary>
+            Gets an exactly arithmetical averange.
+            </summary>
+            <param name="doubles">Input doubles.</param>
+            <returns>Exactly arithmetical averange</returns>
+        </member>
         <member name="T:PearXLib.Properties.Resources">
             <summary>
               Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
@@ -390,6 +426,11 @@
             <summary>
               Перезаписывает свойство CurrentUICulture текущего потока для всех
               обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.bd">
+            <summary>
+              Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
             </summary>
         </member>
         <member name="P:PearXLib.Properties.Resources.XButton">
@@ -473,7 +514,7 @@
         </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>
-            PearXLib Random Utilities.
+            PearXLib random utilities.
             </summary>
         </member>
         <member name="M:PearXLib.RandomUtils.GenChar(System.Random)">
@@ -509,6 +550,19 @@
             Generates random number/char/symbol.
             </summary>
             <returns>Random.</returns>
+        </member>
+        <member name="T:PearXLib.UpdateUtils">
+            <summary>
+            PearXLib Updating Utils.
+            </summary>
+        </member>
+        <member name="M:PearXLib.UpdateUtils.PrepareUpdate(System.String,System.String,System.String)">
+            <summary>
+            Prepares and runs app update.
+            </summary>
+            <param name="appName">Application name.</param>
+            <param name="exeName">Executable file name.</param>
+            <param name="exeOnSite">Path to executable file on website.</param>
         </member>
     </members>
 </doc>

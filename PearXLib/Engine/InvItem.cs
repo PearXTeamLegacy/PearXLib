@@ -91,8 +91,9 @@ namespace PearXLib.Engine
 
         #region Props
         /// <summary>
-        /// Item's image.
+        /// Item image.
         /// </summary>
+        [Description("Item image."), DefaultValue(null)]
         public Image ItemImage
         {
             get
@@ -105,10 +106,11 @@ namespace PearXLib.Engine
                 imageImg.Image = _ItemImage;
             }
         }
-
+        
         /// <summary>
-        /// Item's description.
+        /// Item description.
         /// </summary>
+        [Description("Item description."), DefaultValue("Cake - a lie.")]
         public string ItemDesc
         {
             get
@@ -125,6 +127,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Item amount.
         /// </summary>
+        [Description("Item amount."), DefaultValue(0)]
         public int ItemAmount
         {
             get
@@ -141,6 +144,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Item name.
         /// </summary>
+        [Description("Item name."), DefaultValue("Cake")]
         public string ItemName
         {
             get
@@ -157,6 +161,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Name label color.
         /// </summary>
+        [Description("Name label color."), DefaultValue(typeof(Color), "Red")]
         public Color ColorName
         {
             get
@@ -173,6 +178,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Description label color.
         /// </summary>
+        [Description("Description label color."), DefaultValue(typeof(Color), "Blue")]
         public Color ColorDesc
         {
             get
@@ -189,6 +195,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Amount label color.
         /// </summary>
+        [Description("Amount label color."), DefaultValue(typeof(Color), "Green")]
         public Color ColorAmount
         {
             get
@@ -203,8 +210,9 @@ namespace PearXLib.Engine
         }
 
         /// <summary>
-        /// Control Font
+        /// Control font.
         /// </summary>
+       [Description("Control font.")]
         public override Font Font
         {
             get

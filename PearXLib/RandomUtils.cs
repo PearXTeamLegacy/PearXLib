@@ -6,7 +6,7 @@ using System.Text;
 namespace PearXLib
 {
     /// <summary>
-    /// PearXLib Random Utilities.
+    /// PearXLib random utilities.
     /// </summary>
     public class RandomUtils
     {

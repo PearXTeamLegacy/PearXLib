@@ -173,7 +173,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Button's Align.
         /// </summary>
-        [Description("Button's Align.")]
+        [Description("Button's Align."), DefaultValue(Align.CENTER)]
         public Align XAlignText
         {
             get { return _XAlignText; }
@@ -187,7 +187,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Image's Align.
         /// </summary>
-        [Description("Image's Align.")]
+        [Description("Image's Align."), DefaultValue(Align.LEFT)]
         public Align XAlignImage
         {
             get { return _XAlignImage; }
@@ -200,7 +200,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Text on Button.
         /// </summary>
-        [Description("Text on Button.")]
+        [Description("Text on Button."), DefaultValue("A Button")]
         public string XText
         {
             get { return _XText; }
@@ -229,7 +229,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Image on XButton.
         /// </summary>
-        [Description("Image on XButton.")]
+        [Description("Image on XButton."), DefaultValue(null)]
         public Image XImage
         {
             get { return _XImage; }
