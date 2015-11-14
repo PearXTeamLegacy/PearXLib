@@ -38,6 +38,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Name = "XIcon";
             this.Size = new System.Drawing.Size(64, 64);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.XIcon_Paint);
             this.MouseEnter += new System.EventHandler(this.XIcon_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.XIcon_MouseLeave);
             this.ResumeLayout(false);

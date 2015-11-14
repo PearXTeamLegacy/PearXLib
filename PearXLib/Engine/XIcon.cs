@@ -11,12 +11,19 @@ using PearXLib.Properties;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// An expanding icon from PearX Engine.
+    /// </summary>
     public partial class XIcon : UserControl
     {
         private Image _Icon;
         private bool _PlaySound = true;
+        /// <summary>
+        /// Initializes a new XIcon component.
+        /// </summary>
         public XIcon() 
         {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
             foreach (Control c in Controls)
             {
@@ -33,17 +40,24 @@ namespace PearXLib.Engine
         }
 
         #region Properties.
+        /// <summary>
+        /// Icon image.
+        /// </summary>
+        [DefaultValue(null), Description("Icon image.")]
         public Image Icon
         {
             get { return _Icon; }
             set
             {
                 _Icon = value;
-                BackgroundImage = _Icon;
+                Refresh();
             }
         }
 
-        [DefaultValue(true)]
+        /// <summary>
+        /// Play sound, when mouse focused on this component?
+        /// </summary>
+        [DefaultValue(true), Description("Play sound, when mouse focused on this component?")]
         public bool PlaySound
         {
             get { return _PlaySound; }
@@ -100,8 +114,9 @@ namespace PearXLib.Engine
 
         private void XIcon_MouseEnter(object sender, EventArgs e)
         {
-            Location = new Point(Location.X - 15, Location.Y - 15);
-            Size = new Size(Size.Width + 15, Size.Height + 15);
+            Size = new Size(Size.Width + 20, Size.Height + 20);
+            Location = new Point(Location.X - 10, Location.Y - 10);
+            this.BringToFront();
             if (PlaySound)
             {
                 SoundPlayer sp = new SoundPlayer(Resources.bd);
@@ -111,8 +126,16 @@ namespace PearXLib.Engine
 
         private void XIcon_MouseLeave(object sender, EventArgs e)
         {
-            Location = new Point(Location.X + 15, Location.Y + 15);
-            Size = new Size(Size.Width - 15, Size.Height - 15);
+            Size = new Size(Size.Width - 20, Size.Height - 20);
+            Location = new Point(Location.X + 10, Location.Y + 10);
+        }
+
+        private void XIcon_Paint(object sender, PaintEventArgs e)
+        {
+            if (Icon != null)
+            {
+                e.Graphics.DrawImage(Icon, 0, 0, Size.Width, Size.Height);
+            }
         }
     }
 }

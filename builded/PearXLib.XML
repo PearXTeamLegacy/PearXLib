@@ -287,6 +287,16 @@
             Not working property. Don't use it.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XIcon">
+            <summary>
+            An expanding icon from PearX Engine.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XIcon.#ctor">
+            <summary>
+            Initializes a new XIcon component.
+            </summary>
+        </member>
         <member name="F:PearXLib.Engine.XIcon.components">
             <summary> 
             Требуется переменная конструктора.
@@ -302,6 +312,16 @@
             <summary> 
             Обязательный метод для поддержки конструктора - не изменяйте 
             содержимое данного метода при помощи редактора кода.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Icon">
+            <summary>
+            Icon image.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.PlaySound">
+            <summary>
+            Play sound, when mouse focused on this component?
             </summary>
         </member>
         <member name="T:PearXLib.FileUtils">
