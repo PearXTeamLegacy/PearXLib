@@ -18,6 +18,7 @@ namespace PearXLib.Engine
     {
         private Image _Icon;
         private bool _PlaySound = true;
+        private string _Title = String.Empty;
         /// <summary>
         /// Initializes a new XIcon component.
         /// </summary>
@@ -25,18 +26,6 @@ namespace PearXLib.Engine
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
-            foreach (Control c in Controls)
-            {
-                c.Click += c_Click;
-                c.DoubleClick += c_DoubleClick;
-                c.MouseEnter += c_MouseEnter;
-                c.MouseLeave += c_MouseLeave;
-                c.MouseDoubleClick += c_MouseDoubleClick;
-                c.MouseDown += c_MouseDown;
-                c.MouseUp += c_MouseUp;
-                c.MouseHover += c_MouseHover;
-                c.MouseMove += c_MouseMove;
-            }
         }
 
         #region Properties.
@@ -63,52 +52,39 @@ namespace PearXLib.Engine
             get { return _PlaySound; }
             set { _PlaySound = value; }
         }
-        #endregion
 
-        #region Fixed events.
-        private void c_MouseMove(object sender, MouseEventArgs e)
+        /// <summary>
+        /// Icon title (will be displayed on the control).
+        /// </summary>
+        [DefaultValue(""), Description("Icon title (will be displayed on the control).")]
+        public string Title
         {
-            OnMouseMove(e);
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                _Title = value;
+                Refresh();
+            }
         }
-
-        private void c_MouseHover(object sender, EventArgs e)
+        
+        /// <summary>
+        /// Title font.
+        /// </summary>
+        [Description("Title font.")]
+        public override Font Font
         {
-            OnMouseHover(e);
-        }
-
-        private void c_MouseUp(object sender, MouseEventArgs e)
-        {
-            OnMouseUp(e);
-        }
-
-        private void c_MouseDown(object sender, MouseEventArgs e)
-        {
-            OnMouseDown(e);
-        }
-
-        private void c_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            OnMouseDoubleClick(e);
-        }
-
-        private void c_MouseLeave(object sender, EventArgs e)
-        {
-            OnMouseLeave(e);
-        }
-
-        private void c_MouseEnter(object sender, EventArgs e)
-        {
-            OnMouseEnter(e);
-        }
-
-        private void c_DoubleClick(object sender, EventArgs e)
-        {
-            OnDoubleClick(e);
-        }
-
-        private void c_Click(object sender, EventArgs e)
-        {
-            OnClick(e);
+            get
+            {
+                return base.Font;
+            }
+            set
+            {
+                base.Font = value;
+                Refresh();
+            }
         }
         #endregion
 
@@ -116,7 +92,7 @@ namespace PearXLib.Engine
         {
             Size = new Size(Size.Width + 20, Size.Height + 20);
             Location = new Point(Location.X - 10, Location.Y - 10);
-            this.BringToFront();
+            BringToFront();
             if (PlaySound)
             {
                 SoundPlayer sp = new SoundPlayer(Resources.bd);
@@ -134,7 +110,17 @@ namespace PearXLib.Engine
         {
             if (Icon != null)
             {
-                e.Graphics.DrawImage(Icon, 0, 0, Size.Width, Size.Height);
+                if (!String.IsNullOrEmpty(Title))
+                {
+                    Brush b = new SolidBrush(ForeColor);
+                    SizeF strWH = e.Graphics.MeasureString(Title, Font);
+                    e.Graphics.DrawImage(Icon, 0, 0, Size.Width, Size.Height - strWH.Height);
+                    e.Graphics.DrawString(Title, Font, b, (Size.Width - strWH.Width) / 2, Size.Height - strWH.Height);
+                }
+                else
+                {
+                    e.Graphics.DrawImage(Icon, 0, 0, Size.Width, Size.Height);
+                }
             }
         }
     }

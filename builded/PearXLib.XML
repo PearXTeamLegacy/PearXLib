@@ -221,6 +221,78 @@
             Not working property. Don't use it.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XBar">
+            <summary>
+            A beautiful progress bar from PearXLib.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XBar.#ctor">
+            <summary>
+            Initializes the new XBar component.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XBar.components">
+            <summary> 
+            Требуется переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XBar.Dispose(System.Boolean)">
+            <summary> 
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XBar.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.Value">
+            <summary>
+            Progress value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.Maximum">
+            <summary>
+            Maximum value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.GradientColor1">
+            <summary>
+            Value bar gradient color 1.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.GradientColor2">
+            <summary>
+            Value bar gradient color 2.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.BGColor">
+            <summary>
+            Bar background color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.ProgressText">
+            <summary>
+            Text on bar.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.ProgressTextColor">
+            <summary>
+            Color of a text on a bar.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.BackColor">
+            <summary>
+            Not working. Don't change this.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.Font">
+            <summary>
+            A font of a text on a bar.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XButton">
             <summary>
             A fancy button from PearX Engine.
@@ -322,6 +394,16 @@
         <member name="P:PearXLib.Engine.XIcon.PlaySound">
             <summary>
             Play sound, when mouse focused on this component?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Title">
+            <summary>
+            Icon title (will be displayed on the control).
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Font">
+            <summary>
+            Title font.
             </summary>
         </member>
         <member name="T:PearXLib.FileUtils">

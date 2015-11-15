@@ -61,6 +61,12 @@
     <Compile Include="Engine\InvItem.Designer.cs">
       <DependentUpon>InvItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Engine\XBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Engine\XBar.Designer.cs">
+      <DependentUpon>XBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engine\XButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,6 +95,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Engine\InvItem.resx">
       <DependentUpon>InvItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engine\XBar.resx">
+      <DependentUpon>XBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engine\XButton.resx">
       <DependentUpon>XButton.cs</DependentUpon>

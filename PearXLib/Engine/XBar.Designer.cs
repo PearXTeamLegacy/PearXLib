@@ -1,6 +1,6 @@
 ﻿namespace PearXLib.Engine
 {
-    partial class XIcon
+    partial class XBar
     {
         /// <summary> 
         /// Требуется переменная конструктора.
@@ -30,23 +30,19 @@
         {
             this.SuspendLayout();
             // 
-            // XIcon
+            // XBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DoubleBuffered = true;
-            this.Name = "XIcon";
-            this.Size = new System.Drawing.Size(64, 64);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.XIcon_Paint);
-            this.MouseEnter += new System.EventHandler(this.XIcon_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.XIcon_MouseLeave);
+            this.Name = "XBar";
+            this.Size = new System.Drawing.Size(349, 52);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.XBar_Paint);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
     }
 }
