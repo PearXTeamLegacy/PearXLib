@@ -68,35 +68,5 @@ namespace PearXLib.Properties {
                 return ResourceManager.GetStream("bd", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap XButton {
-            get {
-                object obj = ResourceManager.GetObject("XButton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap XButtonFocused {
-            get {
-                object obj = ResourceManager.GetObject("XButtonFocused", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap XButtonPressed {
-            get {
-                object obj = ResourceManager.GetObject("XButtonPressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

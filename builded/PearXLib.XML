@@ -295,68 +295,79 @@
         </member>
         <member name="T:PearXLib.Engine.XButton">
             <summary>
-            A fancy button from PearX Engine.
+            A beautiful button from PearX Engine.
             </summary>
         </member>
         <member name="M:PearXLib.Engine.XButton.#ctor">
             <summary>
-            Initializes new XButton component.
+            Initializes a new XButton component.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XButton.components">
+            <summary> 
+            Требуется переменная конструктора.
             </summary>
         </member>
         <member name="M:PearXLib.Engine.XButton.Dispose(System.Boolean)">
             <summary> 
-            Dispose all using resources.
+            Освободить все используемые ресурсы.
             </summary>
-            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         </member>
-        <member name="P:PearXLib.Engine.XButton.XAlignText">
-            <summary>
-            Button's Align.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.XAlignImage">
-            <summary>
-            Image's Align.
+        <member name="M:PearXLib.Engine.XButton.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.XText">
+        <member name="P:PearXLib.Engine.XButton.GradientColor1">
             <summary>
-            Text on Button.
+            A button gradient color 1. 
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.XFont">
+        <member name="P:PearXLib.Engine.XButton.GradientColor2">
             <summary>
-            Button's Font.
+            A button gradient color 2.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.XImage">
+        <member name="P:PearXLib.Engine.XButton.ButtonText">
             <summary>
-            Image on XButton.
+            A text on a button.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.AutoScroll">
+        <member name="P:PearXLib.Engine.XButton.Image">
             <summary>
-            Not working property. Don't use it.
+            An image on a button
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.ForeColor">
+        <member name="P:PearXLib.Engine.XButton.ButtonTextAlign">
             <summary>
-            Not working property. Don't use it.
+            Text align on a button.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.Font">
+        <member name="P:PearXLib.Engine.XButton.ImageAlign">
             <summary>
-            Not working property. Don't use it.
+            Image align on a button.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.BackColor">
+        <member name="P:PearXLib.Engine.XButton.GradientColorFocused1">
             <summary>
-            Not working property. Don't use it.
+            A focused button gradient color 1.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XButton.BackgroundImage">
+        <member name="P:PearXLib.Engine.XButton.GradientColorFocused2">
             <summary>
-            Not working property. Don't use it.
+            A focused button gradient color 2.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.ColorPressed">
+            <summary>
+            A color of a pressed button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.ButtonTextColor">
+            <summary>
+            A color of a text on a button.
             </summary>
         </member>
         <member name="T:PearXLib.Engine.XIcon">
@@ -533,21 +544,6 @@
         <member name="P:PearXLib.Properties.Resources.bd">
             <summary>
               Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Properties.Resources.XButton">
-            <summary>
-              Поиск локализованного ресурса типа System.Drawing.Bitmap.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Properties.Resources.XButtonFocused">
-            <summary>
-              Поиск локализованного ресурса типа System.Drawing.Bitmap.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Properties.Resources.XButtonPressed">
-            <summary>
-              Поиск локализованного ресурса типа System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="T:PearXLib.PXL">

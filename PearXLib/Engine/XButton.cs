@@ -6,305 +6,233 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using PearXLib.Properties;
+using System.Drawing.Drawing2D;
 
 namespace PearXLib.Engine
 {
     /// <summary>
-    /// A fancy button from PearX Engine.
+    /// A beautiful button from PearX Engine.
     /// </summary>
-    [DefaultEvent("Click")]
     public partial class XButton : UserControl
     {
-        private string _XText = "A Button";
-        private Font _XFont = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204)));
-        private Align _XAlignText = Align.CENTER;
-        private Align _XAlignImage = Align.LEFT;
-        private Image _XImage;
+        private enum State {PRESSED, FOCUSED, NONE};
+
+        private State state = State.NONE;
+
+        private Color _GradientColor1 = Color.FromArgb(102, 204, 0);
+        private Color _GradientColor2 = Color.White;
+        private Color _GradientColorFocused1 = Color.FromArgb(132, 234, 0);
+        private Color _GradientColorFocused2 = Color.White;
+        private Color _ColorPressed = Color.FromArgb(102, 204, 0);
+        private string _ButtonText = "A button.";
+        private Image _Image = null;
+        private Align _ButtonTextAlign = Align.CENTER;
+        private Align _ImageAlign = Align.LEFT;
+        private Color _ButtonTextColor = Color.Black;
 
         /// <summary>
-        /// Initializes new XButton component.
+        /// Initializes a new XButton component.
         /// </summary>
         public XButton()
         {
             InitializeComponent();
-            labelText.Parent = b;
-            image.Parent = b;
-            foreach (Control c in Controls)
-            {
-                c.Click += c_Click;
-                c.DoubleClick += c_DoubleClick;
-                c.MouseEnter += c_MouseEnter;
-                c.MouseLeave += c_MouseLeave;
-                c.MouseDoubleClick += c_MouseDoubleClick;
-                c.MouseDown += c_MouseDown;
-                c.MouseUp += c_MouseUp;
-                c.MouseHover += c_MouseHover;
-                c.MouseMove += c_MouseMove;
-            }
-            AlignImage();
-            AlignText();
         }
 
-        #region Fixed events
-        void c_MouseMove(object sender, MouseEventArgs e)
+        #region Properties.
+        /// <summary>
+        /// A button gradient color 1. 
+        /// </summary>
+        [Description("A button gradient color 1."), DefaultValue(typeof(Color), "102, 204, 0")]
+        public Color GradientColor1
         {
-            OnMouseMove(e);
+            get { return _GradientColor1; }
+            set { _GradientColor1 = value; Refresh(); }
         }
 
-        void c_MouseHover(object sender, EventArgs e)
+        /// <summary>
+        /// A button gradient color 2.
+        /// </summary>
+        [Description("A button gradient color 2."), DefaultValue(typeof(Color), "White")]
+        public Color GradientColor2
         {
-            OnMouseHover(e);
+            get { return _GradientColor2; }
+            set { _GradientColor2 = value; Refresh(); }
         }
 
-        void c_MouseUp(object sender, MouseEventArgs e)
+        /// <summary>
+        /// A text on a button.
+        /// </summary>
+        [Description("A text on a button."), DefaultValue("A button.")]
+        public string ButtonText
         {
-            OnMouseUp(e);
+            get { return _ButtonText; }
+            set { _ButtonText = value; Refresh(); }
         }
 
-        void c_MouseDown(object sender, MouseEventArgs e)
+        /// <summary>
+        /// An image on a button
+        /// </summary>
+        [Description("An image on a button"), DefaultValue(null)]
+        public Image Image
         {
-            OnMouseDown(e);
+            get { return _Image; }
+            set { _Image = value; Refresh(); }
         }
 
-        void c_MouseDoubleClick(object sender, MouseEventArgs e)
+        /// <summary>
+        /// Text align on a button.
+        /// </summary>
+        [Description("Text align on a button."), DefaultValue(Align.CENTER)]
+        public Align ButtonTextAlign
         {
-            OnMouseDoubleClick(e);
+            get { return _ButtonTextAlign; }
+            set { _ButtonTextAlign = value; Refresh(); }
         }
 
-        void c_MouseLeave(object sender, EventArgs e)
+        /// <summary>
+        /// Image align on a button.
+        /// </summary>
+        [Description("Image align on a button."), DefaultValue(Align.LEFT)]
+        public Align ImageAlign
         {
-            OnMouseLeave(e);
+            get { return _ImageAlign; }
+            set { _ImageAlign = value; Refresh(); }
         }
 
-        void c_MouseEnter(object sender, EventArgs e)
+        /// <summary>
+        /// A focused button gradient color 1.
+        /// </summary>
+        [Description("A focused button gradient color 1."), DefaultValue(typeof(Color), "132, 234, 0")]
+        public Color GradientColorFocused1
         {
-            OnMouseEnter(e);
+            get { return _GradientColorFocused1; }
+            set { _GradientColorFocused1 = value; Refresh(); }
         }
 
-        void c_DoubleClick(object sender, EventArgs e)
+        /// <summary>
+        /// A focused button gradient color 2.
+        /// </summary>
+        [Description("A focused button gradient color 2."), DefaultValue(typeof(Color), "White")]
+        public Color GradientColorFocused2
         {
-            OnDoubleClick(e);
+            get { return _GradientColorFocused2; }
+            set { _GradientColorFocused2 = value; Refresh(); }
         }
 
-        void c_Click(object sender, EventArgs e)
+        /// <summary>
+        /// A color of a pressed button.
+        /// </summary>
+        [Description("A color of a pressed button."), DefaultValue(typeof(Color), "102, 204, 0")]
+        public Color ColorPressed
         {
-            OnClick(e);
+            get { return _ColorPressed; }
+            set { _ColorPressed = value; Refresh(); }
+        }
+
+        /// <summary>
+        /// A color of a text on a button.
+        /// </summary>
+        [Description("A color of a text on a button."), DefaultValue(typeof(Color), "Black")]
+        public Color ButtonTextColor
+        {
+            get { return _ButtonTextColor; }
+            set { _ButtonTextColor = value; Refresh(); }
         }
         #endregion
 
-        #region Methods
-        void AlignText()
+        private void XButton_Paint(object sender, PaintEventArgs e)
         {
-            int _bWidth2 = b.Size.Width / 2;
-            int _tWidth2 = labelText.Size.Width / 2;
-            int _tHeight2 = labelText.Size.Height / 2;
-            int _bHeight2 = b.Size.Height / 2;
-            int _bWidth = b.Size.Width;
-            int _tWidth = labelText.Size.Width;
-            int _bHeight = b.Size.Height;
-            int _tHeight = labelText.Size.Height;
-            switch(XAlignText)
+            Pen p = new Pen(Brushes.Black, 3);
+            p.LineJoin = LineJoin.Bevel;
+            e.Graphics.DrawRectangle(p, 3, 3, Size.Width - 6, Size.Height - 6);
+            Rectangle rectBG = new Rectangle(4, 4, Size.Width - 7, Size.Height - 7);
+            switch (state)
             {
-                case Align.CENTER:
-                    labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight2 - _tHeight2);
+                case State.NONE:
+                    LinearGradientBrush lgb1 = new LinearGradientBrush(new PointF(0, 0), new PointF(Size.Width, Size.Height), GradientColor1, GradientColor2);
+                    e.Graphics.FillRectangle(lgb1, rectBG);
                     break;
-                case Align.RIGHT:
-                    labelText.Location = new Point(_bWidth - _tWidth, _bHeight2 - _tHeight2);
+                case State.FOCUSED:
+                    LinearGradientBrush lgb2 = new LinearGradientBrush(new PointF(0, 0), new PointF(Size.Width, Size.Height), GradientColorFocused1, GradientColorFocused2);
+                    e.Graphics.FillRectangle(lgb2, rectBG);
                     break;
-                case Align.LEFT:
-                    labelText.Location = new Point(0, _bHeight2 - _tHeight2);
+                case State.PRESSED:
+                    Brush b = new SolidBrush(ColorPressed);
+                    e.Graphics.FillRectangle(b, rectBG);
                     break;
-                case Align.BOTTOM:
-                    labelText.Location = new Point(_bWidth2 - _tWidth2, _bHeight - _tHeight);
-                    break;
-                case Align.TOP:
-                    labelText.Location = new Point(_bWidth2 - _tWidth2, 0);
-                    break;
+
             }
-        }
-        void AlignImage()
-        {
-            int _bWidth2 = b.Size.Width / 2;
-            int _iWidth2 = image.Size.Width / 2;
-            int _iHeight2 = image.Size.Height / 2;
-            int _bHeight2 = b.Size.Height / 2;
-            int _bWidth = b.Size.Width;
-            int _iWidth = image.Size.Width;
-            int _bHeight = b.Size.Height;
-            int _iHeight = image.Size.Height;
-            switch(XAlignImage)
+            if(Image != null)
             {
-                case Align.CENTER:
-                    image.Location = new Point(_bWidth2 - _iWidth2, _bHeight2 - _iHeight2);
-                    break;
-                case Align.LEFT:
-                    image.Location = new Point(0, _bHeight2 - _iHeight2);
-                    break;
-                case Align.RIGHT:
-                    image.Location = new Point(_bWidth - _iWidth, _bHeight2 - _iHeight2);
-                    break;
-                case Align.BOTTOM:
-                    image.Location = new Point(_bWidth2 - _iWidth2, _bHeight - _iHeight);
-                    break;
-                case Align.TOP:
-                    image.Location = new Point(_bWidth2 - _iWidth2, 0);
-                    break;
+                int imgSizeW = Image.Size.Width;
+                int imgSizeH = Image.Size.Height;
+                switch(ImageAlign)
+                {
+                    case Align.CENTER:
+                        e.Graphics.DrawImage(Image, (Size.Width - imgSizeW) / 2, (Size.Height - imgSizeH) / 2);
+                        break;
+                    case Align.LEFT:
+                        e.Graphics.DrawImage(Image, 4, (Size.Height - imgSizeH) / 2);
+                        break;
+                    case Align.RIGHT:
+                        e.Graphics.DrawImage(Image, (Size.Width - imgSizeW) - 3, (Size.Height - imgSizeH) / 2);
+                        break;
+                    case Align.TOP:
+                        e.Graphics.DrawImage(Image, (Size.Width - imgSizeW) / 2, 4);
+                        break;
+                    case Align.BOTTOM:
+                        e.Graphics.DrawImage(Image, (Size.Width - imgSizeW) / 2, Size.Height - (imgSizeH + 3));
+                        break;
+                }
             }
-        }
-        void setToXButton(object sender, EventArgs e)
-        {
-            b.Image = Resources.XButton;
-        }
-
-        void setToXButtonFocused(object sender, EventArgs e)
-        {
-            b.Image = Resources.XButtonFocused;
-        }
-
-        void setToXButtonPressed(object sender, EventArgs e)
-        {
-            b.Image = Resources.XButtonPressed;
-        }
-        #endregion
-
-        #region Params
-
-        /// <summary>
-        /// Button's Align.
-        /// </summary>
-        [Description("Button's Align."), DefaultValue(Align.CENTER)]
-        public Align XAlignText
-        {
-            get { return _XAlignText; }
-            set
+            if (!String.IsNullOrEmpty(ButtonText))
             {
-                _XAlignText = value;
-                AlignText();
+                Brush sb = new SolidBrush(ButtonTextColor);
+                int textSizeW = (int)e.Graphics.MeasureString(ButtonText, Font).Width;
+                int textSizeH = (int)e.Graphics.MeasureString(ButtonText, Font).Height;
+                switch(ButtonTextAlign)
+                {
+                    case Align.CENTER:
+                        e.Graphics.DrawString(ButtonText, Font, sb, (Size.Width - textSizeW) / 2, (Size.Height - textSizeH) / 2);
+                        break;
+                    case Align.LEFT:
+                        e.Graphics.DrawString(ButtonText, Font, sb, 4, (Size.Height - textSizeH) / 2);
+                        break;
+                    case Align.RIGHT:
+                        e.Graphics.DrawString(ButtonText, Font, sb, (Size.Width - textSizeW) - 3, (Size.Height - textSizeH) / 2);
+                        break;
+                    case Align.TOP:
+                        e.Graphics.DrawString(ButtonText, Font, sb, (Size.Width - textSizeW) / 2, 4);
+                        break;
+                    case Align.BOTTOM:
+                        e.Graphics.DrawString(ButtonText, Font, sb, (Size.Width - textSizeW) / 2, Size.Height - (textSizeH + 3));
+                        break;
+                }
             }
         }
 
-        /// <summary>
-        /// Image's Align.
-        /// </summary>
-        [Description("Image's Align."), DefaultValue(Align.LEFT)]
-        public Align XAlignImage
+        private void XButton_MouseEnter(object sender, EventArgs e)
         {
-            get { return _XAlignImage; }
-            set
-            {
-                _XAlignImage = value;
-                AlignImage();
-            }
-        }
-        /// <summary>
-        /// Text on Button.
-        /// </summary>
-        [Description("Text on Button."), DefaultValue("A Button")]
-        public string XText
-        {
-            get { return _XText; }
-            set
-            {
-                _XText = value;
-                labelText.Text = _XText;
-                AlignText();
-            }
-        }
-        /// <summary>
-        /// Button's Font.
-        /// </summary>
-        [Description("Button's Font.")]
-        public Font XFont 
-        {
-            get { return _XFont; }
-            set
-            {
-                _XFont = value;
-                labelText.Font = XFont;
-                AlignText();
-            }
+            state = State.FOCUSED;
+            Refresh();
         }
 
-        /// <summary>
-        /// Image on XButton.
-        /// </summary>
-        [Description("Image on XButton."), DefaultValue(null)]
-        public Image XImage
+        private void XButton_MouseLeave(object sender, EventArgs e)
         {
-            get { return _XImage; }
-            set
-            {
-                _XImage = value;
-                image.Image = XImage;
-                AlignImage();
-            }
+            state = State.NONE;
+            Refresh();
         }
 
-        #endregion
+        private void XButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            state = State.PRESSED;
+            Refresh();
+        }
 
-        #region Overriding Props
-        /// <summary>
-        /// Not working property. Don't use it.
-        /// </summary>
-        [Browsable(false)]
-        public override bool AutoScroll
+        private void XButton_MouseUp(object sender, MouseEventArgs e)
         {
-            get
-            {
-                return false;
-            }
-        }
-        /// <summary>
-        /// Not working property. Don't use it.
-        /// </summary>
-        [Browsable(false)]
-        public override Color ForeColor
-        {
-            get
-            {
-                return Color.Transparent;
-            }
-        }
-        /// <summary>
-        /// Not working property. Don't use it.
-        /// </summary>
-        [Browsable(false)]
-        public override Font Font
-        {
-            get
-            {
-                return _XFont;
-            }
-        }
-        /// <summary>
-        /// Not working property. Don't use it.
-        /// </summary>
-        [Browsable(false)]
-        public override Color BackColor
-        {
-            get
-            {
-                return Color.Transparent;
-            }
-        }
-        /// <summary>
-        /// Not working property. Don't use it.
-        /// </summary>
-        [Browsable(false)]
-        public override Image BackgroundImage
-        {
-            get
-            {
-                return null;
-            }
-        }
-        #endregion
-
-        private void b_Resize(object sender, EventArgs e)
-        {
-            AlignText();
-            AlignImage();
+            state = State.FOCUSED;
+            Refresh();
         }
     }
 }
