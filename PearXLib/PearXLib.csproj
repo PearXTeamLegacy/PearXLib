@@ -49,12 +49,6 @@
     <Compile Include="Crypting\CA_PXM.cs" />
     <Compile Include="d.cs" />
     <Compile Include="Engine\Align.cs" />
-    <Compile Include="Engine\GameObject.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\GameObject.Designer.cs">
-      <DependentUpon>GameObject.cs</DependentUpon>
-    </Compile>
     <Compile Include="Engine\InvItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,9 +88,6 @@
     <Compile Include="UpdateUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Engine\GameObject.resx">
-      <DependentUpon>GameObject.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Engine\InvItem.resx">
       <DependentUpon>InvItem.cs</DependentUpon>
     </EmbeddedResource>

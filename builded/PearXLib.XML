@@ -132,28 +132,6 @@
             # * #
             </summary>
         </member>
-        <member name="T:PearXLib.Engine.GameObject">
-            <summary>
-            TODO: Make this component.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.GameObject.#ctor">
-            <summary>
-            Initializates new GameObject component.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.GameObject.Dispose(System.Boolean)">
-            <summary> 
-            Dispose all using resources.
-            </summary>
-            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
-        </member>
-        <member name="M:PearXLib.Engine.GameObject.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
-            </summary>
-        </member>
         <member name="T:PearXLib.Engine.InvItem">
             <summary>
             A control to display the item.
