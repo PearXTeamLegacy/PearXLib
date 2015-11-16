@@ -464,6 +464,32 @@
             </summary>
             <param name="path">Directory path.</param>
         </member>
+        <member name="T:PearXLib.Localization">
+            <summary>
+            A localization utilities.<para/>
+            ---<para/>
+            Lang file example:<para/>
+            btnPlay=Play the game.<para/>
+            btnExit=Exit the game.<para/>
+            ---<para/>
+            btnPlay and btnExit - localization names.<para/>
+            "Play the game." and "Exit the game" - string values.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Localization.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new localization component.
+            </summary>
+            <param name="appname">Application name.</param>
+            <param name="langname">Language name.</param>
+        </member>
+        <member name="M:PearXLib.Localization.GetString(System.String)">
+            <summary>
+            Gets a string from a lang file.
+            </summary>
+            <param name="localname">Localization name.</param>
+            <returns>String.</returns>
+        </member>
         <member name="T:PearXLib.Logging">
             <summary>
             PearXLib logging utils.

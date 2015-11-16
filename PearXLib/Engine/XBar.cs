@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Reflection;
+using PearXLib.Properties;
 
 namespace PearXLib.Engine
 {
@@ -57,7 +59,7 @@ namespace PearXLib.Engine
             get { return _Maximum; }
             set
             {
-                if (value > Value)
+                if (value < Value)
                     Value = value;
                 _Maximum = value;
                 Refresh();

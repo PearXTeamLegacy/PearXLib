@@ -80,6 +80,7 @@
       <DependentUpon>XIcon.cs</DependentUpon>
     </Compile>
     <Compile Include="FileUtils.cs" />
+    <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MathsUtils.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -93,6 +94,9 @@
     <Compile Include="UpdateUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Engine\GameObject.resx">
+      <DependentUpon>GameObject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engine\InvItem.resx">
       <DependentUpon>InvItem.cs</DependentUpon>
     </EmbeddedResource>
