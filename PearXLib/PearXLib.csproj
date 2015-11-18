@@ -74,6 +74,12 @@
       <DependentUpon>XIcon.cs</DependentUpon>
     </Compile>
     <Compile Include="FileUtils.cs" />
+    <Compile Include="Forms\SelectLang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectLang.Designer.cs">
+      <DependentUpon>SelectLang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MathsUtils.cs" />
@@ -100,15 +106,16 @@
     <EmbeddedResource Include="Engine\XIcon.resx">
       <DependentUpon>XIcon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectLang.resx">
+      <DependentUpon>SelectLang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\bd.wav" />
   </ItemGroup>

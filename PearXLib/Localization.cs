@@ -28,7 +28,7 @@ namespace PearXLib
         /// <param name="langname">Language name.</param>
         public Localization(string appname, string langname)
         {
-            string[] str = File.ReadAllLines(d.pxDir + PXL.s + appname + PXL.s + langname + ".lang");
+            string[] str = File.ReadAllLines(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s + langname + ".lang");
             locnms = new String[str.Length];
             vls = new String[str.Length];
             int count = -1;
@@ -50,7 +50,7 @@ namespace PearXLib
         public string GetString(string localname)
         {
             int count = -1;
-            string finded = "error";
+            string finded = localname;
             foreach(string s in locnms)
             {
                 count++;

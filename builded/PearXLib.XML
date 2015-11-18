@@ -442,6 +442,39 @@
             </summary>
             <param name="path">Directory path.</param>
         </member>
+        <member name="T:PearXLib.Forms.SelectLang">
+            <summary>
+            A language selection form.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Forms.SelectLang.Selected">
+            <summary>
+            Selected language.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Forms.SelectLang.#ctor(System.String)">
+            <summary>
+            Initializates a new SelectLang component.
+            </summary>
+            <param name="appname">Application name.</param>
+        </member>
+        <member name="F:PearXLib.Forms.SelectLang.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Forms.SelectLang.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PearXLib.Forms.SelectLang.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:PearXLib.Localization">
             <summary>
             A localization utilities.<para/>
