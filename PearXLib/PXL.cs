@@ -33,7 +33,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static string ver = "23a";
+        public static string ver = "24a";
 
         /// <summary>
         /// Directory sepator.

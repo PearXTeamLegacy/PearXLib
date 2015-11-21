@@ -19,6 +19,7 @@ namespace PearXLib.Engine
         private Image _Icon;
         private bool _PlaySound = true;
         private string _Title = String.Empty;
+        private Font _TitleFont = SystemFonts.DefaultFont;
         /// <summary>
         /// Initializes a new XIcon component.
         /// </summary>
@@ -69,7 +70,7 @@ namespace PearXLib.Engine
                 Refresh();
             }
         }
-        
+
         /// <summary>
         /// Title font.
         /// </summary>
@@ -78,11 +79,11 @@ namespace PearXLib.Engine
         {
             get
             {
-                return base.Font;
+                return _TitleFont;
             }
             set
             {
-                base.Font = value;
+                _TitleFont = value;
                 Refresh();
             }
         }
@@ -110,16 +111,17 @@ namespace PearXLib.Engine
         {
             if (Icon != null)
             {
+                Size s = Size;
                 if (!String.IsNullOrEmpty(Title))
                 {
                     Brush b = new SolidBrush(ForeColor);
                     SizeF strWH = e.Graphics.MeasureString(Title, Font);
-                    e.Graphics.DrawImage(Icon, 0, 0, Size.Width, Size.Height - strWH.Height);
-                    e.Graphics.DrawString(Title, Font, b, (Size.Width - strWH.Width) / 2, Size.Height - strWH.Height);
+                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height - strWH.Height);
+                    e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
                 }
                 else
                 {
-                    e.Graphics.DrawImage(Icon, 0, 0, Size.Width, Size.Height);
+                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height);
                 }
             }
         }

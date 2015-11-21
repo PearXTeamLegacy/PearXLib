@@ -31,14 +31,20 @@ namespace PearXLib
             string[] str = File.ReadAllLines(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s + langname + ".lang");
             locnms = new String[str.Length];
             vls = new String[str.Length];
-            int count = -1;
+            int count = 0;
             foreach (string s in str)
             {
-                count++;
-                int p = s.IndexOf("=");
-                locnms[count] = s.Substring(0, p);
-                int i = s.Length;
-                vls[count] = s.Substring(++p, i - p);
+                if (!String.IsNullOrWhiteSpace(s))
+                {
+                    if (s.Substring(0, 1) != "#")
+                    {
+                        int p = s.IndexOf("=");
+                        locnms[count] = s.Substring(0, p);
+                        int i = s.Length;
+                        vls[count] = s.Substring(++p, i - p);
+                        count++;
+                    }
+                }
             }
         }
 
@@ -54,9 +60,12 @@ namespace PearXLib
             foreach(string s in locnms)
             {
                 count++;
-                if (s.Equals(localname))
+                if(!String.IsNullOrEmpty(s))
                 {
-                    finded = vls[count];
+                    if (s.Equals(localname))
+                    {
+                        finded = vls[count];
+                    }
                 }
             }
             return finded;

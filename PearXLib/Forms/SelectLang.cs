@@ -30,19 +30,28 @@ namespace PearXLib.Forms
         public SelectLang(string appname)
         {
             InitializeComponent();
-            string[] listoffiles = Directory.GetFiles(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s );
+            string[] listoffiles = Directory.GetFiles(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s);
             listoflangs = new String[listoffiles.Length];
             string lang;
-            int count = -1;
+            int count = 0;
             foreach(string s in listoffiles)
             {
                 if(Path.GetExtension(s) == ".lang")
                 {
-                    count++;
                     lang = Path.GetFileNameWithoutExtension(s);
-                    string str = File.ReadAllText(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s + lang + ".langinfo");
-                    listBoxLangs.Items.Add(str);
-                    listoflangs[count] = lang;
+                    string str = String.Empty;
+                    bool errored = false;
+                    try
+                    {
+                        str = File.ReadAllText(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s + lang + ".langinfo");
+                    }
+                    catch { errored = true; }
+                    if (!errored)
+                    {
+                        listBoxLangs.Items.Add(str);
+                        listoflangs[count] = lang;
+                        count++;
+                    }
                 }
             }
         }
