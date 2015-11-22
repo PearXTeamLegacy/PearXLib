@@ -390,6 +390,11 @@
             Icon title (will be displayed on the control).
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XIcon.Expand">
+            <summary>
+            How much to expand on mouse enter?
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.XIcon.Font">
             <summary>
             Title font.
@@ -501,47 +506,48 @@
             <param name="localname">Localization name.</param>
             <returns>String.</returns>
         </member>
+        <member name="T:PearXLib.LogType">
+            <summary>
+            Log type enum.
+            </summary>
+        </member>
+        <member name="F:PearXLib.LogType.Warning">
+            <summary>
+            Warning!
+            </summary>
+        </member>
+        <member name="F:PearXLib.LogType.Error">
+            <summary>
+            Error!
+            </summary>
+        </member>
+        <member name="F:PearXLib.LogType.Info">
+            <summary>
+            Information.
+            </summary>
+        </member>
         <member name="T:PearXLib.Logging">
             <summary>
             PearXLib logging utils.
             </summary>
         </member>
-        <member name="F:PearXLib.Logging.logPath">
-            <summary>
-            Log path.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Logging.log">
+        <member name="F:PearXLib.Logging.Log">
             <summary>
             Log string
             </summary>
         </member>
-        <member name="M:PearXLib.Logging.add(System.String,PearXLib.Logging.LogType)">
+        <member name="M:PearXLib.Logging.#ctor(System.String)">
+            <summary>
+            Initializates a new Logging component.
+            </summary>
+            <param name="logpath">Path to the log file.</param>
+        </member>
+        <member name="M:PearXLib.Logging.Add(System.String,PearXLib.LogType)">
             <summary>
             Adds a line to log.
             </summary>
             <param name="line">Message text</param>
             <param name="lt">Log type</param>
-        </member>
-        <member name="T:PearXLib.Logging.LogType">
-            <summary>
-            Log type enum.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Logging.LogType.Warning">
-            <summary>
-            Warning!
-            </summary>
-        </member>
-        <member name="F:PearXLib.Logging.LogType.Error">
-            <summary>
-            Error!
-            </summary>
-        </member>
-        <member name="F:PearXLib.Logging.LogType.Info">
-            <summary>
-            Information.
-            </summary>
         </member>
         <member name="T:PearXLib.MathsUtils">
             <summary>
@@ -685,6 +691,41 @@
             Generates random number/char/symbol.
             </summary>
             <returns>Random.</returns>
+        </member>
+        <member name="T:PearXLib.SocialUtils">
+            <summary>
+            PearXLib Social Utils.
+            </summary>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String,System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+            <param name="title">Site title.</param>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String,System.String,System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+            <param name="title">Site title.</param>
+            <param name="description">Site description.</param>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String,System.String,System.String,System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+            <param name="title">Site title.</param>
+            <param name="description">Site description.</param>
+            <param name="URL_img">Site image.</param>
         </member>
         <member name="T:PearXLib.UpdateUtils">
             <summary>

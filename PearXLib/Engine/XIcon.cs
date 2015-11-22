@@ -20,6 +20,7 @@ namespace PearXLib.Engine
         private bool _PlaySound = true;
         private string _Title = String.Empty;
         private Font _TitleFont = SystemFonts.DefaultFont;
+        private int _Expand = 10;
         /// <summary>
         /// Initializes a new XIcon component.
         /// </summary>
@@ -72,6 +73,22 @@ namespace PearXLib.Engine
         }
 
         /// <summary>
+        /// How much to expand on mouse enter?
+        /// </summary>
+        [Description("How much to expand on mouse enter?"), DefaultValue(10)]
+        public int Expand
+        {
+            get
+            {
+                return _Expand;
+            }
+            set
+            {
+                _Expand = value;
+            }
+        }
+
+        /// <summary>
         /// Title font.
         /// </summary>
         [Description("Title font.")]
@@ -91,8 +108,8 @@ namespace PearXLib.Engine
 
         private void XIcon_MouseEnter(object sender, EventArgs e)
         {
-            Size = new Size(Size.Width + 20, Size.Height + 20);
-            Location = new Point(Location.X - 10, Location.Y - 10);
+            Size = new Size(Size.Width + (Expand * 2), Size.Height + (Expand * 2));
+            Location = new Point(Location.X - Expand, Location.Y - Expand);
             BringToFront();
             if (PlaySound)
             {
@@ -103,8 +120,8 @@ namespace PearXLib.Engine
 
         private void XIcon_MouseLeave(object sender, EventArgs e)
         {
-            Size = new Size(Size.Width - 20, Size.Height - 20);
-            Location = new Point(Location.X + 10, Location.Y + 10);
+            Size = new Size(Size.Width - (Expand * 2), Size.Height - (Expand * 2));
+            Location = new Point(Location.X + Expand, Location.Y + Expand);
         }
 
         private void XIcon_Paint(object sender, PaintEventArgs e)
