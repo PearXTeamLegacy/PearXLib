@@ -507,5 +507,15 @@ namespace PearXLib
         {
             return String.Join("\n", s);
         }
+
+        /// <summary>
+        /// Gets an actual date and time.
+        /// </summary>
+        /// <returns>Actual date and time.</returns>
+        public static string GetDateTimeNow()
+        {
+            DateTime dt = DateTime.Now;
+            return dt.Day + "-" + dt.Month + "-" + dt.Year + "_" + dt.Hour + "." + dt.Minute + "." + dt.Second;
+        }
     }
 }

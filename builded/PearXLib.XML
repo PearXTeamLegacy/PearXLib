@@ -653,6 +653,12 @@
             </summary>
             <param name="s"></param>
         </member>
+        <member name="M:PearXLib.PXL.GetDateTimeNow">
+            <summary>
+            Gets an actual date and time.
+            </summary>
+            <returns>Actual date and time.</returns>
+        </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>
             PearXLib random utilities.
