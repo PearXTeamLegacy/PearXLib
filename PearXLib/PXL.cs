@@ -33,7 +33,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static string ver = "24a";
+        public static string ver = "25a";
 
         /// <summary>
         /// Directory sepator.
@@ -281,6 +281,72 @@ namespace PearXLib
                     return 94;
                 case '\\':
                     return 95;
+                case 'а':
+                    return 96;
+                case 'б':
+                    return 97;
+                case 'в':
+                    return 98;
+                case 'г':
+                    return 99;
+                case 'д':
+                    return 100;
+                case 'е':
+                    return 101;
+                case 'ё':
+                    return 102;
+                case 'ж':
+                    return 103;
+                case 'з':
+                    return 104;
+                case 'и':
+                    return 105;
+                case 'й':
+                    return 106;
+                case 'к':
+                    return 107;
+                case 'л':
+                    return 108;
+                case 'м':
+                    return 109;
+                case 'н':
+                    return 110;
+                case 'о':
+                    return 111;
+                case 'п':
+                    return 112;
+                case 'р':
+                    return 113;
+                case 'с':
+                    return 114;
+                case 'т':
+                    return 115;
+                case 'у':
+                    return 116;
+                case 'ф':
+                    return 117;
+                case 'х':
+                    return 118;
+                case 'ц':
+                    return 119;
+                case 'ч':
+                    return 120;
+                case 'ш':
+                    return 121;
+                case 'щ':
+                    return 122;
+                case 'ъ':
+                    return 123;
+                case 'ы':
+                    return 124;
+                case 'ь':
+                    return 125;
+                case 'э':
+                    return 126;
+                case 'ю':
+                    return 127;
+                case 'я':
+                    return 128;
                 default:
                     return 0;
             }
@@ -485,6 +551,72 @@ namespace PearXLib
                     return '\n';
                 case 95:
                     return '\\';
+                case 96:
+                    return 'а';
+                case 97:
+                    return 'б';
+                case 98:
+                    return 'в';
+                case 99:
+                    return 'г';
+                case 100:
+                    return 'д';
+                case 101:
+                    return 'е';
+                case 102:
+                    return 'ё';
+                case 103:
+                    return 'ж';
+                case 104:
+                    return 'з';
+                case 105:
+                    return 'и';
+                case 106:
+                    return 'й';
+                case 107:
+                    return 'к';
+                case 108:
+                    return 'л';
+                case 109:
+                    return 'м';
+                case 110:
+                    return 'н';
+                case 111:
+                    return 'о';
+                case 112:
+                    return 'п';
+                case 113:
+                    return 'р';
+                case 114:
+                    return 'с';
+                case 115:
+                    return 'т';
+                case 116:
+                    return 'у';
+                case 117:
+                    return 'ф';
+                case 118:
+                    return 'х';
+                case 119:
+                    return 'ц';
+                case 120:
+                    return 'ч';
+                case 121:
+                    return 'ш';
+                case 122:
+                    return 'щ';
+                case 123:
+                    return 'ъ';
+                case 124:
+                    return 'ы';
+                case 125:
+                    return 'ь';
+                case 126:
+                    return 'э';
+                case 127:
+                    return 'ю';
+                case 128:
+                    return 'я';
                 default:
                     return '!';
             }

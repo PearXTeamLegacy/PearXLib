@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 
 namespace PearXLib
@@ -38,6 +39,19 @@ namespace PearXLib
                 temp += i;
             }
             return temp / doubles.Length;
+        }
+
+        public static BigInteger GetNumberOfNumbers(int count)
+        {
+            string s = null;
+            for(int i = 1; i <= count; i++)
+            {
+                for(int i2 = 0; i2 < i; i2++)
+                {
+                    s += i;
+                }
+            }
+            return BigInteger.Parse(s);
         }
     }
 }
