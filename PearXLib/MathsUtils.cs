@@ -41,6 +41,11 @@ namespace PearXLib
             return temp / doubles.Length;
         }
 
+        /// <summary>
+        /// Gets a number of numbers! (seriously)
+        /// </summary>
+        /// <param name="count">Number</param>
+        /// <returns>Number of numbers!</returns>
         public static BigInteger GetNumberOfNumbers(int count)
         {
             string s = null;
