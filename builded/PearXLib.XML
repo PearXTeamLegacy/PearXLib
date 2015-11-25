@@ -526,6 +526,11 @@
             Information.
             </summary>
         </member>
+        <member name="F:PearXLib.LogType.Other">
+            <summary>
+            Other.
+            </summary>
+        </member>
         <member name="T:PearXLib.Logging">
             <summary>
             PearXLib logging utils.
@@ -544,10 +549,17 @@
         </member>
         <member name="M:PearXLib.Logging.Add(System.String,PearXLib.LogType)">
             <summary>
-            Adds a line to log.
+            Adds a line to a log.
             </summary>
             <param name="line">Message text</param>
             <param name="lt">Log type</param>
+        </member>
+        <member name="M:PearXLib.Logging.Add(System.String,System.String)">
+            <summary>
+            Adds a line to a log.
+            </summary>
+            <param name="line">Message text</param>
+            <param name="prefix">Prefix (if prefix equals "a simple prefix =)", then log string equals "[DATETIME][a simple prefix =)]MESSAGE"</param>
         </member>
         <member name="T:PearXLib.MathsUtils">
             <summary>

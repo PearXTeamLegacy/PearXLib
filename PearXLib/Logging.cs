@@ -22,7 +22,11 @@ namespace PearXLib
         /// <summary>
         /// Information.
         /// </summary>
-        Info
+        Info,
+        /// <summary>
+        /// Other.
+        /// </summary>
+        Other
     };
 
     /// <summary>
@@ -31,6 +35,8 @@ namespace PearXLib
     public class Logging
     {
         private string logPath;
+
+        public event EventHandler LogChanged;
         /// <summary>
         /// Log string
         /// </summary>
@@ -47,7 +53,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Adds a line to log.
+        /// Adds a line to a log.
         /// </summary>
         /// <param name="line">Message text</param>
         /// <param name="lt">Log type</param>
@@ -56,6 +62,26 @@ namespace PearXLib
             string newStr = "[" + DateTime.Now + "]" + "[" + lt.ToString() + "]" + line + "\n";
             Log += newStr;
             File.AppendAllLines(logPath, new string[]{newStr});
+            if (LogChanged != null)
+            {
+                LogChanged(this, new EventArgs());
+            }
+        }
+
+        /// <summary>
+        /// Adds a line to a log.
+        /// </summary>
+        /// <param name="line">Message text</param>
+        /// <param name="prefix">Prefix (if prefix equals "a simple prefix =)", then log string equals "[DATETIME][a simple prefix =)]MESSAGE"</param>
+        public void Add(string line, string prefix)
+        {
+            string newStr = "[" + DateTime.Now + "]" + "[" + prefix + "]" + line + "\n";
+            Log += newStr;
+            File.AppendAllLines(logPath, new string[] { newStr });
+            if (LogChanged != null)
+            {
+                LogChanged(this, new EventArgs());
+            }
         }
     }
 }
