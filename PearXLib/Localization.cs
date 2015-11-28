@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace PearXLib
 {
@@ -64,7 +61,7 @@ namespace PearXLib
                 {
                     if (s.Equals(localname))
                     {
-                        finded = vls[count];
+                        finded = vls[count].Replace(@"&\n", "\n");
                     }
                 }
             }

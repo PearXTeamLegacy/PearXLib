@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace PearXLib
 {
@@ -36,9 +33,12 @@ namespace PearXLib
     {
         private string logPath;
 
+        /// <summary>
+        /// Executs, when log changed.
+        /// </summary>
         public event EventHandler LogChanged;
         /// <summary>
-        /// Log string
+        /// Log string.
         /// </summary>
         public string Log;
 

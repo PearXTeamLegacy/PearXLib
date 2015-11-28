@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Media;
 using PearXLib.Properties;
@@ -105,6 +101,14 @@ namespace PearXLib.Engine
             }
         }
         #endregion
+
+        /// <summary>
+        /// Title size and width.
+        /// </summary>
+        public SizeF TitleWidthHeight
+        {
+            get { return CreateGraphics().MeasureString(Title, Font); }
+        }
 
         private void XIcon_MouseEnter(object sender, EventArgs e)
         {

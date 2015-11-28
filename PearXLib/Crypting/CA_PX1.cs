@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PearXLib.Crypting
+﻿namespace PearXLib.Crypting
 {
     /// <summary>
     /// PX1 encrypting algorithm (Convert every char to int and back).

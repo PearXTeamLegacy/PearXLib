@@ -1,13 +1,7 @@
-﻿using PearXLib.Crypting;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net.Mail;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PearXLib
@@ -648,6 +642,19 @@ namespace PearXLib
         {
             DateTime dt = DateTime.Now;
             return dt.Day + "-" + dt.Month + "-" + dt.Year + "_" + dt.Hour + "." + dt.Minute + "." + dt.Second;
+        }
+
+        /// <summary>
+        /// Gets a form start position.
+        /// </summary>
+        /// <param name="parent">Parent form.</param>
+        /// <param name="child">Child form.</param>
+        /// <returns>Form start position.</returns>
+        public static Point GetFormStartPosition(Form parent, Form child)
+        {
+            int w = (parent.Location.X + (((parent.Size.Width - child.Size.Width) / 2)));
+            int h = (parent.Location.Y + (((parent.Size.Height - child.Size.Height) / 2)));
+            return new Point(w, h);
         }
     }
 }

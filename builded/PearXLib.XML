@@ -142,18 +142,6 @@
             Initializes new InvItem component.
             </summary>
         </member>
-        <member name="M:PearXLib.Engine.InvItem.Dispose(System.Boolean)">
-            <summary> 
-            Dispose all using resources.
-            </summary>
-            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
-        </member>
-        <member name="M:PearXLib.Engine.InvItem.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
-            </summary>
-        </member>
         <member name="P:PearXLib.Engine.InvItem.ItemImage">
             <summary>
             Item image.
@@ -199,6 +187,18 @@
             Not working property. Don't use it.
             </summary>
         </member>
+        <member name="M:PearXLib.Engine.InvItem.Dispose(System.Boolean)">
+            <summary> 
+            Dispose all using resources.
+            </summary>
+            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
+        </member>
+        <member name="M:PearXLib.Engine.InvItem.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XBar">
             <summary>
             A beautiful progress bar from PearXLib.
@@ -207,23 +207,6 @@
         <member name="M:PearXLib.Engine.XBar.#ctor">
             <summary>
             Initializes the new XBar component.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XBar.components">
-            <summary> 
-            Требуется переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XBar.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XBar.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XBar.Value">
@@ -271,6 +254,23 @@
             A font of a text on a bar.
             </summary>
         </member>
+        <member name="F:PearXLib.Engine.XBar.components">
+            <summary> 
+            Требуется переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XBar.Dispose(System.Boolean)">
+            <summary> 
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XBar.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XButton">
             <summary>
             A beautiful button from PearX Engine.
@@ -279,23 +279,6 @@
         <member name="M:PearXLib.Engine.XButton.#ctor">
             <summary>
             Initializes a new XButton component.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XButton.components">
-            <summary> 
-            Требуется переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XButton.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XButton.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XButton.GradientColor1">
@@ -348,6 +331,23 @@
             A color of a text on a button.
             </summary>
         </member>
+        <member name="F:PearXLib.Engine.XButton.components">
+            <summary> 
+            Требуется переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XButton.Dispose(System.Boolean)">
+            <summary> 
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XButton.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XIcon">
             <summary>
             An expanding icon from PearX Engine.
@@ -356,23 +356,6 @@
         <member name="M:PearXLib.Engine.XIcon.#ctor">
             <summary>
             Initializes a new XIcon component.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XIcon.components">
-            <summary> 
-            Требуется переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XIcon.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XIcon.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XIcon.Icon">
@@ -398,6 +381,28 @@
         <member name="P:PearXLib.Engine.XIcon.Font">
             <summary>
             Title font.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.TitleWidthHeight">
+            <summary>
+            Title size and width.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XIcon.components">
+            <summary> 
+            Требуется переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XIcon.Dispose(System.Boolean)">
+            <summary> 
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XIcon.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
         <member name="T:PearXLib.FileUtils">
@@ -536,9 +541,14 @@
             PearXLib logging utils.
             </summary>
         </member>
+        <member name="E:PearXLib.Logging.LogChanged">
+            <summary>
+            Executs, when log changed.
+            </summary>
+        </member>
         <member name="F:PearXLib.Logging.Log">
             <summary>
-            Log string
+            Log string.
             </summary>
         </member>
         <member name="M:PearXLib.Logging.#ctor(System.String)">
@@ -604,6 +614,11 @@
             </summary>
         </member>
         <member name="P:PearXLib.Properties.Resources.bd">
+            <summary>
+              Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.Error">
             <summary>
               Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
             </summary>
@@ -677,6 +692,14 @@
             Gets an actual date and time.
             </summary>
             <returns>Actual date and time.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetFormStartPosition(System.Windows.Forms.Form,System.Windows.Forms.Form)">
+            <summary>
+            Gets a form start position.
+            </summary>
+            <param name="parent">Parent form.</param>
+            <param name="child">Child form.</param>
+            <returns>Form start position.</returns>
         </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>
