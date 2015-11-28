@@ -9,6 +9,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A beautiful button from PearX Engine.
     /// </summary>
+    [DefaultEvent("Click")]
     public partial class XButton : UserControl
     {
         private enum State {PRESSED, FOCUSED, NONE};
@@ -25,6 +26,7 @@ namespace PearXLib.Engine
         private Align _ButtonTextAlign = Align.CENTER;
         private Align _ImageAlign = Align.LEFT;
         private Color _ButtonTextColor = Color.Black;
+        private Font _Font = SystemFonts.DefaultFont;
 
         /// <summary>
         /// Initializes a new XButton component.
@@ -133,6 +135,22 @@ namespace PearXLib.Engine
         {
             get { return _ButtonTextColor; }
             set { _ButtonTextColor = value; Refresh(); }
+        }
+
+        /// <summary>
+        /// Control font.
+        /// </summary>
+        public override Font Font
+        {
+            get
+            {
+                return _Font;
+            }
+
+            set
+            {
+                _Font = value;
+            }
         }
         #endregion
 

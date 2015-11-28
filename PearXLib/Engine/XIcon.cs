@@ -117,8 +117,10 @@ namespace PearXLib.Engine
             BringToFront();
             if (PlaySound)
             {
-                SoundPlayer sp = new SoundPlayer(Resources.bd);
-                sp.Play();
+                using (SoundPlayer sp = new SoundPlayer(Resources.bd))
+                {
+                    sp.Play();
+                }
             }
         }
 

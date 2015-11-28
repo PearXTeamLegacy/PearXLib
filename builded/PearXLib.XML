@@ -331,6 +331,11 @@
             A color of a text on a button.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XButton.Font">
+            <summary>
+            Control font.
+            </summary>
+        </member>
         <member name="F:PearXLib.Engine.XButton.components">
             <summary> 
             Требуется переменная конструктора.
@@ -451,6 +456,13 @@
             Creates dir if it does not exists.
             </summary>
             <param name="path">Directory path.</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.CanCreate(System.String)">
+            <summary>
+            Can system create file, nammed "filename"?
+            </summary>
+            <param name="filename">File name.</param>
+            <returns>If system can create file, returns true, else returns false.</returns>
         </member>
         <member name="T:PearXLib.Forms.SelectLang">
             <summary>

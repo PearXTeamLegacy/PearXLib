@@ -83,5 +83,22 @@ namespace PearXLib
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
         }
+
+        /// <summary>
+        /// Can system create file, nammed "filename"?
+        /// </summary>
+        /// <param name="filename">File name.</param>
+        /// <returns>If system can create file, returns true, else returns false.</returns>
+        public static bool CanCreate(string filename)
+        {
+            if(filename.Contains("\\") || filename.Contains("/") || filename.Contains(">") || filename.Contains("<") || filename.Contains("\"") || filename.Contains("?") || filename.Contains(":") || filename.Contains("*") || filename.Contains("|"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
