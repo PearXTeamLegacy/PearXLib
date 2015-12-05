@@ -1,6 +1,6 @@
 ﻿namespace PearXLib.Engine
 {
-    partial class XIcon
+    partial class XImgButton
     {
         /// <summary> 
         /// Требуется переменная конструктора.
@@ -30,22 +30,22 @@
         {
             this.SuspendLayout();
             // 
-            // XIcon
+            // XImgButton
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DoubleBuffered = true;
-            this.Name = "XIcon";
-            this.Size = new System.Drawing.Size(64, 64);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.XIcon_Paint);
-            this.MouseEnter += new System.EventHandler(this.XIcon_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.XIcon_MouseLeave);
+            this.Name = "XImgButton";
+            this.Size = new System.Drawing.Size(128, 64);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.XImgButton_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.XImgButton_MouseDown);
+            this.MouseEnter += new System.EventHandler(this.XImgButton_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.XImgButton_MouseLeave);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.XImgButton_MouseUp);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
     }
 }

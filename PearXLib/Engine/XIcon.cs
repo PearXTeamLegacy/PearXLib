@@ -15,7 +15,6 @@ namespace PearXLib.Engine
         private Image _Icon;
         private bool _PlaySound = true;
         private string _Title = String.Empty;
-        private Font _TitleFont = SystemFonts.DefaultFont;
         private int _Expand = 10;
         /// <summary>
         /// Initializes a new XIcon component.
@@ -85,19 +84,19 @@ namespace PearXLib.Engine
         }
 
         /// <summary>
-        /// Title font.
+        /// A font of a title text.
         /// </summary>
-        [Description("Title font.")]
+        [Description("A font of a title text.")]
         public override Font Font
         {
             get
             {
-                return _TitleFont;
+                return base.Font;
             }
+
             set
             {
-                _TitleFont = value;
-                Refresh();
+                base.Font = value;
             }
         }
         #endregion

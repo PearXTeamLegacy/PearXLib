@@ -179,12 +179,7 @@
         </member>
         <member name="P:PearXLib.Engine.InvItem.Font">
             <summary>
-            Control font.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.InvItem.ForeColor">
-            <summary>
-            Not working property. Don't use it.
+            A font of an InvItem.
             </summary>
         </member>
         <member name="M:PearXLib.Engine.InvItem.Dispose(System.Boolean)">
@@ -266,6 +261,78 @@
             <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
         </member>
         <member name="M:PearXLib.Engine.XBar.InitializeComponent">
+            <summary> 
+            Обязательный метод для поддержки конструктора - не изменяйте 
+            содержимое данного метода при помощи редактора кода.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XImgButton">
+            <summary>
+            A beautiful button from PearX Engine.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XImgButton.#ctor">
+            <summary>
+            Initializes a new XImgButton component.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.ButtonText">
+            <summary>
+            A text on a button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.Image">
+            <summary>
+            An image on a button
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.ButtonTextAlign">
+            <summary>
+            Text align on a button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.ImageAlign">
+            <summary>
+            Image align on a button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.ButtonTextColor">
+            <summary>
+            A color of a text on a button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.Font">
+            <summary>
+            Control font.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackImage">
+            <summary>
+            Button background.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackImageFocused">
+            <summary>
+            Focused button background.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackImagePressed">
+            <summary>
+            Pressed button background.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XImgButton.components">
+            <summary> 
+            Требуется переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XImgButton.Dispose(System.Boolean)">
+            <summary> 
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XImgButton.InitializeComponent">
             <summary> 
             Обязательный метод для поддержки конструктора - не изменяйте 
             содержимое данного метода при помощи редактора кода.
@@ -385,7 +452,7 @@
         </member>
         <member name="P:PearXLib.Engine.XIcon.Font">
             <summary>
-            Title font.
+            A font of a title text.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XIcon.TitleWidthHeight">

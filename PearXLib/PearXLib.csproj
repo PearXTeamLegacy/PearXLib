@@ -65,6 +65,12 @@
     <Compile Include="Engine\XBar.Designer.cs">
       <DependentUpon>XBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Engine\XImgButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Engine\XImgButton.Designer.cs">
+      <DependentUpon>XImgButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engine\XButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Engine\XBar.resx">
       <DependentUpon>XBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engine\XImgButton.resx">
+      <DependentUpon>XImgButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engine\XButton.resx">
       <DependentUpon>XButton.cs</DependentUpon>

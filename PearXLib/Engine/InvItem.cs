@@ -17,73 +17,14 @@ namespace PearXLib.Engine
         private Color _ColorName = Color.Red;
         private Color _ColorDesc = Color.Blue;
         private Color _ColorAmount = Color.Green;
-        private Font _Font = new Font("Microsoft Sans MS", 8F, FontStyle.Regular);
+
         /// <summary>
         /// Initializes new InvItem component.
         /// </summary>
         public InvItem()
         {
             InitializeComponent();
-            foreach (Control c in Controls)
-            {
-                c.Click += c_Click;
-                c.DoubleClick += c_DoubleClick;
-                c.MouseEnter += c_MouseEnter;
-                c.MouseLeave += c_MouseLeave;
-                c.MouseDoubleClick += c_MouseDoubleClick;
-                c.MouseDown += c_MouseDown;
-                c.MouseUp += c_MouseUp;
-                c.MouseHover += c_MouseHover;
-                c.MouseMove += c_MouseMove;
-            }
         }
-
-        #region Fixed events.
-        private void c_MouseMove(object sender, MouseEventArgs e)
-        {
-            OnMouseMove(e);
-        }
-
-        private void c_MouseHover(object sender, EventArgs e)
-        {
-            OnMouseHover(e);
-        }
-
-        private void c_MouseUp(object sender, MouseEventArgs e)
-        {
-            OnMouseUp(e);
-        }
-
-        private void c_MouseDown(object sender, MouseEventArgs e)
-        {
-            OnMouseDown(e);
-        }
-
-        private void c_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            OnMouseDoubleClick(e);
-        }
-
-        private void c_MouseLeave(object sender, EventArgs e)
-        {
-            OnMouseLeave(e);
-        }
-
-        private void c_MouseEnter(object sender, EventArgs e)
-        {
-            OnMouseEnter(e);
-        }
-
-        private void c_DoubleClick(object sender, EventArgs e)
-        {
-            OnDoubleClick(e);
-        }
-
-        private void c_Click(object sender, EventArgs e)
-        {
-            OnClick(e);
-        }
-        #endregion
 
         #region Props
         /// <summary>
@@ -99,7 +40,7 @@ namespace PearXLib.Engine
             set
             {
                 _ItemImage = value;
-                imageImg.Image = _ItemImage;
+                Refresh();
             }
         }
         
@@ -116,7 +57,7 @@ namespace PearXLib.Engine
             set
             {
                 _ItemDesc = value;
-                labelDesc.Text = value;
+                Refresh();
             }
         }
 
@@ -133,7 +74,7 @@ namespace PearXLib.Engine
             set
             {
                 _ItemAmount = value;
-                labelAmount.Text = _ItemAmount.ToString();
+                Refresh();
             }
         }
 
@@ -150,7 +91,7 @@ namespace PearXLib.Engine
             set
             {
                 _ItemName = value;
-                labelName.Text = _ItemName;
+                Refresh();
             }
         }
 
@@ -167,7 +108,7 @@ namespace PearXLib.Engine
             set
             {
                 _ColorName = value;
-                labelName.ForeColor = _ColorName;
+                Refresh();
             }
         }
 
@@ -184,7 +125,7 @@ namespace PearXLib.Engine
             set
             {
                 _ColorDesc = value;
-                labelDesc.ForeColor = _ColorDesc;
+                Refresh();
             }
         }
 
@@ -201,40 +142,37 @@ namespace PearXLib.Engine
             set
             {
                 _ColorAmount = value;
-                labelAmount.ForeColor = _ColorAmount;
+                Refresh();
             }
         }
 
         /// <summary>
-        /// Control font.
+        /// A font of an InvItem.
         /// </summary>
-       [Description("Control font.")]
+        [Description("A font of an InvItem.")]
         public override Font Font
         {
             get
             {
-                return _Font;
+                return base.Font;
             }
+
             set
             {
-                _Font = value;
-                labelAmount.Font = new Font(_Font.FontFamily, labelAmount.Font.Size, _Font.Style);
+                base.Font = value;
             }
         }
         #endregion Props
 
-        #region Overriding props
-        /// <summary>
-        /// Not working property. Don't use it.
-        /// </summary>
-        [Browsable(false)]
-        public override Color ForeColor
+        private void InvItem_Paint(object sender, PaintEventArgs e)
         {
-            get
+            if (ItemImage != null)
             {
-                return Color.Transparent;
+                e.Graphics.DrawImage(ItemImage, 0, 0, Size.Width / 3, Size.Height);
             }
+            e.Graphics.DrawString(ItemName, Font, new SolidBrush(ColorName), Size.Width / 3 , 0);
+            e.Graphics.DrawString(ItemDesc, new Font(Font.FontFamily, Font.Size / 1.5F), new SolidBrush(ColorDesc), Size.Width / 3, 0 + e.Graphics.MeasureString(ItemDesc, Font).Height);
+            e.Graphics.DrawString(ItemAmount.ToString(), Font, new SolidBrush(ColorAmount), Size.Width / 3, Size.Height - e.Graphics.MeasureString(ItemAmount.ToString(), Font).Height);
         }
-        #endregion
     }
 }

@@ -10,17 +10,15 @@ namespace PearXLib.Engine
     /// A beautiful button from PearX Engine.
     /// </summary>
     [DefaultEvent("Click")]
-    public partial class XButton : UserControl
+    public partial class XImgButton : UserControl
     {
         private enum State {PRESSED, FOCUSED, NONE};
 
         private State state = State.NONE;
 
-        private Color _GradientColor1 = Color.FromArgb(102, 204, 0);
-        private Color _GradientColor2 = Color.White;
-        private Color _GradientColorFocused1 = Color.FromArgb(132, 234, 0);
-        private Color _GradientColorFocused2 = Color.White;
-        private Color _ColorPressed = Color.FromArgb(102, 204, 0);
+        private Image _BackImage = null;
+        private Image _BackImageFocused = null;
+        private Image _BackImagePressed = null;
         private string _ButtonText = "A button.";
         private Image _Image = null;
         private Align _ButtonTextAlign = Align.CENTER;
@@ -28,33 +26,14 @@ namespace PearXLib.Engine
         private Color _ButtonTextColor = Color.Black;
 
         /// <summary>
-        /// Initializes a new XButton component.
+        /// Initializes a new XImgButton component.
         /// </summary>
-        public XButton()
+        public XImgButton()
         {
             InitializeComponent();
         }
 
         #region Properties.
-        /// <summary>
-        /// A button gradient color 1. 
-        /// </summary>
-        [Description("A button gradient color 1."), DefaultValue(typeof(Color), "102, 204, 0")]
-        public Color GradientColor1
-        {
-            get { return _GradientColor1; }
-            set { _GradientColor1 = value; Refresh(); }
-        }
-
-        /// <summary>
-        /// A button gradient color 2.
-        /// </summary>
-        [Description("A button gradient color 2."), DefaultValue(typeof(Color), "White")]
-        public Color GradientColor2
-        {
-            get { return _GradientColor2; }
-            set { _GradientColor2 = value; Refresh(); }
-        }
 
         /// <summary>
         /// A text on a button.
@@ -97,36 +76,6 @@ namespace PearXLib.Engine
         }
 
         /// <summary>
-        /// A focused button gradient color 1.
-        /// </summary>
-        [Description("A focused button gradient color 1."), DefaultValue(typeof(Color), "132, 234, 0")]
-        public Color GradientColorFocused1
-        {
-            get { return _GradientColorFocused1; }
-            set { _GradientColorFocused1 = value; Refresh(); }
-        }
-
-        /// <summary>
-        /// A focused button gradient color 2.
-        /// </summary>
-        [Description("A focused button gradient color 2."), DefaultValue(typeof(Color), "White")]
-        public Color GradientColorFocused2
-        {
-            get { return _GradientColorFocused2; }
-            set { _GradientColorFocused2 = value; Refresh(); }
-        }
-
-        /// <summary>
-        /// A color of a pressed button.
-        /// </summary>
-        [Description("A color of a pressed button."), DefaultValue(typeof(Color), "102, 204, 0")]
-        public Color ColorPressed
-        {
-            get { return _ColorPressed; }
-            set { _ColorPressed = value; Refresh(); }
-        }
-
-        /// <summary>
         /// A color of a text on a button.
         /// </summary>
         [Description("A color of a text on a button."), DefaultValue(typeof(Color), "Black")]
@@ -152,27 +101,50 @@ namespace PearXLib.Engine
                 base.Font = value;
             }
         }
+
+        /// <summary>
+        /// Button background.
+        /// </summary>
+        [Description("Button background.")]
+        public Image BackImage
+        {
+            get { return _BackImage; }
+            set { _BackImage = value; Refresh(); }
+        }
+
+        /// <summary>
+        /// Focused button background.
+        /// </summary>
+        [Description("Focused button background.")]
+        public Image BackImageFocused
+        {
+            get { return _BackImageFocused; }
+            set { _BackImageFocused = value; Refresh(); }
+        }
+
+        /// <summary>
+        /// Pressed button background.
+        /// </summary>
+        [Description("Pressed button background.")]
+        public Image BackImagePressed
+        {
+            get { return _BackImagePressed; }
+            set { _BackImagePressed = value; Refresh(); }
+        }
         #endregion
 
-        private void XButton_Paint(object sender, PaintEventArgs e)
+        private void XImgButton_Paint(object sender, PaintEventArgs e)
         {
-            Pen p = new Pen(Brushes.Black, 3);
-            p.LineJoin = LineJoin.Bevel;
-            e.Graphics.DrawRectangle(p, 3, 3, Size.Width - 6, Size.Height - 6);
-            Rectangle rectBG = new Rectangle(4, 4, Size.Width - 7, Size.Height - 7);
             switch (state)
             {
                 case State.NONE:
-                    LinearGradientBrush lgb1 = new LinearGradientBrush(new PointF(0, 0), new PointF(Size.Width, Size.Height), GradientColor1, GradientColor2);
-                    e.Graphics.FillRectangle(lgb1, rectBG);
+                    e.Graphics.DrawImage(BackImage, 0, 0, Size.Width, Size.Height);
                     break;
                 case State.FOCUSED:
-                    LinearGradientBrush lgb2 = new LinearGradientBrush(new PointF(0, 0), new PointF(Size.Width, Size.Height), GradientColorFocused1, GradientColorFocused2);
-                    e.Graphics.FillRectangle(lgb2, rectBG);
+                    e.Graphics.DrawImage(BackImageFocused, 0, 0, Size.Width, Size.Height);
                     break;
                 case State.PRESSED:
-                    Brush b = new SolidBrush(ColorPressed);
-                    e.Graphics.FillRectangle(b, rectBG);
+                    e.Graphics.DrawImage(BackImagePressed, 0, 0, Size.Width, Size.Height);
                     break;
 
             }
@@ -225,25 +197,25 @@ namespace PearXLib.Engine
             }
         }
 
-        private void XButton_MouseEnter(object sender, EventArgs e)
+        private void XImgButton_MouseEnter(object sender, EventArgs e)
         {
             state = State.FOCUSED;
             Refresh();
         }
 
-        private void XButton_MouseLeave(object sender, EventArgs e)
+        private void XImgButton_MouseLeave(object sender, EventArgs e)
         {
             state = State.NONE;
             Refresh();
         }
 
-        private void XButton_MouseDown(object sender, MouseEventArgs e)
+        private void XImgButton_MouseDown(object sender, MouseEventArgs e)
         {
             state = State.PRESSED;
             Refresh();
         }
 
-        private void XButton_MouseUp(object sender, MouseEventArgs e)
+        private void XImgButton_MouseUp(object sender, MouseEventArgs e)
         {
             state = State.FOCUSED;
             Refresh();

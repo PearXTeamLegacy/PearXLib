@@ -138,6 +138,7 @@ namespace PearXLib.Engine
             {
                 return base.Font;
             }
+
             set
             {
                 base.Font = value;
