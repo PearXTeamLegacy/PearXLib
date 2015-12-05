@@ -39,7 +39,7 @@ namespace PearXLib.Engine
         /// A text on a button.
         /// </summary>
         [Description("A text on a button."), DefaultValue("A button.")]
-        public string ButtonText
+        public virtual string ButtonText
         {
             get { return _ButtonText; }
             set { _ButtonText = value; Refresh(); }
@@ -49,7 +49,7 @@ namespace PearXLib.Engine
         /// An image on a button
         /// </summary>
         [Description("An image on a button"), DefaultValue(null)]
-        public Image Image
+        public virtual Image Image
         {
             get { return _Image; }
             set { _Image = value; Refresh(); }
@@ -69,7 +69,7 @@ namespace PearXLib.Engine
         /// Image align on a button.
         /// </summary>
         [Description("Image align on a button."), DefaultValue(Align.LEFT)]
-        public Align ImageAlign
+        public virtual Align ImageAlign
         {
             get { return _ImageAlign; }
             set { _ImageAlign = value; Refresh(); }
@@ -79,7 +79,7 @@ namespace PearXLib.Engine
         /// A color of a text on a button.
         /// </summary>
         [Description("A color of a text on a button."), DefaultValue(typeof(Color), "Black")]
-        public Color ButtonTextColor
+        public virtual Color ButtonTextColor
         {
             get { return _ButtonTextColor; }
             set { _ButtonTextColor = value; Refresh(); }
@@ -106,7 +106,7 @@ namespace PearXLib.Engine
         /// Button background.
         /// </summary>
         [Description("Button background.")]
-        public Image BackImage
+        public virtual Image BackImage
         {
             get { return _BackImage; }
             set { _BackImage = value; Refresh(); }
@@ -116,7 +116,7 @@ namespace PearXLib.Engine
         /// Focused button background.
         /// </summary>
         [Description("Focused button background.")]
-        public Image BackImageFocused
+        public virtual Image BackImageFocused
         {
             get { return _BackImageFocused; }
             set { _BackImageFocused = value; Refresh(); }
@@ -126,11 +126,17 @@ namespace PearXLib.Engine
         /// Pressed button background.
         /// </summary>
         [Description("Pressed button background.")]
-        public Image BackImagePressed
+        public virtual Image BackImagePressed
         {
             get { return _BackImagePressed; }
             set { _BackImagePressed = value; Refresh(); }
         }
+
+        [DefaultValue(typeof(Cursor), "Hand")]
+        public override Cursor Cursor { get; set; }
+
+        [DefaultValue(typeof(Color), "Transparent")]
+        public override Color BackColor { get; set; }
         #endregion
 
         private void XImgButton_Paint(object sender, PaintEventArgs e)

@@ -162,6 +162,9 @@ namespace PearXLib.Engine
                 base.Font = value;
             }
         }
+
+        [DefaultValue(typeof(Color), "Transparent")]
+        public override Color BackColor { get; set; }
         #endregion Props
 
         private void InvItem_Paint(object sender, PaintEventArgs e)

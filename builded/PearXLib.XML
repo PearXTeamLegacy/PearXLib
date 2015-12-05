@@ -239,11 +239,6 @@
             Color of a text on a bar.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XBar.BackColor">
-            <summary>
-            Not working. Don't change this.
-            </summary>
-        </member>
         <member name="P:PearXLib.Engine.XBar.Font">
             <summary>
             A font of a text on a bar.

@@ -112,21 +112,8 @@ namespace PearXLib.Engine
         #endregion
 
         #region Overriding props
-        /// <summary>
-        /// Not working. Don't change this.
-        /// </summary>
-        [DefaultValue(typeof(Color), "Transparent"), Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public override Color BackColor
-        {
-            get
-            {
-                return Color.Transparent;
-            }
-            set
-            {
-                base.BackColor = Color.Transparent;
-            }
-        }
+        [DefaultValue(typeof(Color), "Transparent")]
+        public override Color BackColor { get; set; }
 
         /// <summary>
         /// A font of a text on a bar.

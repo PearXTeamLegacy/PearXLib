@@ -99,6 +99,12 @@ namespace PearXLib.Engine
                 base.Font = value;
             }
         }
+
+        [DefaultValue(typeof(Cursor), "Hand")]
+        public override Cursor Cursor { get; set; }
+
+        [DefaultValue(typeof(Color), "Transparent")]
+        public override Color BackColor { get; set; }
         #endregion
 
         /// <summary>

@@ -35,6 +35,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
             this.Name = "XIcon";
             this.Size = new System.Drawing.Size(64, 64);

@@ -34,6 +34,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
             this.Name = "XImgButton";
             this.Size = new System.Drawing.Size(128, 64);
