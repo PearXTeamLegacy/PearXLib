@@ -153,5 +153,10 @@ namespace PearXLib.Engine
                 }
             }
         }
+
+        private void XIcon_SizeChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
     }
 }

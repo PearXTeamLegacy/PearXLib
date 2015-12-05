@@ -229,5 +229,10 @@ namespace PearXLib.Engine
             state = State.FOCUSED;
             Refresh();
         }
+
+        private void XImgButton_SizeChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
     }
 }

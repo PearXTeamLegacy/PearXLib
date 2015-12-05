@@ -177,5 +177,10 @@ namespace PearXLib.Engine
             e.Graphics.DrawString(ItemDesc, new Font(Font.FontFamily, Font.Size / 1.5F), new SolidBrush(ColorDesc), Size.Width / 3, 0 + e.Graphics.MeasureString(ItemDesc, Font).Height);
             e.Graphics.DrawString(ItemAmount.ToString(), Font, new SolidBrush(ColorAmount), Size.Width / 3, Size.Height - e.Graphics.MeasureString(ItemAmount.ToString(), Font).Height);
         }
+
+        private void InvItem_SizeChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
     }
 }

@@ -147,5 +147,10 @@ namespace PearXLib.Engine
             Brush bf = new SolidBrush(ProgressTextColor);
             e.Graphics.DrawString(ProgressText, Font, bf, new PointF((Size.Width - e.Graphics.MeasureString(ProgressText, Font).Width) / 2, (Size.Height - e.Graphics.MeasureString(ProgressText, Font).Height) / 2));
         }
+
+        private void XBar_SizeChanged(object sender, EventArgs e)
+        {
+            Refresh();
+        }
     }
 }

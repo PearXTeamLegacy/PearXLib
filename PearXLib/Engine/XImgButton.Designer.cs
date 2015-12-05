@@ -38,6 +38,7 @@
             this.DoubleBuffered = true;
             this.Name = "XImgButton";
             this.Size = new System.Drawing.Size(128, 64);
+            this.SizeChanged += new System.EventHandler(this.XImgButton_SizeChanged);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.XImgButton_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.XImgButton_MouseDown);
             this.MouseEnter += new System.EventHandler(this.XImgButton_MouseEnter);

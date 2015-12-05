@@ -38,6 +38,7 @@
             this.DoubleBuffered = true;
             this.Name = "XBar";
             this.Size = new System.Drawing.Size(349, 52);
+            this.SizeChanged += new System.EventHandler(this.XBar_SizeChanged);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.XBar_Paint);
             this.ResumeLayout(false);
 

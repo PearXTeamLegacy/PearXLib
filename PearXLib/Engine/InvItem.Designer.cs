@@ -34,6 +34,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "InvItem";
             this.Size = new System.Drawing.Size(270, 90);
+            this.SizeChanged += new System.EventHandler(this.InvItem_SizeChanged);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.InvItem_Paint);
             this.ResumeLayout(false);
 

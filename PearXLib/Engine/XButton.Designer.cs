@@ -37,6 +37,7 @@
             this.DoubleBuffered = true;
             this.Name = "XButton";
             this.Size = new System.Drawing.Size(128, 64);
+            this.SizeChanged += new System.EventHandler(this.XButton_SizeChanged);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.XButton_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.XButton_MouseDown);
             this.MouseEnter += new System.EventHandler(this.XButton_MouseEnter);
