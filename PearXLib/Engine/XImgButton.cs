@@ -135,18 +135,21 @@ namespace PearXLib.Engine
 
         private void XImgButton_Paint(object sender, PaintEventArgs e)
         {
-            switch (state)
+            if (BackImage != null && BackImageFocused != null && BackImagePressed != null)
             {
-                case State.NONE:
-                    e.Graphics.DrawImage(BackImage, 0, 0, Size.Width, Size.Height);
-                    break;
-                case State.FOCUSED:
-                    e.Graphics.DrawImage(BackImageFocused, 0, 0, Size.Width, Size.Height);
-                    break;
-                case State.PRESSED:
-                    e.Graphics.DrawImage(BackImagePressed, 0, 0, Size.Width, Size.Height);
-                    break;
+                switch (state)
+                {
+                    case State.NONE:
+                        e.Graphics.DrawImage(BackImage, 0, 0, Size.Width, Size.Height);
+                        break;
+                    case State.FOCUSED:
+                        e.Graphics.DrawImage(BackImageFocused, 0, 0, Size.Width, Size.Height);
+                        break;
+                    case State.PRESSED:
+                        e.Graphics.DrawImage(BackImagePressed, 0, 0, Size.Width, Size.Height);
+                        break;
 
+                }
             }
             if(Image != null)
             {
