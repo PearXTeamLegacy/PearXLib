@@ -27,7 +27,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static readonly string ver = "29";
+        public static readonly string ver = "30";
 
         /// <summary>
         /// Directory sepator.
@@ -655,6 +655,23 @@ namespace PearXLib
             int w = (parent.Location.X + (((parent.Size.Width - child.Size.Width) / 2)));
             int h = (parent.Location.Y + (((parent.Size.Height - child.Size.Height) / 2)));
             return new Point(w, h);
+        }
+
+        /// <summary>
+        /// Is cursor located on the element?
+        /// </summary>
+        /// <param name="startPoint">Start point(ex. - Location).</param>
+        /// <param name="endPoint">End point(ex. - Location + Size).</param>
+        /// <returns></returns>
+        public static bool IsCursorOnElement(Point startPoint, Point endPoint)
+        {
+            if (Control.MousePosition.X >= startPoint.X && Control.MousePosition.X <= endPoint.X &&
+                Control.MousePosition.Y >= startPoint.Y && Control.MousePosition.Y <= endPoint.Y)
+            {
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

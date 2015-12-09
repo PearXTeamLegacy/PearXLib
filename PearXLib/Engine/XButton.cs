@@ -153,6 +153,9 @@ namespace PearXLib.Engine
             }
         }
 
+        /// <summary>
+        /// Control background color.
+        /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
         public override Color BackColor { get; set; }
         #endregion

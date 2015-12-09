@@ -28,10 +28,22 @@ namespace PearXLib.Engine
 
         #region Props
         /// <summary>
+        /// Inventory Item event handler.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">InvItem event args. <see cref="InvItemEventArgs"/></param>
+        public delegate void InvItemEventHandler(object sender, InvItemEventArgs e);
+
+        /// <summary>
+        /// Performs on item amount changed.
+        /// </summary>
+        public event InvItemEventHandler AmountChanged;
+
+        /// <summary>
         /// Item image.
         /// </summary>
         [Description("Item image."), DefaultValue(null)]
-        public Image ItemImage
+        public virtual Image ItemImage
         {
             get
             {
@@ -48,7 +60,7 @@ namespace PearXLib.Engine
         /// Item description.
         /// </summary>
         [Description("Item description."), DefaultValue("Cake - a lie.")]
-        public string ItemDesc
+        public virtual string ItemDesc
         {
             get
             {
@@ -65,7 +77,7 @@ namespace PearXLib.Engine
         /// Item amount.
         /// </summary>
         [Description("Item amount."), DefaultValue(0)]
-        public int ItemAmount
+        public virtual int ItemAmount
         {
             get
             {
@@ -75,6 +87,7 @@ namespace PearXLib.Engine
             {
                 _ItemAmount = value;
                 Refresh();
+                AmountChanged(this, new InvItemEventArgs(value));
             }
         }
 
@@ -82,7 +95,7 @@ namespace PearXLib.Engine
         /// Item name.
         /// </summary>
         [Description("Item name."), DefaultValue("Cake")]
-        public string ItemName
+        public virtual string ItemName
         {
             get
             {
@@ -99,7 +112,7 @@ namespace PearXLib.Engine
         /// Name label color.
         /// </summary>
         [Description("Name label color."), DefaultValue(typeof(Color), "Red")]
-        public Color ColorName
+        public virtual Color ColorName
         {
             get
             {
@@ -116,7 +129,7 @@ namespace PearXLib.Engine
         /// Description label color.
         /// </summary>
         [Description("Description label color."), DefaultValue(typeof(Color), "Blue")]
-        public Color ColorDesc
+        public virtual Color ColorDesc
         {
             get
             {
@@ -133,7 +146,7 @@ namespace PearXLib.Engine
         /// Amount label color.
         /// </summary>
         [Description("Amount label color."), DefaultValue(typeof(Color), "Green")]
-        public Color ColorAmount
+        public virtual Color ColorAmount
         {
             get
             {

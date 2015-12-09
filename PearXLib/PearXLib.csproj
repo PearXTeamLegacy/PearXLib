@@ -53,6 +53,19 @@
     <Compile Include="Crypting\CA_PXM.cs" />
     <Compile Include="d.cs" />
     <Compile Include="Engine\Align.cs" />
+    <Compile Include="Engine\FormIcons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormIcons.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Engine\InvItemEventArgs.cs" />
+    <Compile Include="Engine\XBarEventArgs.cs" />
+    <Compile Include="Engine\XForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engine\XForm.Designer.cs">
+      <DependentUpon>XForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engine\InvItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +103,7 @@
     <Compile Include="Forms\SelectLang.Designer.cs">
       <DependentUpon>SelectLang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hooks.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MathsUtils.cs" />
@@ -105,6 +119,13 @@
     <Compile Include="UpdateUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Engine\FormIcons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormIcons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engine\XForm.resx">
+      <DependentUpon>XForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Engine\InvItem.resx">
       <DependentUpon>InvItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +155,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bd.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseBoxFocused.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaximizeBoxFocused.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaximizeBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinimizeBoxFocused.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MinimizeBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToTrayBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ToTrayBoxFocused.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -132,6 +132,197 @@
             # * #
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.FormIcons">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.CloseBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.CloseBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MaximizeBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MaximizeBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MinimizeBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MinimizeBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.ToTrayBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.ToTrayBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.InvItemEventArgs">
+            <summary>
+            Inventory Item event arguments.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.InvItemEventArgs.#ctor(System.Int32)">
+            <summary>
+            Inventory Item event arguments.
+            </summary>
+            <param name="amount">Item amount.</param>
+        </member>
+        <member name="P:PearXLib.Engine.InvItemEventArgs.Amount">
+            <summary>
+            Item amount.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XBarEventArgs">
+            <summary>
+            XBar event arguments.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XBarEventArgs.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializates a new XBarEventArgs class.
+            </summary>
+            <param name="val">Bar value.</param>
+            <param name="max">Maximal bar value.</param>
+        </member>
+        <member name="P:PearXLib.Engine.XBarEventArgs.Value">
+            <summary>
+            Bar value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBarEventArgs.Maximal">
+            <summary>
+            Maximal bar value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBarEventArgs.InPercents">
+            <summary>
+            Bar value in percents.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.Minimized">
+            <summary>
+            Performs on form minimized.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.Maximized">
+            <summary>
+            Performs on form maximized.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.TurnedToTray">
+            <summary>
+            Performs on form turned to tray.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.ExpandedFromTray">
+            <summary>
+            Performs on form expanded from tray.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.MaximizeBox">
+            <summary>
+            Is maximize box enabled?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ToTrayBox">
+            <summary>
+            Is turn to tray box enabled?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.CloseBox">
+            <summary>
+            Is close box enabled?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageCloseBox">
+            <summary>
+            Image for a close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageCloseBoxFocused">
+            <summary>
+            Image for a focused close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMaximizeBox">
+            <summary>
+            Image for a maximize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMaximizeBoxFocused">
+            <summary>
+            Image for a focused maximize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMinimizeBox">
+            <summary>
+            Image for a minimize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMinimizeBoxFocused">
+            <summary>
+            Image for a focused minimize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageToTrayBox">
+            <summary>
+            Image for a turn to tray box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageToTrayBoxFocused">
+            <summary>
+            Image for a focused turn to tray box.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.InvItem">
             <summary>
             A control to display the item.
@@ -140,6 +331,18 @@
         <member name="M:PearXLib.Engine.InvItem.#ctor">
             <summary>
             Initializes new InvItem component.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.InvItem.InvItemEventHandler">
+            <summary>
+            Inventory Item event handler.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">InvItem event args. <see cref="T:PearXLib.Engine.InvItemEventArgs"/></param>
+        </member>
+        <member name="E:PearXLib.Engine.InvItem.AmountChanged">
+            <summary>
+            Performs on item amount changed.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.InvItem.ItemImage">
@@ -204,6 +407,18 @@
             Initializes the new XBar component.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XBar.XBarEventHandler">
+            <summary>
+            XBar event handler.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">XBar Event Args <see cref="T:PearXLib.Engine.XBarEventArgs"/></param>
+        </member>
+        <member name="E:PearXLib.Engine.XBar.ValueChanged">
+            <summary>
+            Performs on bar value changed.
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.XBar.Value">
             <summary>
             Progress value.
@@ -237,6 +452,11 @@
         <member name="P:PearXLib.Engine.XBar.ProgressTextColor">
             <summary>
             Color of a text on a bar.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.BackColor">
+            <summary>
+            Control's background color.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XBar.Font">
@@ -396,6 +616,11 @@
         <member name="P:PearXLib.Engine.XButton.Font">
             <summary>
             Control font.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.BackColor">
+            <summary>
+            Control background color.
             </summary>
         </member>
         <member name="F:PearXLib.Engine.XButton.components">
@@ -559,6 +784,40 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:PearXLib.MouseHook.InstallHook">
+            <summary>
+            Hook install method.
+            </summary>
+        </member>
+        <member name="P:PearXLib.MouseHook.IsHookInstalled">
+            <summary>
+            If hook installed return true, either false.
+            </summary>
+        </member>
+        <member name="P:PearXLib.MouseHook.ModuleHandle">
+            <summary>
+            Module handle in which hook was installed.
+            </summary>
+        </member>
+        <member name="P:PearXLib.MouseHook.LocalHook">
+            <summary>
+            If true local hook will installed, either global.
+            </summary>
+        </member>
+        <member name="M:PearXLib.MouseHook.UnInstallHook">
+            <summary>
+            Uninstall hook method.
+            </summary>
+        </member>
+        <member name="M:PearXLib.MouseHook.HookProcFunction(System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Hook process messages.
+            </summary>
+            <param name="nCode"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
         <member name="T:PearXLib.Localization">
             <summary>
             A localization utilities.<para/>
@@ -671,6 +930,14 @@
             <param name="count">Number</param>
             <returns>Number of numbers!</returns>
         </member>
+        <member name="M:PearXLib.MathsUtils.GetInPercents(System.Double,System.Double)">
+            <summary>
+            Get a number in percents.
+            </summary>
+            <param name="maximum">100 percents.</param>
+            <param name="value">Value</param>
+            <returns>Value in percents.</returns>
+        </member>
         <member name="T:PearXLib.Properties.Resources">
             <summary>
               Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
@@ -774,6 +1041,14 @@
             <param name="parent">Parent form.</param>
             <param name="child">Child form.</param>
             <returns>Form start position.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.IsCursorOnElement(System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Is cursor located on the element?
+            </summary>
+            <param name="startPoint">Start point(ex. - Location).</param>
+            <param name="endPoint">End point(ex. - Location + Size).</param>
+            <returns></returns>
         </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>

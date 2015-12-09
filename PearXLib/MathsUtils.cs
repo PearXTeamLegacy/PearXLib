@@ -54,5 +54,16 @@ namespace PearXLib
             }
             return BigInteger.Parse(s);
         }
+
+        /// <summary>
+        /// Get a number in percents.
+        /// </summary>
+        /// <param name="maximum">100 percents.</param>
+        /// <param name="value">Value</param>
+        /// <returns>Value in percents.</returns>
+        public static double GetInPercents(double maximum, double value)
+        {
+            return  value / (maximum / 100);
+        }
     }
 }

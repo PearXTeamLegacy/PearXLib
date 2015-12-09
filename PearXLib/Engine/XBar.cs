@@ -29,17 +29,30 @@ namespace PearXLib.Engine
 
         #region Params.
         /// <summary>
+        /// XBar event handler.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">XBar Event Args <see cref="XBarEventArgs"/></param>
+        public delegate void XBarEventHandler(object sender, XBarEventArgs e);
+
+        /// <summary>
+        /// Performs on bar value changed.
+        /// </summary>
+        public event XBarEventHandler ValueChanged;
+
+        /// <summary>
         /// Progress value.
         /// </summary>
         [Description("Progress value."), DefaultValue(0)]
-        public int Value
+        public virtual int Value
         {
             get { return _Value; }
             set 
             {
                 if (!(value > Maximum))
                 {
-                    _Value = value; Refresh(); 
+                    _Value = value; Refresh();
+                    ValueChanged(this, new XBarEventArgs(value, Maximum));
                 }
             }
         }
@@ -48,7 +61,7 @@ namespace PearXLib.Engine
         /// Maximum value.
         /// </summary>
         [Description("Maximum value."), DefaultValue(100)]
-        public int Maximum
+        public virtual int Maximum
         {
             get { return _Maximum; }
             set
@@ -64,7 +77,7 @@ namespace PearXLib.Engine
         /// Value bar gradient color 1.
         /// </summary>
         [Description("Value bar gradient color 1."), DefaultValue(typeof(Color), "102, 204, 0")]
-        public Color GradientColor1
+        public virtual Color GradientColor1
         {
             get { return _GradientColor1; }
             set { _GradientColor1 = value; Refresh(); }
@@ -74,7 +87,7 @@ namespace PearXLib.Engine
         /// Value bar gradient color 2.
         /// </summary>
         [Description("Value bar gradient color 2."), DefaultValue(typeof(Color), "White")]
-        public Color GradientColor2
+        public virtual Color GradientColor2
         {
             get { return _GradientColor2; }
             set { _GradientColor2 = value; Refresh(); }
@@ -84,7 +97,7 @@ namespace PearXLib.Engine
         /// Bar background color.
         /// </summary>
         [Description("Bar background color."), DefaultValue(typeof(Color), "Gray")]
-        public Color BGColor
+        public virtual Color BGColor
         {
             get { return _BGColor; }
             set { _BGColor = value; Refresh(); }
@@ -94,7 +107,7 @@ namespace PearXLib.Engine
         /// Text on bar.
         /// </summary>
         [Description("Text on bar."), DefaultValue("")]
-        public string ProgressText
+        public virtual string ProgressText
         {
             get { return _ProgressText; }
             set { _ProgressText = value; Refresh(); }
@@ -104,14 +117,15 @@ namespace PearXLib.Engine
         /// Color of a text on a bar.
         /// </summary>
         [Description("Color of a text on a bar."), DefaultValue(typeof(Color), "Black")]
-        public Color ProgressTextColor
+        public virtual Color ProgressTextColor
         {
             get { return _ProgressTextColor; }
             set { _ProgressTextColor = value; Refresh(); }
         }
-        #endregion
 
-        #region Overriding props
+        /// <summary>
+        /// Control's background color.
+        /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
         public override Color BackColor { get; set; }
 
