@@ -306,6 +306,16 @@
             Image for a focused turn to tray box.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XForm.BoxesDistance">
+            <summary>
+            Boxes distance from one to other.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.BoxesTopDistance">
+            <summary>
+            Boxes distance from form top.
+            </summary>
+        </member>
         <member name="F:PearXLib.Engine.XForm.components">
             <summary>
             Required designer variable.
