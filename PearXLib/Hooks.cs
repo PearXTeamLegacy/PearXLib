@@ -9,11 +9,23 @@ namespace PearXLib
     //
     //Finded in Internet!
     //
+    /// <summary>
+    /// Mouse global hook. (Finded in internet!!!)
+    /// </summary>
     public static class MouseHook
         {
             #region Declarations
+        /// <summary>
+        /// Mouse down hook.
+        /// </summary>
             public static event MouseEventHandler MouseDown;
+        /// <summary>
+        /// Mouse up hook.
+        /// </summary>
             public static event MouseEventHandler MouseUp;
+        /// <summary>
+        /// Mouse move hook.
+        /// </summary>
             public static event MouseEventHandler MouseMove;
 
             [StructLayout(LayoutKind.Sequential)]

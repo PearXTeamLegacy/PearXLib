@@ -59,7 +59,7 @@ namespace PearXLib.Engine
         /// Text align on a button.
         /// </summary>
         [Description("Text align on a button."), DefaultValue(Align.CENTER)]
-        public Align ButtonTextAlign
+        public virtual Align ButtonTextAlign
         {
             get { return _ButtonTextAlign; }
             set { _ButtonTextAlign = value; Refresh(); }
@@ -132,9 +132,15 @@ namespace PearXLib.Engine
             set { _BackImagePressed = value; Refresh(); }
         }
 
+        /// <summary>
+        /// A cursor for a control.
+        /// </summary>
         [DefaultValue(typeof(Cursor), "Hand")]
         public override Cursor Cursor { get; set; }
 
+        /// <summary>
+        /// Control background color.
+        /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
         public override Color BackColor { get; set; }
         #endregion

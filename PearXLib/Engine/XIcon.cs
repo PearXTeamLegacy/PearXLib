@@ -16,6 +16,7 @@ namespace PearXLib.Engine
         private bool _PlaySound = true;
         private string _Title = String.Empty;
         private int _Expand = 10;
+
         /// <summary>
         /// Initializes a new XIcon component.
         /// </summary>
@@ -25,12 +26,12 @@ namespace PearXLib.Engine
             InitializeComponent();
         }
 
-        #region Properties.
+        #region Params
         /// <summary>
         /// Icon image.
         /// </summary>
         [DefaultValue(null), Description("Icon image.")]
-        public Image Icon
+        public virtual Image Icon
         {
             get { return _Icon; }
             set
@@ -44,7 +45,7 @@ namespace PearXLib.Engine
         /// Play sound, when mouse focused on this component?
         /// </summary>
         [DefaultValue(true), Description("Play sound, when mouse focused on this component?")]
-        public bool PlaySound
+        public virtual bool PlaySound
         {
             get { return _PlaySound; }
             set { _PlaySound = value; }
@@ -54,7 +55,7 @@ namespace PearXLib.Engine
         /// Icon title (will be displayed on the control).
         /// </summary>
         [DefaultValue(""), Description("Icon title (will be displayed on the control).")]
-        public string Title
+        public virtual string Title
         {
             get
             {
@@ -71,7 +72,7 @@ namespace PearXLib.Engine
         /// How much to expand on mouse enter?
         /// </summary>
         [Description("How much to expand on mouse enter?"), DefaultValue(10)]
-        public int Expand
+        public virtual int Expand
         {
             get
             {
@@ -100,9 +101,15 @@ namespace PearXLib.Engine
             }
         }
 
+        /// <summary>
+        /// A cursor for a control.
+        /// </summary>
         [DefaultValue(typeof(Cursor), "Hand")]
         public override Cursor Cursor { get; set; }
 
+        /// <summary>
+        /// Control background color.
+        /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
         public override Color BackColor { get; set; }
         #endregion

@@ -28,6 +28,9 @@ namespace PearXLib.Properties {
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
+        /// <summary>
+        /// A public PearXLib resources.
+        /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public Resources() {
         }

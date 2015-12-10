@@ -87,7 +87,8 @@ namespace PearXLib.Engine
             {
                 _ItemAmount = value;
                 Refresh();
-                AmountChanged(this, new InvItemEventArgs(value));
+                if (AmountChanged != null)
+                    AmountChanged(this, new InvItemEventArgs(value));
             }
         }
 
@@ -176,6 +177,9 @@ namespace PearXLib.Engine
             }
         }
 
+        /// <summary>
+        /// Control background color.
+        /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
         public override Color BackColor { get; set; }
         #endregion Props

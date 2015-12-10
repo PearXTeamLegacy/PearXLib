@@ -11,17 +11,17 @@ namespace PearXLib
         /// <summary>
         /// Folder "My Documents".
         /// </summary>
-        public static string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static readonly string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         /// <summary>
         /// Folder "Application Data".
         /// </summary>
-        public static string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        public static readonly string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         /// <summary>
         /// Desktop folder.
         /// </summary>
-        public static string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public static readonly string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         /// <summary>
         /// PearX Team's Directory.

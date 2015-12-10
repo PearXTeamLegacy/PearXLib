@@ -231,6 +231,16 @@
             Bar value in percents.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XForm">
+            <summary>
+            A beautiful customizing form.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XForm.#ctor">
+            <summary>
+            Initializates a new XForm component.
+            </summary>
+        </member>
         <member name="E:PearXLib.Engine.XForm.Minimized">
             <summary>
             Performs on form minimized.
@@ -395,6 +405,11 @@
             A font of an InvItem.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.InvItem.BackColor">
+            <summary>
+            Control background color.
+            </summary>
+        </member>
         <member name="M:PearXLib.Engine.InvItem.Dispose(System.Boolean)">
             <summary> 
             Dispose all using resources.
@@ -546,6 +561,16 @@
             Pressed button background.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XImgButton.Cursor">
+            <summary>
+            A cursor for a control.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackColor">
+            <summary>
+            Control background color.
+            </summary>
+        </member>
         <member name="F:PearXLib.Engine.XImgButton.components">
             <summary> 
             Требуется переменная конструктора.
@@ -685,6 +710,16 @@
             A font of a title text.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XIcon.Cursor">
+            <summary>
+            A cursor for a control.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.BackColor">
+            <summary>
+            Control background color.
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.XIcon.TitleWidthHeight">
             <summary>
             Title size and width.
@@ -792,6 +827,26 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PearXLib.MouseHook">
+            <summary>
+            Mouse global hook. (Finded in internet!!!)
+            </summary>
+        </member>
+        <member name="E:PearXLib.MouseHook.MouseDown">
+            <summary>
+            Mouse down hook.
+            </summary>
+        </member>
+        <member name="E:PearXLib.MouseHook.MouseUp">
+            <summary>
+            Mouse up hook.
+            </summary>
+        </member>
+        <member name="E:PearXLib.MouseHook.MouseMove">
+            <summary>
+            Mouse move hook.
             </summary>
         </member>
         <member name="M:PearXLib.MouseHook.InstallHook">
@@ -951,6 +1006,11 @@
         <member name="T:PearXLib.Properties.Resources">
             <summary>
               Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Properties.Resources.#ctor">
+            <summary>
+            A public PearXLib resources.
             </summary>
         </member>
         <member name="P:PearXLib.Properties.Resources.ResourceManager">

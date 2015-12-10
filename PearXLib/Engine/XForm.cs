@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// A beautiful customizing form.
+    /// </summary>
     public partial class XForm : Form
     {
         private bool _MaximizeBox = true;
@@ -36,6 +39,9 @@ namespace PearXLib.Engine
         private Size lastSize;
         private Point lastLocation;
 
+        /// <summary>
+        /// Initializates a new XForm component.
+        /// </summary>
         public XForm()
         {
             InitializeComponent();
