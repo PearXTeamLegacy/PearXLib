@@ -331,6 +331,11 @@
             Boxes distance from form top.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XForm.BarImage">
+            <summary>
+            Form bar background image.
+            </summary>
+        </member>
         <member name="F:PearXLib.Engine.XForm.components">
             <summary>
             Required designer variable.

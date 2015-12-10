@@ -199,6 +199,10 @@ namespace PearXLib.Engine
             set { _BoxesTopDistance = value; Refresh(); }
         }
 
+        /// <summary>
+        /// Form bar background image.
+        /// </summary>
+        [Description("Form bar background image.")]
         public virtual Image BarImage
         {
             get { return _BarImage; }
