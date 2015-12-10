@@ -358,7 +358,7 @@ namespace PearXLib.Engine
             {
                 if (BarIconFocused != null && i == 0)
                     BarIconFocused(this, new EventArgs());
-                i++;
+                i = 1;
             }
         }
 
