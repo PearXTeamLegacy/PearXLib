@@ -266,6 +266,11 @@
             Performs on form expanded from tray.
             </summary>
         </member>
+        <member name="E:PearXLib.Engine.XForm.BarIconFocused">
+            <summary>
+            Performs on any bar icon focused.
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.XForm.MaximizeBox">
             <summary>
             Is maximize box enabled?

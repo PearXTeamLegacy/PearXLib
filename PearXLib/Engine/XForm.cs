@@ -39,6 +39,7 @@ namespace PearXLib.Engine
         private bool maximizeState = false;
         private Size lastSize;
         private Point lastLocation;
+        private int i = 0;
 
         /// <summary>
         /// Initializates a new XForm component.
@@ -68,6 +69,11 @@ namespace PearXLib.Engine
         /// Performs on form expanded from tray.
         /// </summary>
         public event EventHandler ExpandedFromTray;
+
+        /// <summary>
+        /// Performs on any bar icon focused.
+        /// </summary>
+        public event EventHandler BarIconFocused;
 
         /// <summary>
         /// Is maximize box enabled?
@@ -312,7 +318,7 @@ namespace PearXLib.Engine
         private void XForm_MouseMove(object sender, MouseEventArgs e)
         {
             //Close Box:
-            if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (32 + BoxesDistance), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - BoxesDistance, Location.Y + (32 + BoxesTopDistance))))
+            if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (32 + BoxesDistance), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - BoxesDistance, Location.Y + (32 + BoxesTopDistance))) && CloseBox)
             {
                 if (barstate != BarState.Close)
                 {
@@ -322,7 +328,7 @@ namespace PearXLib.Engine
             }
 
             //Maximize Box:
-            else if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (64 + (BoxesDistance * 2)), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - (32 + (BoxesDistance * 2)), Location.Y + (32 + BoxesTopDistance))))
+            else if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (64 + (BoxesDistance * 2)), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - (32 + (BoxesDistance * 2)), Location.Y + (32 + BoxesTopDistance))) && MaximizeBox)
             {
                 if (barstate != BarState.Maximize)
                 {
@@ -332,7 +338,7 @@ namespace PearXLib.Engine
             }
 
             //ToTray Box:
-            else if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (96 + (BoxesDistance * 3)), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - (64 + (BoxesDistance * 3)), Location.Y + (32 + BoxesTopDistance))))
+            else if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (96 + (BoxesDistance * 3)), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - (64 + (BoxesDistance * 3)), Location.Y + (32 + BoxesTopDistance))) && ToTrayBox)
             {
                 if (barstate != BarState.ToTray)
                 {
@@ -344,7 +350,15 @@ namespace PearXLib.Engine
             else if (barstate != BarState.None)
             {
                 barstate = BarState.None;
+                i = 0;
                 Refresh();
+            }
+
+            if (barstate != BarState.None)
+            {
+                if (BarIconFocused != null && i == 0)
+                    BarIconFocused(this, new EventArgs());
+                i++;
             }
         }
 
@@ -363,16 +377,11 @@ namespace PearXLib.Engine
             lastMousePoint = MousePosition;
         }
 
-        private void XForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            MouseHook.UnInstallHook();
-        }
-
         private void XForm_MouseUp(object sender, MouseEventArgs e)
         {
             if (barstate == BarState.Close && CloseBox)
             {
-                Close();
+                base.Close();
             }
             else if (barstate == BarState.Maximize && MaximizeBox)
             {

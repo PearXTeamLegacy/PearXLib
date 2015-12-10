@@ -39,7 +39,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "XForm";
             this.Text = "XForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XForm_FormClosing);
             this.Load += new System.EventHandler(this.XForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.XForm_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.XForm_MouseDown);
