@@ -63,6 +63,16 @@ namespace PearXLib.Engine {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BarImage {
+            get {
+                object obj = ResourceManager.GetObject("BarImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CloseBox {
             get {
                 object obj = ResourceManager.GetObject("CloseBox", resourceCulture);

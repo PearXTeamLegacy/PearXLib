@@ -180,6 +180,9 @@
   <ItemGroup>
     <None Include="Resources\ToTrayBoxFocused.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BarImage.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy PearXLib.dll "../../../builded/"

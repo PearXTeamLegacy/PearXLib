@@ -19,6 +19,7 @@ namespace PearXLib.Engine
         private bool _CloseBox = true;
         private int _BoxesDistance = 2;
         private int _BoxesTopDistance = 2;
+        private Image _BarImage = FormIcons.BarImage;
 
         private Image _ImageCloseBox = FormIcons.CloseBox;
         private Image _ImageCloseBoxFocused = FormIcons.CloseBoxFocused;
@@ -197,24 +198,49 @@ namespace PearXLib.Engine
             get { return _BoxesTopDistance; }
             set { _BoxesTopDistance = value; Refresh(); }
         }
+
+        public virtual Image BarImage
+        {
+            get { return _BarImage; }
+            set { _BarImage = value; Refresh(); }
+        }
         #endregion
 
         #region Private state
         private State GetState()
         {
-            if (PXL.IsCursorOnElement(Location, Location + Size))
+            if (BarImage == null)
             {
-                return State.Move;
+                if (PXL.IsCursorOnElement(Location, Location + Size))
+                {
+                    return State.Move;
+                }
+                else
+                {
+                    return State.None;
+                }
             }
             else
             {
-                return State.None;
+                if (PXL.IsCursorOnElement(Location, new Point(Location.X + Size.Width, Location.Y + BarImage.Height)))
+                {
+                    return State.Move;
+                }
+                else
+                {
+                    return State.None;
+                }
             }
         }
         #endregion
 
         private void XForm_Paint(object sender, PaintEventArgs e)
         {
+            if (BarImage != null)
+            {
+                TextureBrush tb = new TextureBrush(BarImage);
+                e.Graphics.FillRectangle(tb, 0, 0, Size.Width, BarImage.Height);
+            }
             if(CloseBox)
             {
                 if (barstate == BarState.Close)
@@ -269,48 +295,7 @@ namespace PearXLib.Engine
         private void XForm_MouseDown(object sender, MouseEventArgs e)
         {
             state = GetState();
-            if (barstate == BarState.Close && CloseBox)
-            {
-                Close();
-            }
-            else if (barstate == BarState.Maximize && MaximizeBox)
-            {
-                if (maximizeState == false)
-                {
-                    maximizeState = true;
-                    lastLocation = Location;
-                    lastSize = Size;
-                    Location = new Point(0, 0);
-                    Size = Screen.PrimaryScreen.WorkingArea.Size;
-                    Refresh();
-                    if (Maximized != null)
-                        Maximized(this, new EventArgs());
-                }
-                else
-                {
-                    maximizeState = false;
-                    Location = lastLocation;
-                    Size = lastSize;
-                    Refresh();
-                    if(Minimized != null)
-                        Minimized(this, new EventArgs());
-                }
-            }
-            else if (barstate == BarState.ToTray && ToTrayBox)
-            {
-                if (WindowState != FormWindowState.Minimized)
-                {
-                    WindowState = FormWindowState.Minimized;
-                    if(TurnedToTray != null)
-                        TurnedToTray(this, new EventArgs());
-                }
-                else
-                {
-                    WindowState = FormWindowState.Normal;
-                    if(ExpandedFromTray != null)
-                        ExpandedFromTray(this, new EventArgs());
-                }
-            }
+            
         }
 
         private void XForm_Load(object sender, EventArgs e)
@@ -377,6 +362,52 @@ namespace PearXLib.Engine
         private void XForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             MouseHook.UnInstallHook();
+        }
+
+        private void XForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (barstate == BarState.Close && CloseBox)
+            {
+                Close();
+            }
+            else if (barstate == BarState.Maximize && MaximizeBox)
+            {
+                if (maximizeState == false)
+                {
+                    maximizeState = true;
+                    lastLocation = Location;
+                    lastSize = Size;
+                    Location = new Point(0, 0);
+                    Size = Screen.PrimaryScreen.WorkingArea.Size;
+                    Refresh();
+                    if (Maximized != null)
+                        Maximized(this, new EventArgs());
+                }
+                else
+                {
+                    maximizeState = false;
+                    Location = lastLocation;
+                    Size = lastSize;
+                    Refresh();
+                    if (Minimized != null)
+                        Minimized(this, new EventArgs());
+                }
+            }
+            else if (barstate == BarState.ToTray && ToTrayBox)
+            {
+                if (WindowState != FormWindowState.Minimized)
+                {
+                    WindowState = FormWindowState.Minimized;
+                    if (TurnedToTray != null)
+                        TurnedToTray(this, new EventArgs());
+                }
+                else
+                {
+                    WindowState = FormWindowState.Normal;
+                    if (ExpandedFromTray != null)
+                        ExpandedFromTray(this, new EventArgs());
+                }
+            }
         }
     }
 }

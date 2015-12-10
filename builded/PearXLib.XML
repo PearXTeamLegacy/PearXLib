@@ -148,6 +148,11 @@
               обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.FormIcons.BarImage">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.FormIcons.CloseBox">
             <summary>
               Поиск локализованного ресурса типа System.Drawing.Bitmap.
