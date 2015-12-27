@@ -52,9 +52,13 @@ namespace PearXLib.Engine
                 if (!(value > Maximum))
                 {
                     _Value = value; Refresh();
-                    if (ValueChanged != null)
-                        ValueChanged(this, new XBarEventArgs(value, Maximum));
                 }
+                else
+                {
+                    _Value = Maximum; Refresh();
+                }
+                if (ValueChanged != null)
+                    ValueChanged(this, new XBarEventArgs(value, Maximum));
             }
         }
 

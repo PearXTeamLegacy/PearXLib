@@ -1135,6 +1135,12 @@
             <param name="endPoint">End point(ex. - Location + Size).</param>
             <returns></returns>
         </member>
+        <member name="M:PearXLib.PXL.GetJavaPath">
+            <summary>
+            Gets a path to a Java folder.
+            </summary>
+            <returns>A path to a Java folder.</returns>
+        </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>
             PearXLib random utilities.
@@ -1209,18 +1215,31 @@
             <param name="description">Site description.</param>
             <param name="URL_img">Site image.</param>
         </member>
-        <member name="T:PearXLib.UpdateUtils">
+        <member name="T:PearXLib.WebUtils">
             <summary>
-            PearXLib Updating Utils.
+            PearXLib Web Utilities
             </summary>
         </member>
-        <member name="M:PearXLib.UpdateUtils.PrepareUpdate(System.String,System.String,System.String)">
+        <member name="M:PearXLib.WebUtils.SendPOSTRequest(System.String,System.String)">
             <summary>
-            Prepares and runs app update.
+            Sends a POST request to the site.
             </summary>
-            <param name="appName">Application name.</param>
-            <param name="exeName">Executable file name.</param>
-            <param name="exeOnSite">Path to executable file on website.</param>
+            <param name="url">Site URL.</param>
+            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+            <returns>Web response.</returns>
+        </member>
+        <member name="M:PearXLib.WebUtils.CheckForInternetConnection">
+            <summary>
+            Checks for a Internet connectivity. Using a well-known "google.com" domain.
+            </summary>
+            <returns>True, if Internet connection is avaible, else returns false.</returns>
+        </member>
+        <member name="M:PearXLib.WebUtils.CheckForInternetConnection(System.String)">
+            <summary>
+            Checks for a Internet connectivity.
+            </summary>
+            <param name="domain">The domain, that you want to ping.</param>
+            <returns>True, if Internet connection is avaible, else returns false.</returns>
         </member>
     </members>
 </doc>

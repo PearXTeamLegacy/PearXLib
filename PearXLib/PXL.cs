@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -27,7 +28,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static readonly string ver = "31";
+        public static readonly string ver = "32";
 
         /// <summary>
         /// Directory sepator.
@@ -672,6 +673,28 @@ namespace PearXLib
             }
             else
                 return false;
+        }
+
+        /// <summary>
+        /// Gets a path to a Java folder.
+        /// </summary>
+        /// <returns>A path to a Java folder.</returns>
+        public static string GetJavaPath()
+        {
+            RegistryView rv;
+            if(Environment.Is64BitOperatingSystem)
+            {
+                rv = RegistryView.Registry64;
+            }
+            else
+            {
+                rv = RegistryView.Registry32;
+            }
+            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv).OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
+            {
+                using (var homeKey = baseKey.OpenSubKey(baseKey.GetValue("CurrentVersion").ToString()))
+                   return homeKey.GetValue("JavaHome").ToString();
+            }
         }
     }
 }
