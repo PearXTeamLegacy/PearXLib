@@ -42,6 +42,7 @@
             this.Load += new System.EventHandler(this.XForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.XForm_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.XForm_MouseDown);
+            this.MouseLeave += new System.EventHandler(this.XForm_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.XForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.XForm_MouseUp);
             this.ResumeLayout(false);

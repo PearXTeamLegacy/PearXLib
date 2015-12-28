@@ -103,7 +103,6 @@
     <Compile Include="Forms\SelectLang.Designer.cs">
       <DependentUpon>SelectLang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hooks.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MathsUtils.cs" />

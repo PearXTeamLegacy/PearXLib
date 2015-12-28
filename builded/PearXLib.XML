@@ -811,6 +811,29 @@
             <param name="filename">File name.</param>
             <returns>If system can create file, returns true, else returns false.</returns>
         </member>
+        <member name="M:PearXLib.FileUtils.GetFilesInDir(System.String)">
+            <summary>
+            Getting all files in directory and subdirectories.
+            </summary>
+            <param name="dir">Directory name.</param>
+            <returns>All files in directory and subdirectories.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.GetRelativePath(System.String,System.String)">
+            <summary>
+            Gets a relative path to the directory or file.
+            </summary>
+            <param name="fullpath">Full path to the directory.</param>
+            <param name="relativepath">Relative path.</param>
+            <returns>Relative path to the directory.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.GetRelativePath(System.String[],System.String)">
+            <summary>
+            Gets a relative path to the directory or file.
+            </summary>
+            <param name="fullpath">Full path to the directory.</param>
+            <param name="relativepath">Relative path.</param>
+            <returns>Relative path to the directory.</returns>
+        </member>
         <member name="T:PearXLib.Forms.SelectLang">
             <summary>
             A language selection form.
@@ -843,60 +866,6 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-        </member>
-        <member name="T:PearXLib.MouseHook">
-            <summary>
-            Mouse global hook. (Finded in internet!!!)
-            </summary>
-        </member>
-        <member name="E:PearXLib.MouseHook.MouseDown">
-            <summary>
-            Mouse down hook.
-            </summary>
-        </member>
-        <member name="E:PearXLib.MouseHook.MouseUp">
-            <summary>
-            Mouse up hook.
-            </summary>
-        </member>
-        <member name="E:PearXLib.MouseHook.MouseMove">
-            <summary>
-            Mouse move hook.
-            </summary>
-        </member>
-        <member name="M:PearXLib.MouseHook.InstallHook">
-            <summary>
-            Hook install method.
-            </summary>
-        </member>
-        <member name="P:PearXLib.MouseHook.IsHookInstalled">
-            <summary>
-            If hook installed return true, either false.
-            </summary>
-        </member>
-        <member name="P:PearXLib.MouseHook.ModuleHandle">
-            <summary>
-            Module handle in which hook was installed.
-            </summary>
-        </member>
-        <member name="P:PearXLib.MouseHook.LocalHook">
-            <summary>
-            If true local hook will installed, either global.
-            </summary>
-        </member>
-        <member name="M:PearXLib.MouseHook.UnInstallHook">
-            <summary>
-            Uninstall hook method.
-            </summary>
-        </member>
-        <member name="M:PearXLib.MouseHook.HookProcFunction(System.Int32,System.IntPtr,System.IntPtr)">
-            <summary>
-            Hook process messages.
-            </summary>
-            <param name="nCode"></param>
-            <param name="wParam"></param>
-            <param name="lParam"></param>
-            <returns></returns>
         </member>
         <member name="T:PearXLib.Localization">
             <summary>

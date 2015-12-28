@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PearXLib.Engine
@@ -310,9 +306,8 @@ namespace PearXLib.Engine
 
         private void XForm_Load(object sender, EventArgs e)
         {
-            MouseHook.MouseMove += MouseHook_MouseMove;
-            MouseHook.MouseUp += MouseHook_MouseUp;
-            MouseHook.InstallHook();
+            this.MouseMove += MouseHook_MouseMove;
+            this.MouseUp += MouseHook_MouseUp;
         }
 
         private void XForm_MouseMove(object sender, MouseEventArgs e)
@@ -421,6 +416,12 @@ namespace PearXLib.Engine
                         ExpandedFromTray(this, new EventArgs());
                 }
             }
+        }
+
+        private void XForm_MouseLeave(object sender, EventArgs e)
+        {
+            barstate = BarState.None;
+            Refresh();
         }
     }
 }

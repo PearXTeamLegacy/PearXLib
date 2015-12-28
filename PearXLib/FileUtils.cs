@@ -1,4 +1,6 @@
 ﻿using PearXLib.Crypting;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace PearXLib
@@ -99,6 +101,65 @@ namespace PearXLib
             {
                 return true;
             }
+        }
+
+        private static List<string> files = new List<string>();
+
+        private static void _DirSearch(string dir)
+        {
+            foreach (string f in Directory.GetFiles(dir))
+                files.Add(f);
+            foreach (string d in Directory.GetDirectories(dir))
+            {
+                _DirSearch(d);
+            }
+        }
+
+        /// <summary>
+        /// Getting all files in directory and subdirectories.
+        /// </summary>
+        /// <param name="dir">Directory name.</param>
+        /// <returns>All files in directory and subdirectories.</returns>
+        public static string[] GetFilesInDir(string dir)
+        {
+            string[] list;
+            foreach (string f in Directory.GetFiles(dir))
+                files.Add(f);
+            foreach (string d in Directory.GetDirectories(dir))
+            {
+                _DirSearch(d);
+            }
+            list = files.ToArray();
+            files.Clear();
+            return list;
+        }
+
+        /// <summary>
+        /// Gets a relative path to the directory or file.
+        /// </summary>
+        /// <param name="fullpath">Full path to the directory.</param>
+        /// <param name="relativepath">Relative path.</param>
+        /// <returns>Relative path to the directory.</returns>
+        public static string GetRelativePath(string fullpath, string relativepath)
+        {
+            return Uri.UnescapeDataString(new Uri(relativepath).MakeRelativeUri(new Uri(fullpath)).ToString());
+        }
+
+        /// <summary>
+        /// Gets a relative path to the directory or file.
+        /// </summary>
+        /// <param name="fullpath">Full path to the directory.</param>
+        /// <param name="relativepath">Relative path.</param>
+        /// <returns>Relative path to the directory.</returns>
+        public static string[] GetRelativePath(string[] fullpath, string relativepath)
+        {
+            List<string> result = new List<string>();
+            Uri rp = new Uri(relativepath);
+            foreach(string s in fullpath)
+            {
+                result.Add(Uri.UnescapeDataString(rp.MakeRelativeUri(new Uri(s)).ToString()));
+            }
+            return result.ToArray();
         }
     }
 }
