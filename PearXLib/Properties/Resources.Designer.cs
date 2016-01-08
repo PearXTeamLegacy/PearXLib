@@ -28,9 +28,6 @@ namespace PearXLib.Properties {
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
-        /// <summary>
-        /// A public PearXLib resources.
-        /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public Resources() {
         }
@@ -69,15 +66,6 @@ namespace PearXLib.Properties {
         public static System.IO.UnmanagedMemoryStream bd {
             get {
                 return ResourceManager.GetStream("bd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
-        /// </summary>
-        public static System.IO.UnmanagedMemoryStream Error {
-            get {
-                return ResourceManager.GetStream("Error", resourceCulture);
             }
         }
     }

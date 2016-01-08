@@ -150,9 +150,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Error.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\bd.wav" />
   </ItemGroup>
   <ItemGroup>
