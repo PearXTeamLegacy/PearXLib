@@ -21,6 +21,7 @@ namespace PearXLib
             WebRequest wr = WebRequest.Create(url);
             wr.Method = "POST";
             wr.ContentType = "application/x-www-form-urlencoded";
+            wr.Proxy = new WebProxy();
             byte[] bytes = Encoding.ASCII.GetBytes(data);
             wr.ContentLength = bytes.Length;
             Stream str = wr.GetRequestStream();

@@ -25,7 +25,7 @@ namespace PearXLib.Engine
         private Image _ImageMinimizeBoxFocused = FormIcons.MinimizeBoxFocused;
         private Image _ImageToTrayBox = FormIcons.ToTrayBox;
         private Image _ImageToTrayBoxFocused = FormIcons.ToTrayBoxFocused;
-
+        
         private enum State { ResizeWS, ResizeEN, Move, None }
         private enum BarState { Close, ToTray, Maximize, None }
         private State state = State.None;

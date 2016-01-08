@@ -53,6 +53,19 @@ namespace PearXLib
         }
 
         /// <summary>
+        /// Initializates a new Logging component.
+        /// </summary>
+        /// <param name="logpath">Path to the log file.</param>
+        /// <param name="force">If true, deletes old log file.</param>
+        public Logging(string logpath, bool force)
+        {
+            FileUtils.createDir(Path.GetDirectoryName(logpath));
+            if (force)
+                File.Delete(logpath);
+            logPath = logpath;
+        }
+
+        /// <summary>
         /// Adds a line to a log.
         /// </summary>
         /// <param name="line">Message text</param>
