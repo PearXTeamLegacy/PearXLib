@@ -16,6 +16,7 @@ namespace PearXLib.Engine
         private int _BoxesDistance = 2;
         private int _BoxesTopDistance = 2;
         private Image _BarImage = FormIcons.BarImage;
+        private Color _TextColor = Color.Black;
 
         private Image _ImageCloseBox = FormIcons.CloseBox;
         private Image _ImageCloseBoxFocused = FormIcons.CloseBoxFocused;
@@ -27,12 +28,39 @@ namespace PearXLib.Engine
         private Image _ImageToTrayBoxFocused = FormIcons.ToTrayBoxFocused;
         
         private enum State { ResizeWS, ResizeEN, Move, None }
-        private enum BarState { Close, ToTray, Maximize, None }
+        /// <summary>
+        /// Bar state.
+        /// </summary>
+        public enum BarState
+        {
+            /// <summary>
+            /// Focused close button.
+            /// </summary>
+            Close,
+            /// <summary>
+            /// Focused to tray button.
+            /// </summary>
+            ToTray,
+            /// <summary>
+            /// Focused maximize button.
+            /// </summary>
+            Maximize,
+            /// <summary>
+            /// None focused.
+            /// </summary>
+            None
+        }
         private State state = State.None;
-        private BarState barstate = BarState.None;
+        /// <summary>
+        /// Last bar state.
+        /// </summary>
+        public BarState BarSt = BarState.None;
         private Point lastOffset;
         private Point lastMousePoint = MousePosition;
-        private bool maximizeState = false;
+        /// <summary>
+        /// True if form maximized, else false.
+        /// </summary>
+        public bool MaximizeState = false;
         private Size lastSize;
         private Point lastLocation;
         private int i = 0;
@@ -210,6 +238,16 @@ namespace PearXLib.Engine
             get { return _BarImage; }
             set { _BarImage = value; Refresh(); }
         }
+
+        /// <summary>
+        /// Color of the Form Name.
+        /// </summary>
+        [Description("Color of the Form Name."), DefaultValue(typeof(Color), "Black")]
+        public virtual Color TextColor
+        {
+            get { return _TextColor; }
+            set { _TextColor = value; Refresh(); }
+        }
         #endregion
 
         #region Private state
@@ -249,11 +287,11 @@ namespace PearXLib.Engine
             }
             if(CloseBox)
             {
-                if (barstate == BarState.Close)
+                if (BarSt == BarState.Close && ImageCloseBoxFocused != null)
                 {
                     e.Graphics.DrawImage(ImageCloseBoxFocused, Size.Width - (32 + BoxesDistance), BoxesTopDistance, 32, 32);
                 }
-                else
+                else if(ImageCloseBox != null)
                 {
                     e.Graphics.DrawImage(ImageCloseBox, Size.Width - (32 + BoxesDistance), BoxesTopDistance, 32, 32);
                 }
@@ -261,24 +299,24 @@ namespace PearXLib.Engine
 
             if(MaximizeBox)
             {
-                if (maximizeState == false)
+                if (MaximizeState == false)
                 {
-                    if (barstate == BarState.Maximize)
+                    if (BarSt == BarState.Maximize && ImageMaximizeBoxFocused != null)
                     {
                         e.Graphics.DrawImage(ImageMaximizeBoxFocused, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
-                    else
+                    else if(ImageMaximizeBox != null)
                     {
                         e.Graphics.DrawImage(ImageMaximizeBox, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
                 }
                 else
                 {
-                    if (barstate == BarState.Maximize)
+                    if (BarSt == BarState.Maximize && ImageMinimizeBoxFocused != null)
                     {
                         e.Graphics.DrawImage(ImageMinimizeBoxFocused, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
-                    else
+                    else if(ImageMinimizeBox != null)
                     {
                         e.Graphics.DrawImage(ImageMinimizeBox, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
@@ -287,14 +325,19 @@ namespace PearXLib.Engine
 
             if (ToTrayBox)
             {
-                if (barstate == BarState.ToTray)
+                if (BarSt == BarState.ToTray && ImageToTrayBoxFocused != null)
                 {
                     e.Graphics.DrawImage(ImageToTrayBoxFocused, Size.Width - (96 + (BoxesDistance * 3)), BoxesTopDistance, 32, 32);
                 }
-                else
+                else if (ImageToTrayBox != null)
                 {
                     e.Graphics.DrawImage(ImageToTrayBox, Size.Width - (96 + (BoxesDistance * 3)), BoxesTopDistance, 32, 32);
                 }
+            }
+
+            if (Text != null)
+            {
+                e.Graphics.DrawString(Text, Font, new SolidBrush(TextColor), new PointF(1, 1));
             }
         }
 
@@ -315,9 +358,10 @@ namespace PearXLib.Engine
             //Close Box:
             if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (32 + BoxesDistance), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - BoxesDistance, Location.Y + (32 + BoxesTopDistance))) && CloseBox)
             {
-                if (barstate != BarState.Close)
+                if (BarSt != BarState.Close)
                 {
-                    barstate = BarState.Close;
+                    BarSt = BarState.Close;
+                    Cursor = Cursors.Hand;
                     Refresh();
                 }
             }
@@ -325,9 +369,10 @@ namespace PearXLib.Engine
             //Maximize Box:
             else if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (64 + (BoxesDistance * 2)), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - (32 + (BoxesDistance * 2)), Location.Y + (32 + BoxesTopDistance))) && MaximizeBox)
             {
-                if (barstate != BarState.Maximize)
+                if (BarSt != BarState.Maximize)
                 {
-                    barstate = BarState.Maximize;
+                    BarSt = BarState.Maximize;
+                    Cursor = Cursors.Hand;
                     Refresh();
                 }
             }
@@ -335,21 +380,24 @@ namespace PearXLib.Engine
             //ToTray Box:
             else if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (96 + (BoxesDistance * 3)), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - (64 + (BoxesDistance * 3)), Location.Y + (32 + BoxesTopDistance))) && ToTrayBox)
             {
-                if (barstate != BarState.ToTray)
+                if (BarSt != BarState.ToTray)
                 {
-                    barstate = BarState.ToTray;
+                    BarSt = BarState.ToTray;
+                    Cursor = Cursors.Hand;
                     Refresh();
                 }
             }
 
-            else if (barstate != BarState.None)
+            else if (BarSt != BarState.None)
             {
-                barstate = BarState.None;
+                BarSt = BarState.None;
                 i = 0;
                 Refresh();
             }
+            else
+                Cursor = Cursors.Arrow;
 
-            if (barstate != BarState.None)
+            if (BarSt != BarState.None)
             {
                 if (BarIconFocused != null && i == 0)
                     BarIconFocused(this, new EventArgs());
@@ -374,15 +422,15 @@ namespace PearXLib.Engine
 
         private void XForm_MouseUp(object sender, MouseEventArgs e)
         {
-            if (barstate == BarState.Close && CloseBox)
+            if (BarSt == BarState.Close && CloseBox)
             {
                 base.Close();
             }
-            else if (barstate == BarState.Maximize && MaximizeBox)
+            else if (BarSt == BarState.Maximize && MaximizeBox)
             {
-                if (maximizeState == false)
+                if (MaximizeState == false)
                 {
-                    maximizeState = true;
+                    MaximizeState = true;
                     lastLocation = Location;
                     lastSize = Size;
                     Location = new Point(0, 0);
@@ -393,7 +441,7 @@ namespace PearXLib.Engine
                 }
                 else
                 {
-                    maximizeState = false;
+                    MaximizeState = false;
                     Location = lastLocation;
                     Size = lastSize;
                     Refresh();
@@ -401,7 +449,7 @@ namespace PearXLib.Engine
                         Minimized(this, new EventArgs());
                 }
             }
-            else if (barstate == BarState.ToTray && ToTrayBox)
+            else if (BarSt == BarState.ToTray && ToTrayBox)
             {
                 if (WindowState != FormWindowState.Minimized)
                 {
@@ -420,7 +468,7 @@ namespace PearXLib.Engine
 
         private void XForm_MouseLeave(object sender, EventArgs e)
         {
-            barstate = BarState.None;
+            BarSt = BarState.None;
             Refresh();
         }
     }

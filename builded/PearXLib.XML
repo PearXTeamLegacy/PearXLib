@@ -132,6 +132,61 @@
             # * #
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.Flat.FlatForm">
+            <summary>
+            Flat Form.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.Flat.FlatForm.#ctor">
+            <summary>
+            Initializes a new XForm component.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.CloseBoxColor">
+            <summary>
+            Color of the close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.CloseBoxFColor">
+            <summary>
+            Color of the focused close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.MinMaxBoxColor">
+            <summary>
+            Color of the minimize and maximize boxes.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.MinMaxBoxFColor">
+            <summary>
+            Color of the focused minimize and maximize boxes.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.ToTrayBoxColor">
+            <summary>
+            Color of the to tray box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.ToTrayBoxFColor">
+            <summary>
+            Color of the focused to tray box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.PanelBG">
+            <summary>
+            Color of the panel.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.RimColor">
+            <summary>
+            Color of the form rim.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.Rim">
+            <summary>
+            Enable form rim?
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.FormIcons">
             <summary>
               Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
@@ -241,6 +296,41 @@
             A beautiful customizing form.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XForm.BarState">
+            <summary>
+            Bar state.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.Close">
+            <summary>
+            Focused close button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.ToTray">
+            <summary>
+            Focused to tray button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.Maximize">
+            <summary>
+            Focused maximize button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.None">
+            <summary>
+            None focused.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarSt">
+            <summary>
+            Last bar state.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.MaximizeState">
+            <summary>
+            True if form maximized, else false.
+            </summary>
+        </member>
         <member name="M:PearXLib.Engine.XForm.#ctor">
             <summary>
             Initializates a new XForm component.
@@ -339,6 +429,11 @@
         <member name="P:PearXLib.Engine.XForm.BarImage">
             <summary>
             Form bar background image.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.TextColor">
+            <summary>
+            Color of the Form Name.
             </summary>
         </member>
         <member name="F:PearXLib.Engine.XForm.components">
@@ -834,6 +929,38 @@
             <param name="relativepath">Relative path.</param>
             <returns>Relative path to the directory.</returns>
         </member>
+        <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String[],System.Int16,System.Boolean)">
+            <summary>
+            Saves the app with using encryption.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <param name="save">Strings to save.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.Int16,System.Boolean)">
+            <summary>
+            Loads the app with using encryption.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.Save(System.String,System.String[])">
+            <summary>
+            Saves the app.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <param name="save">Save (string array).</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.Load(System.String)">
+            <summary>
+            Loads the app.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <returns>Loaded string array.</returns>
+        </member>
         <member name="T:PearXLib.Forms.SelectLang">
             <summary>
             A language selection form.
@@ -1107,6 +1234,13 @@
             </summary>
             <returns>A path to a Java folder.</returns>
         </member>
+        <member name="M:PearXLib.PXL.GetFromPC(System.String)">
+            <summary>
+            Gets an PC info
+            </summary>
+            <param name="what">Caption</param>
+            <returns>Result</returns>
+        </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>
             PearXLib random utilities.
@@ -1222,6 +1356,15 @@
             </summary>
             <param name="domain">The domain, that you want to ping.</param>
             <returns>True, if Internet connection is avaible, else returns false.</returns>
+        </member>
+        <member name="M:PearXLib.WebUtils.SendPOSTRequest(System.String,System.String,System.String)">
+            <summary>
+            Sends a POST request to the site.
+            </summary>
+            <param name="url">Site URL.</param>
+            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+            <param name="ct">Content Type</param>
+            <returns>Web response.</returns>
         </member>
     </members>
 </doc>

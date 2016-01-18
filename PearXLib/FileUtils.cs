@@ -161,5 +161,67 @@ namespace PearXLib
             }
             return result.ToArray();
         }
+
+        /// <summary>
+        /// Saves the app with using encryption.
+        /// </summary>
+        /// <param name="path">Path to the save file.</param>
+        /// <param name="save">Strings to save.</param>
+        /// <param name="salt">Encryption salt.</param>
+        /// <param name="useMultiple">Use multiple encryption?</param>
+        public static void SaveEnc(string path, string[] save, short salt, bool useMultiple)
+        {
+            string saveEncrypted = "";
+            if (!useMultiple)
+            {
+                saveEncrypted = CA_PXM.Enrypt(PXL.GetStringFromArray(save), salt);
+            }
+            else
+            {
+                saveEncrypted = CA_PXMx.Enrypt(PXL.GetStringFromArray(save), salt, 2);
+            }
+            File.WriteAllText(path, saveEncrypted);
+        }
+
+        /// <summary>
+        /// Loads the app with using encryption.
+        /// </summary>
+        /// <param name="path">Path to the save file.</param>
+        /// <param name="salt">Encryption salt.</param>
+        /// <param name="useMultiple">Use multiple encryption?</param>
+        /// <returns>Loaded string array.</returns>
+        public static string[] LoadEnc(string path, short salt, bool useMultiple)
+        {
+            string decrypted = "";
+            if (!useMultiple)
+            {
+                decrypted = CA_PXM.Decrypt(File.ReadAllText(path), salt);
+            }
+            else
+            {
+                decrypted = CA_PXMx.Decrypt(File.ReadAllText(path), salt, 2);
+            }
+            return PXL.GetArrayFromString(decrypted);
+        }
+
+        /// <summary>
+        /// Saves the app.
+        /// </summary>
+        /// <param name="path">Path to the save file.</param>
+        /// <param name="save">Save (string array).</param>
+        public static void Save(string path, string[] save)
+        {
+            File.WriteAllLines(path, save);
+        }
+
+        /// <summary>
+        /// Loads the app.
+        /// </summary>
+        /// <param name="path">Path to the save file.</param>
+        /// <returns>Loaded string array.</returns>
+        public static string[] Load(string path)
+        {
+            return File.ReadAllLines(path);
+        }
     }
 }

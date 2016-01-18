@@ -51,5 +51,29 @@ namespace PearXLib
         {
             return new Ping().Send(domain).Status == IPStatus.Success;
         }
+
+        /// <summary>
+        /// Sends a POST request to the site.
+        /// </summary>
+        /// <param name="url">Site URL.</param>
+        /// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+        /// <param name="ct">Content Type</param>
+        /// <returns>Web response.</returns>
+        public static string SendPOSTRequest(string url, string data, string ct)
+        {
+            WebRequest wr = WebRequest.Create(url);
+            wr.Method = "POST";
+            wr.ContentType = ct;
+            wr.Proxy = new WebProxy();
+            byte[] bytes = Encoding.ASCII.GetBytes(data);
+            wr.ContentLength = bytes.Length;
+            Stream str = wr.GetRequestStream();
+            str.Write(bytes, 0, bytes.Length);
+            str.Close();
+            using (StreamReader sr = new StreamReader(wr.GetResponse().GetResponseStream()))
+            {
+                return sr.ReadToEnd().Trim();
+            }
+        }
     }
 }

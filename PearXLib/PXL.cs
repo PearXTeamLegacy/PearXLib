@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Management;
 
 namespace PearXLib
 {
@@ -16,7 +17,7 @@ namespace PearXLib
          * =========================
          * ======PearX Library======
          * =====Open Source Lib=====
-         * =========pearx.ru========
+         * ===github.com/mrAppleXZ==
          * =========================
          */
 
@@ -28,7 +29,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static readonly string ver = "34";
+        public static readonly string ver = "35";
 
         /// <summary>
         /// Directory sepator.
@@ -642,7 +643,7 @@ namespace PearXLib
         public static string GetDateTimeNow()
         {
             DateTime dt = DateTime.Now;
-            return dt.Day + "-" + dt.Month + "-" + dt.Year + "_" + dt.Hour + "." + dt.Minute + "." + dt.Second;
+            return dt.ToString("dd.MM.yyyy_HH-mm-ss");
         }
 
         /// <summary>
@@ -682,19 +683,27 @@ namespace PearXLib
         public static string GetJavaPath()
         {
             RegistryView rv;
-            if(Environment.Is64BitOperatingSystem)
-            {
-                rv = RegistryView.Registry64;
-            }
-            else
-            {
-                rv = RegistryView.Registry32;
-            }
+            rv = RegistryView.Registry64;
             using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv).OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
             {
                 using (var homeKey = baseKey.OpenSubKey(baseKey.GetValue("CurrentVersion").ToString()))
                    return homeKey.GetValue("JavaHome").ToString();
             }
+        }
+
+        /// <summary>
+        /// Gets an PC info
+        /// </summary>
+        /// <param name="what">Caption</param>
+        /// <returns>Result</returns>
+        public static string GetFromPC(string what)
+        {
+            ManagementObjectSearcher ser = new ManagementObjectSearcher("SELECT " + what + " FROM Win32_OperatingSystem");
+            foreach(ManagementObject mo in ser.Get())
+            {
+                return mo[what].ToString();
+            }
+            return null;
         }
     }
 }
