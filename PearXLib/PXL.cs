@@ -13,6 +13,17 @@ namespace PearXLib
     /// </summary>
     public class PXL
     {
+        /*
+         *   ______             __   __  _     _ _                          
+         *   | ___ \            \ \ / / | |   (_) |                         
+         *   | |_/ /__  __ _ _ __\ V /  | |    _| |__  _ __ __ _ _ __ _   _ 
+         *   |  __/ _ \/ _` | '__/   \  | |   | | '_ \| '__/ _` | '__| | | |
+         *   | | |  __/ (_| | | / /^\ \ | |___| | |_) | | | (_| | |  | |_| |
+         *   \_|  \___|\__,_|_| \/   \/ \_____/_|_.__/|_|  \__,_|_|   \__, |
+         *                                                             __/ |
+         *                                                            |___/ 
+         */
+
         /* 
          * =========================
          * ======PearX Library======
@@ -29,7 +40,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static readonly string ver = "35";
+        public static readonly string ver = "36";
 
         /// <summary>
         /// Directory sepator.

@@ -54,6 +54,9 @@
     <Compile Include="Crypting\CA_PXM.cs" />
     <Compile Include="d.cs" />
     <Compile Include="Engine\Align.cs" />
+    <Compile Include="Engine\Flat\FlatButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Engine\Flat\FlatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +67,12 @@
     </Compile>
     <Compile Include="Engine\InvItemEventArgs.cs" />
     <Compile Include="Engine\XBarEventArgs.cs" />
+    <Compile Include="Engine\XButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Engine\XButtonBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Engine\XForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,12 +96,6 @@
     </Compile>
     <Compile Include="Engine\XImgButton.Designer.cs">
       <DependentUpon>XImgButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Engine\XButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XButton.Designer.cs">
-      <DependentUpon>XButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine\XIcon.cs">
       <SubType>UserControl</SubType>
@@ -137,9 +140,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Engine\XImgButton.resx">
       <DependentUpon>XImgButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Engine\XButton.resx">
-      <DependentUpon>XButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engine\XIcon.resx">
       <DependentUpon>XIcon.cs</DependentUpon>

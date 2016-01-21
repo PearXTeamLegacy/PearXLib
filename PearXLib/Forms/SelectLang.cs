@@ -20,11 +20,11 @@ namespace PearXLib.Forms
         /// <summary>
         /// Initializates a new SelectLang component.
         /// </summary>
-        /// <param name="appname">Application name.</param>
-        public SelectLang(string appname)
+        /// <param name="dir">Path to langs (with slash).</param>
+        public SelectLang(string dir)
         {
             InitializeComponent();
-            string[] listoffiles = Directory.GetFiles(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s);
+            string[] listoffiles = Directory.GetFiles(dir);
             listoflangs = new String[listoffiles.Length];
             string lang;
             int count = 0;
@@ -37,7 +37,7 @@ namespace PearXLib.Forms
                     bool errored = false;
                     try
                     {
-                        str = File.ReadAllText(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s + lang + ".langinfo");
+                        str = File.ReadAllText(dir + lang + ".langinfo");
                     }
                     catch { errored = true; }
                     if (!errored)

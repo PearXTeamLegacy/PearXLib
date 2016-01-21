@@ -291,6 +291,81 @@
             Bar value in percents.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColor1">
+            <summary>
+            The button's gradient color 1.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColor2">
+            <summary>
+            The button's gradient color 2.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColorFocused1">
+            <summary>
+            The focused button's gradient color 1.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColorFocused2">
+            <summary>
+            The focused button's gradient color 2.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.ColorPressed">
+            <summary>
+            A color of the pressed button.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XButtonState">
+            <summary>
+            Button state enum.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XButtonState.FOCUSED">
+            <summary>
+            Mouse is on the button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XButtonState.CLICKED">
+            <summary>
+            Mouse is clicked the button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XButtonState.NONE">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.State">
+            <summary>
+            Current button state.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.ImageAlign">
+            <summary>
+            Image alignment.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.TextAlign">
+            <summary>
+            Text alignment.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.Text">
+            <summary>
+            The text on the button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.Image">
+            <summary>
+            The image on the button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.Border">
+            <summary>
+            The distance from button top.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XForm">
             <summary>
             A beautiful customizing form.
@@ -698,93 +773,6 @@
             содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
-        <member name="T:PearXLib.Engine.XButton">
-            <summary>
-            A beautiful button from PearX Engine.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XButton.#ctor">
-            <summary>
-            Initializes a new XButton component.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.GradientColor1">
-            <summary>
-            A button gradient color 1. 
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.GradientColor2">
-            <summary>
-            A button gradient color 2.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.ButtonText">
-            <summary>
-            A text on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.Image">
-            <summary>
-            An image on a button
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.ButtonTextAlign">
-            <summary>
-            Text align on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.ImageAlign">
-            <summary>
-            Image align on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.GradientColorFocused1">
-            <summary>
-            A focused button gradient color 1.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.GradientColorFocused2">
-            <summary>
-            A focused button gradient color 2.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.ColorPressed">
-            <summary>
-            A color of a pressed button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.ButtonTextColor">
-            <summary>
-            A color of a text on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.Font">
-            <summary>
-            Control font.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XButton.BackColor">
-            <summary>
-            Control background color.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XButton.components">
-            <summary> 
-            Требуется переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XButton.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XButton.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
-            </summary>
-        </member>
         <member name="T:PearXLib.Engine.XIcon">
             <summary>
             An expanding icon from PearX Engine.
@@ -975,7 +963,7 @@
             <summary>
             Initializates a new SelectLang component.
             </summary>
-            <param name="appname">Application name.</param>
+            <param name="dir">Path to langs (with slash).</param>
         </member>
         <member name="F:PearXLib.Forms.SelectLang.components">
             <summary>
@@ -1010,7 +998,7 @@
             <summary>
             Initializes a new localization component.
             </summary>
-            <param name="appname">Application name.</param>
+            <param name="dir">Path to the lang dir (with slash).</param>
             <param name="langname">Language name.</param>
         </member>
         <member name="M:PearXLib.Localization.GetString(System.String)">

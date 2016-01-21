@@ -21,11 +21,11 @@ namespace PearXLib
         /// <summary>
         /// Initializes a new localization component.
         /// </summary>
-        /// <param name="appname">Application name.</param>
+        /// <param name="dir">Path to the lang dir (with slash).</param>
         /// <param name="langname">Language name.</param>
-        public Localization(string appname, string langname)
+        public Localization(string dir, string langname)
         {
-            string[] str = File.ReadAllLines(d.pxDir + PXL.s + appname + PXL.s + "langs" + PXL.s + langname + ".lang");
+            string[] str = File.ReadAllLines(dir + langname + ".lang");
             locnms = new String[str.Length];
             vls = new String[str.Length];
             int count = 0;
