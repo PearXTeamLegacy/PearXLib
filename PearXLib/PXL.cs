@@ -716,5 +716,17 @@ namespace PearXLib
             }
             return null;
         }
+
+        /// <summary>
+        /// Gets a control's center.
+        /// </summary>
+        /// <param name="parent">Control's parent form.</param>
+        /// <param name="p">Control's location.</param>
+        /// <param name="s">Control's size.</param>
+        /// <returns></returns>
+        public static Point GetControlCenter(Form parent, Point p, Size s)
+        {
+            return new Point((parent.Width - s.Width) / 2, p.Y);
+        }
     }
 }

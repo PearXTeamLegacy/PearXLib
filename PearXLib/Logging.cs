@@ -74,7 +74,7 @@ namespace PearXLib
         {
             string newStr = "[" + DateTime.Now + "]" + "[" + lt.ToString() + "]" + line + "\n";
             Log += newStr;
-            File.AppendAllLines(logPath, new string[]{newStr});
+            File.AppendAllText(logPath, newStr);
             if (LogChanged != null)
             {
                 LogChanged(this, new EventArgs());
@@ -90,7 +90,7 @@ namespace PearXLib
         {
             string newStr = "[" + DateTime.Now + "]" + "[" + prefix + "]" + line + "\n";
             Log += newStr;
-            File.AppendAllLines(logPath, new string[] { newStr });
+            File.AppendAllText(logPath, newStr);
             if (LogChanged != null)
             {
                 LogChanged(this, new EventArgs());

@@ -1229,6 +1229,15 @@
             <param name="what">Caption</param>
             <returns>Result</returns>
         </member>
+        <member name="M:PearXLib.PXL.GetControlCenter(System.Windows.Forms.Form,System.Drawing.Point,System.Drawing.Size)">
+            <summary>
+            Gets a control's center.
+            </summary>
+            <param name="parent">Control's parent form.</param>
+            <param name="p">Control's location.</param>
+            <param name="s">Control's size.</param>
+            <returns></returns>
+        </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>
             PearXLib random utilities.
