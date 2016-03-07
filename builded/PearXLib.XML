@@ -264,6 +264,39 @@
             Item amount.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.LangEventArgs">
+            <summary>
+            EventArgs for the ListBoxSelectLang.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.LangEventArgs.#ctor(System.String)">
+            <summary>
+            Initializates a new LangEventArgs component.
+            </summary>
+            <param name="selected">Selected language name.</param>
+        </member>
+        <member name="P:PearXLib.Engine.LangEventArgs.SelectedLang">
+            <summary>
+            Selected language name.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.ListBoxSelectLang.LangEventHandler">
+            <summary>
+            Language Event Handler
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Args</param>
+        </member>
+        <member name="E:PearXLib.Engine.ListBoxSelectLang.LanguageSelected">
+            <summary>
+            Performs on language selected.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.ListBoxSelectLang.PathToLangs">
+            <summary>
+            Path to langfiles (with slash)
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XBarEventArgs">
             <summary>
             XBar event arguments.

@@ -66,6 +66,7 @@
       <DependentUpon>FormIcons.resx</DependentUpon>
     </Compile>
     <Compile Include="Engine\InvItemEventArgs.cs" />
+    <Compile Include="Engine\ListBoxSelectLang.cs" />
     <Compile Include="Engine\XBarEventArgs.cs" />
     <Compile Include="Engine\XButton.cs">
       <SubType>UserControl</SubType>

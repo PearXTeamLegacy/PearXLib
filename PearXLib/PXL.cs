@@ -698,7 +698,7 @@ namespace PearXLib
             using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv).OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
             {
                 using (var homeKey = baseKey.OpenSubKey(baseKey.GetValue("CurrentVersion").ToString()))
-                   return homeKey.GetValue("JavaHome").ToString();
+                    return homeKey.GetValue("JavaHome").ToString();
             }
         }
 

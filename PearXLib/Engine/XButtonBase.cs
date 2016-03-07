@@ -72,8 +72,11 @@ namespace PearXLib.Engine
         /// <summary>
         /// The text on the button.
         /// </summary>
-        [DefaultValue("A button.")]
-        public new string Text
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Bindable(true)]
+        public override string Text
         {
             get { return _Text; }
             set { _Text = value; Refresh(); }

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Timers;
 using System.Threading.Tasks;
 using System.Threading;
+using System.ComponentModel;
 
 namespace PearXLib.Engine.Flat
 {
@@ -21,12 +22,14 @@ namespace PearXLib.Engine.Flat
         }
 
         #region Params
+        [DefaultValue(typeof(Color), "18, 107, 166")]
         public Color Color
         {
             get { return _Color; }
             set { _Color = value; Refresh(); }
         }
 
+        [DefaultValue(typeof(Color), "41, 128, 185")]
         public Color ColorFocused
         {
             get { return _ColorFocused; }
@@ -55,19 +58,21 @@ namespace PearXLib.Engine.Flat
                         bm = new Bitmap(Width, Height);
                         Thread thr = new Thread(() =>
                         {
-                        using (Graphics gr = Graphics.FromImage(bm))
-                        {
-                            isDrawing = true;
-                            int x = MousePosition.X - Parent.Location.X - Location.X;
-                            int y = MousePosition.Y - Parent.Location.Y - Location.Y;
-                            for (int i = 0; i <= Width * 2; i++)
+                            using (Graphics gr = Graphics.FromImage(bm))
                             {
-                                gr.FillRectangle(new SolidBrush(ColorFocused), rect);
-                                //From center:
-                                //gr.FillEllipse(new SolidBrush(Color), (Width - i) / 2, (Height - i) / 2, i, i);
-                                gr.FillEllipse(new SolidBrush(Color), x - i / 2, y - i / 2, i, i);
-                                try { Invoke(new MethodInvoker(() => { Refresh(); })); } catch { }
-                                    if(i == Width * 2)
+                                isDrawing = true;
+                                int x = MousePosition.X - Parent.Location.X - Location.X;
+                                int y = MousePosition.Y - Parent.Location.Y - Location.Y;
+                                int j = 0;
+                                for (int i = 0; i <= Width * 2; i++)
+                                {
+                                    gr.FillRectangle(new SolidBrush(ColorFocused), rect);
+                                    //From center:
+                                    //gr.FillEllipse(new SolidBrush(Color), (Width - i) / 2, (Height - i) / 2, i, i);
+                                    gr.FillEllipse(new SolidBrush(Color), x - i / 2, y - i / 2, i, i);
+                                    try { Invoke(new MethodInvoker(() => { Refresh(); })); }
+                                    catch { }
+                                    if (i == Width * 2)
                                     {
                                         isDrawing = false;
                                     }
