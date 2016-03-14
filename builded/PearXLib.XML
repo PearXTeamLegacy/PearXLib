@@ -248,6 +248,43 @@
               Поиск локализованного ресурса типа System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.IndicatorType">
+            <summary>
+            Type of the Indicator
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.IndicatorType.ThreeLines">
+            <summary>
+            Red, Yellow, Green lines on the Indicator.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.IndicatorType.Gradient">
+            <summary>
+            Red => Green gradient.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.Indicator.#ctor">
+            <summary>
+            Initializes a new Indicator.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Indicator.components">
+            <summary> 
+            Обязательная переменная конструктора.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.Indicator.Dispose(System.Boolean)">
+            <summary> 
+            Освободить все используемые ресурсы.
+            </summary>
+            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        </member>
+        <member name="M:PearXLib.Engine.Indicator.InitializeComponent">
+            <summary> 
+            Требуемый метод для поддержки конструктора — не изменяйте 
+            содержимое этого метода с помощью редактора кода.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.InvItemEventArgs">
             <summary>
             Inventory Item event arguments.

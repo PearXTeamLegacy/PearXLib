@@ -68,6 +68,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FormIcons.resx</DependentUpon>
     </Compile>
+    <Compile Include="Engine\Indicator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Engine\Indicator.Designer.cs">
+      <DependentUpon>Indicator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Engine\InvItemEventArgs.cs" />
     <Compile Include="Engine\ListBoxSelectLang.cs" />
     <Compile Include="Engine\XBarEventArgs.cs" />
@@ -132,6 +138,9 @@
     <EmbeddedResource Include="Engine\FormIcons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormIcons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Engine\Indicator.resx">
+      <DependentUpon>Indicator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Engine\XForm.resx">
       <DependentUpon>XForm.cs</DependentUpon>
