@@ -65,18 +65,14 @@ namespace PearXLib.Engine
                         {
                             lang = Path.GetFileNameWithoutExtension(s);
                             string str = string.Empty;
-                            bool errored = false;
                             try
                             {
                                 str = File.ReadAllText(value + lang + ".langinfo");
-                            }
-                            catch { errored = true; }
-                            if (!errored)
-                            {
                                 Items.Add(str);
                                 listoflangs[count] = lang;
                                 count++;
                             }
+                            catch {}
                         }
                     }
                     _Path = value;
@@ -89,7 +85,10 @@ namespace PearXLib.Engine
             base.OnSelectedIndexChanged(e);
             if (SelectedIndex != -1 && SelectedIndex <= listoflangs.Length)
             {
-                LanguageSelected(this, new LangEventArgs(listoflangs[SelectedIndex]));
+                if (LanguageSelected != null)
+                {
+                    LanguageSelected(this, new LangEventArgs(listoflangs[SelectedIndex]));
+                }
             }
         }
     }

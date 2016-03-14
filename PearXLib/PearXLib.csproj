@@ -54,6 +54,9 @@
     <Compile Include="Crypting\CA_PXM.cs" />
     <Compile Include="d.cs" />
     <Compile Include="Engine\Align.cs" />
+    <Compile Include="Engine\Flat\FlatBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Engine\Flat\FlatButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
