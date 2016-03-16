@@ -22,7 +22,12 @@ namespace PearXLib.Engine
         /// <summary>
         /// Red => Green gradient.
         /// </summary>
-        Gradient
+        Gradient,
+
+        /// <summary>
+        /// Red, Yellow, Green triangles on the Indicator.
+        /// </summary>
+        ThreeTriangles
     }
 
     public partial class Indicator : UserControl
@@ -78,9 +83,17 @@ namespace PearXLib.Engine
                     SolidBrush b1 = new SolidBrush(Color1);
                     SolidBrush b2 = new SolidBrush(Color2);
                     SolidBrush b3 = new SolidBrush(Color3);
-                    e.Graphics.FillRectangle(b3, 0, 0, 3, Width);
+                    e.Graphics.FillRectangle(b3, 0, 0, 3, Height);
                     e.Graphics.FillRectangle(b1, Width - 3, 0, 3, Height);
                     e.Graphics.FillRectangle(b2, (Width - 3) / 2, 0, 3, Height);
+                    break;
+                case IndicatorType.ThreeTriangles:
+                    b1 = new SolidBrush(Color1);
+                    b2 = new SolidBrush(Color2);
+                    b3 = new SolidBrush(Color3);
+                    e.Graphics.FillPolygon(b3, new PointF[] { new PointF(0, Height), new PointF(10, Height), new PointF(5, 0)});
+                    e.Graphics.FillPolygon(b1, new PointF[] { new PointF(Width, Height), new PointF(Width - 10, Height), new PointF(Width - 5, 0) });
+                    e.Graphics.FillPolygon(b2, new PointF[] { new PointF((Width - 10) / 2, Height), new PointF((Width + 10) / 2, Height), new PointF((Width / 2), 0) });
                     break;
             }
             base.OnPaint(e);

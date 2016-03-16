@@ -263,6 +263,11 @@
             Red => Green gradient.
             </summary>
         </member>
+        <member name="F:PearXLib.Engine.IndicatorType.ThreeTriangles">
+            <summary>
+            Red, Yellow, Green triangles on the Indicator.
+            </summary>
+        </member>
         <member name="M:PearXLib.Engine.Indicator.#ctor">
             <summary>
             Initializes a new Indicator.
