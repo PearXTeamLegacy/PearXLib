@@ -71,9 +71,6 @@
     <Compile Include="Engine\Indicator.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\Indicator.Designer.cs">
-      <DependentUpon>Indicator.cs</DependentUpon>
-    </Compile>
     <Compile Include="Engine\InvItemEventArgs.cs" />
     <Compile Include="Engine\ListBoxSelectLang.cs" />
     <Compile Include="Engine\XBarEventArgs.cs" />
@@ -92,26 +89,14 @@
     <Compile Include="Engine\InvItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\InvItem.Designer.cs">
-      <DependentUpon>InvItem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Engine\XBar.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XBar.Designer.cs">
-      <DependentUpon>XBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine\XImgButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XImgButton.Designer.cs">
-      <DependentUpon>XImgButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="Engine\XIcon.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XIcon.Designer.cs">
-      <DependentUpon>XIcon.cs</DependentUpon>
     </Compile>
     <Compile Include="FileUtils.cs" />
     <Compile Include="Forms\SelectLang.cs">
@@ -139,23 +124,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormIcons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Engine\Indicator.resx">
-      <DependentUpon>Indicator.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Engine\XForm.resx">
       <DependentUpon>XForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Engine\InvItem.resx">
-      <DependentUpon>InvItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Engine\XBar.resx">
-      <DependentUpon>XBar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Engine\XImgButton.resx">
-      <DependentUpon>XImgButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Engine\XIcon.resx">
-      <DependentUpon>XIcon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectLang.resx">
       <DependentUpon>SelectLang.cs</DependentUpon>

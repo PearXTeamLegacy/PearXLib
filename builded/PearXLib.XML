@@ -273,23 +273,6 @@
             Initializes a new Indicator.
             </summary>
         </member>
-        <member name="F:PearXLib.Engine.Indicator.components">
-            <summary> 
-            Обязательная переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.Indicator.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.Indicator.InitializeComponent">
-            <summary> 
-            Требуемый метод для поддержки конструктора — не изменяйте 
-            содержимое этого метода с помощью редактора кода.
-            </summary>
-        </member>
         <member name="T:PearXLib.Engine.InvItemEventArgs">
             <summary>
             Inventory Item event arguments.
@@ -660,26 +643,9 @@
             Amount label color.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.InvItem.Font">
-            <summary>
-            A font of an InvItem.
-            </summary>
-        </member>
         <member name="P:PearXLib.Engine.InvItem.BackColor">
             <summary>
             Control background color.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.InvItem.Dispose(System.Boolean)">
-            <summary> 
-            Dispose all using resources.
-            </summary>
-            <param name="disposing">true, if controlled resource should be disposed; else false.</param>
-        </member>
-        <member name="M:PearXLib.Engine.InvItem.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
         <member name="T:PearXLib.Engine.XBar">
@@ -744,66 +710,9 @@
             Control's background color.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XBar.Font">
-            <summary>
-            A font of a text on a bar.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XBar.components">
-            <summary> 
-            Требуется переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XBar.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XBar.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
-            </summary>
-        </member>
         <member name="T:PearXLib.Engine.XImgButton">
             <summary>
             A beautiful button from PearX Engine.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XImgButton.#ctor">
-            <summary>
-            Initializes a new XImgButton component.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XImgButton.ButtonText">
-            <summary>
-            A text on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XImgButton.Image">
-            <summary>
-            An image on a button
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XImgButton.ButtonTextAlign">
-            <summary>
-            Text align on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XImgButton.ImageAlign">
-            <summary>
-            Image align on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XImgButton.ButtonTextColor">
-            <summary>
-            A color of a text on a button.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XImgButton.Font">
-            <summary>
-            Control font.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XImgButton.BackImage">
@@ -829,23 +738,6 @@
         <member name="P:PearXLib.Engine.XImgButton.BackColor">
             <summary>
             Control background color.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XImgButton.components">
-            <summary> 
-            Требуется переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XImgButton.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XImgButton.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
         <member name="T:PearXLib.Engine.XIcon">
@@ -896,23 +788,6 @@
         <member name="P:PearXLib.Engine.XIcon.TitleWidthHeight">
             <summary>
             Title size and width.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XIcon.components">
-            <summary> 
-            Требуется переменная конструктора.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XIcon.Dispose(System.Boolean)">
-            <summary> 
-            Освободить все используемые ресурсы.
-            </summary>
-            <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XIcon.InitializeComponent">
-            <summary> 
-            Обязательный метод для поддержки конструктора - не изменяйте 
-            содержимое данного метода при помощи редактора кода.
             </summary>
         </member>
         <member name="T:PearXLib.FileUtils">
@@ -1149,6 +1024,12 @@
             </summary>
             <param name="line">Message text</param>
             <param name="prefix">Prefix (if prefix equals "a simple prefix =)", then log string equals "[DATETIME][a simple prefix =)]MESSAGE"</param>
+        </member>
+        <member name="M:PearXLib.Logging.Add(System.String)">
+            <summary>
+            Adds a line to a log.
+            </summary>
+            <param name="line">Message text</param>
         </member>
         <member name="T:PearXLib.MathsUtils">
             <summary>

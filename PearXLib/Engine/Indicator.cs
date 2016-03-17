@@ -30,7 +30,7 @@ namespace PearXLib.Engine
         ThreeTriangles
     }
 
-    public partial class Indicator : UserControl
+    public class Indicator : UserControl
     {
         private IndicatorType it = IndicatorType.Gradient;
         private Color c1 = Color.Green;
@@ -68,7 +68,8 @@ namespace PearXLib.Engine
         /// </summary>
         public Indicator()
         {
-            InitializeComponent();
+            Size = new Size(273, 84);
+            BackColor = Color.Transparent;
         }
 
         protected override void OnPaint(PaintEventArgs e)

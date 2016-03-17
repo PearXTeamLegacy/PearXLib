@@ -96,5 +96,20 @@ namespace PearXLib
                 LogChanged(this, new EventArgs());
             }
         }
+
+        /// <summary>
+        /// Adds a line to a log.
+        /// </summary>
+        /// <param name="line">Message text</param>
+        public void Add(string line)
+        {
+            string newStr = "[" + DateTime.Now + "]" + line + "\n";
+            Log += newStr;
+            File.AppendAllText(logPath, newStr);
+            if (LogChanged != null)
+            {
+                LogChanged(this, new EventArgs());
+            }
+        }
     }
 }

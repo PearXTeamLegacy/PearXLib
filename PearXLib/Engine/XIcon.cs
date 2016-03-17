@@ -10,7 +10,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// An expanding icon from PearX Engine.
     /// </summary>
-    public partial class XIcon : UserControl
+    public class XIcon : UserControl
     {
         private Image _Icon;
         private bool _PlaySound = true;
@@ -23,7 +23,9 @@ namespace PearXLib.Engine
         public XIcon() 
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            InitializeComponent();
+            DoubleBuffered = true;
+            Cursor = Cursors.Hand;
+            Size = new Size(64, 64);
         }
 
         #region Params
@@ -122,7 +124,7 @@ namespace PearXLib.Engine
             get { return CreateGraphics().MeasureString(Title, Font); }
         }
 
-        private void XIcon_MouseEnter(object sender, EventArgs e)
+        protected override void OnMouseEnter(EventArgs e)
         {
             Size = new Size(Size.Width + (Expand * 2), Size.Height + (Expand * 2));
             Location = new Point(Location.X - Expand, Location.Y - Expand);
@@ -136,13 +138,13 @@ namespace PearXLib.Engine
             }
         }
 
-        private void XIcon_MouseLeave(object sender, EventArgs e)
+        protected override void OnMouseLeave(EventArgs e)
         {
             Size = new Size(Size.Width - (Expand * 2), Size.Height - (Expand * 2));
             Location = new Point(Location.X + Expand, Location.Y + Expand);
         }
 
-        private void XIcon_Paint(object sender, PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
             if (Icon != null)
             {
@@ -161,7 +163,7 @@ namespace PearXLib.Engine
             }
         }
 
-        private void XIcon_SizeChanged(object sender, EventArgs e)
+        protected override void OnSizeChanged(EventArgs e)
         {
             Refresh();
         }

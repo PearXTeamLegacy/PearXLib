@@ -9,7 +9,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A beautiful progress bar from PearXLib.
     /// </summary>
-    public partial class XBar : UserControl
+    public class XBar : UserControl
     {
         private int _Value = 0;
         private int _Maximum = 100;
@@ -24,7 +24,10 @@ namespace PearXLib.Engine
         /// </summary>
         public XBar()
         {
-            InitializeComponent();
+            DoubleBuffered = true;
+            Size = new Size(349, 52);
+            BackColor = Color.Transparent;
+            ResizeRedraw = true;
         }
 
         #region Params.
@@ -133,26 +136,9 @@ namespace PearXLib.Engine
         /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
         public override Color BackColor { get; set; }
-
-        /// <summary>
-        /// A font of a text on a bar.
-        /// </summary>
-        [Description("A font of a text on a bar.")]
-        public override Font Font
-        {
-            get
-            {
-                return base.Font;
-            }
-
-            set
-            {
-                base.Font = value;
-            }
-        }
         #endregion
 
-        private void XBar_Paint(object sender, PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
             Brush sb = new SolidBrush(BGColor);
             Pen p = new Pen(sb, 4);
@@ -162,14 +148,9 @@ namespace PearXLib.Engine
 
             LinearGradientBrush lgb = new LinearGradientBrush(new Point(0, 0), new Point(Size.Width, Size.Height), GradientColor1, GradientColor2);
             e.Graphics.FillRectangle(lgb, 5, 5, ((float)((Size.Width - 10)) / Maximum) * Value, Size.Height - 10);
-            
+
             Brush bf = new SolidBrush(ProgressTextColor);
             e.Graphics.DrawString(ProgressText, Font, bf, new PointF((Size.Width - e.Graphics.MeasureString(ProgressText, Font).Width) / 2, (Size.Height - e.Graphics.MeasureString(ProgressText, Font).Height) / 2));
-        }
-
-        private void XBar_SizeChanged(object sender, EventArgs e)
-        {
-            Refresh();
         }
     }
 }
