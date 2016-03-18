@@ -1,0 +1,1323 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PearXLib</name>
+    </assembly>
+    <members>
+        <member name="T:PearXLib.Crypting.CA_PX1">
+            <summary>
+            PX1 encrypting algorithm (Convert every char to int and back).
+            </summary>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PX1.Enrypt(System.String)">
+            <summary>
+            Encrypts string by algorithm "PX1".
+            </summary>
+            <param name="input">Input string.</param>
+            <returns>Encrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PX1.Decrypt(System.String)">
+            <summary>
+            Decrypts string by algorithm "PX1".
+            </summary>
+            <param name="input">Encrypted string.</param>
+            <returns>Decrypted string.</returns>
+        </member>
+        <member name="T:PearXLib.Crypting.CA_PXMx">
+            <summary>
+            PXMx encrypting algorithm (1.Convert char to int. 2. Result * 'salt' 3. Repeat 'multipliplier' times).
+            </summary>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXMx.Enrypt(System.String,System.Int16,System.Byte)">
+            <summary>
+            Encrypts string by algorithm "PXMx".
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt.</param>
+            <param name="multiplier">Multiplier.</param>
+            <returns>Encrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXMx.Decrypt(System.String,System.Int16,System.Byte)">
+            <summary>
+            Decrypts string by algorithm "PXMx".
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt.</param>
+            <param name="multiplier">Multiplier.</param>
+            <returns>Decrypted string.</returns>
+        </member>
+        <member name="T:PearXLib.Crypting.CA_PXM">
+            <summary>
+            PXM encrypting algorithm (1. Convert char to int. 2. Result * 'salt').
+            </summary>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXM.Enrypt(System.String,System.Int32)">
+            <summary>
+            Encrypts string by algorithm "PXM".
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt</param>
+            <returns>Encrypted string.</returns>
+        </member>
+        <member name="M:PearXLib.Crypting.CA_PXM.Decrypt(System.String,System.Int32)">
+            <summary>
+            Decrypts string by algorithm "PXM".
+            </summary>
+            <param name="input">Input string.</param>
+            <param name="salt">Salt</param>
+            <returns>Decrypted string.</returns>
+        </member>
+        <member name="T:PearXLib.d">
+            <summary>
+            Directories
+            </summary>
+        </member>
+        <member name="F:PearXLib.d.documents">
+            <summary>
+            Folder "My Documents".
+            </summary>
+        </member>
+        <member name="F:PearXLib.d.appData">
+            <summary>
+            Folder "Application Data".
+            </summary>
+        </member>
+        <member name="F:PearXLib.d.desktop">
+            <summary>
+            Desktop folder.
+            </summary>
+        </member>
+        <member name="F:PearXLib.d.pxDir">
+            <summary>
+            PearX Team's Directory.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.Align">
+            <summary>
+            Alignment enum.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.RIGHT">
+            <summary>
+            # # #<para/>
+            # # *<para/>
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.CENTER">
+            <summary>
+            # # #<para/>
+            # * #<para/>
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.LEFT">
+            <summary>
+            # # #<para/>
+            * # #<para/>
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.TOP">
+            <summary>
+            # * #<para/>
+            # # #<para/>
+            # # #
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.Align.BOTTOM">
+            <summary>
+            # # #<para/>
+            # # #<para/>
+            # * #
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.Flat.FlatForm">
+            <summary>
+            Flat Form.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.Flat.FlatForm.#ctor">
+            <summary>
+            Initializes a new XForm component.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.CloseBoxColor">
+            <summary>
+            Color of the close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.CloseBoxFColor">
+            <summary>
+            Color of the focused close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.MinMaxBoxColor">
+            <summary>
+            Color of the minimize and maximize boxes.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.MinMaxBoxFColor">
+            <summary>
+            Color of the focused minimize and maximize boxes.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.ToTrayBoxColor">
+            <summary>
+            Color of the to tray box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.ToTrayBoxFColor">
+            <summary>
+            Color of the focused to tray box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.PanelBG">
+            <summary>
+            Color of the panel.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.RimColor">
+            <summary>
+            Color of the form rim.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.Rim">
+            <summary>
+            Enable form rim?
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.FormIcons">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.BarImage">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.CloseBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.CloseBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MaximizeBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MaximizeBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MinimizeBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.MinimizeBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.ToTrayBox">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.ToTrayBoxFocused">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.IndicatorType">
+            <summary>
+            Type of the Indicator
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.IndicatorType.ThreeLines">
+            <summary>
+            Red, Yellow, Green lines on the Indicator.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.IndicatorType.Gradient">
+            <summary>
+            Red => Green gradient.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.IndicatorType.ThreeTriangles">
+            <summary>
+            Red, Yellow, Green triangles on the Indicator.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.Indicator.#ctor">
+            <summary>
+            Initializes a new Indicator.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.InvItemEventArgs">
+            <summary>
+            Inventory Item event arguments.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.InvItemEventArgs.#ctor(System.Int32)">
+            <summary>
+            Inventory Item event arguments.
+            </summary>
+            <param name="amount">Item amount.</param>
+        </member>
+        <member name="P:PearXLib.Engine.InvItemEventArgs.Amount">
+            <summary>
+            Item amount.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.LangEventArgs">
+            <summary>
+            EventArgs for the ListBoxSelectLang.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.LangEventArgs.#ctor(System.String)">
+            <summary>
+            Initializates a new LangEventArgs component.
+            </summary>
+            <param name="selected">Selected language name.</param>
+        </member>
+        <member name="P:PearXLib.Engine.LangEventArgs.SelectedLang">
+            <summary>
+            Selected language name.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.ListBoxSelectLang.LangEventHandler">
+            <summary>
+            Language Event Handler
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Args</param>
+        </member>
+        <member name="E:PearXLib.Engine.ListBoxSelectLang.LanguageSelected">
+            <summary>
+            Performs on language selected.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.ListBoxSelectLang.PathToLangs">
+            <summary>
+            Path to langfiles (with slash)
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XBarEventArgs">
+            <summary>
+            XBar event arguments.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XBarEventArgs.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializates a new XBarEventArgs class.
+            </summary>
+            <param name="val">Bar value.</param>
+            <param name="max">Maximal bar value.</param>
+        </member>
+        <member name="P:PearXLib.Engine.XBarEventArgs.Value">
+            <summary>
+            Bar value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBarEventArgs.Maximal">
+            <summary>
+            Maximal bar value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBarEventArgs.InPercents">
+            <summary>
+            Bar value in percents.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColor1">
+            <summary>
+            The button's gradient color 1.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColor2">
+            <summary>
+            The button's gradient color 2.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColorFocused1">
+            <summary>
+            The focused button's gradient color 1.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.GradientColorFocused2">
+            <summary>
+            The focused button's gradient color 2.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButton.ColorPressed">
+            <summary>
+            A color of the pressed button.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XButtonState">
+            <summary>
+            Button state enum.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XButtonState.FOCUSED">
+            <summary>
+            Mouse is on the button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XButtonState.CLICKED">
+            <summary>
+            Mouse is clicked the button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XButtonState.NONE">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.State">
+            <summary>
+            Current button state.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.ImageAlign">
+            <summary>
+            Image alignment.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.TextAlign">
+            <summary>
+            Text alignment.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.Text">
+            <summary>
+            The text on the button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.Image">
+            <summary>
+            The image on the button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XButtonBase.Border">
+            <summary>
+            The distance from button top.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XForm">
+            <summary>
+            A beautiful customizing form.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XForm.BarState">
+            <summary>
+            Bar state.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.Close">
+            <summary>
+            Focused close button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.ToTray">
+            <summary>
+            Focused to tray button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.Maximize">
+            <summary>
+            Focused maximize button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarState.None">
+            <summary>
+            None focused.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.BarSt">
+            <summary>
+            Last bar state.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.MaximizeState">
+            <summary>
+            True if form maximized, else false.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XForm.#ctor">
+            <summary>
+            Initializates a new XForm component.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.Minimized">
+            <summary>
+            Performs on form minimized.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.Maximized">
+            <summary>
+            Performs on form maximized.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.TurnedToTray">
+            <summary>
+            Performs on form turned to tray.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.ExpandedFromTray">
+            <summary>
+            Performs on form expanded from tray.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Engine.XForm.BarIconFocused">
+            <summary>
+            Performs on any bar icon focused.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.MaximizeBox">
+            <summary>
+            Is maximize box enabled?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ToTrayBox">
+            <summary>
+            Is turn to tray box enabled?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.CloseBox">
+            <summary>
+            Is close box enabled?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageCloseBox">
+            <summary>
+            Image for a close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageCloseBoxFocused">
+            <summary>
+            Image for a focused close box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMaximizeBox">
+            <summary>
+            Image for a maximize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMaximizeBoxFocused">
+            <summary>
+            Image for a focused maximize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMinimizeBox">
+            <summary>
+            Image for a minimize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageMinimizeBoxFocused">
+            <summary>
+            Image for a focused minimize box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageToTrayBox">
+            <summary>
+            Image for a turn to tray box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.ImageToTrayBoxFocused">
+            <summary>
+            Image for a focused turn to tray box.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.BoxesDistance">
+            <summary>
+            Boxes distance from one to other.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.BoxesTopDistance">
+            <summary>
+            Boxes distance from form top.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.BarImage">
+            <summary>
+            Form bar background image.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XForm.TextColor">
+            <summary>
+            Color of the Form Name.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.InvItem">
+            <summary>
+            A control to display the item.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.InvItem.#ctor">
+            <summary>
+            Initializes new InvItem component.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.InvItem.InvItemEventHandler">
+            <summary>
+            Inventory Item event handler.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">InvItem event args. <see cref="T:PearXLib.Engine.InvItemEventArgs"/></param>
+        </member>
+        <member name="E:PearXLib.Engine.InvItem.AmountChanged">
+            <summary>
+            Performs on item amount changed.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemImage">
+            <summary>
+            Item image.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemDesc">
+            <summary>
+            Item description.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemAmount">
+            <summary>
+            Item amount.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ItemName">
+            <summary>
+            Item name.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ColorName">
+            <summary>
+            Name label color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ColorDesc">
+            <summary>
+            Description label color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ColorAmount">
+            <summary>
+            Amount label color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.BackColor">
+            <summary>
+            Control background color.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XBar">
+            <summary>
+            A beautiful progress bar from PearXLib.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XBar.#ctor">
+            <summary>
+            Initializes the new XBar component.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XBar.XBarEventHandler">
+            <summary>
+            XBar event handler.
+            </summary>
+            <param name="sender">Sender object.</param>
+            <param name="e">XBar Event Args <see cref="T:PearXLib.Engine.XBarEventArgs"/></param>
+        </member>
+        <member name="E:PearXLib.Engine.XBar.ValueChanged">
+            <summary>
+            Performs on bar value changed.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.Value">
+            <summary>
+            Progress value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.Maximum">
+            <summary>
+            Maximum value.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.GradientColor1">
+            <summary>
+            Value bar gradient color 1.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.GradientColor2">
+            <summary>
+            Value bar gradient color 2.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.BGColor">
+            <summary>
+            Bar background color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.ProgressText">
+            <summary>
+            Text on bar.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.ProgressTextColor">
+            <summary>
+            Color of a text on a bar.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XBar.BackColor">
+            <summary>
+            Control's background color.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XImgButton">
+            <summary>
+            A beautiful button from PearX Engine.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackImage">
+            <summary>
+            Button background.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackImageFocused">
+            <summary>
+            Focused button background.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackImagePressed">
+            <summary>
+            Pressed button background.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.Cursor">
+            <summary>
+            A cursor for a control.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgButton.BackColor">
+            <summary>
+            Control background color.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XIcon">
+            <summary>
+            An expanding icon from PearX Engine.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XIcon.#ctor">
+            <summary>
+            Initializes a new XIcon component.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Icon">
+            <summary>
+            Icon image.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.PlaySound">
+            <summary>
+            Play sound, when mouse focused on this component?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Title">
+            <summary>
+            Icon title (will be displayed on the control).
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Expand">
+            <summary>
+            How much to expand on mouse enter?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Font">
+            <summary>
+            A font of a title text.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.Cursor">
+            <summary>
+            A cursor for a control.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.BackColor">
+            <summary>
+            Control background color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XIcon.TitleWidthHeight">
+            <summary>
+            Title size and width.
+            </summary>
+        </member>
+        <member name="T:PearXLib.FileUtils">
+            <summary>
+            PearXLib file utilities.
+            </summary>
+        </member>
+        <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String,System.String[],System.Int16,System.Boolean)">
+            <summary>
+            Saves the app with using encryption.
+            </summary>
+            <param name="appname">Application name.</param>
+            <param name="savename">Save name.</param>
+            <param name="save">Strings to save.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.String,System.Int16,System.Boolean)">
+            <summary>
+            Loads the app with using encryption.
+            </summary>
+            <param name="appname">Application name.</param>
+            <param name="savename">Save name.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.Save(System.String,System.String,System.String[])">
+            <summary>
+            Saves the app.
+            </summary>
+            <param name="appname">App name.</param>
+            <param name="savename">Save name.</param>
+            <param name="save">Save (string array).</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.Load(System.String,System.String)">
+            <summary>
+            Loads the app.
+            </summary>
+            <param name="appname">App name.</param>
+            <param name="savename">Save name.</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.createDir(System.String)">
+            <summary>
+            Creates dir if it does not exists.
+            </summary>
+            <param name="path">Directory path.</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.CanCreate(System.String)">
+            <summary>
+            Can system create file, nammed "filename"?
+            </summary>
+            <param name="filename">File name.</param>
+            <returns>If system can create file, returns true, else returns false.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.GetFilesInDir(System.String)">
+            <summary>
+            Getting all files in directory and subdirectories.
+            </summary>
+            <param name="dir">Directory name.</param>
+            <returns>All files in directory and subdirectories.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.GetRelativePath(System.String,System.String)">
+            <summary>
+            Gets a relative path to the directory or file.
+            </summary>
+            <param name="fullpath">Full path to the directory.</param>
+            <param name="relativepath">Relative path.</param>
+            <returns>Relative path to the directory.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.GetRelativePath(System.String[],System.String)">
+            <summary>
+            Gets a relative path to the directory or file.
+            </summary>
+            <param name="fullpath">Full path to the directory.</param>
+            <param name="relativepath">Relative path.</param>
+            <returns>Relative path to the directory.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String[],System.Int16,System.Boolean)">
+            <summary>
+            Saves the app with using encryption.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <param name="save">Strings to save.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.Int16,System.Boolean)">
+            <summary>
+            Loads the app with using encryption.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <param name="salt">Encryption salt.</param>
+            <param name="useMultiple">Use multiple encryption?</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="M:PearXLib.FileUtils.Save(System.String,System.String[])">
+            <summary>
+            Saves the app.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <param name="save">Save (string array).</param>
+        </member>
+        <member name="M:PearXLib.FileUtils.Load(System.String)">
+            <summary>
+            Loads the app.
+            </summary>
+            <param name="path">Path to the save file.</param>
+            <returns>Loaded string array.</returns>
+        </member>
+        <member name="T:PearXLib.Forms.SelectLang">
+            <summary>
+            A language selection form.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Forms.SelectLang.Selected">
+            <summary>
+            Selected language.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Forms.SelectLang.#ctor(System.String)">
+            <summary>
+            Initializates a new SelectLang component.
+            </summary>
+            <param name="dir">Path to langs (with slash).</param>
+        </member>
+        <member name="F:PearXLib.Forms.SelectLang.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Forms.SelectLang.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PearXLib.Forms.SelectLang.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Localization">
+            <summary>
+            A localization utilities.<para/>
+            ---<para/>
+            Lang file example:<para/>
+            btnPlay=Play the game.<para/>
+            btnExit=Exit the game.<para/>
+            ---<para/>
+            btnPlay and btnExit - localization names.<para/>
+            "Play the game." and "Exit the game" - string values.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Localization.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new localization component.
+            </summary>
+            <param name="dir">Path to the lang dir (with slash).</param>
+            <param name="langname">Language name.</param>
+        </member>
+        <member name="M:PearXLib.Localization.GetString(System.String)">
+            <summary>
+            Gets a string from a lang file.
+            </summary>
+            <param name="localname">Localization name.</param>
+            <returns>String.</returns>
+        </member>
+        <member name="T:PearXLib.LogType">
+            <summary>
+            Log type enum.
+            </summary>
+        </member>
+        <member name="F:PearXLib.LogType.Warning">
+            <summary>
+            Warning!
+            </summary>
+        </member>
+        <member name="F:PearXLib.LogType.Error">
+            <summary>
+            Error!
+            </summary>
+        </member>
+        <member name="F:PearXLib.LogType.Info">
+            <summary>
+            Information.
+            </summary>
+        </member>
+        <member name="F:PearXLib.LogType.Other">
+            <summary>
+            Other.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Logging">
+            <summary>
+            PearXLib logging utils.
+            </summary>
+        </member>
+        <member name="E:PearXLib.Logging.LogChanged">
+            <summary>
+            Executs, when log changed.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Logging.Log">
+            <summary>
+            Log string.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Logging.#ctor(System.String)">
+            <summary>
+            Initializates a new Logging component.
+            </summary>
+            <param name="logpath">Path to the log file.</param>
+        </member>
+        <member name="M:PearXLib.Logging.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializates a new Logging component.
+            </summary>
+            <param name="logpath">Path to the log file.</param>
+            <param name="force">If true, deletes old log file.</param>
+        </member>
+        <member name="M:PearXLib.Logging.Add(System.String,PearXLib.LogType)">
+            <summary>
+            Adds a line to a log.
+            </summary>
+            <param name="line">Message text</param>
+            <param name="lt">Log type</param>
+        </member>
+        <member name="M:PearXLib.Logging.Add(System.String,System.String)">
+            <summary>
+            Adds a line to a log.
+            </summary>
+            <param name="line">Message text</param>
+            <param name="prefix">Prefix (if prefix equals "a simple prefix =)", then log string equals "[DATETIME][a simple prefix =)]MESSAGE"</param>
+        </member>
+        <member name="M:PearXLib.Logging.Add(System.String)">
+            <summary>
+            Adds a line to a log.
+            </summary>
+            <param name="line">Message text</param>
+        </member>
+        <member name="T:PearXLib.MathsUtils">
+            <summary>
+            PearXLib mathematics utilities.
+            </summary>
+        </member>
+        <member name="M:PearXLib.MathsUtils.GetAverage(System.Int32[])">
+            <summary>
+            Gets an arithmetical averange.
+            </summary>
+            <param name="ints">Input integers.</param>
+            <returns>Arithmetical averange.</returns>
+        </member>
+        <member name="M:PearXLib.MathsUtils.GetAverageExactly(System.Double[])">
+            <summary>
+            Gets an exactly arithmetical averange.
+            </summary>
+            <param name="doubles">Input doubles.</param>
+            <returns>Exactly arithmetical averange</returns>
+        </member>
+        <member name="M:PearXLib.MathsUtils.GetNumberOfNumbers(System.Int32)">
+            <summary>
+            Gets a number of numbers! (seriously)
+            </summary>
+            <param name="count">Number</param>
+            <returns>Number of numbers!</returns>
+        </member>
+        <member name="M:PearXLib.MathsUtils.GetInPercents(System.Double,System.Double)">
+            <summary>
+            Get a number in percents.
+            </summary>
+            <param name="maximum">100 percents.</param>
+            <param name="value">Value</param>
+            <returns>Value in percents.</returns>
+        </member>
+        <member name="T:PearXLib.Properties.Resources">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Properties.Resources.bd">
+            <summary>
+              Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="T:PearXLib.PXL">
+            <summary>
+            PearXLib main class.
+            </summary>
+        </member>
+        <member name="F:PearXLib.PXL.ver">
+            <summary>
+            PearXLib version.
+            </summary>
+        </member>
+        <member name="F:PearXLib.PXL.s">
+            <summary>
+            Directory sepator.
+            </summary>
+        </member>
+        <member name="M:PearXLib.PXL.isNumberKey(System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            For TextBox.
+            </summary>
+            <param name="e">Args</param>
+            <returns>True or false.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.createShortcut(System.String,System.String)">
+            <summary>
+            Creates shortcut.
+            </summary>
+            <param name="path">Path to exe.</param>
+            <param name="filePath">Path to new shortcut.</param>
+        </member>
+        <member name="M:PearXLib.PXL.ReplaceFirst(System.String,System.String,System.String)">
+            <summary>
+            Replaces first occurrence of string.
+            </summary>
+            <param name="str">Input string.</param>
+            <param name="replaceFrom">Replace from...</param>
+            <param name="replaceTo">Replace to...</param>
+            <returns></returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetIntFromChar(System.Char)">
+            <summary>
+            Gets an integer from a char.
+            </summary>
+            <param name="input">Input char.</param>
+            <returns>Integer.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetCharFromInt(System.Int32)">
+            <summary>
+            Gets a char from an integer.
+            </summary>
+            <param name="input">Input int.</param>
+            <returns>Char.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetArrayFromString(System.String)">
+            <summary>
+            Gets a string[] from string, uses new line(\n).
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:PearXLib.PXL.GetStringFromArray(System.String[])">
+            <summary>
+            Gets a string from string[], uses new line(\n).
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:PearXLib.PXL.GetDateTimeNow">
+            <summary>
+            Gets an actual date and time.
+            </summary>
+            <returns>Actual date and time.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetFormStartPosition(System.Windows.Forms.Form,System.Windows.Forms.Form)">
+            <summary>
+            Gets a form start position.
+            </summary>
+            <param name="parent">Parent form.</param>
+            <param name="child">Child form.</param>
+            <returns>Form start position.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.IsCursorOnElement(System.Drawing.Point,System.Drawing.Point)">
+            <summary>
+            Is cursor located on the element?
+            </summary>
+            <param name="startPoint">Start point(ex. - Location).</param>
+            <param name="endPoint">End point(ex. - Location + Size).</param>
+            <returns></returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetJavaPath">
+            <summary>
+            Gets a path to a Java folder.
+            </summary>
+            <returns>A path to a Java folder.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetFromPC(System.String)">
+            <summary>
+            Gets an PC info
+            </summary>
+            <param name="what">Caption</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetControlCenter(System.Windows.Forms.Form,System.Drawing.Point,System.Drawing.Size)">
+            <summary>
+            Gets a control's center.
+            </summary>
+            <param name="parent">Control's parent form.</param>
+            <param name="p">Control's location.</param>
+            <param name="s">Control's size.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PearXLib.RandomUtils">
+            <summary>
+            PearXLib random utilities.
+            </summary>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenChar(System.Random)">
+            <summary>
+            Generates random character.
+            </summary>
+            <returns>Random character.</returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenNumber(System.Random)">
+            <summary>
+            Generates random digit.
+            </summary>
+            <returns>Random digit</returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenNumber(System.Random,System.Int32,System.Int32)">
+            <summary>
+            Generate random number.
+            </summary>
+            <param name="min">Minimal random number (inclusive).</param>
+            <param name="max">Maximal random number (inclusive).</param>
+            <param name="rand">Your random.</param>
+            <returns>Random number.</returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenSymbol(System.Random)">
+            <summary>
+            Generates random symbol.
+            </summary>
+            <param name="rand"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.GenRandom(System.Random,System.Boolean)">
+            <summary>
+            Generates random number/char/symbol.
+            </summary>
+            <returns>Random.</returns>
+        </member>
+        <member name="M:PearXLib.RandomUtils.ByTemplate(System.String,System.Random)">
+            <summary>
+            <![CDATA[Generates a random string by a template.
+            Template usage:
+            %num% - a random figure, ex. 6 or 7.
+            %char% - a random character, ex. b or e.
+            %CHAR% - a random character in uppercase, ex. Z or H.
+            %sym% - a random symbol, ex. ~ or &.
+            %rand% - a random symbol, character, or figure.
+            %randws% - a random character or figure.
+            Example template: TEST%rand%%sym%%CHAR%%CHAR%_HEHE. Example return: TEST&*FE_HEHE]]>
+            </summary>
+            <param name="template">A template</param>
+            <param name="rand">Your random</param>
+            <returns>A random generated by template string.</returns>
+        </member>
+        <member name="T:PearXLib.SocialUtils">
+            <summary>
+            PearXLib Social Utils.
+            </summary>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String,System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+            <param name="title">Site title.</param>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String,System.String,System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+            <param name="title">Site title.</param>
+            <param name="description">Site description.</param>
+        </member>
+        <member name="M:PearXLib.SocialUtils.ShareVK(System.String,System.String,System.String,System.String)">
+            <summary>
+            Shares via VKontakte
+            </summary>
+            <param name="URL">URL.</param>
+            <param name="title">Site title.</param>
+            <param name="description">Site description.</param>
+            <param name="URL_img">Site image.</param>
+        </member>
+        <member name="T:PearXLib.WebUtils">
+            <summary>
+            PearXLib Web Utilities
+            </summary>
+        </member>
+        <member name="M:PearXLib.WebUtils.SendPOSTRequest(System.String,System.String)">
+            <summary>
+            Sends a POST request to the site.
+            </summary>
+            <param name="url">Site URL.</param>
+            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+            <returns>Web response.</returns>
+        </member>
+        <member name="M:PearXLib.WebUtils.CheckForInternetConnection">
+            <summary>
+            Checks for a Internet connectivity. Using a well-known "google.com" domain.
+            </summary>
+            <returns>True, if Internet connection is avaible, else returns false.</returns>
+        </member>
+        <member name="M:PearXLib.WebUtils.CheckForInternetConnection(System.String)">
+            <summary>
+            Checks for a Internet connectivity.
+            </summary>
+            <param name="domain">The domain, that you want to ping.</param>
+            <returns>True, if Internet connection is avaible, else returns false.</returns>
+        </member>
+        <member name="M:PearXLib.WebUtils.SendPOSTRequest(System.String,System.String,System.String)">
+            <summary>
+            Sends a POST request to the site.
+            </summary>
+            <param name="url">Site URL.</param>
+            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+            <param name="ct">Content Type</param>
+            <returns>Web response.</returns>
+        </member>
+    </members>
+</doc>

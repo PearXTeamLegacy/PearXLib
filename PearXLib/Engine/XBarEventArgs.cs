@@ -30,6 +30,6 @@
         /// <summary>
         /// Bar value in percents.
         /// </summary>
-        public double InPercents { get; }
+        public double InPercents { get; private set; }
     }
 }
