@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 
 namespace PearXLib.Engine.Flat
 {
+    /// <summary>
+    /// Flat-style bar.
+    /// </summary>
     public class FlatBar : XBar
     {
         private Color gc = Color.FromArgb(41, 128, 185);

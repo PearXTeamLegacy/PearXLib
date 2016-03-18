@@ -40,13 +40,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypting\CA_PX1.cs" />
@@ -99,20 +94,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FileUtils.cs" />
-    <Compile Include="Forms\SelectLang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SelectLang.Designer.cs">
-      <DependentUpon>SelectLang.cs</DependentUpon>
-    </Compile>
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MathsUtils.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="PXL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtils.cs" />
@@ -127,17 +111,6 @@
     <EmbeddedResource Include="Engine\XForm.resx">
       <DependentUpon>XForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectLang.resx">
-      <DependentUpon>SelectLang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bd.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CloseBox.png" />

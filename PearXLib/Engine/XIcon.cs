@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
-using PearXLib.Properties;
 
 namespace PearXLib.Engine
 {
@@ -131,10 +130,7 @@ namespace PearXLib.Engine
             BringToFront();
             if (PlaySound)
             {
-                using (SoundPlayer sp = new SoundPlayer(Resources.bd))
-                {
-                    sp.Play();
-                }
+                //Todo
             }
         }
 

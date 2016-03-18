@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Timers;
-using System.Threading.Tasks;
 using System.Threading;
 using System.ComponentModel;
 
@@ -63,7 +58,6 @@ namespace PearXLib.Engine.Flat
                                 isDrawing = true;
                                 int x = MousePosition.X - Parent.Location.X - Location.X;
                                 int y = MousePosition.Y - Parent.Location.Y - Location.Y;
-                                int j = 0;
                                 for (int i = 0; i <= Width * 2; i++)
                                 {
                                     gr.FillRectangle(new SolidBrush(ColorFocused), rect);

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
@@ -30,6 +24,9 @@ namespace PearXLib.Engine
         ThreeTriangles
     }
 
+    /// <summary>
+    /// Indicator.
+    /// </summary>
     public class Indicator : UserControl
     {
         private IndicatorType it = IndicatorType.Gradient;
@@ -38,24 +35,36 @@ namespace PearXLib.Engine
         private Color c3 = Color.Red;
 
         #region Params.
+        /// <summary>
+        /// Type of the indicator.
+        /// </summary>
         public IndicatorType Type
         {
             get { return it; }
             set { it = value; Refresh(); }
         }
 
+        /// <summary>
+        /// Color of the right val.
+        /// </summary>
         public Color Color1
         {
             get { return c1; }
             set { c1 = value; Refresh(); }
         }
 
+        /// <summary>
+        /// Color of the center val.
+        /// </summary>
         public Color Color2
         {
             get { return c2; }
             set { c2 = value; Refresh(); }
         }
 
+        /// <summary>
+        /// Color of the left val.
+        /// </summary>
         public Color Color3
         {
             get { return c3; }

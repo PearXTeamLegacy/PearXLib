@@ -72,22 +72,22 @@
             Directories
             </summary>
         </member>
-        <member name="F:PearXLib.d.documents">
+        <member name="P:PearXLib.d.documents">
             <summary>
             Folder "My Documents".
             </summary>
         </member>
-        <member name="F:PearXLib.d.appData">
+        <member name="P:PearXLib.d.appData">
             <summary>
             Folder "Application Data".
             </summary>
         </member>
-        <member name="F:PearXLib.d.desktop">
+        <member name="P:PearXLib.d.desktop">
             <summary>
             Desktop folder.
             </summary>
         </member>
-        <member name="F:PearXLib.d.pxDir">
+        <member name="P:PearXLib.d.pxDir">
             <summary>
             PearX Team's Directory.
             </summary>
@@ -130,6 +130,11 @@
             # # #<para/>
             # # #<para/>
             # * #
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.Flat.FlatBar">
+            <summary>
+            Flat-style bar.
             </summary>
         </member>
         <member name="T:PearXLib.Engine.Flat.FlatForm">
@@ -266,6 +271,31 @@
         <member name="F:PearXLib.Engine.IndicatorType.ThreeTriangles">
             <summary>
             Red, Yellow, Green triangles on the Indicator.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.Indicator">
+            <summary>
+            Indicator.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Indicator.Type">
+            <summary>
+            Type of the indicator.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Indicator.Color1">
+            <summary>
+            Color of the right val.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Indicator.Color2">
+            <summary>
+            Color of the center val.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Indicator.Color3">
+            <summary>
+            Color of the left val.
             </summary>
         </member>
         <member name="M:PearXLib.Engine.Indicator.#ctor">
@@ -899,39 +929,6 @@
             <param name="path">Path to the save file.</param>
             <returns>Loaded string array.</returns>
         </member>
-        <member name="T:PearXLib.Forms.SelectLang">
-            <summary>
-            A language selection form.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Forms.SelectLang.Selected">
-            <summary>
-            Selected language.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Forms.SelectLang.#ctor(System.String)">
-            <summary>
-            Initializates a new SelectLang component.
-            </summary>
-            <param name="dir">Path to langs (with slash).</param>
-        </member>
-        <member name="F:PearXLib.Forms.SelectLang.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Forms.SelectLang.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:PearXLib.Forms.SelectLang.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
         <member name="T:PearXLib.Localization">
             <summary>
             A localization utilities.<para/>
@@ -1064,27 +1061,6 @@
             <param name="maximum">100 percents.</param>
             <param name="value">Value</param>
             <returns>Value in percents.</returns>
-        </member>
-        <member name="T:PearXLib.Properties.Resources">
-            <summary>
-              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Properties.Resources.ResourceManager">
-            <summary>
-              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Properties.Resources.Culture">
-            <summary>
-              Перезаписывает свойство CurrentUICulture текущего потока для всех
-              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Properties.Resources.bd">
-            <summary>
-              Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
-            </summary>
         </member>
         <member name="T:PearXLib.PXL">
             <summary>
