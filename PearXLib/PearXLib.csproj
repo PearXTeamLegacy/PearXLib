@@ -55,6 +55,9 @@
     <Compile Include="Engine\Flat\FlatButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Engine\Flat\FlatCheckbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Engine\Flat\FlatForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +78,9 @@
     <Compile Include="Engine\XButtonBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Engine\XCheckboxBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Engine\XForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Engine\XBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Engine\XImageCheckbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Engine\XImgButton.cs">

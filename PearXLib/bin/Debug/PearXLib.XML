@@ -137,6 +137,26 @@
             Flat-style bar.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.Flat.FlatCheckbox">
+            <summary>
+            A beautiful flat-style checkbox.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatCheckbox.ColorBG">
+            <summary>
+            Checkbox background color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatCheckbox.ColorCheck">
+            <summary>
+            Checkbox's check color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatCheckbox.ColorCheckFocused">
+            <summary>
+            Focused checkbox's color.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.Flat.FlatForm">
             <summary>
             Flat Form.
@@ -454,6 +474,58 @@
             The distance from button top.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.CheckboxState">
+            <summary>
+            Checkbox state
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.CheckboxState.Focused">
+            <summary>
+            Mouse on checkbox.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.CheckboxState.None">
+            <summary>
+            Mouse not on checkbox.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XCheckboxBase">
+            <summary>
+            A base for the checkboxes :P.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XCheckboxBase.#ctor">
+            <summary>
+            Initializes a new XCheckboxBase component.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XCheckboxBase.CheckboxHandler">
+            <summary>
+            A EventHandler for the checkboxes.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="isChecked">Is checkbox checked?</param>
+        </member>
+        <member name="E:PearXLib.Engine.XCheckboxBase.CheckedChanged">
+            <summary>
+            Performs on check/uncheck.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XCheckboxBase.Text">
+            <summary>
+            The text on the checkbox.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XCheckboxBase.Checked">
+            <summary>
+            Is checkbox checked?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XCheckboxBase.State">
+            <summary>
+            Checkbox's current state.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XForm">
             <summary>
             A beautiful customizing form.
@@ -738,6 +810,21 @@
         <member name="P:PearXLib.Engine.XBar.BackColor">
             <summary>
             Control's background color.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XImageCheckbox">
+            <summary>
+            A checkbox, maked from images.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImageCheckbox.CheckBG">
+            <summary>
+            Checkbox's background.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImageCheckbox.Check">
+            <summary>
+            Checkbox's check image.
             </summary>
         </member>
         <member name="T:PearXLib.Engine.XImgButton">
