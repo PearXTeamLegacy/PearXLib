@@ -4,48 +4,6 @@
         <name>PearXLib</name>
     </assembly>
     <members>
-        <member name="T:PearXLib.Crypting.CA_PX1">
-            <summary>
-            PX1 encrypting algorithm (Convert every char to int and back).
-            </summary>
-        </member>
-        <member name="M:PearXLib.Crypting.CA_PX1.Enrypt(System.String)">
-            <summary>
-            Encrypts string by algorithm "PX1".
-            </summary>
-            <param name="input">Input string.</param>
-            <returns>Encrypted string.</returns>
-        </member>
-        <member name="M:PearXLib.Crypting.CA_PX1.Decrypt(System.String)">
-            <summary>
-            Decrypts string by algorithm "PX1".
-            </summary>
-            <param name="input">Encrypted string.</param>
-            <returns>Decrypted string.</returns>
-        </member>
-        <member name="T:PearXLib.Crypting.CA_PXMx">
-            <summary>
-            PXMx encrypting algorithm (1.Convert char to int. 2. Result * 'salt' 3. Repeat 'multipliplier' times).
-            </summary>
-        </member>
-        <member name="M:PearXLib.Crypting.CA_PXMx.Enrypt(System.String,System.Int16,System.Byte)">
-            <summary>
-            Encrypts string by algorithm "PXMx".
-            </summary>
-            <param name="input">Input string.</param>
-            <param name="salt">Salt.</param>
-            <param name="multiplier">Multiplier.</param>
-            <returns>Encrypted string.</returns>
-        </member>
-        <member name="M:PearXLib.Crypting.CA_PXMx.Decrypt(System.String,System.Int16,System.Byte)">
-            <summary>
-            Decrypts string by algorithm "PXMx".
-            </summary>
-            <param name="input">Input string.</param>
-            <param name="salt">Salt.</param>
-            <param name="multiplier">Multiplier.</param>
-            <returns>Decrypted string.</returns>
-        </member>
         <member name="T:PearXLib.Crypting.CA_PXM">
             <summary>
             PXM encrypting algorithm (1. Convert char to int. 2. Result * 'salt').
@@ -912,48 +870,6 @@
             PearXLib file utilities.
             </summary>
         </member>
-        <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String,System.String[],System.Int16,System.Boolean)">
-            <summary>
-            Saves the app with using encryption.
-            </summary>
-            <param name="appname">Application name.</param>
-            <param name="savename">Save name.</param>
-            <param name="save">Strings to save.</param>
-            <param name="salt">Encryption salt.</param>
-            <param name="useMultiple">Use multiple encryption?</param>
-        </member>
-        <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.String,System.Int16,System.Boolean)">
-            <summary>
-            Loads the app with using encryption.
-            </summary>
-            <param name="appname">Application name.</param>
-            <param name="savename">Save name.</param>
-            <param name="salt">Encryption salt.</param>
-            <param name="useMultiple">Use multiple encryption?</param>
-            <returns>Loaded string array.</returns>
-        </member>
-        <member name="M:PearXLib.FileUtils.Save(System.String,System.String,System.String[])">
-            <summary>
-            Saves the app.
-            </summary>
-            <param name="appname">App name.</param>
-            <param name="savename">Save name.</param>
-            <param name="save">Save (string array).</param>
-        </member>
-        <member name="M:PearXLib.FileUtils.Load(System.String,System.String)">
-            <summary>
-            Loads the app.
-            </summary>
-            <param name="appname">App name.</param>
-            <param name="savename">Save name.</param>
-            <returns>Loaded string array.</returns>
-        </member>
-        <member name="M:PearXLib.FileUtils.createDir(System.String)">
-            <summary>
-            Creates dir if it does not exists.
-            </summary>
-            <param name="path">Directory path.</param>
-        </member>
         <member name="M:PearXLib.FileUtils.CanCreate(System.String)">
             <summary>
             Can system create file, nammed "filename"?
@@ -984,22 +900,20 @@
             <param name="relativepath">Relative path.</param>
             <returns>Relative path to the directory.</returns>
         </member>
-        <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String[],System.Int16,System.Boolean)">
+        <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String[],System.Int16)">
             <summary>
             Saves the app with using encryption.
             </summary>
             <param name="path">Path to the save file.</param>
             <param name="save">Strings to save.</param>
             <param name="salt">Encryption salt.</param>
-            <param name="useMultiple">Use multiple encryption?</param>
         </member>
-        <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.Int16,System.Boolean)">
+        <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.Int16)">
             <summary>
             Loads the app with using encryption.
             </summary>
             <param name="path">Path to the save file.</param>
             <param name="salt">Encryption salt.</param>
-            <param name="useMultiple">Use multiple encryption?</param>
             <returns>Loaded string array.</returns>
         </member>
         <member name="M:PearXLib.FileUtils.Save(System.String,System.String[])">
@@ -1186,20 +1100,6 @@
             <param name="replaceFrom">Replace from...</param>
             <param name="replaceTo">Replace to...</param>
             <returns></returns>
-        </member>
-        <member name="M:PearXLib.PXL.GetIntFromChar(System.Char)">
-            <summary>
-            Gets an integer from a char.
-            </summary>
-            <param name="input">Input char.</param>
-            <returns>Integer.</returns>
-        </member>
-        <member name="M:PearXLib.PXL.GetCharFromInt(System.Int32)">
-            <summary>
-            Gets a char from an integer.
-            </summary>
-            <param name="input">Input int.</param>
-            <returns>Char.</returns>
         </member>
         <member name="M:PearXLib.PXL.GetArrayFromString(System.String)">
             <summary>

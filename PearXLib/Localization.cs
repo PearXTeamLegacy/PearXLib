@@ -26,12 +26,12 @@ namespace PearXLib
         public Localization(string dir, string langname)
         {
             string[] str = File.ReadAllLines(dir + langname + ".lang");
-            locnms = new String[str.Length];
-            vls = new String[str.Length];
+            locnms = new string[str.Length];
+            vls = new string[str.Length];
             int count = 0;
             foreach (string s in str)
             {
-                if (!String.IsNullOrWhiteSpace(s))
+                if (!string.IsNullOrWhiteSpace(s))
                 {
                     if (s.Substring(0, 1) != "#")
                     {

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PearXLib.Engine
@@ -29,8 +26,7 @@ namespace PearXLib.Engine
     public class XCheckboxBase : UserControl
     {
         private string text;
-        private bool chkd = false;
-        private CheckboxState state = CheckboxState.None;
+        private bool chkd;
 
         /// <summary>
         /// Initializes a new XCheckboxBase component.
@@ -38,6 +34,9 @@ namespace PearXLib.Engine
         public XCheckboxBase()
         {
             Size = new Size(160, 32);
+            DoubleBuffered = true;
+            State = CheckboxState.None;
+            Cursor = Cursors.Hand;
         }
 
         #region Params
@@ -56,10 +55,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// The text on the checkbox.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [Bindable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Bindable(true)]
         public override string Text
         {
             get { return text; }
@@ -69,6 +65,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Is checkbox checked?
         /// </summary>
+        [DefaultValue(false)]
         public bool Checked
         {
             get { return chkd; }
@@ -76,27 +73,22 @@ namespace PearXLib.Engine
             {
                 chkd = value;
                 Refresh();
-                if(CheckedChanged != null)
-                    CheckedChanged(this, value);
+                CheckedChanged?.Invoke(this, value);
             }
         }
 
         /// <summary>
         /// Checkbox's current state.
         /// </summary>
-        public CheckboxState State
-        {
-            get { return state; }
-            set { state = value;}
-        }
+        public CheckboxState State { get; private set; }
 
         #endregion
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if(Text != null)
+            if(!string.IsNullOrEmpty(Text))
             {
-                SizeF pf = e.Graphics.MeasureString(Text, Font);
+                var pf = e.Graphics.MeasureString(Text, Font);
                 e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Width / 5, (Height - pf.Height) / 2);
             }
         }
@@ -109,14 +101,15 @@ namespace PearXLib.Engine
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            state = CheckboxState.Focused;
+            State = CheckboxState.Focused;
             base.OnMouseEnter(e);
             Refresh();
         }
 
+
         protected override void OnMouseLeave(EventArgs e)
         {
-            state = CheckboxState.None;
+            State = CheckboxState.None;
             base.OnMouseLeave(e);
             Refresh();
         }

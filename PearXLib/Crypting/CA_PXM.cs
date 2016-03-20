@@ -1,4 +1,7 @@
-﻿namespace PearXLib.Crypting
+﻿using System;
+using System.Text;
+
+namespace PearXLib.Crypting
 {
     /// <summary>
     /// PXM encrypting algorithm (1. Convert char to int. 2. Result * 'salt').
@@ -13,17 +16,16 @@
         /// <returns>Encrypted string.</returns>
         public static string Enrypt(string input, int salt)
         {
-            char[] ca = input.ToCharArray();
-            int[] ia = new int[ca.Length];
-            for (int i = 0; i < ca.Length; i++)
+            byte[] ba = Encoding.UTF8.GetBytes(input.ToCharArray());
+            long[] la = new long[ba.Length];
+
+            for (int j = 0; j < ba.Length; j++)
             {
-                ia[i] = PXL.GetIntFromChar(ca[i]);
+                long i = Convert.ToInt64(ba[j]);
+                i *= salt;
+                la[j] = i;
             }
-            for (int i = 0; i < ia.Length; i++)
-            {
-                ia[i] *= salt;
-            }
-                return string.Join(" ", ia);
+            return string.Join(" ", la);
         }
 
         /// <summary>
@@ -35,21 +37,22 @@
         public static string Decrypt(string input, int salt)
         {
             string[] s = input.Split(' ');
-            int[] ia = new int[s.Length];
-            char[] ca = new char[ia.Length];
+
+            long[] la = new long[s.Length];
+            char[] ca = new char[s.Length];
+            byte[] ba = new byte[s.Length];
+
             for (int i = 0; i < s.Length; i++)
             {
-                ia[i] = int.Parse(s[i]);
+                la[i] = long.Parse(s[i]);
             }
+
             for (int i = 0; i < s.Length; i++)
             {
-                ia[i] /= salt;
+                ba[i] = Convert.ToByte(la[i] / salt);
             }
-            for (int i = 0; i < ia.Length; i++)
-            {
-                 ca[i] = PXL.GetCharFromInt(ia[i]);
-            }
-            return new string(ca);
+            
+            return new string(Encoding.UTF8.GetChars(ba));
         }
     }
 }

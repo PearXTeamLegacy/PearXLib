@@ -13,8 +13,9 @@ namespace PearXLib
         /// <returns>Random character.</returns>
         public static char GenChar(Random rand)
         {
-            int i = rand.Next(1, 27);
-            return PXL.GetCharFromInt(i);
+            const string chars = "abcdefghijklmnopqrstuvwxyz";
+            int i = rand.Next(chars.Length);
+            return chars[i];
         }
 
         /// <summary>

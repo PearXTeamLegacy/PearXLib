@@ -31,7 +31,7 @@ namespace PearXLib
     /// </summary>
     public class Logging
     {
-        private string logPath;
+        private readonly string logPath;
 
         /// <summary>
         /// Executs, when log changed.
@@ -48,7 +48,7 @@ namespace PearXLib
         /// <param name="logpath">Path to the log file.</param>
         public Logging(string logpath)
         {
-            FileUtils.createDir(Path.GetDirectoryName(logpath));
+            Directory.CreateDirectory(Path.GetDirectoryName(logpath));
             logPath = logpath;
         }
 
@@ -59,7 +59,7 @@ namespace PearXLib
         /// <param name="force">If true, deletes old log file.</param>
         public Logging(string logpath, bool force)
         {
-            FileUtils.createDir(Path.GetDirectoryName(logpath));
+            Directory.CreateDirectory(Path.GetDirectoryName(logpath));
             if (force)
                 File.Delete(logpath);
             logPath = logpath;
@@ -91,10 +91,8 @@ namespace PearXLib
             string newStr = "[" + DateTime.Now + "]" + "[" + prefix + "]" + line + "\n";
             Log += newStr;
             File.AppendAllText(logPath, newStr);
-            if (LogChanged != null)
-            {
-                LogChanged(this, new EventArgs());
-            }
+
+            LogChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -106,10 +104,8 @@ namespace PearXLib
             string newStr = "[" + DateTime.Now + "]" + line + "\n";
             Log += newStr;
             File.AppendAllText(logPath, newStr);
-            if (LogChanged != null)
-            {
-                LogChanged(this, new EventArgs());
-            }
+
+            LogChanged?.Invoke(this, new EventArgs());
         }
     }
 }

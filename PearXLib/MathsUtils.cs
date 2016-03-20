@@ -30,9 +30,9 @@ namespace PearXLib
         public static double GetAverageExactly(double[] doubles)
         {
             double temp = 0;
-            foreach (int i in doubles)
+            foreach (double d in doubles)
             {
-                temp += i;
+                temp += d;
             }
             return temp / doubles.Length;
         }
