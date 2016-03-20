@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
@@ -38,6 +39,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Type of the indicator.
         /// </summary>
+        [DefaultValue(1)]
         public IndicatorType Type
         {
             get { return it; }
@@ -47,6 +49,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Color of the right val.
         /// </summary>
+        [DefaultValue(typeof(Color), "Green")]
         public Color Color1
         {
             get { return c1; }
@@ -56,6 +59,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Color of the center val.
         /// </summary>
+        [DefaultValue(typeof(Color), "Yellow")]
         public Color Color2
         {
             get { return c2; }
@@ -65,6 +69,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Color of the left val.
         /// </summary>
+        [DefaultValue(typeof(Color), "Red")]
         public Color Color3
         {
             get { return c3; }

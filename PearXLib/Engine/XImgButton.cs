@@ -7,11 +7,11 @@ namespace PearXLib.Engine
     /// <summary>
     /// A beautiful button from PearX Engine.
     /// </summary>
-    public partial class XImgButton : XButtonBase
+    public class XImgButton : XButtonBase
     {
-        private Image _BackImage = null;
-        private Image _BackImageFocused = null;
-        private Image _BackImagePressed = null;
+        private Image _BackImage;
+        private Image _BackImageFocused;
+        private Image _BackImagePressed;
 
         #region Properties.
         /// <summary>

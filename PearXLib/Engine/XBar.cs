@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
@@ -11,12 +10,12 @@ namespace PearXLib.Engine
     /// </summary>
     public class XBar : UserControl
     {
-        private int _Value = 0;
+        private int _Value;
         private int _Maximum = 100;
         private Color _GradientColor1 = Color.FromArgb(102, 204, 0);
         private Color _GradientColor2 = Color.White;
         private Color _BGColor = Color.Gray;
-        private string _ProgressText = String.Empty;
+        private string _ProgressText = string.Empty;
         private Color _ProgressTextColor = Color.Black;
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Progress value.
         /// </summary>
-        [Description("Progress value."), DefaultValue(0)]
+        [DefaultValue(0)]
         public virtual int Value
         {
             get { return _Value; }
@@ -60,15 +59,14 @@ namespace PearXLib.Engine
                 {
                     _Value = Maximum; Refresh();
                 }
-                if (ValueChanged != null)
-                    ValueChanged(this, new XBarEventArgs(value, Maximum));
+                ValueChanged?.Invoke(this, new XBarEventArgs(value, Maximum));
             }
         }
 
         /// <summary>
         /// Maximum value.
         /// </summary>
-        [Description("Maximum value."), DefaultValue(100)]
+        [DefaultValue(100)]
         public virtual int Maximum
         {
             get { return _Maximum; }
@@ -84,7 +82,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Value bar gradient color 1.
         /// </summary>
-        [Description("Value bar gradient color 1."), DefaultValue(typeof(Color), "102, 204, 0")]
+        [DefaultValue(typeof(Color), "102, 204, 0")]
         public virtual Color GradientColor1
         {
             get { return _GradientColor1; }
@@ -94,7 +92,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Value bar gradient color 2.
         /// </summary>
-        [Description("Value bar gradient color 2."), DefaultValue(typeof(Color), "White")]
+        [DefaultValue(typeof(Color), "White")]
         public virtual Color GradientColor2
         {
             get { return _GradientColor2; }
@@ -104,7 +102,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Bar background color.
         /// </summary>
-        [Description("Bar background color."), DefaultValue(typeof(Color), "Gray")]
+        [DefaultValue(typeof(Color), "Gray")]
         public virtual Color BGColor
         {
             get { return _BGColor; }
@@ -114,7 +112,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Text on bar.
         /// </summary>
-        [Description("Text on bar."), DefaultValue("")]
+        [DefaultValue("")]
         public virtual string ProgressText
         {
             get { return _ProgressText; }
@@ -124,7 +122,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Color of a text on a bar.
         /// </summary>
-        [Description("Color of a text on a bar."), DefaultValue(typeof(Color), "Black")]
+        [DefaultValue(typeof(Color), "Black")]
         public virtual Color ProgressTextColor
         {
             get { return _ProgressTextColor; }

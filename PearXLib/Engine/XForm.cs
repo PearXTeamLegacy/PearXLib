@@ -8,7 +8,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A beautiful customizing form.
     /// </summary>
-    public partial class XForm : Form
+    public class XForm : Form
     {
         private bool _MaximizeBox = true;
         private bool _ToTrayBox = true;
@@ -27,7 +27,7 @@ namespace PearXLib.Engine
         private Image _ImageToTrayBox = FormIcons.ToTrayBox;
         private Image _ImageToTrayBoxFocused = FormIcons.ToTrayBoxFocused;
         
-        private enum State { ResizeWS, ResizeEN, Move, None }
+        private enum State { Move, None }
         /// <summary>
         /// Bar state.
         /// </summary>
@@ -60,17 +60,19 @@ namespace PearXLib.Engine
         /// <summary>
         /// True if form maximized, else false.
         /// </summary>
-        public bool MaximizeState = false;
+        public bool MaximizeState;
         private Size lastSize;
         private Point lastLocation;
-        private int i = 0;
+        private int i;
 
         /// <summary>
         /// Initializates a new XForm component.
         /// </summary>
         public XForm()
         {
-            InitializeComponent();
+            AutoScaleMode = AutoScaleMode.Font;
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
         }
 
         #region Params
@@ -103,7 +105,7 @@ namespace PearXLib.Engine
         /// Is maximize box enabled?
         /// </summary>
         [Description("Is maximize box enabled?"), DefaultValue(true)]
-        public virtual new bool MaximizeBox
+        public new virtual bool MaximizeBox
         {
             get { return _MaximizeBox; }
             set { _MaximizeBox = value; Refresh(); }
@@ -278,26 +280,27 @@ namespace PearXLib.Engine
         }
         #endregion
 
-        private void XForm_Paint(object sender, PaintEventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
             if (BarImage != null)
             {
                 TextureBrush tb = new TextureBrush(BarImage);
                 e.Graphics.FillRectangle(tb, 0, 0, Size.Width, BarImage.Height);
             }
-            if(CloseBox)
+            if (CloseBox)
             {
                 if (BarSt == BarState.Close && ImageCloseBoxFocused != null)
                 {
                     e.Graphics.DrawImage(ImageCloseBoxFocused, Size.Width - (32 + BoxesDistance), BoxesTopDistance, 32, 32);
                 }
-                else if(ImageCloseBox != null)
+                else if (ImageCloseBox != null)
                 {
                     e.Graphics.DrawImage(ImageCloseBox, Size.Width - (32 + BoxesDistance), BoxesTopDistance, 32, 32);
                 }
             }
 
-            if(MaximizeBox)
+            if (MaximizeBox)
             {
                 if (MaximizeState == false)
                 {
@@ -305,7 +308,7 @@ namespace PearXLib.Engine
                     {
                         e.Graphics.DrawImage(ImageMaximizeBoxFocused, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
-                    else if(ImageMaximizeBox != null)
+                    else if (ImageMaximizeBox != null)
                     {
                         e.Graphics.DrawImage(ImageMaximizeBox, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
@@ -316,7 +319,7 @@ namespace PearXLib.Engine
                     {
                         e.Graphics.DrawImage(ImageMinimizeBoxFocused, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
-                    else if(ImageMinimizeBox != null)
+                    else if (ImageMinimizeBox != null)
                     {
                         e.Graphics.DrawImage(ImageMinimizeBox, Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
                     }
@@ -341,20 +344,22 @@ namespace PearXLib.Engine
             }
         }
 
-        private void XForm_MouseDown(object sender, MouseEventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
+            base.OnMouseDown(e);
             state = GetState();
-            
         }
 
-        private void XForm_Load(object sender, EventArgs e)
+        protected override void OnMouseMove(MouseEventArgs e)
         {
-            this.MouseMove += MouseHook_MouseMove;
-            this.MouseUp += MouseHook_MouseUp;
-        }
+            base.OnMouseMove(e);
+            lastOffset = new Point(MousePosition.X - lastMousePoint.X, MousePosition.Y - lastMousePoint.Y);
+            if (state == State.Move)
+            {
+                Location = new Point(Location.X + lastOffset.X, Location.Y + lastOffset.Y);
+            }
+            lastMousePoint = MousePosition;
 
-        private void XForm_MouseMove(object sender, MouseEventArgs e)
-        {
             //Close Box:
             if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (32 + BoxesDistance), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - BoxesDistance, Location.Y + (32 + BoxesTopDistance))) && CloseBox)
             {
@@ -405,26 +410,14 @@ namespace PearXLib.Engine
             }
         }
 
-        private void MouseHook_MouseUp(object sender, MouseEventArgs e)
+        protected override void OnMouseUp(MouseEventArgs e)
         {
+            base.OnMouseUp(e);
             state = State.None;
-        }
 
-        private void MouseHook_MouseMove(object sender, MouseEventArgs e)
-        {
-            lastOffset = new Point(MousePosition.X - lastMousePoint.X, MousePosition.Y - lastMousePoint.Y);
-            if (state == State.Move)
-            {
-                Location = new Point(Location.X + lastOffset.X, Location.Y + lastOffset.Y);
-            }
-            lastMousePoint = MousePosition;
-        }
-
-        private void XForm_MouseUp(object sender, MouseEventArgs e)
-        {
             if (BarSt == BarState.Close && CloseBox)
             {
-                base.Close();
+                Close();
             }
             else if (BarSt == BarState.Maximize && MaximizeBox)
             {
@@ -436,8 +429,7 @@ namespace PearXLib.Engine
                     Location = new Point(0, 0);
                     Size = Screen.PrimaryScreen.WorkingArea.Size;
                     Refresh();
-                    if (Maximized != null)
-                        Maximized(this, new EventArgs());
+                    Maximized?.Invoke(this, new EventArgs());
                 }
                 else
                 {
@@ -445,8 +437,7 @@ namespace PearXLib.Engine
                     Location = lastLocation;
                     Size = lastSize;
                     Refresh();
-                    if (Minimized != null)
-                        Minimized(this, new EventArgs());
+                    Minimized?.Invoke(this, new EventArgs());
                 }
             }
             else if (BarSt == BarState.ToTray && ToTrayBox)
@@ -454,20 +445,19 @@ namespace PearXLib.Engine
                 if (WindowState != FormWindowState.Minimized)
                 {
                     WindowState = FormWindowState.Minimized;
-                    if (TurnedToTray != null)
-                        TurnedToTray(this, new EventArgs());
+                    TurnedToTray?.Invoke(this, new EventArgs());
                 }
                 else
                 {
                     WindowState = FormWindowState.Normal;
-                    if (ExpandedFromTray != null)
-                        ExpandedFromTray(this, new EventArgs());
+                    ExpandedFromTray?.Invoke(this, new EventArgs());
                 }
             }
         }
 
-        private void XForm_MouseLeave(object sender, EventArgs e)
+        protected override void OnMouseLeave(EventArgs e)
         {
+            base.OnMouseLeave(e);
             BarSt = BarState.None;
             Refresh();
         }

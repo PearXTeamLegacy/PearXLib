@@ -50,46 +50,6 @@
             PearX Team's Directory.
             </summary>
         </member>
-        <member name="T:PearXLib.Engine.Align">
-            <summary>
-            Alignment enum.
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.Align.RIGHT">
-            <summary>
-            # # #<para/>
-            # # *<para/>
-            # # #
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.Align.CENTER">
-            <summary>
-            # # #<para/>
-            # * #<para/>
-            # # #
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.Align.LEFT">
-            <summary>
-            # # #<para/>
-            * # #<para/>
-            # # #
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.Align.TOP">
-            <summary>
-            # * #<para/>
-            # # #<para/>
-            # # #
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.Align.BOTTOM">
-            <summary>
-            # # #<para/>
-            # # #<para/>
-            # * #
-            </summary>
-        </member>
         <member name="T:PearXLib.Engine.Flat.FlatBar">
             <summary>
             Flat-style bar.
@@ -313,6 +273,11 @@
             Selected language name.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.ListBoxSelectLang">
+            <summary>
+            A listbox, maked for easy language selection without crutches.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.ListBoxSelectLang.LangEventHandler">
             <summary>
             Language Event Handler
@@ -357,6 +322,11 @@
             Bar value in percents.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XButton">
+            <summary>
+            A beatiful gradient-style button.
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.XButton.GradientColor1">
             <summary>
             The button's gradient color 1.
@@ -382,6 +352,11 @@
             A color of the pressed button.
             </summary>
         </member>
+        <member name="M:PearXLib.Engine.XButton.#ctor">
+            <summary>
+            Initializes a new XButton component.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XButtonState">
             <summary>
             Button state enum.
@@ -400,6 +375,16 @@
         <member name="F:PearXLib.Engine.XButtonState.NONE">
             <summary>
             None.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XButtonBase">
+            <summary>
+            Base for the PearXLib's buttons.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.XButtonBase.#ctor">
+            <summary>
+            Initializes a new XButtonBase component.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XButtonBase.State">
@@ -629,23 +614,6 @@
             Color of the Form Name.
             </summary>
         </member>
-        <member name="F:PearXLib.Engine.XForm.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:PearXLib.Engine.XForm.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:PearXLib.Engine.XForm.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
         <member name="T:PearXLib.Engine.InvItem">
             <summary>
             A control to display the item.
@@ -770,17 +738,27 @@
             Control's background color.
             </summary>
         </member>
-        <member name="T:PearXLib.Engine.XImageCheckbox">
+        <member name="T:PearXLib.Engine.XImgCheckbox">
             <summary>
             A checkbox, maked from images.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XImageCheckbox.CheckBG">
+        <member name="P:PearXLib.Engine.XImgCheckbox.CheckBG">
             <summary>
             Checkbox's background.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XImageCheckbox.Check">
+        <member name="P:PearXLib.Engine.XImgCheckbox.CheckFocused">
+            <summary>
+            Focused checkbox's check image.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgCheckbox.CheckBGFocused">
+            <summary>
+            Focused checkbox's background.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XImgCheckbox.Check">
             <summary>
             Checkbox's check image.
             </summary>
@@ -830,11 +808,6 @@
             Icon image.
             </summary>
         </member>
-        <member name="P:PearXLib.Engine.XIcon.PlaySound">
-            <summary>
-            Play sound, when mouse focused on this component?
-            </summary>
-        </member>
         <member name="P:PearXLib.Engine.XIcon.Title">
             <summary>
             Icon title (will be displayed on the control).
@@ -843,21 +816,6 @@
         <member name="P:PearXLib.Engine.XIcon.Expand">
             <summary>
             How much to expand on mouse enter?
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XIcon.Font">
-            <summary>
-            A font of a title text.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XIcon.Cursor">
-            <summary>
-            A cursor for a control.
-            </summary>
-        </member>
-        <member name="P:PearXLib.Engine.XIcon.BackColor">
-            <summary>
-            Control background color.
             </summary>
         </member>
         <member name="P:PearXLib.Engine.XIcon.TitleWidthHeight">

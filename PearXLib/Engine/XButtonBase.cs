@@ -24,16 +24,22 @@ namespace PearXLib.Engine
         NONE
     }
 
+    /// <summary>
+    /// Base for the PearXLib's buttons.
+    /// </summary>
     [DefaultEvent("Click")]
     public class XButtonBase : UserControl
     {
         private string _Text = "A button.";
-        private Image _Image = null;
+        private Image _Image;
         private ContentAlignment _ImageAlign = ContentAlignment.MiddleRight;
         private ContentAlignment _TextAlign = ContentAlignment.MiddleCenter;
         private XButtonState _State = XButtonState.NONE;
-        private int _Border = 0;
+        private int _Border;
 
+        /// <summary>
+        /// Initializes a new XButtonBase component.
+        /// </summary>
         public XButtonBase()
         {
             DoubleBuffered = true;
@@ -72,11 +78,8 @@ namespace PearXLib.Engine
         /// <summary>
         /// The text on the button.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        [Browsable(true)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [Bindable(true)]
-        public override string Text
+        [Bindable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public new string Text
         {
             get { return _Text; }
             set { _Text = value; Refresh(); }

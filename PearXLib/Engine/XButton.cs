@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// A beatiful gradient-style button.
+    /// </summary>
     public class XButton : XButtonBase
     {
         private Color _GradientColor1 = Color.FromArgb(102, 204, 0);
@@ -65,6 +68,9 @@ namespace PearXLib.Engine
         }
         #endregion
 
+        /// <summary>
+        /// Initializes a new XButton component.
+        /// </summary>
         public XButton()
         {
             Size = new Size(128, 64);

@@ -24,6 +24,9 @@ namespace PearXLib.Engine
         public string SelectedLang { get; private set; }
     }
 
+    /// <summary>
+    /// A listbox, maked for easy language selection without crutches.
+    /// </summary>
     public class ListBoxSelectLang : ListBox
     {
         /// <summary>
@@ -54,17 +57,15 @@ namespace PearXLib.Engine
                     Items.Clear();
                     string[] listoffiles = Directory.GetFiles(value);
                     listoflangs = new string[listoffiles.Length];
-                    string lang;
                     int count = 0;
                     foreach (string s in listoffiles)
                     {
                         if (Path.GetExtension(s) == ".lang")
                         {
-                            lang = Path.GetFileNameWithoutExtension(s);
-                            string str = string.Empty;
+                            string lang = Path.GetFileNameWithoutExtension(s);
                             try
                             {
-                                str = File.ReadAllText(value + lang + ".langinfo");
+                                string str = File.ReadAllText(value + lang + ".langinfo");
                                 Items.Add(str);
                                 listoflangs[count] = lang;
                                 count++;
@@ -82,10 +83,7 @@ namespace PearXLib.Engine
             base.OnSelectedIndexChanged(e);
             if (SelectedIndex != -1 && SelectedIndex <= listoflangs.Length)
             {
-                if (LanguageSelected != null)
-                {
-                    LanguageSelected(this, new LangEventArgs(listoflangs[SelectedIndex]));
-                }
+                LanguageSelected?.Invoke(this, new LangEventArgs(listoflangs[SelectedIndex]));
             }
         }
     }

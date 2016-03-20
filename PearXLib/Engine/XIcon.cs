@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Media;
+
 
 namespace PearXLib.Engine
 {
@@ -12,107 +12,46 @@ namespace PearXLib.Engine
     public class XIcon : UserControl
     {
         private Image _Icon;
-        private bool _PlaySound = true;
-        private string _Title = String.Empty;
-        private int _Expand = 10;
+        private string _Title = "";
 
         /// <summary>
         /// Initializes a new XIcon component.
         /// </summary>
         public XIcon() 
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             DoubleBuffered = true;
             Cursor = Cursors.Hand;
             Size = new Size(64, 64);
+            Expand = 10;
+            Cursor = Cursors.Hand;
         }
 
         #region Params
         /// <summary>
         /// Icon image.
         /// </summary>
-        [DefaultValue(null), Description("Icon image.")]
+        [DefaultValue(null)]
         public virtual Image Icon
         {
             get { return _Icon; }
-            set
-            {
-                _Icon = value;
-                Refresh();
-            }
-        }
-
-        /// <summary>
-        /// Play sound, when mouse focused on this component?
-        /// </summary>
-        [DefaultValue(true), Description("Play sound, when mouse focused on this component?")]
-        public virtual bool PlaySound
-        {
-            get { return _PlaySound; }
-            set { _PlaySound = value; }
+            set { _Icon = value; Refresh(); }
         }
 
         /// <summary>
         /// Icon title (will be displayed on the control).
         /// </summary>
-        [DefaultValue(""), Description("Icon title (will be displayed on the control).")]
+        [DefaultValue("")]
         public virtual string Title
         {
-            get
-            {
-                return _Title;
-            }
-            set
-            {
-                _Title = value;
-                Refresh();
-            }
+            get { return _Title; }
+            set { _Title = value; Refresh(); }
         }
 
         /// <summary>
         /// How much to expand on mouse enter?
         /// </summary>
-        [Description("How much to expand on mouse enter?"), DefaultValue(10)]
-        public virtual int Expand
-        {
-            get
-            {
-                return _Expand;
-            }
-            set
-            {
-                _Expand = value;
-            }
-        }
-
-        /// <summary>
-        /// A font of a title text.
-        /// </summary>
-        [Description("A font of a title text.")]
-        public override Font Font
-        {
-            get
-            {
-                return base.Font;
-            }
-
-            set
-            {
-                base.Font = value;
-            }
-        }
-
-        /// <summary>
-        /// A cursor for a control.
-        /// </summary>
-        [DefaultValue(typeof(Cursor), "Hand")]
-        public override Cursor Cursor { get; set; }
-
-        /// <summary>
-        /// Control background color.
-        /// </summary>
-        [DefaultValue(typeof(Color), "Transparent")]
-        public override Color BackColor { get; set; }
+        [DefaultValue(10)]
+        public virtual int Expand { get; set; }
         #endregion
 
         /// <summary>
@@ -128,10 +67,6 @@ namespace PearXLib.Engine
             Size = new Size(Size.Width + (Expand * 2), Size.Height + (Expand * 2));
             Location = new Point(Location.X - Expand, Location.Y - Expand);
             BringToFront();
-            if (PlaySound)
-            {
-                //Todo
-            }
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -145,7 +80,7 @@ namespace PearXLib.Engine
             if (Icon != null)
             {
                 Size s = Size;
-                if (!String.IsNullOrEmpty(Title))
+                if (!string.IsNullOrEmpty(Title))
                 {
                     Brush b = new SolidBrush(ForeColor);
                     SizeF strWH = e.Graphics.MeasureString(Title, Font);

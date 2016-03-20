@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,9 +9,9 @@ namespace PearXLib.Engine
     /// </summary>
     public class InvItem : UserControl
     {
-        private Image _ItemImage = null;
+        private Image _ItemImage;
         private string _ItemDesc = "Cake - a lie.";
-        private int _ItemAmount = 0;
+        private int _ItemAmount;
         private string _ItemName = "Cake";
         private Color _ColorName = Color.Red;
         private Color _ColorDesc = Color.Blue;
@@ -28,7 +27,7 @@ namespace PearXLib.Engine
             ResizeRedraw = true;
         }
 
-        #region Props
+        #region Params
         /// <summary>
         /// Inventory Item event handler.
         /// </summary>
@@ -44,7 +43,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Item image.
         /// </summary>
-        [Description("Item image."), DefaultValue(null)]
+        [DefaultValue(null)]
         public virtual Image ItemImage
         {
             get
@@ -61,7 +60,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Item description.
         /// </summary>
-        [Description("Item description."), DefaultValue("Cake - a lie.")]
+        [DefaultValue("Cake - a lie.")]
         public virtual string ItemDesc
         {
             get
@@ -78,7 +77,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Item amount.
         /// </summary>
-        [Description("Item amount."), DefaultValue(0)]
+        [DefaultValue(0)]
         public virtual int ItemAmount
         {
             get
@@ -89,15 +88,14 @@ namespace PearXLib.Engine
             {
                 _ItemAmount = value;
                 Refresh();
-                if (AmountChanged != null)
-                    AmountChanged(this, new InvItemEventArgs(value));
+                AmountChanged?.Invoke(this, new InvItemEventArgs(value));
             }
         }
 
         /// <summary>
         /// Item name.
         /// </summary>
-        [Description("Item name."), DefaultValue("Cake")]
+        [DefaultValue("Cake")]
         public virtual string ItemName
         {
             get
@@ -114,7 +112,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Name label color.
         /// </summary>
-        [Description("Name label color."), DefaultValue(typeof(Color), "Red")]
+        [DefaultValue(typeof(Color), "Red")]
         public virtual Color ColorName
         {
             get
@@ -131,7 +129,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Description label color.
         /// </summary>
-        [Description("Description label color."), DefaultValue(typeof(Color), "Blue")]
+        [DefaultValue(typeof(Color), "Blue")]
         public virtual Color ColorDesc
         {
             get
@@ -148,7 +146,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Amount label color.
         /// </summary>
-        [Description("Amount label color."), DefaultValue(typeof(Color), "Green")]
+        [DefaultValue(typeof(Color), "Green")]
         public virtual Color ColorAmount
         {
             get

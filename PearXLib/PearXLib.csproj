@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Crypting\CA_PXM.cs" />
     <Compile Include="d.cs" />
-    <Compile Include="Engine\Align.cs" />
     <Compile Include="Engine\Flat\FlatBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -82,16 +81,13 @@
     <Compile Include="Engine\XForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Engine\XForm.Designer.cs">
-      <DependentUpon>XForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Engine\InvItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Engine\XBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XImageCheckbox.cs">
+    <Compile Include="Engine\XImgCheckbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Engine\XImgButton.cs">
@@ -114,9 +110,6 @@
     <EmbeddedResource Include="Engine\FormIcons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FormIcons.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Engine\XForm.resx">
-      <DependentUpon>XForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
