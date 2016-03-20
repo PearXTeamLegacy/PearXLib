@@ -96,27 +96,27 @@ namespace PearXLib
         {
             while (template.Contains("%char%"))
             {
-                template = PXL.ReplaceFirst(template, "%char%", GenChar(rand).ToString());
+                PXL.ReplaceFirst(ref template, "%char%", GenChar(rand).ToString());
             }
             while (template.Contains("%CHAR%"))
             {
-                template = PXL.ReplaceFirst(template, "%CHAR%", GenChar(rand).ToString().ToUpper());
+                PXL.ReplaceFirst(ref template, "%CHAR%", GenChar(rand).ToString().ToUpper());
             }
             while (template.Contains("%num%"))
             {
-                template = PXL.ReplaceFirst(template, "%num%", GenNumber(rand).ToString());
+                PXL.ReplaceFirst(ref template, "%num%", GenNumber(rand).ToString());
             }
             while (template.Contains("%rand%"))
             {
-                template = PXL.ReplaceFirst(template, "%rand%", GenRandom(rand, true).ToString());
+                PXL.ReplaceFirst(ref template, "%rand%", GenRandom(rand, true).ToString());
             }
             while (template.Contains("%randws%"))
             {
-                template = PXL.ReplaceFirst(template, "%randws%", GenRandom(rand, false).ToString());
+                PXL.ReplaceFirst(ref template, "%randws%", GenRandom(rand, false).ToString());
             }
             while (template.Contains("%sym%"))
             {
-                template = PXL.ReplaceFirst(template, "%sym%", GenSymbol(rand).ToString());
+                PXL.ReplaceFirst(ref template, "%sym%", GenSymbol(rand).ToString());
             }
             return template;
         }

@@ -82,11 +82,10 @@ namespace PearXLib
         /// <param name="str">Input string.</param>
         /// <param name="replaceFrom">Replace from...</param>
         /// <param name="replaceTo">Replace to...</param>
-        /// <returns></returns>
-        public static string ReplaceFirst(string str, string replaceFrom, string replaceTo)
+        public static void ReplaceFirst(ref string str, string replaceFrom, string replaceTo)
         {
             int p = str.IndexOf(replaceFrom, StringComparison.Ordinal);
-            return str.Substring(0, p) + replaceTo + str.Substring(p + replaceFrom.Length);
+            str = str.Substring(0, p) + replaceTo + str.Substring(p + replaceFrom.Length);
         }
 
         /// <summary>

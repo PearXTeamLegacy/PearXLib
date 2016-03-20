@@ -1050,7 +1050,7 @@
             <param name="path">Path to exe.</param>
             <param name="filePath">Path to new shortcut.</param>
         </member>
-        <member name="M:PearXLib.PXL.ReplaceFirst(System.String,System.String,System.String)">
+        <member name="M:PearXLib.PXL.ReplaceFirst(System.String@,System.String,System.String)">
             <summary>
             Replaces first occurrence of string.
             </summary>
