@@ -73,6 +73,7 @@ namespace PearXLib.Engine
             AutoScaleMode = AutoScaleMode.Font;
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
+            ResizeRedraw = true;
         }
 
         #region Params

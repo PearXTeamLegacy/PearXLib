@@ -83,10 +83,10 @@ namespace PearXLib
         /// Template usage:
         /// %num% - a random figure, ex. 6 or 7.
         /// %char% - a random character, ex. b or e.
-        /// %CHAR% - a random character in uppercase, ex. Z or H.
         /// %sym% - a random symbol, ex. ~ or &.
         /// %rand% - a random symbol, character, or figure.
         /// %randws% - a random character or figure.
+        /// Write in uppercase for uppercase :p.
         /// Example template: TEST%rand%%sym%%CHAR%%CHAR%_HEHE. Example return: TEST&*FE_HEHE]]>
         /// </summary>
         /// <param name="template">A template</param>
@@ -113,6 +113,14 @@ namespace PearXLib
             while (template.Contains("%randws%"))
             {
                 PXL.ReplaceFirst(ref template, "%randws%", GenRandom(rand, false).ToString());
+            }
+            while (template.Contains("%RAND%"))
+            {
+                PXL.ReplaceFirst(ref template, "%RAND%", GenRandom(rand, true).ToString().ToUpper());
+            }
+            while (template.Contains("%RANDWS%"))
+            {
+                PXL.ReplaceFirst(ref template, "%RANDWS%", GenRandom(rand, false).ToString().ToUpper());
             }
             while (template.Contains("%sym%"))
             {
