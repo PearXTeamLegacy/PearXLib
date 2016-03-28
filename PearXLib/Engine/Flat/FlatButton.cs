@@ -56,16 +56,22 @@ namespace PearXLib.Engine.Flat
                             using (Graphics gr = Graphics.FromImage(bm))
                             {
                                 isDrawing = true;
-                                int x = MousePosition.X - Parent.Location.X - Location.X;
-                                int y = MousePosition.Y - Parent.Location.Y - Location.Y;
-                                for (int i = 0; i <= Width * 2; i++)
+                                //int x = Cursor.Position.X
+                                //int y = Cursor.Position.Y - Top;
+                                gr.FillRectangle(new SolidBrush(ColorFocused), rect);
+                                for (int i = 0; i <= Width * 2; i += 4)
                                 {
-                                    gr.FillRectangle(new SolidBrush(ColorFocused), rect);
-                                    //From center:
-                                    //gr.FillEllipse(new SolidBrush(Color), (Width - i) / 2, (Height - i) / 2, i, i);
-                                    gr.FillEllipse(new SolidBrush(Color), x - i / 2, y - i / 2, i, i);
-                                    try { Invoke(new MethodInvoker(() => { Refresh(); })); }
-                                    catch { }
+                                    gr.FillEllipse(new SolidBrush(Color), (Width - i) / 2, (Height - i) / 2, i, i);
+                                    //gr.FillEllipse(new SolidBrush(Color), x - i / 2, y - i / 2, i, i);
+                                    Thread.Sleep(1);
+                                    try
+                                    {
+                                        Invoke(new MethodInvoker(() => { Refresh(); }));
+                                    }
+                                    catch
+                                    {
+                                        return;
+                                    }
                                     if (i == Width * 2)
                                     {
                                         isDrawing = false;

@@ -40,7 +40,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static readonly string ver = "40";
+        public static readonly string ver = "41";
 
         /// <summary>
         /// Directory sepator.
