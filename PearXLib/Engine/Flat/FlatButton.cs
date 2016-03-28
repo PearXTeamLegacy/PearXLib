@@ -1,29 +1,40 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
 using System.ComponentModel;
 
 namespace PearXLib.Engine.Flat
 {
+    /// <summary>
+    /// Flat-style button.
+    /// </summary>
     public class FlatButton : XButtonBase
     {
         private Color _Color = Color.FromArgb(18, 107, 166);
         private Color _ColorFocused = Color.FromArgb(41, 128, 185);
 
+        /// <summary>
+        /// Initializes a new FlatButton component.
+        /// </summary>
         public FlatButton()
         {
             Size = new Size(128, 64);
         }
 
         #region Params
+        /// <summary>
+        /// Color of the button.
+        /// </summary>
         [DefaultValue(typeof(Color), "18, 107, 166")]
         public Color Color
         {
             get { return _Color; }
             set { _Color = value; Refresh(); }
         }
-
+        
+        /// <summary>
+        /// Color of the focused button.
+        /// </summary>
         [DefaultValue(typeof(Color), "41, 128, 185")]
         public Color ColorFocused
         {
@@ -32,9 +43,8 @@ namespace PearXLib.Engine.Flat
         }
         #endregion
 
-        Bitmap bm;
-        bool isDrawing = false;
-        Random rand = new Random();
+        private Bitmap bm;
+        private bool isDrawing;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -59,11 +69,10 @@ namespace PearXLib.Engine.Flat
                                 //int x = Cursor.Position.X
                                 //int y = Cursor.Position.Y - Top;
                                 gr.FillRectangle(new SolidBrush(ColorFocused), rect);
-                                for (int i = 0; i <= Width * 2; i += 4)
+                                for (int i = 0; i <= Width * 2; i++)
                                 {
                                     gr.FillEllipse(new SolidBrush(Color), (Width - i) / 2, (Height - i) / 2, i, i);
                                     //gr.FillEllipse(new SolidBrush(Color), x - i / 2, y - i / 2, i, i);
-                                    Thread.Sleep(1);
                                     try
                                     {
                                         Invoke(new MethodInvoker(() => { Refresh(); }));

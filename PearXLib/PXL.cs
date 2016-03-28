@@ -187,5 +187,16 @@ namespace PearXLib
         {
             return new Point((parent.Width - s.Width) / 2, p.Y);
         }
+
+        /// <summary>
+        /// Gets a center point for a UserControl.
+        /// </summary>
+        /// <param name="p">Parent Form</param>
+        /// <param name="uc">Control</param>
+        /// <returns></returns>
+        public static Point GetControlCenterPoint(Form p, Control uc)
+        {
+            return new Point((p.Width - uc.Size.Width) / 2, uc.Location.Y);
+        }
     }
 }

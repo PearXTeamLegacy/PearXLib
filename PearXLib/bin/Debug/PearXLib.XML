@@ -55,6 +55,26 @@
             Flat-style bar.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.Flat.FlatButton">
+            <summary>
+            Flat-style button.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Engine.Flat.FlatButton.#ctor">
+            <summary>
+            Initializes a new FlatButton component.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatButton.Color">
+            <summary>
+            Color of the button.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatButton.ColorFocused">
+            <summary>
+            Color of the focused button.
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.Flat.FlatCheckbox">
             <summary>
             A beautiful flat-style checkbox.
@@ -1112,6 +1132,14 @@
             <param name="parent">Control's parent form.</param>
             <param name="p">Control's location.</param>
             <param name="s">Control's size.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PearXLib.PXL.GetControlCenterPoint(System.Windows.Forms.Form,System.Windows.Forms.Control)">
+            <summary>
+            Gets a center point for a UserControl.
+            </summary>
+            <param name="p">Parent Form</param>
+            <param name="uc">Control</param>
             <returns></returns>
         </member>
         <member name="T:PearXLib.RandomUtils">
