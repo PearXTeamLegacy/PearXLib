@@ -9,8 +9,9 @@ namespace PearXLib.Engine
     /// <summary>
     /// An expanding icon from PearX Engine.
     /// </summary>
-    public class XIcon : UserControl
+    public class XIcon : XControlBase
     {
+        private bool mouseIn;
         private Image _Icon;
         private string _Title = "";
 
@@ -64,19 +65,20 @@ namespace PearXLib.Engine
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            Size = new Size(Size.Width + (Expand * 2), Size.Height + (Expand * 2));
-            Location = new Point(Location.X - Expand, Location.Y - Expand);
+            mouseIn = true;
+            Refresh();
             BringToFront();
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            Size = new Size(Size.Width - (Expand * 2), Size.Height - (Expand * 2));
-            Location = new Point(Location.X + Expand, Location.Y + Expand);
+            mouseIn = false;
+            Refresh();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
             if (Icon != null)
             {
                 Size s = Size;
@@ -84,12 +86,18 @@ namespace PearXLib.Engine
                 {
                     Brush b = new SolidBrush(ForeColor);
                     SizeF strWH = e.Graphics.MeasureString(Title, Font);
-                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height - strWH.Height);
+                    if (mouseIn)
+                        e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height - strWH.Height);
+                    else
+                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2 - strWH.Height);
                     e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
                 }
                 else
                 {
-                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height);
+                    if(mouseIn)
+                        e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height);
+                    else
+                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2);
                 }
             }
         }

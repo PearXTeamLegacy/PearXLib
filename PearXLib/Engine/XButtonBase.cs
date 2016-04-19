@@ -28,7 +28,7 @@ namespace PearXLib.Engine
     /// Base for the PearXLib's buttons.
     /// </summary>
     [DefaultEvent("Click")]
-    public class XButtonBase : UserControl
+    public class XButtonBase : XControlBase
     {
         private string _Text = "A button.";
         private Image _Image;

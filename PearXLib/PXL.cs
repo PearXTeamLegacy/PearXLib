@@ -40,7 +40,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        public static readonly string ver = "41";
+        private const string Version = "1.0.0.0";
 
         /// <summary>
         /// Directory sepator.
@@ -54,7 +54,7 @@ namespace PearXLib
         /// <returns>True or false.</returns>
         public static bool isNumberKey(KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char) Keys.Back)
             {
                 return true;
             }
@@ -124,8 +124,8 @@ namespace PearXLib
         /// <returns>Form start position.</returns>
         public static Point GetFormStartPosition(Form parent, Form child)
         {
-            int w = (parent.Location.X + (((parent.Size.Width - child.Size.Width) / 2)));
-            int h = (parent.Location.Y + (((parent.Size.Height - child.Size.Height) / 2)));
+            int w = (parent.Location.X + (((parent.Size.Width - child.Size.Width)/2)));
+            int h = (parent.Location.Y + (((parent.Size.Height - child.Size.Height)/2)));
             return new Point(w, h);
         }
 
@@ -154,7 +154,10 @@ namespace PearXLib
         {
             RegistryView rv;
             rv = RegistryView.Registry64;
-            using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv).OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
+            using (
+                var baseKey =
+                    RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv)
+                        .OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
             {
                 using (var homeKey = baseKey.OpenSubKey(baseKey.GetValue("CurrentVersion").ToString()))
                     return homeKey.GetValue("JavaHome").ToString();
@@ -169,7 +172,7 @@ namespace PearXLib
         public static string GetFromPC(string what)
         {
             ManagementObjectSearcher ser = new ManagementObjectSearcher("SELECT " + what + " FROM Win32_OperatingSystem");
-            foreach(ManagementObject mo in ser.Get())
+            foreach (ManagementObject mo in ser.Get())
             {
                 return mo[what].ToString();
             }
@@ -185,7 +188,7 @@ namespace PearXLib
         /// <returns></returns>
         public static Point GetControlCenter(Form parent, Point p, Size s)
         {
-            return new Point((parent.Width - s.Width) / 2, p.Y);
+            return new Point((parent.Width - s.Width)/2, p.Y);
         }
 
         /// <summary>
@@ -196,7 +199,7 @@ namespace PearXLib
         /// <returns></returns>
         public static Point GetControlCenterPoint(Form p, Control uc)
         {
-            return new Point((p.Width - uc.Size.Width) / 2, uc.Location.Y);
+            return new Point((p.Width - uc.Size.Width)/2, uc.Location.Y);
         }
     }
 }

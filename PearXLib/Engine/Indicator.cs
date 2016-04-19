@@ -28,7 +28,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// Indicator.
     /// </summary>
-    public class Indicator : UserControl
+    public class Indicator : XControlBase
     {
         private IndicatorType it = IndicatorType.Gradient;
         private Color c1 = Color.Green;
@@ -88,6 +88,7 @@ namespace PearXLib.Engine
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
             switch(Type)
             {
                 case IndicatorType.Gradient:

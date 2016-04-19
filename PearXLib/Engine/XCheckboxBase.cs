@@ -23,7 +23,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A base for the checkboxes :P.
     /// </summary>
-    public class XCheckboxBase : UserControl
+    public class XCheckboxBase : XControlBase
     {
         private string text;
         private bool chkd;
@@ -86,6 +86,7 @@ namespace PearXLib.Engine
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
             if(!string.IsNullOrEmpty(Text))
             {
                 var pf = e.Graphics.MeasureString(Text, Font);

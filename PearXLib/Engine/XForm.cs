@@ -16,7 +16,8 @@ namespace PearXLib.Engine
         private int _BoxesDistance = 2;
         private int _BoxesTopDistance = 2;
         private Image _BarImage = FormIcons.BarImage;
-        private Color _TextColor = Color.Black;
+        private Color _TextColor = Color.White;
+        private bool _CanMove = true;
 
         private Image _ImageCloseBox = FormIcons.CloseBox;
         private Image _ImageCloseBoxFocused = FormIcons.CloseBoxFocused;
@@ -70,7 +71,6 @@ namespace PearXLib.Engine
         /// </summary>
         public XForm()
         {
-            AutoScaleMode = AutoScaleMode.Font;
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             ResizeRedraw = true;
@@ -245,12 +245,23 @@ namespace PearXLib.Engine
         /// <summary>
         /// Color of the Form Name.
         /// </summary>
-        [Description("Color of the Form Name."), DefaultValue(typeof(Color), "Black")]
+        [Description("Color of the Form Name."), DefaultValue(typeof(Color), "White")]
         public virtual Color TextColor
         {
             get { return _TextColor; }
             set { _TextColor = value; Refresh(); }
         }
+
+        /// <summary>
+        /// Can move form?
+        /// </summary>
+        [DefaultValue(true)]
+        public virtual bool CanMove
+        {
+            get { return _CanMove; }
+            set { _CanMove = value; }
+        }
+
         #endregion
 
         #region Private state
@@ -355,7 +366,7 @@ namespace PearXLib.Engine
         {
             base.OnMouseMove(e);
             lastOffset = new Point(MousePosition.X - lastMousePoint.X, MousePosition.Y - lastMousePoint.Y);
-            if (state == State.Move)
+            if (state == State.Move && CanMove)
             {
                 Location = new Point(Location.X + lastOffset.X, Location.Y + lastOffset.Y);
             }

@@ -8,7 +8,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A beautiful progress bar from PearXLib.
     /// </summary>
-    public class XBar : UserControl
+    public class XBar : XControlBase
     {
         private int _Value;
         private int _Maximum = 100;
@@ -138,6 +138,7 @@ namespace PearXLib.Engine
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
             Brush sb = new SolidBrush(BGColor);
             Pen p = new Pen(sb, 4);
             p.LineJoin = LineJoin.Bevel;

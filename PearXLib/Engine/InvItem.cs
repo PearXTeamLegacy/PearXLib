@@ -7,7 +7,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A control to display the item.
     /// </summary>
-    public class InvItem : UserControl
+    public class InvItem : XControlBase
     {
         private Image _ItemImage;
         private string _ItemDesc = "Cake - a lie.";
@@ -16,6 +16,7 @@ namespace PearXLib.Engine
         private Color _ColorName = Color.Red;
         private Color _ColorDesc = Color.Blue;
         private Color _ColorAmount = Color.Green;
+        private bool _ShowAmount = true;
 
         /// <summary>
         /// Initializes new InvItem component.
@@ -23,8 +24,8 @@ namespace PearXLib.Engine
         public InvItem()
         {
             BackColor = Color.Transparent;
-            Font = new Font("Microsoft Sans Serif", 15.75F);
             ResizeRedraw = true;
+            DoubleBuffered = true;
         }
 
         #region Params
@@ -161,6 +162,16 @@ namespace PearXLib.Engine
         }
 
         /// <summary>
+        /// Show Item Amount?
+        /// </summary>
+        [DefaultValue(true)]
+        public virtual bool ShowAmount
+        {
+            get { return _ShowAmount; }
+            set { _ShowAmount = value; Refresh(); }
+        }
+
+        /// <summary>
         /// Control background color.
         /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
@@ -169,13 +180,15 @@ namespace PearXLib.Engine
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            base.OnPaint(e);
             if (ItemImage != null)
             {
                 e.Graphics.DrawImage(ItemImage, 0, 0, Size.Width / 3, Size.Height);
             }
             e.Graphics.DrawString(ItemName, Font, new SolidBrush(ColorName), Size.Width / 3, 0);
             e.Graphics.DrawString(ItemDesc, new Font(Font.FontFamily, Font.Size / 1.5F), new SolidBrush(ColorDesc), Size.Width / 3, 0 + e.Graphics.MeasureString(ItemDesc, Font).Height);
-            e.Graphics.DrawString(ItemAmount.ToString(), Font, new SolidBrush(ColorAmount), Size.Width / 3, Size.Height - e.Graphics.MeasureString(ItemAmount.ToString(), Font).Height);
+            if(ShowAmount)
+                e.Graphics.DrawString(ItemAmount.ToString(), Font, new SolidBrush(ColorAmount), Size.Width / 3, Size.Height - e.Graphics.MeasureString(ItemAmount.ToString(), Font).Height);
         }
     }
 }

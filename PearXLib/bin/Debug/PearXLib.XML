@@ -181,6 +181,26 @@
               Поиск локализованного ресурса типа System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.FormIcons.DialogError">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.DialogInfo">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.DialogQuestion">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.FormIcons.DialogWarn">
+            <summary>
+              Поиск локализованного ресурса типа System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.FormIcons.MaximizeBox">
             <summary>
               Поиск локализованного ресурса типа System.Drawing.Bitmap.
@@ -489,6 +509,76 @@
             Checkbox's current state.
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XControlBase">
+            <summary>
+            Base for all PearXLib's controls.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XControlBase.UseInterpolation">
+            <summary>
+            Use interpolation?
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XDialogIcon">
+            <summary>
+            XDialog Icon Enum
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogIcon.Info">
+            <summary>
+            Info (i)
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogIcon.Question">
+            <summary>
+            Question (?)
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogIcon.Warning">
+            <summary>
+            Warning (!)
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogIcon.Error">
+            <summary>
+            Error (x)
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogIcon.Custom">
+            <summary>
+            Your custom image.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XDialogButtons">
+            <summary>
+            XDialog Buttons Enum
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogButtons.Ok">
+            <summary>
+            Ok button.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogButtons.YesNo">
+            <summary>
+            Yes and No buttons.
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.XDialogSelected">
+            <summary>
+            XDialog Selected Enum
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogSelected.Yes">
+            <summary>
+            Yes
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogSelected.No">
+            <summary>
+            No
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XForm">
             <summary>
             A beautiful customizing form.
@@ -634,6 +724,11 @@
             Color of the Form Name.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XForm.CanMove">
+            <summary>
+            Can move form?
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.InvItem">
             <summary>
             A control to display the item.
@@ -689,6 +784,11 @@
         <member name="P:PearXLib.Engine.InvItem.ColorAmount">
             <summary>
             Amount label color.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.InvItem.ShowAmount">
+            <summary>
+            Show Item Amount?
             </summary>
         </member>
         <member name="P:PearXLib.Engine.InvItem.BackColor">
@@ -920,18 +1020,20 @@
             "Play the game." and "Exit the game" - string values.
             </summary>
         </member>
-        <member name="M:PearXLib.Localization.#ctor(System.String,System.String)">
+        <member name="M:PearXLib.Localization.#ctor(System.String,System.String,System.String)">
             <summary>
             Initializes a new localization component.
             </summary>
             <param name="dir">Path to the lang dir (with slash).</param>
             <param name="langname">Language name.</param>
+            <param name="defaultlang">Default language name.</param>
         </member>
-        <member name="M:PearXLib.Localization.GetString(System.String)">
+        <member name="M:PearXLib.Localization.GetString(System.String,System.Boolean)">
             <summary>
             Gets a string from a lang file.
             </summary>
             <param name="localname">Localization name.</param>
+            <param name="usedef">DON'T USE IT</param>
             <returns>String.</returns>
         </member>
         <member name="T:PearXLib.LogType">
@@ -1046,7 +1148,7 @@
             PearXLib main class.
             </summary>
         </member>
-        <member name="F:PearXLib.PXL.ver">
+        <member name="F:PearXLib.PXL.Version">
             <summary>
             PearXLib version.
             </summary>
