@@ -7,7 +7,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A control to display the item.
     /// </summary>
-    public class InvItem : XControlBase
+    public class InvItem : XTextControlBase
     {
         private Image _ItemImage;
         private string _ItemDesc = "Cake - a lie.";
@@ -25,7 +25,6 @@ namespace PearXLib.Engine
         {
             BackColor = Color.Transparent;
             ResizeRedraw = true;
-            DoubleBuffered = true;
         }
 
         #region Params
@@ -185,10 +184,10 @@ namespace PearXLib.Engine
             {
                 e.Graphics.DrawImage(ItemImage, 0, 0, Size.Width / 3, Size.Height);
             }
-            e.Graphics.DrawString(ItemName, Font, new SolidBrush(ColorName), Size.Width / 3, 0);
-            e.Graphics.DrawString(ItemDesc, new Font(Font.FontFamily, Font.Size / 1.5F), new SolidBrush(ColorDesc), Size.Width / 3, 0 + e.Graphics.MeasureString(ItemDesc, Font).Height);
+            DrawFancyText(e.Graphics, ItemName, Font, new SolidBrush(ColorName), new PointF(Size.Width / 3, 0));
+            DrawFancyText(e.Graphics, ItemDesc, new Font(Font.FontFamily, Font.Size / 1.5F), new SolidBrush(ColorDesc), new PointF(Size.Width / 3, 0 + e.Graphics.MeasureString(ItemDesc, Font).Height));
             if(ShowAmount)
-                e.Graphics.DrawString(ItemAmount.ToString(), Font, new SolidBrush(ColorAmount), Size.Width / 3, Size.Height - e.Graphics.MeasureString(ItemAmount.ToString(), Font).Height);
+                DrawFancyText(e.Graphics, ItemAmount.ToString(), Font, new SolidBrush(ColorAmount), new PointF(Size.Width / 3, Size.Height - e.Graphics.MeasureString(ItemAmount.ToString(), Font).Height));
         }
     }
 }

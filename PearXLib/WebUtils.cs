@@ -49,7 +49,14 @@ namespace PearXLib
         /// <returns>True, if Internet connection is avaible, else returns false.</returns>
         public static bool CheckForInternetConnection(string domain)
         {
-            return new Ping().Send(domain).Status == IPStatus.Success;
+            try
+            {
+                return new Ping().Send(domain).Status == IPStatus.Success;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>

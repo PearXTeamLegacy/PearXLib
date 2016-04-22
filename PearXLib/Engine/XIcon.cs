@@ -18,9 +18,8 @@ namespace PearXLib.Engine
         /// <summary>
         /// Initializes a new XIcon component.
         /// </summary>
-        public XIcon() 
+        public XIcon()
         {
-            DoubleBuffered = true;
             Cursor = Cursors.Hand;
             Size = new Size(64, 64);
             Expand = 10;

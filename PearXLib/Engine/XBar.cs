@@ -8,7 +8,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A beautiful progress bar from PearXLib.
     /// </summary>
-    public class XBar : XControlBase
+    public class XBar : XTextControlBase
     {
         private int _Value;
         private int _Maximum = 100;
@@ -23,7 +23,6 @@ namespace PearXLib.Engine
         /// </summary>
         public XBar()
         {
-            DoubleBuffered = true;
             Size = new Size(349, 52);
             BackColor = Color.Transparent;
             ResizeRedraw = true;
@@ -149,7 +148,7 @@ namespace PearXLib.Engine
             e.Graphics.FillRectangle(lgb, 5, 5, ((float)((Size.Width - 10)) / Maximum) * Value, Size.Height - 10);
 
             Brush bf = new SolidBrush(ProgressTextColor);
-            e.Graphics.DrawString(ProgressText, Font, bf, new PointF((Size.Width - e.Graphics.MeasureString(ProgressText, Font).Width) / 2, (Size.Height - e.Graphics.MeasureString(ProgressText, Font).Height) / 2));
+            DrawFancyText(e.Graphics, ProgressText, Font, bf, new PointF((Size.Width - e.Graphics.MeasureString(ProgressText, Font).Width) / 2, (Size.Height - e.Graphics.MeasureString(ProgressText, Font).Height) / 2));
         }
     }
 }

@@ -18,6 +18,7 @@ namespace PearXLib.Engine
         private Image _BarImage = FormIcons.BarImage;
         private Color _TextColor = Color.White;
         private bool _CanMove = true;
+        private bool _DrawTitle = true;
 
         private Image _ImageCloseBox = FormIcons.CloseBox;
         private Image _ImageCloseBoxFocused = FormIcons.CloseBoxFocused;
@@ -262,6 +263,15 @@ namespace PearXLib.Engine
             set { _CanMove = value; }
         }
 
+        /// <summary>
+        /// Draw form's title (Text parameter)?
+        /// </summary>
+        [DefaultValue(true)]
+        public bool DrawTitle
+        {
+            get { return _DrawTitle; }
+            set { _DrawTitle = value; Refresh(); }
+        }
         #endregion
 
         #region Private state
@@ -350,7 +360,7 @@ namespace PearXLib.Engine
                 }
             }
 
-            if (Text != null)
+            if (Text != null && DrawTitle)
             {
                 e.Graphics.DrawString(Text, Font, new SolidBrush(TextColor), new PointF(1, 1));
             }

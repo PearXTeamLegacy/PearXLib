@@ -729,6 +729,11 @@
             Can move form?
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XForm.DrawTitle">
+            <summary>
+            Draw form's title (Text parameter)?
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.InvItem">
             <summary>
             A control to display the item.
@@ -941,6 +946,26 @@
         <member name="P:PearXLib.Engine.XIcon.TitleWidthHeight">
             <summary>
             Title size and width.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XLabel.Text">
+            <summary>
+            The text on the control.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XTextControlBase.Shadow">
+            <summary>
+            Draw control's shadow?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XTextControlBase.ShadowColor">
+            <summary>
+            Color of the text's shadow.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.XTextControlBase.ShadowOffset">
+            <summary>
+            Shadow's offset.
             </summary>
         </member>
         <member name="T:PearXLib.FileUtils">

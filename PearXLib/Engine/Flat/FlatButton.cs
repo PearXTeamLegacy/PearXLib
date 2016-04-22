@@ -75,7 +75,7 @@ namespace PearXLib.Engine.Flat
                                     //gr.FillEllipse(new SolidBrush(Color), x - i / 2, y - i / 2, i, i);
                                     try
                                     {
-                                        Invoke(new MethodInvoker(() => { Refresh(); }));
+                                        Invoke(new MethodInvoker(Refresh));
                                     }
                                     catch
                                     {

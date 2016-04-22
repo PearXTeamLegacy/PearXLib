@@ -13,6 +13,11 @@ namespace PearXLib.Engine
     {
         private bool useinterpolation;
 
+
+        public XControlBase()
+        {
+            DoubleBuffered = true;
+        }
         /// <summary>
         /// Use interpolation?
         /// </summary>

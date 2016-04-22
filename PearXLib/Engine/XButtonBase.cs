@@ -28,7 +28,7 @@ namespace PearXLib.Engine
     /// Base for the PearXLib's buttons.
     /// </summary>
     [DefaultEvent("Click")]
-    public class XButtonBase : XControlBase
+    public class XButtonBase : XTextControlBase
     {
         private string _Text = "A button.";
         private Image _Image;
@@ -42,7 +42,6 @@ namespace PearXLib.Engine
         /// </summary>
         public XButtonBase()
         {
-            DoubleBuffered = true;
             Cursor = Cursors.Hand;
         }
 
@@ -146,36 +145,48 @@ namespace PearXLib.Engine
             if (!string.IsNullOrEmpty(Text))
             {
                 SizeF s = e.Graphics.MeasureString(Text, Font);
+                float x = 0;
+                float y = 0;
                 switch (TextAlign)
                 {
                     case ContentAlignment.BottomCenter:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), (Width - s.Width) / 2, Height - s.Height - Border);
+                        x = (Width - s.Width)/2;
+                        y = Height - s.Height - Border;
                         break;
                     case ContentAlignment.BottomLeft:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Border, Height - s.Height - Border);
+                        x = Border;
+                        y = Height - s.Height - Border;
                         break;
                     case ContentAlignment.BottomRight:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Width - s.Width - Border, Height - s.Height - Border);
+                        x = Width - s.Width - Border;
+                        y = Height - s.Height - Border;
                         break;
                     case ContentAlignment.MiddleCenter:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), (Width - s.Width) / 2, (Height - s.Height) / 2);
+                        x = (Width - s.Width)/2;
+                        y = (Height - s.Height)/2;
                         break;
                     case ContentAlignment.MiddleLeft:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Border, (Height - s.Height) / 2);
+                        x = Border;
+                        y = (Height - s.Height) / 2;
                         break;
                     case ContentAlignment.MiddleRight:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Width - s.Width - Border, (Height - s.Height) / 2);
+                        x = Width - s.Width - Border;
+                        y = (Height - s.Height) / 2;
                         break;
                     case ContentAlignment.TopCenter:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), (Width - s.Width) / 2, Border);
+                        x = (Width - s.Width)/2;
+                        y = Border;
                         break;
                     case ContentAlignment.TopLeft:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Border, Border);
+                        x = Border;
+                        y = Border;
                         break;
                     case ContentAlignment.TopRight:
-                        e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Width - s.Width - Border, Border);
+                        x = Width - s.Width - Border;
+                        y = Border;
                         break;
                 }
+                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new PointF(x, y));
             }
         }
 

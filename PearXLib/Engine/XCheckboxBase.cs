@@ -23,7 +23,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// A base for the checkboxes :P.
     /// </summary>
-    public class XCheckboxBase : XControlBase
+    public class XCheckboxBase : XTextControlBase
     {
         private string text;
         private bool chkd;
@@ -34,7 +34,6 @@ namespace PearXLib.Engine
         public XCheckboxBase()
         {
             Size = new Size(160, 32);
-            DoubleBuffered = true;
             State = CheckboxState.None;
             Cursor = Cursors.Hand;
         }
@@ -90,7 +89,7 @@ namespace PearXLib.Engine
             if(!string.IsNullOrEmpty(Text))
             {
                 var pf = e.Graphics.MeasureString(Text, Font);
-                e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), Width / 5, (Height - pf.Height) / 2);
+                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new PointF(Width / 5, (Height - pf.Height) / 2));
             }
         }
 
