@@ -58,7 +58,8 @@ namespace PearXLib.Engine
                 {
                     _Value = Maximum; Refresh();
                 }
-                ValueChanged?.Invoke(this, new XBarEventArgs(value, Maximum));
+                if (ValueChanged != null)
+                    ValueChanged(this, new XBarEventArgs(value, Maximum));
             }
         }
 

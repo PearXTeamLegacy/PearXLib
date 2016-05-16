@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PearXLib.Engine
@@ -11,6 +7,7 @@ namespace PearXLib.Engine
     public class XLabel : XTextControlBase
     {
         private string text;
+        private bool drawinrect;
 
         #region Params
         /// <summary>
@@ -20,19 +17,58 @@ namespace PearXLib.Engine
         public override string Text
         {
             get { return text; }
-            set { text = value; Refresh(); }
+            set
+            {
+                text = value;
+                Size s = TextRenderer.MeasureText(Text, Font);
+                if (!DrawInRectangle)
+                {
+                    MinimumSize = s;
+                    MaximumSize = s;
+                    Size = s;
+                }
+                Refresh();
+            }
         }
-        #endregion
 
-        private Graphics g;
+        /// <summary>
+        /// Draw the text in the rectangle?
+        /// </summary>
+        [DefaultValue(false)]
+        public bool DrawInRectangle
+        {
+            get { return drawinrect; }
+            set
+            {
+                drawinrect = value;
+                Size s = TextRenderer.MeasureText(Text, Font);
+                if (!DrawInRectangle)
+                {
+                    MinimumSize = s;
+                    MaximumSize = s;
+                    Size = s;
+                }
+                Refresh();
+            }
+        }
+
+        #endregion
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            Size s = e.Graphics.MeasureString(Text, Font).ToSize();
-            MinimumSize = s;
-            MaximumSize = s;
-            DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new Point(0, 0));
+            Size s = TextRenderer.MeasureText(Text, Font);
+            if (!DrawInRectangle)
+            {
+                MinimumSize = s;
+                MaximumSize = s;
+                Size = s;
+            }
+            if (DrawInRectangle)
+                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new Rectangle(0, 0, Width, Height));
+            else
+                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new Point(0, 0));
+
         }
     }
 }

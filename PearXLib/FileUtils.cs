@@ -11,7 +11,7 @@ namespace PearXLib
     public class FileUtils
     {
         /// <summary>
-        /// Can system create file, nammed "filename"?
+        /// Can system create file, named "filename"?
         /// </summary>
         /// <param name="filename">File name.</param>
         /// <returns>If system can create file, returns true, else returns false.</returns>
@@ -21,10 +21,7 @@ namespace PearXLib
             {
                 return false;
             }
-            else
-            {
-                return true;
-            }
+            return true;
         }
 
         private static List<string> files = new List<string>();
@@ -40,20 +37,19 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Getting all files in directory and subdirectories.
+        /// Getting the all files in the directory and subdirectories.
         /// </summary>
         /// <param name="dir">Directory name.</param>
         /// <returns>All files in directory and subdirectories.</returns>
         public static string[] GetFilesInDir(string dir)
         {
-            string[] list;
             foreach (string f in Directory.GetFiles(dir))
                 files.Add(f);
             foreach (string d in Directory.GetDirectories(dir))
             {
                 _DirSearch(d);
             }
-            list = files.ToArray();
+            string[] list = files.ToArray();
             files.Clear();
             return list;
         }
@@ -87,7 +83,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Saves the app with using encryption.
+        /// Saves the application with using encryption.
         /// </summary>
         /// <param name="path">Path to the save file.</param>
         /// <param name="save">Strings to save.</param>
@@ -99,7 +95,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Loads the app with using encryption.
+        /// Loads the application with using encryption.
         /// </summary>
         /// <param name="path">Path to the save file.</param>
         /// <param name="salt">Encryption salt.</param>
@@ -111,7 +107,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Saves the app.
+        /// Saves the application.
         /// </summary>
         /// <param name="path">Path to the save file.</param>
         /// <param name="save">Save (string array).</param>
@@ -121,7 +117,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Loads the app.
+        /// Loads the application.
         /// </summary>
         /// <param name="path">Path to the save file.</param>
         /// <returns>Loaded string array.</returns>

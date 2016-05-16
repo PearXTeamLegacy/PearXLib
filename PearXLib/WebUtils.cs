@@ -14,7 +14,7 @@ namespace PearXLib
         /// Sends a POST request to the site.
         /// </summary>
         /// <param name="url">Site URL.</param>
-        /// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+        /// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
         /// <returns>Web response.</returns>
         public static string SendPOSTRequest(string url, string data)
         {
@@ -36,7 +36,7 @@ namespace PearXLib
         /// <summary>
         /// Checks for a Internet connectivity. Using a well-known "google.com" domain.
         /// </summary>
-        /// <returns>True, if Internet connection is avaible, else returns false.</returns>
+        /// <returns>True, if Internet connection is available, else returns false.</returns>
         public static bool CheckForInternetConnection()
         {
             return new Ping().Send("google.com").Status == IPStatus.Success;
@@ -46,7 +46,7 @@ namespace PearXLib
         /// Checks for a Internet connectivity.
         /// </summary>
         /// <param name="domain">The domain, that you want to ping.</param>
-        /// <returns>True, if Internet connection is avaible, else returns false.</returns>
+        /// <returns>True, if Internet connection is available, else returns false.</returns>
         public static bool CheckForInternetConnection(string domain)
         {
             try
@@ -63,7 +63,7 @@ namespace PearXLib
         /// Sends a POST request to the site.
         /// </summary>
         /// <param name="url">Site URL.</param>
-        /// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+        /// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
         /// <param name="ct">Content Type</param>
         /// <returns>Web response.</returns>
         public static string SendPOSTRequest(string url, string data, string ct)
@@ -82,5 +82,35 @@ namespace PearXLib
                 return sr.ReadToEnd().Trim();
             }
         }
+
+        /// <summary>
+        /// Shorts an URL. Returns JSON! De-serialize it with <![CDATA[JsonConvert.DeserializeObject<GoogleShortener>(string)]]>
+        /// </summary>
+        /// <param name="url">Full URL</param>
+        /// <param name="apiKey">Google API Key</param>
+        /// <returns>Shorten URL in JSON format</returns>
+        public static string ShortURL(string url, string apiKey)
+        {
+            return SendPOSTRequest("https://www.googleapis.com/urlshortener/v1/url?key=" + apiKey, "{\"longUrl\": \"" + url + "\"}", "application/json");
+        }
+    }
+
+    /// <summary>
+    /// A class for deserialized goo.gl response
+    /// </summary>
+    public class GoogleShortener
+    {
+        /// <summary>
+        /// ?
+        /// </summary>
+        public string kind { get; set; }
+        /// <summary>
+        /// Short URL
+        /// </summary>
+        public string id { get; set; }
+        /// <summary>
+        /// Long URL
+        /// </summary>
+        public string longUrl { get; set; }
     }
 }

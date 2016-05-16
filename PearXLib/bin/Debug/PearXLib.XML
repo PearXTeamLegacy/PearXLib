@@ -55,6 +55,21 @@
             Flat-style bar.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.Flat.FlatBar.GradientColor1">
+            <summary>
+            <inheritDoc/>
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatBar.GradientColor2">
+            <summary>
+            <inheritDoc/>
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatBar.BGColor">
+            <summary>
+            <inheritDoc/>
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.Flat.FlatButton">
             <summary>
             Flat-style button.
@@ -148,6 +163,27 @@
         <member name="P:PearXLib.Engine.Flat.FlatForm.Rim">
             <summary>
             Enable form rim?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatForm.DrawPanelBG">
+            <summary>
+            Draw Panel's BG?
+            </summary>
+        </member>
+        <member name="T:PearXLib.Engine.Flat.FlatLabel">
+            <summary>
+            Class FlatLabel.
+            </summary>
+            <seealso cref="T:PearXLib.Engine.XLabel" />
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatLabel.Shadow">
+            <summary>
+            Draw control's shadow?
+            </summary>
+        </member>
+        <member name="P:PearXLib.Engine.Flat.FlatLabel.ForeColor">
+            <summary>
+            The color of the fore.
             </summary>
         </member>
         <member name="T:PearXLib.Engine.FormIcons">
@@ -304,7 +340,7 @@
         </member>
         <member name="M:PearXLib.Engine.LangEventArgs.#ctor(System.String)">
             <summary>
-            Initializates a new LangEventArgs component.
+            Initializes a new LangEventArgs component.
             </summary>
             <param name="selected">Selected language name.</param>
         </member>
@@ -315,7 +351,7 @@
         </member>
         <member name="T:PearXLib.Engine.ListBoxSelectLang">
             <summary>
-            A listbox, maked for easy language selection without crutches.
+            A ListBox, made for easy language selection without crutches.
             </summary>
         </member>
         <member name="T:PearXLib.Engine.ListBoxSelectLang.LangEventHandler">
@@ -332,8 +368,14 @@
         </member>
         <member name="P:PearXLib.Engine.ListBoxSelectLang.PathToLangs">
             <summary>
-            Path to langfiles (with slash)
+            Path to LangFiles (with slash)
             </summary>
+        </member>
+        <member name="M:PearXLib.Engine.ListBoxSelectLang.OnSelectedIndexChanged(System.EventArgs)">
+            <summary>
+            OnSelectedIndexChanged
+            </summary>
+            <param name="e">EventArgs</param>
         </member>
         <member name="T:PearXLib.Engine.XBarEventArgs">
             <summary>
@@ -519,14 +561,29 @@
             Use interpolation?
             </summary>
         </member>
+        <member name="T:PearXLib.Engine.XDialogSelected">
+            <summary>
+            Selected XDialog value.
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogSelected.Yes">
+            <summary>
+            Yes, блять
+            </summary>
+        </member>
+        <member name="F:PearXLib.Engine.XDialogSelected.No">
+            <summary>
+            No
+            </summary>
+        </member>
         <member name="T:PearXLib.Engine.XDialogIcon">
             <summary>
-            XDialog Icon Enum
+            Icon for XDialog.
             </summary>
         </member>
         <member name="F:PearXLib.Engine.XDialogIcon.Info">
             <summary>
-            Info (i)
+            Information (i)
             </summary>
         </member>
         <member name="F:PearXLib.Engine.XDialogIcon.Question">
@@ -534,49 +591,29 @@
             Question (?)
             </summary>
         </member>
-        <member name="F:PearXLib.Engine.XDialogIcon.Warning">
-            <summary>
-            Warning (!)
-            </summary>
-        </member>
         <member name="F:PearXLib.Engine.XDialogIcon.Error">
             <summary>
             Error (x)
             </summary>
         </member>
-        <member name="F:PearXLib.Engine.XDialogIcon.Custom">
+        <member name="F:PearXLib.Engine.XDialogIcon.Warning">
             <summary>
-            Your custom image.
+            Warning (!)
             </summary>
         </member>
         <member name="T:PearXLib.Engine.XDialogButtons">
             <summary>
-            XDialog Buttons Enum
+            Buttons on XDialog.
             </summary>
         </member>
         <member name="F:PearXLib.Engine.XDialogButtons.Ok">
             <summary>
-            Ok button.
+            OK button.
             </summary>
         </member>
         <member name="F:PearXLib.Engine.XDialogButtons.YesNo">
             <summary>
             Yes and No buttons.
-            </summary>
-        </member>
-        <member name="T:PearXLib.Engine.XDialogSelected">
-            <summary>
-            XDialog Selected Enum
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XDialogSelected.Yes">
-            <summary>
-            Yes
-            </summary>
-        </member>
-        <member name="F:PearXLib.Engine.XDialogSelected.No">
-            <summary>
-            No
             </summary>
         </member>
         <member name="T:PearXLib.Engine.XForm">
@@ -953,6 +990,11 @@
             The text on the control.
             </summary>
         </member>
+        <member name="P:PearXLib.Engine.XLabel.DrawInRectangle">
+            <summary>
+            Draw the text in the rectangle?
+            </summary>
+        </member>
         <member name="P:PearXLib.Engine.XTextControlBase.Shadow">
             <summary>
             Draw control's shadow?
@@ -968,6 +1010,33 @@
             Shadow's offset.
             </summary>
         </member>
+        <member name="M:PearXLib.Engine.XTextControlBase.DrawFancyText(System.Drawing.Graphics,System.String,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF)">
+            <summary>
+            Draws a fancy text with shadow.
+            </summary>
+            <param name="gfx">Your graphics.</param>
+            <param name="location">Location of the text.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XTextControlBase.DrawFancyText(System.Drawing.Graphics,System.String,System.Drawing.Font,System.Drawing.Brush,System.Drawing.Rectangle)">
+            <summary>
+            Draws a fancy text with shadow.
+            </summary>
+            <param name="gfx">Your graphics.</param>
+            <param name="rect">A text's rectangle.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XTextControlBase.DrawFancyText(System.Drawing.Graphics,System.String,System.Drawing.Font,System.Drawing.Brush,System.Drawing.PointF,System.Drawing.Color,System.Boolean,System.Int16)">
+            <summary>
+            Draws a fancy text with shadow.
+            </summary>
+            <param name="gfx">Your graphics.</param>
+        </member>
+        <member name="M:PearXLib.Engine.XTextControlBase.DrawFancyText(System.Drawing.Graphics,System.String,System.Drawing.Font,System.Drawing.Brush,System.Drawing.Rectangle,System.Drawing.Color,System.Boolean,System.Int16)">
+            <summary>
+            Draws a fancy text with shadow.
+            </summary>
+            <param name="gfx">Your graphics.</param>
+            <param name="rect">A text's rectangle.</param>
+        </member>
         <member name="T:PearXLib.FileUtils">
             <summary>
             PearXLib file utilities.
@@ -975,14 +1044,14 @@
         </member>
         <member name="M:PearXLib.FileUtils.CanCreate(System.String)">
             <summary>
-            Can system create file, nammed "filename"?
+            Can system create file, named "filename"?
             </summary>
             <param name="filename">File name.</param>
             <returns>If system can create file, returns true, else returns false.</returns>
         </member>
         <member name="M:PearXLib.FileUtils.GetFilesInDir(System.String)">
             <summary>
-            Getting all files in directory and subdirectories.
+            Getting the all files in the directory and subdirectories.
             </summary>
             <param name="dir">Directory name.</param>
             <returns>All files in directory and subdirectories.</returns>
@@ -1005,7 +1074,7 @@
         </member>
         <member name="M:PearXLib.FileUtils.SaveEnc(System.String,System.String[],System.Int16)">
             <summary>
-            Saves the app with using encryption.
+            Saves the application with using encryption.
             </summary>
             <param name="path">Path to the save file.</param>
             <param name="save">Strings to save.</param>
@@ -1013,7 +1082,7 @@
         </member>
         <member name="M:PearXLib.FileUtils.LoadEnc(System.String,System.Int16)">
             <summary>
-            Loads the app with using encryption.
+            Loads the application with using encryption.
             </summary>
             <param name="path">Path to the save file.</param>
             <param name="salt">Encryption salt.</param>
@@ -1021,14 +1090,14 @@
         </member>
         <member name="M:PearXLib.FileUtils.Save(System.String,System.String[])">
             <summary>
-            Saves the app.
+            Saves the application.
             </summary>
             <param name="path">Path to the save file.</param>
             <param name="save">Save (string array).</param>
         </member>
         <member name="M:PearXLib.FileUtils.Load(System.String)">
             <summary>
-            Loads the app.
+            Loads the application.
             </summary>
             <param name="path">Path to the save file.</param>
             <returns>Loaded string array.</returns>
@@ -1049,7 +1118,7 @@
             <summary>
             Initializes a new localization component.
             </summary>
-            <param name="dir">Path to the lang dir (with slash).</param>
+            <param name="dir">Path to the lang directory (with slash).</param>
             <param name="langname">Language name.</param>
             <param name="defaultlang">Default language name.</param>
         </member>
@@ -1088,35 +1157,36 @@
         </member>
         <member name="T:PearXLib.Logging">
             <summary>
-            PearXLib logging utils.
+            PearXLib logging utilities.
             </summary>
+        </member>
+        <member name="T:PearXLib.Logging.LogHandler">
+            <summary>
+            Log changed handler.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="logString">New log string</param>
         </member>
         <member name="E:PearXLib.Logging.LogChanged">
             <summary>
-            Executs, when log changed.
+            Executes, when log changed.
             </summary>
         </member>
-        <member name="F:PearXLib.Logging.Log">
+        <member name="P:PearXLib.Logging.Log">
             <summary>
             Log string.
             </summary>
         </member>
-        <member name="M:PearXLib.Logging.#ctor(System.String)">
-            <summary>
-            Initializates a new Logging component.
-            </summary>
-            <param name="logpath">Path to the log file.</param>
-        </member>
         <member name="M:PearXLib.Logging.#ctor(System.String,System.Boolean)">
             <summary>
-            Initializates a new Logging component.
+            Initializes a new Logging component.
             </summary>
             <param name="logpath">Path to the log file.</param>
             <param name="force">If true, deletes old log file.</param>
         </member>
         <member name="M:PearXLib.Logging.Add(System.String,PearXLib.LogType)">
             <summary>
-            Adds a line to a log.
+            Adds a line to the log.
             </summary>
             <param name="line">Message text</param>
             <param name="lt">Log type</param>
@@ -1130,7 +1200,7 @@
         </member>
         <member name="M:PearXLib.Logging.Add(System.String)">
             <summary>
-            Adds a line to a log.
+            Adds a line to the log.
             </summary>
             <param name="line">Message text</param>
         </member>
@@ -1141,17 +1211,17 @@
         </member>
         <member name="M:PearXLib.MathsUtils.GetAverage(System.Int32[])">
             <summary>
-            Gets an arithmetical averange.
+            Gets an arithmetical average.
             </summary>
             <param name="ints">Input integers.</param>
-            <returns>Arithmetical averange.</returns>
+            <returns>Arithmetical average.</returns>
         </member>
         <member name="M:PearXLib.MathsUtils.GetAverageExactly(System.Double[])">
             <summary>
-            Gets an exactly arithmetical averange.
+            Gets an exactly arithmetical average.
             </summary>
             <param name="doubles">Input doubles.</param>
-            <returns>Exactly arithmetical averange</returns>
+            <returns>Exactly arithmetical average</returns>
         </member>
         <member name="M:PearXLib.MathsUtils.GetNumberOfNumbers(System.Int32)">
             <summary>
@@ -1168,6 +1238,38 @@
             <param name="value">Value</param>
             <returns>Value in percents.</returns>
         </member>
+        <member name="T:PearXLib.Fraction">
+            <summary>
+            A fraction class.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Fraction.Numerator">
+            <summary>
+            A numerator of the fraction.
+            </summary>
+        </member>
+        <member name="P:PearXLib.Fraction.Denominator">
+            <summary>
+            A denominator of the fraction.
+            </summary>
+        </member>
+        <member name="M:PearXLib.Fraction.#ctor(System.Int64,System.Int64)">
+            <summary>
+            Initializes a new fraction
+            </summary>
+            <param name="num">Numerator</param>
+            <param name="den">Denominator</param>
+        </member>
+        <member name="M:PearXLib.Fraction.op_Multiply(PearXLib.Fraction,PearXLib.Fraction)">
+            <summary>
+            *
+            </summary>
+        </member>
+        <member name="M:PearXLib.Fraction.op_Division(PearXLib.Fraction,PearXLib.Fraction)">
+            <summary>
+            /
+            </summary>
+        </member>
         <member name="T:PearXLib.PXL">
             <summary>
             PearXLib main class.
@@ -1180,26 +1282,26 @@
         </member>
         <member name="F:PearXLib.PXL.s">
             <summary>
-            Directory sepator.
+            Directory separator.
             </summary>
         </member>
         <member name="M:PearXLib.PXL.isNumberKey(System.Windows.Forms.KeyPressEventArgs)">
             <summary>
             For TextBox.
             </summary>
-            <param name="e">Args</param>
+            <param name="e">Arguments</param>
             <returns>True or false.</returns>
         </member>
         <member name="M:PearXLib.PXL.createShortcut(System.String,System.String)">
             <summary>
-            Creates shortcut.
+            Creates a shortcut.
             </summary>
-            <param name="path">Path to exe.</param>
-            <param name="filePath">Path to new shortcut.</param>
+            <param name="path">Path to the executable file.</param>
+            <param name="filePath">Path to the new shortcut.</param>
         </member>
         <member name="M:PearXLib.PXL.ReplaceFirst(System.String@,System.String,System.String)">
             <summary>
-            Replaces first occurrence of string.
+            Replaces the first occurrence of the string.
             </summary>
             <param name="str">Input string.</param>
             <param name="replaceFrom">Replace from...</param>
@@ -1207,13 +1309,13 @@
         </member>
         <member name="M:PearXLib.PXL.GetArrayFromString(System.String)">
             <summary>
-            Gets a string[] from string, uses new line(\n).
+            Gets a string array from the string, uses new line(\n).
             </summary>
             <param name="s"></param>
         </member>
         <member name="M:PearXLib.PXL.GetStringFromArray(System.String[])">
             <summary>
-            Gets a string from string[], uses new line(\n).
+            Gets a string from the string array, uses new line(\n).
             </summary>
             <param name="s"></param>
         </member>
@@ -1241,13 +1343,13 @@
         </member>
         <member name="M:PearXLib.PXL.GetJavaPath">
             <summary>
-            Gets a path to a Java folder.
+            Gets a path to the Java folder.
             </summary>
-            <returns>A path to a Java folder.</returns>
+            <returns>A path to the Java folder.</returns>
         </member>
         <member name="M:PearXLib.PXL.GetFromPC(System.String)">
             <summary>
-            Gets an PC info
+            Gets a PC info
             </summary>
             <param name="what">Caption</param>
             <returns>Result</returns>
@@ -1269,6 +1371,24 @@
             <param name="uc">Control</param>
             <returns></returns>
         </member>
+        <member name="M:PearXLib.PXL.GetMD5(System.String)">
+            <summary>
+            Gets the MD5 hash from string.
+            </summary>
+            <param name="str">The string.</param>
+            <returns>Hashed string.</returns>
+        </member>
+        <member name="M:PearXLib.PXL.IsWindows">
+            <summary>
+            If current OS is Windows, returns true.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PearXLib.EmptyDelegate">
+            <summary>
+            An empty delegate. Special for you =)))).
+            </summary>
+        </member>
         <member name="T:PearXLib.RandomUtils">
             <summary>
             PearXLib random utilities.
@@ -1276,19 +1396,19 @@
         </member>
         <member name="M:PearXLib.RandomUtils.GenChar(System.Random)">
             <summary>
-            Generates random character.
+            Generates a random character.
             </summary>
             <returns>Random character.</returns>
         </member>
         <member name="M:PearXLib.RandomUtils.GenNumber(System.Random)">
             <summary>
-            Generates random digit.
+            Generates a random digit.
             </summary>
             <returns>Random digit</returns>
         </member>
         <member name="M:PearXLib.RandomUtils.GenNumber(System.Random,System.Int32,System.Int32)">
             <summary>
-            Generate random number.
+            Generates a random number.
             </summary>
             <param name="min">Minimal random number (inclusive).</param>
             <param name="max">Maximal random number (inclusive).</param>
@@ -1297,28 +1417,28 @@
         </member>
         <member name="M:PearXLib.RandomUtils.GenSymbol(System.Random)">
             <summary>
-            Generates random symbol.
+            Generates a random symbol.
             </summary>
             <param name="rand"></param>
             <returns></returns>
         </member>
         <member name="M:PearXLib.RandomUtils.GenRandom(System.Random,System.Boolean)">
             <summary>
-            Generates random number/char/symbol.
+            Generates a random number/char/symbol.
             </summary>
             <returns>Random.</returns>
         </member>
         <member name="M:PearXLib.RandomUtils.ByTemplate(System.String,System.Random)">
             <summary>
-            <![CDATA[Generates a random string by a template.
-            Template usage:
-            %num% - a random figure, ex. 6 or 7.
-            %char% - a random character, ex. b or e.
-            %sym% - a random symbol, ex. ~ or &.
-            %rand% - a random symbol, character, or figure.
-            %randws% - a random character or figure.
-            Write in uppercase for uppercase :p.
-            Example template: TEST%rand%%sym%%CHAR%%CHAR%_HEHE. Example return: TEST&*FE_HEHE]]>
+            Generates a random string by the template.<para/>
+            Template usage:<para/>
+            %num% - a random figure, ex. 6 or 7.<para/>
+            %char% - a random character, ex. b or e.<para/>
+            %sym% - a random symbol, ex. ~ or +.<para/>
+            %rand% - a random symbol, character, or figure.<para/>
+            %randws% - a random character or figure.<para/>
+            Write in uppercase for uppercase :p.<para/>
+            Example template: q_%rand%%sym%%CHAR%%CHAR%_p. Example return: q_5+FS_p
             </summary>
             <param name="template">A template</param>
             <param name="rand">Your random</param>
@@ -1326,7 +1446,7 @@
         </member>
         <member name="T:PearXLib.SocialUtils">
             <summary>
-            PearXLib Social Utils.
+            PearXLib Social Utilities.
             </summary>
         </member>
         <member name="M:PearXLib.SocialUtils.ShareVK(System.String)">
@@ -1359,6 +1479,12 @@
             <param name="description">Site description.</param>
             <param name="URL_img">Site image.</param>
         </member>
+        <member name="M:PearXLib.SocialUtils.ShareTwitter(System.String)">
+            <summary>
+            Shares via Twitter.
+            </summary>
+            <param name="text">Text.</param>
+        </member>
         <member name="T:PearXLib.WebUtils">
             <summary>
             PearXLib Web Utilities
@@ -1369,30 +1495,58 @@
             Sends a POST request to the site.
             </summary>
             <param name="url">Site URL.</param>
-            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
             <returns>Web response.</returns>
         </member>
         <member name="M:PearXLib.WebUtils.CheckForInternetConnection">
             <summary>
             Checks for a Internet connectivity. Using a well-known "google.com" domain.
             </summary>
-            <returns>True, if Internet connection is avaible, else returns false.</returns>
+            <returns>True, if Internet connection is available, else returns false.</returns>
         </member>
         <member name="M:PearXLib.WebUtils.CheckForInternetConnection(System.String)">
             <summary>
             Checks for a Internet connectivity.
             </summary>
             <param name="domain">The domain, that you want to ping.</param>
-            <returns>True, if Internet connection is avaible, else returns false.</returns>
+            <returns>True, if Internet connection is available, else returns false.</returns>
         </member>
         <member name="M:PearXLib.WebUtils.SendPOSTRequest(System.String,System.String,System.String)">
             <summary>
             Sends a POST request to the site.
             </summary>
             <param name="url">Site URL.</param>
-            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer228&amp;password=123456789</param>
+            <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
             <param name="ct">Content Type</param>
             <returns>Web response.</returns>
+        </member>
+        <member name="M:PearXLib.WebUtils.ShortURL(System.String,System.String)">
+            <summary>
+            Shorts an URL. Returns JSON! De-serialize it with <![CDATA[JsonConvert.DeserializeObject<GoogleShortener>(string)]]>
+            </summary>
+            <param name="url">Full URL</param>
+            <param name="apiKey">Google API Key</param>
+            <returns>Shorten URL in JSON format</returns>
+        </member>
+        <member name="T:PearXLib.GoogleShortener">
+            <summary>
+            A class for deserialized goo.gl response
+            </summary>
+        </member>
+        <member name="P:PearXLib.GoogleShortener.kind">
+            <summary>
+            ?
+            </summary>
+        </member>
+        <member name="P:PearXLib.GoogleShortener.id">
+            <summary>
+            Short URL
+            </summary>
+        </member>
+        <member name="P:PearXLib.GoogleShortener.longUrl">
+            <summary>
+            Long URL
+            </summary>
         </member>
     </members>
 </doc>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace PearXLib
 {
@@ -24,7 +23,7 @@ namespace PearXLib
         /// <summary>
         /// Initializes a new localization component.
         /// </summary>
-        /// <param name="dir">Path to the lang dir (with slash).</param>
+        /// <param name="dir">Path to the lang directory (with slash).</param>
         /// <param name="langname">Language name.</param>
         /// <param name="defaultlang">Default language name.</param>
         public Localization(string dir, string langname, string defaultlang = "en_US")

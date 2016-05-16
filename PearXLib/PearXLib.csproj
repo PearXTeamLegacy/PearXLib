@@ -37,12 +37,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypting\CA_PXM.cs" />
@@ -56,11 +54,11 @@
     <Compile Include="Engine\Flat\FlatCheckbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\Flat\FlatDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Engine\Flat\FlatForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engine\Flat\FlatLabel.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Engine\FormIcons.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -85,9 +83,7 @@
     <Compile Include="Engine\XControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Engine\XDialogBase.cs" />
     <Compile Include="Engine\XForm.cs">
       <SubType>Form</SubType>
     </Compile>

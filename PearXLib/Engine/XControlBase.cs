@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.Drawing.Drawing2D;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PearXLib.Engine
@@ -21,6 +19,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Use interpolation?
         /// </summary>
+        [DefaultValue(false)]
         public bool UseInterpolation
         {
             get { return useinterpolation; }

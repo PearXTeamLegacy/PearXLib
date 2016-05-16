@@ -1,9 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace PearXLib
 {
     /// <summary>
-    /// PearXLib Social Utils.
+    /// PearXLib Social Utilities.
     /// </summary>
     public class SocialUtils
     {
@@ -47,6 +48,15 @@ namespace PearXLib
         public static void ShareVK(string URL, string title, string description, string URL_img)
         {
             Process.Start("https://vk.com/share.php?url=" + URL + "&title=" + title + "&description=" + description + "&image=" + URL_img);
+        }
+
+        /// <summary>
+        /// Shares via Twitter.
+        /// </summary>
+        /// <param name="text">Text.</param>
+        public static void ShareTwitter(string text)
+        {
+            Process.Start(new Uri("https://twitter.com/intent/tweet?text=" + text).AbsoluteUri);
         }
     }
 }

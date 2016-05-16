@@ -27,37 +27,35 @@ namespace PearXLib
     };
 
     /// <summary>
-    /// PearXLib logging utils.
+    /// PearXLib logging utilities.
     /// </summary>
     public class Logging
     {
         private readonly string logPath;
 
         /// <summary>
-        /// Executs, when log changed.
+        /// Log changed handler.
         /// </summary>
-        public event EventHandler LogChanged;
+        /// <param name="sender">Sender</param>
+        /// <param name="logString">New log string</param>
+        public delegate void LogHandler(object sender, string logString);
+
+        /// <summary>
+        /// Executes, when log changed.
+        /// </summary>
+        public event LogHandler LogChanged;
+
         /// <summary>
         /// Log string.
         /// </summary>
-        public string Log;
+        public string Log { get; set; }
 
         /// <summary>
-        /// Initializates a new Logging component.
-        /// </summary>
-        /// <param name="logpath">Path to the log file.</param>
-        public Logging(string logpath)
-        {
-            Directory.CreateDirectory(Path.GetDirectoryName(logpath));
-            logPath = logpath;
-        }
-
-        /// <summary>
-        /// Initializates a new Logging component.
+        /// Initializes a new Logging component.
         /// </summary>
         /// <param name="logpath">Path to the log file.</param>
         /// <param name="force">If true, deletes old log file.</param>
-        public Logging(string logpath, bool force)
+        public Logging(string logpath, bool force = false)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(logpath));
             if (force)
@@ -66,18 +64,18 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Adds a line to a log.
+        /// Adds a line to the log.
         /// </summary>
         /// <param name="line">Message text</param>
         /// <param name="lt">Log type</param>
         public void Add(string line, LogType lt)
         {
-            string newStr = "[" + DateTime.Now + "]" + "[" + lt.ToString() + "]" + line + "\n";
+            string newStr = "[" + DateTime.Now + "]" + "[" + lt + "]" + line + "\n";
             Log += newStr;
             File.AppendAllText(logPath, newStr);
             if (LogChanged != null)
             {
-                LogChanged(this, new EventArgs());
+                LogChanged(this, newStr);
             }
         }
 
@@ -91,12 +89,14 @@ namespace PearXLib
             string newStr = "[" + DateTime.Now + "]" + "[" + prefix + "]" + line + "\n";
             Log += newStr;
             File.AppendAllText(logPath, newStr);
-
-            LogChanged?.Invoke(this, new EventArgs());
+            if (LogChanged != null)
+            {
+                LogChanged(this, newStr);
+            }
         }
 
         /// <summary>
-        /// Adds a line to a log.
+        /// Adds a line to the log.
         /// </summary>
         /// <param name="line">Message text</param>
         public void Add(string line)
@@ -105,7 +105,10 @@ namespace PearXLib
             Log += newStr;
             File.AppendAllText(logPath, newStr);
 
-            LogChanged?.Invoke(this, new EventArgs());
+            if (LogChanged != null)
+            {
+                LogChanged(this, newStr);
+            }
         }
     }
 }

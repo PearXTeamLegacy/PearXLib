@@ -39,7 +39,6 @@ namespace PearXLib.Crypting
             string[] s = input.Split(' ');
 
             long[] la = new long[s.Length];
-            char[] ca = new char[s.Length];
             byte[] ba = new byte[s.Length];
 
             for (int i = 0; i < s.Length; i++)

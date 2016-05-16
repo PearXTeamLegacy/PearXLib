@@ -451,7 +451,8 @@ namespace PearXLib.Engine
                     Location = new Point(0, 0);
                     Size = Screen.PrimaryScreen.WorkingArea.Size;
                     Refresh();
-                    Maximized?.Invoke(this, new EventArgs());
+                    if(Maximized != null)
+                        Maximized(this, new EventArgs());
                 }
                 else
                 {
@@ -459,7 +460,8 @@ namespace PearXLib.Engine
                     Location = lastLocation;
                     Size = lastSize;
                     Refresh();
-                    Minimized?.Invoke(this, new EventArgs());
+                    if(Minimized != null)
+                        Minimized(this, new EventArgs());
                 }
             }
             else if (BarSt == BarState.ToTray && ToTrayBox)
@@ -467,12 +469,14 @@ namespace PearXLib.Engine
                 if (WindowState != FormWindowState.Minimized)
                 {
                     WindowState = FormWindowState.Minimized;
-                    TurnedToTray?.Invoke(this, new EventArgs());
+                    if(TurnedToTray != null)
+                        TurnedToTray(this, new EventArgs());
                 }
                 else
                 {
                     WindowState = FormWindowState.Normal;
-                    ExpandedFromTray?.Invoke(this, new EventArgs());
+                    if(ExpandedFromTray != null)
+                       ExpandedFromTray(this, new EventArgs());
                 }
             }
         }

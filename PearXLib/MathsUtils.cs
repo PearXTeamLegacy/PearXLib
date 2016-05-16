@@ -8,10 +8,10 @@ namespace PearXLib
     public class MathsUtils
     {
         /// <summary>
-        /// Gets an arithmetical averange.
+        /// Gets an arithmetical average.
         /// </summary>
         /// <param name="ints">Input integers.</param>
-        /// <returns>Arithmetical averange.</returns>
+        /// <returns>Arithmetical average.</returns>
         public static int GetAverage(int[] ints)
         {
             int temp = 0; 
@@ -23,10 +23,10 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Gets an exactly arithmetical averange.
+        /// Gets an exactly arithmetical average.
         /// </summary>
         /// <param name="doubles">Input doubles.</param>
-        /// <returns>Exactly arithmetical averange</returns>
+        /// <returns>Exactly arithmetical average</returns>
         public static double GetAverageExactly(double[] doubles)
         {
             double temp = 0;
@@ -64,6 +64,49 @@ namespace PearXLib
         public static double GetInPercents(double maximum, double value)
         {
             return  value / (maximum / 100);
+        }
+    }
+
+    /// <summary>
+    /// A fraction class.
+    /// </summary>
+    public class Fraction
+    {
+        /// <summary>
+        /// A numerator of the fraction.
+        /// </summary>
+        public long Numerator { get; set; }
+
+        /// <summary>
+        /// A denominator of the fraction.
+        /// </summary>
+        public long Denominator { get; set; }
+
+        /// <summary>
+        /// Initializes a new fraction
+        /// </summary>
+        /// <param name="num">Numerator</param>
+        /// <param name="den">Denominator</param>
+        public Fraction(long num, long den)
+        {
+            Numerator = num;
+            Denominator = den;
+        }
+
+        /// <summary>
+        /// *
+        /// </summary>
+        public static Fraction operator *(Fraction left, Fraction right)
+        {
+            return new Fraction(left.Numerator * right.Numerator, left.Denominator * right.Denominator);
+        }
+
+        /// <summary>
+        /// /
+        /// </summary>
+        public static Fraction operator /(Fraction left, Fraction right)
+        {
+            return new Fraction(left.Numerator * right.Denominator, left.Denominator * right.Numerator);
         }
     }
 }

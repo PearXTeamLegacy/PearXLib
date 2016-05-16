@@ -59,6 +59,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Image alignment.
         /// </summary>
+        [DefaultValue(64)]
         public ContentAlignment ImageAlign
         {
             get { return _ImageAlign; }
@@ -68,6 +69,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Text alignment.
         /// </summary>
+        [DefaultValue(32)]
         public ContentAlignment TextAlign
         {
             get { return _TextAlign; }
@@ -110,36 +112,48 @@ namespace PearXLib.Engine
             if(Image != null)
             {
                 Size s = Image.Size;
+                float x = 0;
+                float y = 0;
                 switch(ImageAlign)
                 {
                     case ContentAlignment.BottomCenter:
-                        e.Graphics.DrawImage(Image, (Width - s.Width) / 2, Height - s.Height - Border);
+                        x = (Width - s.Width) / 2;
+                        y = Height - s.Height - Border;
                         break;
                     case ContentAlignment.BottomLeft:
-                        e.Graphics.DrawImage(Image, Border, Height - s.Height - Border);
+                        x = Border;
+                        y = Height - s.Height - Border;
                         break;
                     case ContentAlignment.BottomRight:
-                        e.Graphics.DrawImage(Image, Width - s.Width - Border, Height - s.Height - Border);
+                        x = Width - s.Width - Border;
+                        y = Height - s.Height - Border;
                         break;
                     case ContentAlignment.MiddleCenter:
-                        e.Graphics.DrawImage(Image, (Width - s.Width) / 2, (Height - s.Height) / 2);
+                        x = (Width - s.Width) / 2;
+                        y = (Height - s.Height) / 2;
                         break;
                     case ContentAlignment.MiddleLeft:
-                        e.Graphics.DrawImage(Image, Border, (Height - s.Height) / 2);
+                        x = Border;
+                        y = (Height - s.Height) / 2;
                         break;
                     case ContentAlignment.MiddleRight:
-                        e.Graphics.DrawImage(Image, Width - s.Width - Border, (Height - s.Height) / 2);
+                        x = Width - s.Width - Border;
+                        y = (Height - s.Height) / 2;
                         break;
                     case ContentAlignment.TopCenter:
-                        e.Graphics.DrawImage(Image, (Width - s.Width) / 2, Border);
+                        x = (Width - s.Width) / 2;
+                        y = Border;
                         break;
                     case ContentAlignment.TopLeft:
-                        e.Graphics.DrawImage(Image, Border, Border);
+                        x = Border;
+                        y = Border;
                         break;
                     case ContentAlignment.TopRight:
-                        e.Graphics.DrawImage(Image, Width - s.Width - Border, Border);
+                        x = Width - s.Width - Border;
+                        y = Border;
                         break;
                 }
+                e.Graphics.DrawImage(Image, x, y, Image.Width, Image.Height);
             }
 
             if (!string.IsNullOrEmpty(Text))

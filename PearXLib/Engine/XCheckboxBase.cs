@@ -72,7 +72,8 @@ namespace PearXLib.Engine
             {
                 chkd = value;
                 Refresh();
-                CheckedChanged?.Invoke(this, value);
+                if(CheckedChanged != null)
+                   CheckedChanged(this, value);
             }
         }
 

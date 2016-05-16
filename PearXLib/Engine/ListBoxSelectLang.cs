@@ -10,7 +10,7 @@ namespace PearXLib.Engine
     public class LangEventArgs
     {
         /// <summary>
-        /// Initializates a new LangEventArgs component.
+        /// Initializes a new LangEventArgs component.
         /// </summary>
         /// <param name="selected">Selected language name.</param>
         public LangEventArgs(string selected)
@@ -25,7 +25,7 @@ namespace PearXLib.Engine
     }
 
     /// <summary>
-    /// A listbox, maked for easy language selection without crutches.
+    /// A ListBox, made for easy language selection without crutches.
     /// </summary>
     public class ListBoxSelectLang : ListBox
     {
@@ -45,7 +45,7 @@ namespace PearXLib.Engine
         private string[] listoflangs;
 
         /// <summary>
-        /// Path to langfiles (with slash)
+        /// Path to LangFiles (with slash)
         /// </summary>
         public string PathToLangs
         {
@@ -78,12 +78,16 @@ namespace PearXLib.Engine
             }
         }
 
+        /// <summary>
+        /// OnSelectedIndexChanged
+        /// </summary>
+        /// <param name="e">EventArgs</param>
         protected override void OnSelectedIndexChanged(EventArgs e)
         {
             base.OnSelectedIndexChanged(e);
-            if (SelectedIndex != -1 && SelectedIndex <= listoflangs.Length)
+            if (SelectedIndex != -1 && SelectedIndex <= listoflangs.Length && LanguageSelected != null)
             {
-                LanguageSelected?.Invoke(this, new LangEventArgs(listoflangs[SelectedIndex]));
+                LanguageSelected(this, new LangEventArgs(listoflangs[SelectedIndex]));
             }
         }
     }

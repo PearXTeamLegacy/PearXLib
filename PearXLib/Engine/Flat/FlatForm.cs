@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PearXLib.Engine.Flat
@@ -39,6 +40,7 @@ namespace PearXLib.Engine.Flat
         private Color _PanelBG = Color.FromArgb(37, 38, 41);
         private bool _Rim = true;
         private Color _RimColor = Color.FromArgb(18, 107, 166);
+        private bool _DrawPanel = true;
 
         /// <summary>
         /// Color of the close box.
@@ -77,9 +79,16 @@ namespace PearXLib.Engine.Flat
         /// </summary>
         public bool Rim { get { return _Rim; } set { _Rim = value; Refresh(); } }
 
+        /// <summary>
+        /// Draw Panel's BG?
+        /// </summary>
+        [DefaultValue(true)]
+        public bool DrawPanelBG { get { return _DrawPanel; } set { _DrawPanel = value; } }
+
         protected override void OnPaint(PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(new SolidBrush(PanelBG), 0, 0, Size.Width, 32);
+            if(DrawPanelBG)
+                e.Graphics.FillRectangle(new SolidBrush(PanelBG), 0, 0, Size.Width, 32);
             base.OnPaint(e);
             if (CloseBox)
             {

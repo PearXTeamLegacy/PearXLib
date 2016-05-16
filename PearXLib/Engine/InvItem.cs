@@ -88,7 +88,8 @@ namespace PearXLib.Engine
             {
                 _ItemAmount = value;
                 Refresh();
-                AmountChanged?.Invoke(this, new InvItemEventArgs(value));
+                if (AmountChanged != null)
+                    AmountChanged(this, new InvItemEventArgs(value));
             }
         }
 

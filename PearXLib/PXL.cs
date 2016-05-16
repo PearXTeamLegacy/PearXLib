@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Management;
+using System.Security.Cryptography;
 
 namespace PearXLib
 {
@@ -32,29 +33,24 @@ namespace PearXLib
          * =========================
          */
 
-
-
-
-
-
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        private const string Version = "1.0.0.0";
+        private const string Version = "16.05.2016";
 
         /// <summary>
-        /// Directory sepator.
+        /// Directory separator.
         /// </summary>
         public static char s = Path.DirectorySeparatorChar;
 
         /// <summary>
         /// For TextBox.
         /// </summary>
-        /// <param name="e">Args</param>
+        /// <param name="e">Arguments</param>
         /// <returns>True or false.</returns>
         public static bool isNumberKey(KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char) Keys.Back)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char) Keys.Back)
             {
                 return true;
             }
@@ -62,10 +58,10 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Creates shortcut.
+        /// Creates a shortcut.
         /// </summary>
-        /// <param name="path">Path to exe.</param>
-        /// <param name="filePath">Path to new shortcut.</param>
+        /// <param name="path">Path to the executable file.</param>
+        /// <param name="filePath">Path to the new shortcut.</param>
         public static void createShortcut(string path, string filePath)
         {
             StringBuilder sb = new StringBuilder();
@@ -77,7 +73,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Replaces first occurrence of string.
+        /// Replaces the first occurrence of the string.
         /// </summary>
         /// <param name="str">Input string.</param>
         /// <param name="replaceFrom">Replace from...</param>
@@ -89,7 +85,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Gets a string[] from string, uses new line(\n).
+        /// Gets a string array from the string, uses new line(\n).
         /// </summary>
         /// <param name="s"></param>
         public static string[] GetArrayFromString(string s)
@@ -98,7 +94,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Gets a string from string[], uses new line(\n).
+        /// Gets a string from the string array, uses new line(\n).
         /// </summary>
         /// <param name="s"></param>
         public static string GetStringFromArray(string[] s)
@@ -124,8 +120,8 @@ namespace PearXLib
         /// <returns>Form start position.</returns>
         public static Point GetFormStartPosition(Form parent, Form child)
         {
-            int w = (parent.Location.X + (((parent.Size.Width - child.Size.Width)/2)));
-            int h = (parent.Location.Y + (((parent.Size.Height - child.Size.Height)/2)));
+            int w = parent.Location.X + (parent.Size.Width - child.Size.Width)/2;
+            int h = parent.Location.Y + (parent.Size.Height - child.Size.Height)/2;
             return new Point(w, h);
         }
 
@@ -147,25 +143,24 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Gets a path to a Java folder.
+        /// Gets a path to the Java folder.
         /// </summary>
-        /// <returns>A path to a Java folder.</returns>
+        /// <returns>A path to the Java folder.</returns>
         public static string GetJavaPath()
         {
-            RegistryView rv;
-            rv = RegistryView.Registry64;
+            string javaKey = "SOFTWARE\\JavaSoft\\Java Runtime Environment";
             using (
                 var baseKey =
-                    RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, rv)
-                        .OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
+                    RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(javaKey))
             {
-                using (var homeKey = baseKey.OpenSubKey(baseKey.GetValue("CurrentVersion").ToString()))
+                string currentVersion = baseKey.GetValue("CurrentVersion").ToString();
+                using (var homeKey = baseKey.OpenSubKey(currentVersion))
                     return homeKey.GetValue("JavaHome").ToString();
             }
         }
 
         /// <summary>
-        /// Gets an PC info
+        /// Gets a PC info
         /// </summary>
         /// <param name="what">Caption</param>
         /// <returns>Result</returns>
@@ -201,5 +196,31 @@ namespace PearXLib
         {
             return new Point((p.Width - uc.Size.Width)/2, uc.Location.Y);
         }
+
+        /// <summary>
+        /// Gets the MD5 hash from string.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns>Hashed string.</returns>
+        public static string GetMD5(string str)
+        {
+            byte[] ascii = Encoding.ASCII.GetBytes(str);
+            byte[] hashed = MD5.Create().ComputeHash(ascii);
+            return BitConverter.ToString(hashed).Replace("-", "").ToLower();
+        }
+
+        /// <summary>
+        /// If current OS is Windows, returns true.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsWindows()
+        {
+            return Environment.OSVersion.ToString().ToLower().StartsWith("microsoft windows");
+        }
     }
+
+    /// <summary>
+    /// An empty delegate. Special for you =)))).
+    /// </summary>
+    public delegate void EmptyDelegate();
 }

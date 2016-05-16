@@ -8,7 +8,7 @@ namespace PearXLib
     public class RandomUtils
     {
         /// <summary>
-        /// Generates random character.
+        /// Generates a random character.
         /// </summary>
         /// <returns>Random character.</returns>
         public static char GenChar(Random rand)
@@ -19,7 +19,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Generates random digit.
+        /// Generates a random digit.
         /// </summary>
         /// <returns>Random digit</returns>
         public static int GenNumber(Random rand)
@@ -28,7 +28,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Generate random number.
+        /// Generates a random number.
         /// </summary>
         /// <param name="min">Minimal random number (inclusive).</param>
         /// <param name="max">Maximal random number (inclusive).</param>
@@ -40,7 +40,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Generates random symbol.
+        /// Generates a random symbol.
         /// </summary>
         /// <param name="rand"></param>
         /// <returns></returns>
@@ -52,16 +52,12 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Generates random number/char/symbol.
+        /// Generates a random number/char/symbol.
         /// </summary>
         /// <returns>Random.</returns>
         public static char GenRandom(Random rand, bool useSymbols)
         {
-            int i;
-            if (useSymbols)
-                i = rand.Next(0, 4);
-            else
-                i = rand.Next(0, 3);
+            int i = rand.Next(0, useSymbols ? 4 : 3);
             switch (i)
             {
                 case 0:
@@ -79,15 +75,15 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// <![CDATA[Generates a random string by a template.
-        /// Template usage:
-        /// %num% - a random figure, ex. 6 or 7.
-        /// %char% - a random character, ex. b or e.
-        /// %sym% - a random symbol, ex. ~ or &.
-        /// %rand% - a random symbol, character, or figure.
-        /// %randws% - a random character or figure.
-        /// Write in uppercase for uppercase :p.
-        /// Example template: TEST%rand%%sym%%CHAR%%CHAR%_HEHE. Example return: TEST&*FE_HEHE]]>
+        /// Generates a random string by the template.<para/>
+        /// Template usage:<para/>
+        /// %num% - a random figure, ex. 6 or 7.<para/>
+        /// %char% - a random character, ex. b or e.<para/>
+        /// %sym% - a random symbol, ex. ~ or +.<para/>
+        /// %rand% - a random symbol, character, or figure.<para/>
+        /// %randws% - a random character or figure.<para/>
+        /// Write in uppercase for uppercase :p.<para/>
+        /// Example template: q_%rand%%sym%%CHAR%%CHAR%_p. Example return: q_5+FS_p
         /// </summary>
         /// <param name="template">A template</param>
         /// <param name="rand">Your random</param>
