@@ -8,6 +8,7 @@ namespace PearXLib.Engine
     {
         private string text;
         private bool drawinrect;
+        protected bool AlreadyDrawed;
 
         #region Params
         /// <summary>
@@ -20,13 +21,7 @@ namespace PearXLib.Engine
             set
             {
                 text = value;
-                Size s = TextRenderer.MeasureText(Text, Font);
-                if (!DrawInRectangle)
-                {
-                    MinimumSize = s;
-                    MaximumSize = s;
-                    Size = s;
-                }
+                AutoResize();
                 Refresh();
             }
         }
@@ -41,13 +36,7 @@ namespace PearXLib.Engine
             set
             {
                 drawinrect = value;
-                Size s = TextRenderer.MeasureText(Text, Font);
-                if (!DrawInRectangle)
-                {
-                    MinimumSize = s;
-                    MaximumSize = s;
-                    Size = s;
-                }
+                AutoResize();
                 Refresh();
             }
         }
@@ -57,18 +46,31 @@ namespace PearXLib.Engine
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            Size s = TextRenderer.MeasureText(Text, Font);
-            if (!DrawInRectangle)
-            {
-                MinimumSize = s;
-                MaximumSize = s;
-                Size = s;
-            }
+            if(AlreadyDrawed == false)
+                AutoResize();
             if (DrawInRectangle)
                 DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new Rectangle(0, 0, Width, Height));
             else
                 DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new Point(0, 0));
+            AlreadyDrawed = true;
 
+        }
+
+        private void AutoResize()
+        {
+            if (!DrawInRectangle)
+            {
+                using (var bm = new Bitmap(1, 1))
+                {
+                    using (var gfx = Graphics.FromImage(bm))
+                    {
+                        Size s = gfx.MeasureString(Text, Font).ToSize();
+                        MinimumSize = s;
+                        MaximumSize = s;
+                        Size = s;
+                    }
+                }
+            }
         }
     }
 }

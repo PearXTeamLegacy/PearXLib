@@ -125,7 +125,8 @@ namespace PearXLib.Engine.Flat
                     e.Graphics.FillRectangle(new SolidBrush(ToTrayBoxColor), Size.Width - (96 + (BoxesDistance * 3)), BoxesTopDistance, 32, 32);
                 }
             }
-            e.Graphics.DrawRectangle(new Pen(RimColor, 1), 0, 0, Size.Width - 1, Size.Height - 1);
+            if(Rim)
+                e.Graphics.DrawRectangle(new Pen(RimColor, 1), 0, 0, Size.Width - 1, Size.Height - 1);
         }
     }
 }
