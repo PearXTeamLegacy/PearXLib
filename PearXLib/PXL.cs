@@ -1,12 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Drawing;
-using System.Drawing.Text;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Management;
-using System.Reflection;
 using System.Security.Cryptography;
 
 namespace PearXLib
@@ -38,7 +36,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        private const string Version = "16.05.2016";
+        private const string Version = "19.05.2016";
 
         /// <summary>
         /// Directory separator.

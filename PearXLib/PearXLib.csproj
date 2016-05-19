@@ -110,6 +110,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FileUtils.cs" />
+    <Compile Include="FlatColors.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MathsUtils.cs" />

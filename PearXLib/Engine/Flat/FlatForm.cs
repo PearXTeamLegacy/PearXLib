@@ -15,7 +15,7 @@ namespace PearXLib.Engine.Flat
         public FlatForm()
         {
             BarImage = null;
-            BackColor = Color.FromArgb(44, 47, 51);
+            BackColor = FlatColors.NotQuiteBlack;
             BoxesTopDistance = 1;
             BoxesDistance = 0;
             TextColor = Color.White;
