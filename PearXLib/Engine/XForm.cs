@@ -375,12 +375,15 @@ namespace PearXLib.Engine
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            lastOffset = new Point(MousePosition.X - lastMousePoint.X, MousePosition.Y - lastMousePoint.Y);
-            if (state == State.Move && CanMove)
+            if (CanMove)
             {
-                Location = new Point(Location.X + lastOffset.X, Location.Y + lastOffset.Y);
+                if (state == State.Move)
+                {
+                    lastOffset = new Point(MousePosition.X - lastMousePoint.X, MousePosition.Y - lastMousePoint.Y);
+                    Location = new Point(Location.X + lastOffset.X, Location.Y + lastOffset.Y);
+                }
+                lastMousePoint = MousePosition;
             }
-            lastMousePoint = MousePosition;
 
             //Close Box:
             if (PXL.IsCursorOnElement(new Point((Location.X + Size.Width) - (32 + BoxesDistance), Location.Y + BoxesTopDistance), new Point((Location.X + Size.Width) - BoxesDistance, Location.Y + (32 + BoxesTopDistance))) && CloseBox)

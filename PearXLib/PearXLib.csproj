@@ -38,14 +38,19 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypting\CA_PXM.cs" />
     <Compile Include="d.cs" />
+    <Compile Include="Engine\CompactInvItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Engine\Flat\FlatBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,8 +74,17 @@
     <Compile Include="Engine\Indicator.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Engine\InvItemBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Engine\InvItemEventArgs.cs" />
     <Compile Include="Engine\ListBoxSelectLang.cs" />
+    <Compile Include="Engine\OutsideForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Engine\TooltipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Engine\XBarEventArgs.cs" />
     <Compile Include="Engine\XButton.cs">
       <SubType>UserControl</SubType>
