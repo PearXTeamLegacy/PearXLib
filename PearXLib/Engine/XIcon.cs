@@ -66,7 +66,6 @@ namespace PearXLib.Engine
         {
             mouseIn = true;
             Refresh();
-            BringToFront();
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -81,29 +80,21 @@ namespace PearXLib.Engine
             if (Icon != null)
             {
                 Size s = Size;
-                if (!string.IsNullOrEmpty(Title))
+                if (!mouseIn)
                 {
-                    Brush b = new SolidBrush(ForeColor);
-                    SizeF strWH = e.Graphics.MeasureString(Title, Font);
-                    if (mouseIn)
-                        e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height - strWH.Height);
-                    else
-                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2 - strWH.Height);
-                    e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
+                    e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2);
+                    if (!string.IsNullOrEmpty(Title))
+                    {
+                        Brush b = new SolidBrush(ForeColor);
+                        SizeF strWH = e.Graphics.MeasureString(Title, Font);
+                        e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
+                    }
                 }
                 else
                 {
-                    if(mouseIn)
-                        e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height);
-                    else
-                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2);
+                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height);
                 }
             }
-        }
-
-        protected override void OnSizeChanged(EventArgs e)
-        {
-            Refresh();
         }
     }
 }

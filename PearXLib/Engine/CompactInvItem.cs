@@ -9,12 +9,12 @@ namespace PearXLib.Engine
 {
     public class CompactInvItem : InvItemBase
     {
-        public TooltipForm Tooltip = new TooltipForm();
+        public TooltipForm Tooltip { get; set; }
 
         public CompactInvItem()
         {
             Size = new Size(64, 64);
-            Tooltip.Font = Font;
+            Tooltip = new TooltipForm();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -34,7 +34,7 @@ namespace PearXLib.Engine
         {
             Tooltip.NameText = ItemName;
             Tooltip.TooltipText = ItemDesc;
-            Tooltip.Location = new Point(MousePosition.X + 5, MousePosition.Y + 5);
+            UpdateTooltipPos();
             Tooltip.Show();
         }
 
@@ -45,7 +45,12 @@ namespace PearXLib.Engine
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            Tooltip.Location = new Point(MousePosition.X + 5, MousePosition.Y + 5);
+            UpdateTooltipPos();
+        }
+
+        private void UpdateTooltipPos()
+        {
+            Tooltip.Location = new Point(MousePosition.X + Cursor.Size.Width, MousePosition.Y);
         }
     }
 }
