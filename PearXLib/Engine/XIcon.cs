@@ -77,22 +77,27 @@ namespace PearXLib.Engine
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+            Brush b = new SolidBrush(ForeColor);
+            SizeF strWH = e.Graphics.MeasureString(Title, Font);
             if (Icon != null)
             {
                 Size s = Size;
                 if (!mouseIn)
                 {
-                    e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2);
                     if (!string.IsNullOrEmpty(Title))
                     {
-                        Brush b = new SolidBrush(ForeColor);
-                        SizeF strWH = e.Graphics.MeasureString(Title, Font);
+                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2 - strWH.Height);
+
                         e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
                     }
+                    else
+                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2);
                 }
                 else
                 {
-                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height);
+                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height - strWH.Height);
+                    if(!string.IsNullOrEmpty(Title))
+                        e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
                 }
             }
         }

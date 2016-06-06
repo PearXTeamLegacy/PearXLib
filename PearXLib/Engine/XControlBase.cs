@@ -29,7 +29,7 @@ namespace PearXLib.Engine
         protected override void OnPaint(PaintEventArgs e)
         {
             if (!UseInterpolation)
-                e.Graphics.InterpolationMode = InterpolationMode.Low;
+                e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
         }
     }
 }
