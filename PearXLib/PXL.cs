@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -216,6 +217,27 @@ namespace PearXLib
         public static bool IsWindows()
         {
             return Environment.OSVersion.ToString().ToLower().StartsWith("microsoft windows");
+        }
+
+        /// <summary>
+        /// Starting executable file.
+        /// </summary>
+        /// <param name="path">Path to .exe</param>
+        public static void RunExe(string path)
+        {
+            ProcessStartInfo inf = new ProcessStartInfo();
+
+            if (IsWindows())
+            {
+                inf.FileName = path;
+                Process.Start(inf);
+            }
+            else
+            {
+                inf.FileName = "mono";
+                inf.Arguments = path;
+                Process.Start(inf);
+            }
         }
     }
 

@@ -104,6 +104,12 @@ namespace PearXLib.Engine
             get { return _Border; }
             set { _Border = value; Refresh(); }
         }
+
+        /// <summary>
+        /// </summary>
+        [DefaultValue(typeof(Cursor), "Hand")]
+        public override Cursor Cursor { get { return base.Cursor; } set { base.Cursor = value; } }
+
         #endregion
 
         protected override void OnPaint(PaintEventArgs e)
