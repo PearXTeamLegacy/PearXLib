@@ -5,6 +5,13 @@ using System.Text;
 
 namespace PearXLib.Crypting
 {
+    /// <summary>
+    /// PXInterference Algorithm. 
+    /// 1. Add "n" random false chars.
+    /// 2. Add true char.
+    /// 3. Repeat.
+    /// Keys - interference count for every true char.
+    /// </summary>
     public class CA_PXI
     {
         public static string Encrypt(string s, string interference, int maxInterference, Random rand, out int[] keys)

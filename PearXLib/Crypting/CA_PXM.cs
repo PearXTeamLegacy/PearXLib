@@ -4,7 +4,10 @@ using System.Text;
 namespace PearXLib.Crypting
 {
     /// <summary>
-    /// PXM encrypting algorithm (1. Convert char to int. 2. Result * 'salt').
+    /// PXMultiple Algorithm.
+    /// 1. Convert char to integer.
+    /// 2. Char * salt.
+    /// 3. Repeat
     /// </summary>
     public class CA_PXM
     {
