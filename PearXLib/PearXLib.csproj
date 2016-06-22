@@ -127,6 +127,7 @@
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="MathsUtils.cs" />
+    <Compile Include="PCUtils.cs" />
     <Compile Include="PXL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtils.cs" />

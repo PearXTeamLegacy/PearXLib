@@ -24,14 +24,8 @@ namespace PearXLib
          *   \_|  \___|\__,_|_| \/   \/ \_____/_|_.__/|_|  \__,_|_|   \__, |
          *                                                             __/ |
          *                                                            |___/ 
-         */
-
-        /* 
-         * =========================
-         * ======PearX Library======
-         * =====Open Source Lib=====
-         * ===github.com/mrAppleXZ==
-         * =========================
+         *
+         * https://github.com/mrAppleXZ/PearXLib/
          */
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace PearXLib
         /// </summary>
         /// <param name="e">Arguments</param>
         /// <returns>True or false.</returns>
-        public static bool isNumberKey(KeyPressEventArgs e)
+        public static bool IsNumberKey(KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char) Keys.Back)
             {
@@ -63,7 +57,7 @@ namespace PearXLib
         /// </summary>
         /// <param name="path">Path to the executable file.</param>
         /// <param name="filePath">Path to the new shortcut.</param>
-        public static void createShortcut(string path, string filePath)
+        public static void CreateShortcut(string path, string filePath)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("[InternetShortcut]");
@@ -144,50 +138,6 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Gets a path to the Java folder.
-        /// </summary>
-        /// <returns>A path to the Java folder.</returns>
-        public static string GetJavaPath()
-        {
-            string javaKey = "SOFTWARE\\JavaSoft\\Java Runtime Environment";
-            using (
-                var baseKey =
-                    RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(javaKey))
-            {
-                string currentVersion = baseKey.GetValue("CurrentVersion").ToString();
-                using (var homeKey = baseKey.OpenSubKey(currentVersion))
-                    return homeKey.GetValue("JavaHome").ToString();
-            }
-        }
-
-        /// <summary>
-        /// Gets a PC info
-        /// </summary>
-        /// <param name="what">Caption</param>
-        /// <returns>Result</returns>
-        public static string GetFromPC(string what)
-        {
-            ManagementObjectSearcher ser = new ManagementObjectSearcher("SELECT " + what + " FROM Win32_OperatingSystem");
-            foreach (ManagementObject mo in ser.Get())
-            {
-                return mo[what].ToString();
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Gets a control's center.
-        /// </summary>
-        /// <param name="parent">Control's parent form.</param>
-        /// <param name="p">Control's location.</param>
-        /// <param name="s">Control's size.</param>
-        /// <returns></returns>
-        public static Point GetControlCenter(Form parent, Point p, Size s)
-        {
-            return new Point((parent.Width - s.Width)/2, p.Y);
-        }
-
-        /// <summary>
         /// Gets a center point for a UserControl.
         /// </summary>
         /// <param name="p">Parent Form</param>
@@ -209,40 +159,10 @@ namespace PearXLib
             byte[] hashed = MD5.Create().ComputeHash(ascii);
             return BitConverter.ToString(hashed).Replace("-", "").ToLower();
         }
-
-        /// <summary>
-        /// If current OS is Windows, returns true.
-        /// </summary>
-        /// <returns></returns>
-        public static bool IsWindows()
-        {
-            return Environment.OSVersion.ToString().ToLower().StartsWith("microsoft windows");
-        }
-
-        /// <summary>
-        /// Starting executable file.
-        /// </summary>
-        /// <param name="path">Path to .exe</param>
-        public static void RunExe(string path)
-        {
-            ProcessStartInfo inf = new ProcessStartInfo();
-
-            if (IsWindows())
-            {
-                inf.FileName = path;
-                Process.Start(inf);
-            }
-            else
-            {
-                inf.FileName = "mono";
-                inf.Arguments = path;
-                Process.Start(inf);
-            }
-        }
     }
 
     /// <summary>
-    /// An empty delegate. Special for you =)))).
+    /// An empty delegate. Special for you =).
     /// </summary>
     public delegate void EmptyDelegate();
 }
