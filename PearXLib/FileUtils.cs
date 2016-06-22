@@ -1,5 +1,4 @@
-﻿using PearXLib.Crypting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -80,30 +79,6 @@ namespace PearXLib
                 result.Add(Uri.UnescapeDataString(rp.MakeRelativeUri(new Uri(s)).ToString()));
             }
             return result.ToArray();
-        }
-
-        /// <summary>
-        /// Saves the application with using encryption.
-        /// </summary>
-        /// <param name="path">Path to the save file.</param>
-        /// <param name="save">Strings to save.</param>
-        /// <param name="salt">Encryption salt.</param>
-        public static void SaveEnc(string path, string[] save, short salt)
-        {
-            string saveEncrypted = CA_PXM.Enrypt(PXL.GetStringFromArray(save), salt);
-            File.WriteAllText(path, saveEncrypted);
-        }
-
-        /// <summary>
-        /// Loads the application with using encryption.
-        /// </summary>
-        /// <param name="path">Path to the save file.</param>
-        /// <param name="salt">Encryption salt.</param>
-        /// <returns>Loaded string array.</returns>
-        public static string[] LoadEnc(string path, short salt)
-        {
-            string decrypted = CA_PXM.Decrypt(File.ReadAllText(path), salt);
-            return PXL.GetArrayFromString(decrypted);
         }
 
         /// <summary>

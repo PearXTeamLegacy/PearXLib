@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-namespace PearXLib.Crypting
+namespace PearXLib.EncodingAlgorithms
 {
     /// <summary>
     /// PXInterference Algorithm. 
@@ -14,7 +12,16 @@ namespace PearXLib.Crypting
     /// </summary>
     public class CA_PXI
     {
-        public static string Encrypt(string s, string interference, int maxInterference, Random rand, out int[] keys)
+        /// <summary>
+        /// Encodes string by a PXInterference algorithm.
+        /// </summary>
+        /// <param name="s">Input string.</param>
+        /// <param name="interference">False characters list (ex. "qwertyQWERTY123456")</param>
+        /// <param name="maxInterference">Max interference count per true character</param>
+        /// <param name="rand">Your random</param>
+        /// <param name="keys">Keys for decoding.</param>
+        /// <returns>Encoded string.</returns>
+        public static string Encode(string s, string interference, int maxInterference, Random rand, out int[] keys)
         {
             StringBuilder sbOut = new StringBuilder();
             keys = new int[s.Length];
@@ -31,7 +38,13 @@ namespace PearXLib.Crypting
             return sbOut.ToString();
         }
 
-        public static string Decrypt(string s, int[] keys)
+        /// <summary>
+        /// Decodes string by a PXInterference algorithm.
+        /// </summary>
+        /// <param name="s">Encoded string</param>
+        /// <param name="keys">Keys for decoding</param>
+        /// <returns>Decoded string</returns>
+        public static string Decode(string s, int[] keys)
         {
             StringBuilder sbOut = new StringBuilder();
             int j = 0;

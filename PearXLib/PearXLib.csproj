@@ -44,8 +44,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crypting\CA_PXI.cs" />
-    <Compile Include="Crypting\CA_PXM.cs" />
+    <Compile Include="EncodingAlgorithms\PXInterference.cs" />
+    <Compile Include="EncodingAlgorithms\PXMultiple.cs" />
     <Compile Include="d.cs" />
     <Compile Include="Engine\CompactInvItem.cs">
       <SubType>UserControl</SubType>

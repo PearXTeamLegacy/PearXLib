@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace PearXLib.Crypting
+namespace PearXLib.EncodingAlgorithms
 {
     /// <summary>
     /// PXMultiple Algorithm.
@@ -9,15 +9,15 @@ namespace PearXLib.Crypting
     /// 2. Char * salt.
     /// 3. Repeat
     /// </summary>
-    public class CA_PXM
+    public class PXMultiple
     {
         /// <summary>
-        /// Encrypts string by algorithm "PXM".
+        /// Encodes string by algorithm "PXMultiple".
         /// </summary>
-        /// <param name="input">Input string.</param>
+        /// <param name="input">Input string</param>
         /// <param name="salt">Salt</param>
-        /// <returns>Encrypted string.</returns>
-        public static string Enrypt(string input, int salt)
+        /// <returns>Encoded string</returns>
+        public static string Encode(string input, int salt)
         {
             byte[] ba = Encoding.UTF8.GetBytes(input.ToCharArray());
             long[] la = new long[ba.Length];
@@ -32,12 +32,12 @@ namespace PearXLib.Crypting
         }
 
         /// <summary>
-        /// Decrypts string by algorithm "PXM".
+        /// Decodes string by algorithm "PXMultiple".
         /// </summary>
-        /// <param name="input">Input string.</param>
+        /// <param name="input">Input string</param>
         /// <param name="salt">Salt</param>
-        /// <returns>Decrypted string.</returns>
-        public static string Decrypt(string input, int salt)
+        /// <returns>Decoded string</returns>
+        public static string Decode(string input, int salt)
         {
             string[] s = input.Split(' ');
 
