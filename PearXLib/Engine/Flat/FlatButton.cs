@@ -41,6 +41,13 @@ namespace PearXLib.Engine.Flat
             get { return _ColorFocused; }
             set { _ColorFocused = value; Refresh(); }
         }
+
+        [DefaultValue(true)]
+        public override bool Shadow { get; set; } = true;
+
+        [DefaultValue(typeof(Color), "White")]
+        public override Color ForeColor { get; set; } = Color.White;
+
         #endregion
 
         private Bitmap bm;
