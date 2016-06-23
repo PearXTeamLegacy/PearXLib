@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace PearXLib
 {
@@ -14,11 +16,9 @@ namespace PearXLib
     /// </summary>
     public class Localization
     {
-        private string[] locnms;
-        private string[] vls;
-
-        private string[] deflocnms;
-        private string[] defvls;
+        private Dictionary<string, string> names;
+        private Dictionary<string, string> defaultNames;
+        private bool useDefaultNames = true;
 
         /// <summary>
         /// Initializes a new localization component.
@@ -30,74 +30,56 @@ namespace PearXLib
         {
             if (defaultlang != langname)
             {
-                Prepare(ref vls, ref locnms, langname, dir);
-                Prepare(ref defvls, ref deflocnms, defaultlang, dir);
+                Prepare(out names, langname, dir);
+                Prepare(out defaultNames, defaultlang, dir);
             }
             else
-                Prepare(ref vls, ref locnms, langname, dir);
+            {
+                useDefaultNames = false;
+                Prepare(out names, langname, dir);
+            }
         }
 
         /// <summary>
-        /// Gets a string from a lang file.
+        /// Gets a string from the lang file.
         /// </summary>
-        /// <param name="localname">Localization name.</param>
-        /// <param name="usedef">DON'T USE IT</param>
+        /// <param name="key">Unlocalized name.</param>
+        /// <param name="usedef">Use default lang file?</param>
         /// <returns>String.</returns>
-        public string GetString(string localname, bool usedef = false)
+        public string GetString(string key, bool usedef = false)
         {
             if (!usedef)
             {
-                int count = -1;
-                foreach (string s in locnms)
+                if (names.ContainsKey(key))
+                    return names[key];
+                else
                 {
-                    count++;
-                    if (!string.IsNullOrEmpty(s))
-                    {
-                        if (s == localname)
-                        {
-                            return vls[count].Replace(@"&\n", "\n");
-                        }
-                    }
+                    if (useDefaultNames)
+                        return GetString(key, true);
+                    else
+                        return key;
                 }
-                return GetString(localname, true);
             }
             else
             {
-                int count = -1;
-                foreach (string s in deflocnms)
-                {
-                    count++;
-                    if (!string.IsNullOrEmpty(s))
-                    {
-                        if (s == localname)
-                        {
-                            return defvls[count].Replace(@"&\n", "\n");
-                        }
-                    }
-                }
-                return localname;
+                if (defaultNames.ContainsKey(key))
+                    return defaultNames[key];
+                else
+                    return key;
             }
         }
 
-        private void Prepare(ref string[] values, ref string[] localnames, string langname, string dir)
+        private void Prepare(out Dictionary<string, string> nms, string langname, string dir)
         {
-            string[] str = File.ReadAllLines(dir + langname + ".lang");
-            localnames = new string[str.Length];
-            values = new string[str.Length];
-            int count = 0;
-            foreach (string s in str)
+            string[] langFile = File.ReadAllLines(dir + langname + ".lang");
+            nms = new Dictionary<string, string>();
+            foreach (string s in langFile)
             {
-                if (!string.IsNullOrWhiteSpace(s))
-                {
-                    if (s.Substring(0, 1) != "#")
-                    {
-                        int p = s.IndexOf("=");
-                        localnames[count] = s.Substring(0, p);
-                        int i = s.Length;
-                        values[count] = s.Substring(++p, i - p);
-                        count++;
-                    }
-                }
+                if (string.IsNullOrWhiteSpace(s)) continue;
+                if (s.Substring(0, 1) == "#") continue;
+
+                int p = s.IndexOf("=", StringComparison.Ordinal);
+                nms.Add(s.Substring(0, p), s.Substring(p + 1, s.Length - p - 1));
             }
         }
     }
