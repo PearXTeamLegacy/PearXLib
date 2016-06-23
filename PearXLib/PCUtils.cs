@@ -48,7 +48,7 @@ namespace PearXLib
         public static string GetFromPC(string what)
         {
             ManagementObjectSearcher ser = new ManagementObjectSearcher("SELECT " + what + " FROM Win32_OperatingSystem");
-            foreach (ManagementObject mo in ser.Get())
+            foreach (ManagementBaseObject mo in ser.Get())
             {
                 return mo[what].ToString();
             }
@@ -61,7 +61,7 @@ namespace PearXLib
         /// <returns>A path to the Java folder.</returns>
         public static string GetJavaPath()
         {
-            string javaKey = "SOFTWARE\\JavaSoft\\Java Runtime Environment";
+            string javaKey = @"SOFTWARE\JavaSoft\Java Runtime Environment";
             using (
                 var baseKey =
                     RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(javaKey))

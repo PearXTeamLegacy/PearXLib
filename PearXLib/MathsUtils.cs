@@ -16,9 +16,7 @@ namespace PearXLib
         {
             int temp = 0; 
             foreach(int i in ints)
-            {
                 temp += i;
-            }
             return temp / ints.Length;
         }
 
@@ -31,9 +29,7 @@ namespace PearXLib
         {
             double temp = 0;
             foreach (double d in doubles)
-            {
                 temp += d;
-            }
             return temp / doubles.Length;
         }
 
@@ -47,7 +43,7 @@ namespace PearXLib
             string s = null;
             for(int i = 1; i <= count; i++)
             {
-                for(int i2 = 0; i2 < i; i2++)
+                for(int j = 0; j < i; j++)
                 {
                     s += i;
                 }

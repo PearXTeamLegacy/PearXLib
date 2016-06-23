@@ -11,11 +11,10 @@ namespace PearXLib
         /// Generates a random character.
         /// </summary>
         /// <returns>Random character.</returns>
-        public static char GenChar(Random rand)
+        public static char GenChar(Random rand, string charArray = "abcdefghijklmnopqrstuvwxyz")
         {
-            const string chars = "abcdefghijklmnopqrstuvwxyz";
-            int i = rand.Next(chars.Length);
-            return chars[i];
+            int i = rand.Next(charArray.Length);
+            return charArray[i];
         }
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace PearXLib
         /// %rand% - a random symbol, character, or figure.<para/>
         /// %randws% - a random character or figure.<para/>
         /// Write in uppercase for uppercase :p.<para/>
-        /// Example template: q_%rand%%sym%%CHAR%%CHAR%_p. Example return: q_5+FS_p
+        /// Example template: q_%rand%%CHAR%%CHAR%%rand%_p. Example return: q_5FSg_p
         /// </summary>
         /// <param name="template">A template</param>
         /// <param name="rand">Your random</param>

@@ -54,7 +54,7 @@ namespace PearXLib
         /// Initializes a new Logging component.
         /// </summary>
         /// <param name="logpath">Path to the log file.</param>
-        /// <param name="force">If true, deletes old log file.</param>
+        /// <param name="force">If true, removes old log file.</param>
         public Logging(string logpath, bool force = false)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(logpath));
@@ -70,29 +70,17 @@ namespace PearXLib
         /// <param name="lt">Log type</param>
         public void Add(string line, LogType lt)
         {
-            string newStr = "[" + DateTime.Now + "]" + "[" + lt + "]" + line + "\n";
-            Log += newStr;
-            File.AppendAllText(logPath, newStr);
-            if (LogChanged != null)
-            {
-                LogChanged(this, newStr);
-            }
+            AddToLog(line, $"[{lt}]");
         }
 
         /// <summary>
-        /// Adds a line to a log.
+        /// Adds a line to the log.
         /// </summary>
         /// <param name="line">Message text</param>
-        /// <param name="prefix">Prefix (if prefix equals "a simple prefix =)", then log string equals "[DATETIME][a simple prefix =)]MESSAGE"</param>
+        /// <param name="prefix">Prefix (if prefix equals "DEBUG", then log string equals "[DateTime][DEBUG]Message"</param>
         public void Add(string line, string prefix)
         {
-            string newStr = "[" + DateTime.Now + "]" + "[" + prefix + "]" + line + "\n";
-            Log += newStr;
-            File.AppendAllText(logPath, newStr);
-            if (LogChanged != null)
-            {
-                LogChanged(this, newStr);
-            }
+            AddToLog(line, $"[{prefix}]");
         }
 
         /// <summary>
@@ -101,14 +89,16 @@ namespace PearXLib
         /// <param name="line">Message text</param>
         public void Add(string line)
         {
-            string newStr = "[" + DateTime.Now + "]" + line + "\n";
+            AddToLog(line, "");
+        }
+
+        private void AddToLog(string line, string prefix)
+        {
+            string newStr = "[" + DateTime.Now + "]" + prefix + line + "\n";
             Log += newStr;
             File.AppendAllText(logPath, newStr);
 
-            if (LogChanged != null)
-            {
-                LogChanged(this, newStr);
-            }
+            LogChanged?.Invoke(this, newStr);
         }
     }
 }

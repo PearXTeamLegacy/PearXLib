@@ -1,11 +1,8 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Diagnostics;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.Management;
 using System.Security.Cryptography;
 
 namespace PearXLib
@@ -31,7 +28,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        private const string Version = "22.06.2016";
+        private const string Version = "23.06.2016";
 
         /// <summary>
         /// Directory separator.
@@ -82,19 +79,19 @@ namespace PearXLib
         /// <summary>
         /// Gets a string array from the string, uses new line(\n).
         /// </summary>
-        /// <param name="s"></param>
-        public static string[] GetArrayFromString(string s)
+        /// <param name="str"></param>
+        public static string[] GetArrayFromString(string str)
         {
-            return s.Split('\n');
+            return str.Split('\n');
         }
 
         /// <summary>
         /// Gets a string from the string array, uses new line(\n).
         /// </summary>
-        /// <param name="s"></param>
-        public static string GetStringFromArray(string[] s)
+        /// <param name="str"></param>
+        public static string GetStringFromArray(string[] str)
         {
-            return string.Join("\n", s);
+            return string.Join("\n", str);
         }
 
         /// <summary>
@@ -133,8 +130,7 @@ namespace PearXLib
             {
                 return true;
             }
-            else
-                return false;
+            return false;
         }
 
         /// <summary>
@@ -149,7 +145,7 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Gets the MD5 hash from string.
+        /// Gets a MD5 hash from the string.
         /// </summary>
         /// <param name="str">The string.</param>
         /// <returns>Hashed string.</returns>
@@ -158,6 +154,15 @@ namespace PearXLib
             byte[] ascii = Encoding.ASCII.GetBytes(str);
             byte[] hashed = MD5.Create().ComputeHash(ascii);
             return BitConverter.ToString(hashed).Replace("-", "").ToLower();
+        }
+
+        /// <summary>
+        /// Gets the PearXLib's version.
+        /// </summary>
+        /// <returns>PearXLib version</returns>
+        public static string GetVersion()
+        {
+            return Version;
         }
     }
 
