@@ -15,18 +15,21 @@ namespace PearXLib
         /// </summary>
         /// <param name="url">Site URL.</param>
         /// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
+        /// <param name="contentType">Your content type.</param>
         /// <returns>Web response.</returns>
-        public static string SendPOSTRequest(string url, string data)
+        public static string SendPOSTRequest(string url, string data, string contentType = "application/x-www-form-urlencoded")
         {
             WebRequest wr = WebRequest.Create(url);
             wr.Method = "POST";
-            wr.ContentType = "application/x-www-form-urlencoded";
+            wr.ContentType = contentType;
             wr.Proxy = new WebProxy();
+
             byte[] bytes = Encoding.ASCII.GetBytes(data);
             wr.ContentLength = bytes.Length;
-            Stream str = wr.GetRequestStream();
-            str.Write(bytes, 0, bytes.Length);
-            str.Close();
+            using (Stream reqStream = wr.GetRequestStream())
+            {
+                reqStream.Write(bytes, 0, bytes.Length);
+            }
             using (StreamReader sr = new StreamReader(wr.GetResponse().GetResponseStream()))
             {
                 return sr.ReadToEnd().Trim();
@@ -34,20 +37,11 @@ namespace PearXLib
         }
 
         /// <summary>
-        /// Checks for a Internet connectivity. Using a well-known "google.com" domain.
-        /// </summary>
-        /// <returns>True, if Internet connection is available, else returns false.</returns>
-        public static bool CheckForInternetConnection()
-        {
-            return new Ping().Send("google.com").Status == IPStatus.Success;
-        }
-
-        /// <summary>
         /// Checks for a Internet connectivity.
         /// </summary>
-        /// <param name="domain">The domain, that you want to ping.</param>
+        /// <param name="domain">The domain, that you want to ping. If not presented, uses google.com</param>
         /// <returns>True, if Internet connection is available, else returns false.</returns>
-        public static bool CheckForInternetConnection(string domain)
+        public static bool CheckForInternetConnection(string domain = "google.com")
         {
             try
             {
@@ -56,30 +50,6 @@ namespace PearXLib
             catch
             {
                 return false;
-            }
-        }
-
-        /// <summary>
-        /// Sends a POST request to the site.
-        /// </summary>
-        /// <param name="url">Site URL.</param>
-        /// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
-        /// <param name="ct">Content Type</param>
-        /// <returns>Web response.</returns>
-        public static string SendPOSTRequest(string url, string data, string ct)
-        {
-            WebRequest wr = WebRequest.Create(url);
-            wr.Method = "POST";
-            wr.ContentType = ct;
-            wr.Proxy = new WebProxy();
-            byte[] bytes = Encoding.ASCII.GetBytes(data);
-            wr.ContentLength = bytes.Length;
-            Stream str = wr.GetRequestStream();
-            str.Write(bytes, 0, bytes.Length);
-            str.Close();
-            using (StreamReader sr = new StreamReader(wr.GetResponse().GetResponseStream()))
-            {
-                return sr.ReadToEnd().Trim();
             }
         }
 
