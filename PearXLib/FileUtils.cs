@@ -42,12 +42,7 @@ namespace PearXLib
         /// <returns>All files in directory and subdirectories.</returns>
         public static string[] GetFilesInDir(string dir)
         {
-            foreach (string f in Directory.GetFiles(dir))
-                files.Add(f);
-            foreach (string d in Directory.GetDirectories(dir))
-            {
-                _DirSearch(d);
-            }
+            _DirSearch(dir);
             string[] list = files.ToArray();
             files.Clear();
             return list;

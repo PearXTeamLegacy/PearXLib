@@ -5,7 +5,7 @@ using System.IO;
 namespace PearXLib
 {
     /// <summary>
-    /// A localization utilities.<para/>
+    /// The localization utilities.<para/>
     /// ---<para/>
     /// Lang file example:<para/>
     /// btnPlay=Play the game.<para/>

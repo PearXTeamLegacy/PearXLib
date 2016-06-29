@@ -9,9 +9,11 @@ namespace PearXLib.Engine
     /// </summary>
     public class XControlBase : UserControl
     {
-        private bool useinterpolation;
+        private bool useInterpolation;
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XControlBase"/> class.
+        /// </summary>
         public XControlBase()
         {
             DoubleBuffered = true;
@@ -22,10 +24,11 @@ namespace PearXLib.Engine
         [DefaultValue(false)]
         public bool UseInterpolation
         {
-            get { return useinterpolation; }
-            set { useinterpolation = value; Refresh(); }
+            get { return useInterpolation; }
+            set { useInterpolation = value; Refresh(); }
         }
 
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             if (!UseInterpolation)
