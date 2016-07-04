@@ -35,6 +35,11 @@ namespace PearXLib.Engine
             Tooltip.Show();
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            Tooltip.Dispose();
+        }
 
         protected override void OnMouseLeave(EventArgs e)
         {
