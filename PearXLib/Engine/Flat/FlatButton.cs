@@ -20,6 +20,7 @@ namespace PearXLib.Engine.Flat
         public FlatButton()
         {
             Size = new Size(128, 64);
+            Paint += ControlPaint;
         }
 
         #region Params
@@ -43,9 +44,15 @@ namespace PearXLib.Engine.Flat
             set { _ColorFocused = value; Refresh(); }
         }
 
+        /// <summary>
+        /// Draw control's shadow?
+        /// </summary>
         [DefaultValue(true)]
         public override bool Shadow { get; set; } = true;
 
+        /// <summary>
+        /// See <see cref="Control.ForeColor"/>.
+        /// </summary>
         [DefaultValue(typeof(Color), "White")]
         public override Color ForeColor { get; set; } = Color.White;
 
@@ -54,7 +61,7 @@ namespace PearXLib.Engine.Flat
         private Bitmap bm;
         private bool isDrawing;
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void ControlPaint(object sender, PaintEventArgs e)
         {
             if (!isDrawing)
             {
@@ -69,34 +76,24 @@ namespace PearXLib.Engine.Flat
                         break;
                     case XButtonState.CLICKED:
                         bm = new Bitmap(Width, Height);
-                        Thread thr = new Thread(() =>
+                        new Thread(() =>
                         {
                             using (Graphics gr = Graphics.FromImage(bm))
                             {
                                 isDrawing = true;
-                                //int x = Cursor.Position.X
-                                //int y = Cursor.Position.Y - Top;
+                                Point p = new Point();
+                                Invoke(new MethodInvoker(() => { p = PointToClient(Cursor.Position); }));
                                 gr.FillRectangle(new SolidBrush(ColorFocused), rect);
-                                for (int i = 0; i <= Width * 2; i++)
+                                for (int i = 0; i <= Width * 2 + 5; i += 5)
                                 {
-                                    gr.FillEllipse(new SolidBrush(Color), (Width - i) / 2, (Height - i) / 2, i, i);
-                                    //gr.FillEllipse(new SolidBrush(Color), x - i / 2, y - i / 2, i, i);
-                                    try
-                                    {
-                                        Invoke(new MethodInvoker(Refresh));
-                                    }
-                                    catch
-                                    {
-                                        return;
-                                    }
-                                    if (i == Width * 2)
-                                    {
+                                    gr.FillEllipse(new SolidBrush(Color), p.X - i/2, p.Y - i/2, i, i);
+                                    try { Invoke(new MethodInvoker(Refresh)); } catch { return; }
+                                    if (i >= (Width * 2))
                                         isDrawing = false;
-                                    }
+                                    Thread.Sleep(1);
                                 }
                             }
-                        });
-                        thr.Start();
+                        }).Start();
                         break;
                 }
             }
@@ -104,7 +101,7 @@ namespace PearXLib.Engine.Flat
             {
                 e.Graphics.DrawImage(bm, 0, 0);
             }
-            base.OnPaint(e);
+            PaintBase(e);
         }
     }
 }

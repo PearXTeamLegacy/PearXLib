@@ -11,6 +11,10 @@ namespace PearXLib.Engine.Bases
     {
         private bool useInterpolation;
 
+        public XControlBase()
+        {
+            DoubleBuffered = true;
+        }
         /// <summary>
         /// Use interpolation?
         /// </summary>
@@ -20,9 +24,6 @@ namespace PearXLib.Engine.Bases
             get { return useInterpolation; }
             set { useInterpolation = value; Invalidate(); }
         }
-
-        [DefaultValue(true)]
-        protected override bool DoubleBuffered { get; set; } = true;
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.

@@ -164,6 +164,61 @@ namespace PearXLib
         {
             return Version;
         }
+
+        /// <summary>
+        /// Gets the control point, based from align.
+        /// </summary>
+        /// <param name="align">The align.</param>
+        /// <param name="cs">The something's container size.</param>
+        /// <param name="size">The something's size.</param>
+        /// <param name="border">The border.</param>
+        /// <returns></returns>
+        public static PointF AlignPoint(ContentAlignment align, SizeF cs, SizeF size, int border)
+        {
+            float x = 0;
+            float y = 0;
+
+            switch (align)
+            {
+                case ContentAlignment.BottomCenter:
+                    x = (cs.Width - size.Width) / 2;
+                    y = cs.Height - size.Height - border;
+                    break;
+                case ContentAlignment.BottomLeft:
+                    x = border;
+                    y = cs.Height - size.Height - border;
+                    break;
+                case ContentAlignment.BottomRight:
+                    x = cs.Width - size.Width - border;
+                    y = cs.Height - size.Height - border;
+                    break;
+                case ContentAlignment.MiddleCenter:
+                    x = (cs.Width - size.Width) / 2;
+                    y = (cs.Height - size.Height) / 2;
+                    break;
+                case ContentAlignment.MiddleLeft:
+                    x = border;
+                    y = (cs.Height - size.Height) / 2;
+                    break;
+                case ContentAlignment.MiddleRight:
+                    x = cs.Width - size.Width - border;
+                    y = (cs.Height - size.Height) / 2;
+                    break;
+                case ContentAlignment.TopCenter:
+                    x = (cs.Width - size.Width) / 2;
+                    y = border;
+                    break;
+                case ContentAlignment.TopLeft:
+                    x = border;
+                    y = border;
+                    break;
+                case ContentAlignment.TopRight:
+                    x = cs.Width - size.Width - border;
+                    y = border;
+                    break;
+            }
+            return new PointF(x, y);
+        }
     }
 
     /// <summary>

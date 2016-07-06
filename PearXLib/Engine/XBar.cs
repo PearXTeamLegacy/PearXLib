@@ -53,11 +53,11 @@ namespace PearXLib.Engine
             {
                 if (value < Maximum)
                 {
-                    _Value = value; Invalidate();
+                    _Value = value; Refresh();
                 }
                 else
                 {
-                    _Value = Maximum; Invalidate();
+                    _Value = Maximum; Refresh();
                 }
                 OnValueChanged(new XBarEventArgs(Value, Maximum));
             }
@@ -75,7 +75,7 @@ namespace PearXLib.Engine
                 if (value < Value)
                     Value = value;
                 _Maximum = value;
-                Invalidate();
+                Refresh();
             }
         }
 
@@ -86,7 +86,7 @@ namespace PearXLib.Engine
         public virtual Color GradientColor1
         {
             get { return _GradientColor1; }
-            set { _GradientColor1 = value; Invalidate(); }
+            set { _GradientColor1 = value; Refresh(); }
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace PearXLib.Engine
         public virtual Color GradientColor2
         {
             get { return _GradientColor2; }
-            set { _GradientColor2 = value; Invalidate(); }
+            set { _GradientColor2 = value; Refresh(); }
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace PearXLib.Engine
         public override string Text
         {
             get { return text; }
-            set { text = value; Invalidate(); }
+            set { text = value; Refresh(); }
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace PearXLib.Engine
         public new virtual Color BackColor
         {
             get { return _BackColor; }
-            set { _BackColor = value; Invalidate(); }
+            set { _BackColor = value; Refresh(); }
         }
         #endregion
 

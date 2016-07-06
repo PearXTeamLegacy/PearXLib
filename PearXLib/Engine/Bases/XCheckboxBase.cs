@@ -60,7 +60,7 @@ namespace PearXLib.Engine.Bases
         public override string Text
         {
             get { return text; }
-            set { text = value; Invalidate(); }
+            set { text = value; Refresh(); }
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace PearXLib.Engine.Bases
             set
             {
                 chkd = value;
-                Invalidate();
+                Refresh();
                 OnCheckedChanged(value);
             }
         }
@@ -118,14 +118,14 @@ namespace PearXLib.Engine.Bases
         private void ControlMouseEnter(object sender, EventArgs e)
         {
             State = CheckboxState.Focused;
-            Invalidate();
+            Refresh();
         }
 
 
         private void ControlMouseLeave(object sender, EventArgs e)
         {
             State = CheckboxState.None;
-            Invalidate();
+            Refresh();
         }
     }
 }

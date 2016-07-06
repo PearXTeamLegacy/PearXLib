@@ -38,7 +38,7 @@ namespace PearXLib.Engine
             {
                 text = value;
                 AutoResize();
-                Invalidate();
+                Refresh();
             }
         }
 
@@ -53,7 +53,7 @@ namespace PearXLib.Engine
             {
                 drawinrect = value;
                 AutoResize();
-                Invalidate();
+                Refresh();
             }
         }
 
@@ -64,7 +64,7 @@ namespace PearXLib.Engine
             {
                 base.Font = value;
                 AutoResize();
-                Invalidate();
+                Refresh();
             }
         }
 

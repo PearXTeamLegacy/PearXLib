@@ -30,7 +30,7 @@ namespace PearXLib.Engine
         public Image CheckBG
         {
             get { return bg; }
-            set { bg = value; Invalidate(); }
+            set { bg = value; Refresh(); }
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace PearXLib.Engine
         public Image CheckFocused
         {
             get { return check_focused; }
-            set { check_focused = value; Invalidate(); }
+            set { check_focused = value; Refresh(); }
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace PearXLib.Engine
         public Image CheckBGFocused
         {
             get { return bg_focused; }
-            set { bg_focused = value; Invalidate(); }
+            set { bg_focused = value; Refresh(); }
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace PearXLib.Engine
         public Image Check
         {
             get { return check; }
-            set { check = value; Invalidate(); }
+            set { check = value; Refresh(); }
         }
         #endregion
 

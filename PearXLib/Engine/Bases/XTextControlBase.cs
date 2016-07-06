@@ -22,7 +22,7 @@ namespace PearXLib.Engine.Bases
         public virtual bool Shadow
         {
             get { return shadow; }
-            set { shadow = value; Invalidate(); }
+            set { shadow = value; Refresh(); }
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace PearXLib.Engine.Bases
         public virtual Color ShadowColor
         {
             get { return c_shadow; }
-            set { c_shadow = value; Invalidate(); }
+            set { c_shadow = value; Refresh(); }
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace PearXLib.Engine.Bases
         public virtual short ShadowOffset
         {
             get { return shadow_offset; }
-            set { shadow_offset = value; Invalidate(); }
+            set { shadow_offset = value; Refresh(); }
         }
 
         /// <summary>

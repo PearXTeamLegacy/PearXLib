@@ -31,7 +31,7 @@ namespace PearXLib.Engine.Flat
         public Color ColorBG
         {
             get { return cbg; }
-            set { cbg = value; Invalidate(); }
+            set { cbg = value; Refresh(); }
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace PearXLib.Engine.Flat
         public Color ColorCheck
         {
             get { return cc; }
-            set { cc = value; Invalidate(); }
+            set { cc = value; Refresh(); }
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace PearXLib.Engine.Flat
         public Color ColorCheckFocused
         {
             get { return cc_focused; }
-            set { cc_focused = value; Invalidate(); }
+            set { cc_focused = value; Refresh(); }
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace PearXLib.Engine.Flat
         public Color ColorBGFocused
         {
             get { return cbg_focused; }
-            set { cbg_focused = value; Invalidate(); }
+            set { cbg_focused = value; Refresh(); }
         }
         #endregion
 

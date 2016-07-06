@@ -25,7 +25,7 @@ namespace PearXLib.Engine.Bases
     }
 
     /// <summary>
-    /// Base for the PearXLib's buttons.
+    /// Base for all PearXLib's buttons.
     /// </summary>
     [DefaultEvent("Click")]
     public class XButtonBase : XTextControlBase
@@ -38,11 +38,14 @@ namespace PearXLib.Engine.Bases
         private int _Border;
 
         /// <summary>
-        /// Initializes a new XButtonBase component.
+        /// Initializes a new instance of the <see cref="XButtonBase"/> class.
         /// </summary>
         public XButtonBase()
         {
-            Cursor = Cursors.Hand;
+            MouseDown += ControlMouseDown;
+            MouseUp += ControlMouseUp;
+            MouseEnter += ControlMouseEnter;
+            MouseLeave += ControlMouseLeave;
         }
 
         #region Params
@@ -77,7 +80,7 @@ namespace PearXLib.Engine.Bases
         }
 
         /// <summary>
-        /// The text on the button.
+        /// Text on the button.
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Always), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Bindable(true)]
         public override string Text
@@ -87,7 +90,7 @@ namespace PearXLib.Engine.Bases
         }
 
         /// <summary>
-        /// The image on the button.
+        /// Image on the button.
         /// </summary>
         [DefaultValue(null)]
         public Image Image
@@ -107,132 +110,48 @@ namespace PearXLib.Engine.Bases
 
         /// <summary>
         /// </summary>
-        [DefaultValue(typeof(Cursor), "Hand")]
-        public override Cursor Cursor { get { return base.Cursor; } set { base.Cursor = value; } }
+        [DefaultValue(typeof (Cursor), "Hand")]
+        public override Cursor Cursor { get; set; } = Cursors.Hand;
 
         #endregion
 
-        protected override void OnPaint(PaintEventArgs e)
+        /// <summary>
+        /// Paints the base.
+        /// </summary>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
+        protected void PaintBase(PaintEventArgs e)
         {
-            base.OnPaint(e);
             if(Image != null)
             {
-                Size s = Image.Size;
-                float x = 0;
-                float y = 0;
-                switch(ImageAlign)
-                {
-                    case ContentAlignment.BottomCenter:
-                        x = (Width - s.Width) / 2;
-                        y = Height - s.Height - Border;
-                        break;
-                    case ContentAlignment.BottomLeft:
-                        x = Border;
-                        y = Height - s.Height - Border;
-                        break;
-                    case ContentAlignment.BottomRight:
-                        x = Width - s.Width - Border;
-                        y = Height - s.Height - Border;
-                        break;
-                    case ContentAlignment.MiddleCenter:
-                        x = (Width - s.Width) / 2;
-                        y = (Height - s.Height) / 2;
-                        break;
-                    case ContentAlignment.MiddleLeft:
-                        x = Border;
-                        y = (Height - s.Height) / 2;
-                        break;
-                    case ContentAlignment.MiddleRight:
-                        x = Width - s.Width - Border;
-                        y = (Height - s.Height) / 2;
-                        break;
-                    case ContentAlignment.TopCenter:
-                        x = (Width - s.Width) / 2;
-                        y = Border;
-                        break;
-                    case ContentAlignment.TopLeft:
-                        x = Border;
-                        y = Border;
-                        break;
-                    case ContentAlignment.TopRight:
-                        x = Width - s.Width - Border;
-                        y = Border;
-                        break;
-                }
-                e.Graphics.DrawImage(Image, x, y, Image.Width, Image.Height);
+                PointF point = PXL.AlignPoint(ImageAlign, Size, Image.Size, Border);
+                e.Graphics.DrawImage(Image, point.X, point.Y, Image.Width, Image.Height);
             }
 
             if (!string.IsNullOrEmpty(Text))
             {
-                SizeF s = e.Graphics.MeasureString(Text, Font);
-                float x = 0;
-                float y = 0;
-                switch (TextAlign)
-                {
-                    case ContentAlignment.BottomCenter:
-                        x = (Width - s.Width)/2;
-                        y = Height - s.Height - Border;
-                        break;
-                    case ContentAlignment.BottomLeft:
-                        x = Border;
-                        y = Height - s.Height - Border;
-                        break;
-                    case ContentAlignment.BottomRight:
-                        x = Width - s.Width - Border;
-                        y = Height - s.Height - Border;
-                        break;
-                    case ContentAlignment.MiddleCenter:
-                        x = (Width - s.Width)/2;
-                        y = (Height - s.Height)/2;
-                        break;
-                    case ContentAlignment.MiddleLeft:
-                        x = Border;
-                        y = (Height - s.Height) / 2;
-                        break;
-                    case ContentAlignment.MiddleRight:
-                        x = Width - s.Width - Border;
-                        y = (Height - s.Height) / 2;
-                        break;
-                    case ContentAlignment.TopCenter:
-                        x = (Width - s.Width)/2;
-                        y = Border;
-                        break;
-                    case ContentAlignment.TopLeft:
-                        x = Border;
-                        y = Border;
-                        break;
-                    case ContentAlignment.TopRight:
-                        x = Width - s.Width - Border;
-                        y = Border;
-                        break;
-                }
-                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new PointF(x, y));
+                PointF point = PXL.AlignPoint(TextAlign, Size, e.Graphics.MeasureString(Text, Font), Border);
+                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), point);
             }
         }
 
-        protected override void OnMouseDown(MouseEventArgs e)
+        private void ControlMouseDown(object sender, MouseEventArgs e)
         {
             State = XButtonState.CLICKED;
-            base.OnMouseDown(e);
         }
 
-        protected override void OnMouseUp(MouseEventArgs e)
+        private void ControlMouseUp(object sender, MouseEventArgs e)
         {
             State = XButtonState.FOCUSED;
-            base.OnMouseUp(e);
         }
 
-        protected override void OnMouseEnter(EventArgs e)
+        private void ControlMouseEnter(object sender, EventArgs e)
         {
             State = XButtonState.FOCUSED;
-            base.OnMouseEnter(e);
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        private void ControlMouseLeave(object sender, EventArgs e)
         {
             State = XButtonState.NONE;
-            Refresh();
-            base.OnMouseLeave(e);
         }
     }
 }

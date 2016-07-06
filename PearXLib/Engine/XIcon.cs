@@ -43,7 +43,7 @@ namespace PearXLib.Engine
             set
             {
                 _Icon = value;
-                Invalidate();
+                Refresh();
             }
         }
 
@@ -57,7 +57,7 @@ namespace PearXLib.Engine
             set
             {
                 _Title = value;
-                Invalidate();
+                Refresh();
             }
         }
 
@@ -77,13 +77,13 @@ namespace PearXLib.Engine
         private void ControlMouseEnter(object sender, EventArgs e)
         {
             mouseIn = true;
-            Invalidate();
+            Refresh();
         }
 
         private void ControlMouseLeave(object sender, EventArgs e)
         {
             mouseIn = false;
-            Invalidate();
+            Refresh();
         }
 
         private void ControlPaint(object sender, PaintEventArgs e)
