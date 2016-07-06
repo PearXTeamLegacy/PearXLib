@@ -10,7 +10,7 @@ namespace PearXLib.Engine
     /// An expanding icon from PearX Engine.
     /// </summary>
     [DefaultEvent("Click")]
-    public class XIcon : XControlBase
+    public class XIcon : XTextControlBase
     {
         private bool mouseIn;
         private Image _Icon;
@@ -130,7 +130,7 @@ namespace PearXLib.Engine
             if (icon)
                 e.Graphics.DrawImage(Icon, x, y, width, height);
             if(text)
-                e.Graphics.DrawString(Title, Font, b, textX, textY);
+                DrawFancyText(e.Graphics, Title, Font, b, new PointF(textX, textY));
         }
     }
 }

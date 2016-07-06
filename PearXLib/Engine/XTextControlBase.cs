@@ -3,6 +3,10 @@ using System.Drawing;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// Base for all PearXLib's text controls.
+    /// </summary>
+    /// <seealso cref="XControlBase" />
     public class XTextControlBase : XControlBase
     {
         private bool shadow;
@@ -18,7 +22,7 @@ namespace PearXLib.Engine
         public virtual bool Shadow
         {
             get { return shadow; }
-            set { shadow = value; Refresh(); }
+            set { shadow = value; Invalidate(); }
         }
 
         /// <summary>
@@ -28,7 +32,7 @@ namespace PearXLib.Engine
         public virtual Color ShadowColor
         {
             get { return c_shadow; }
-            set { c_shadow = value; Refresh(); }
+            set { c_shadow = value; Invalidate(); }
         }
 
         /// <summary>
@@ -38,14 +42,17 @@ namespace PearXLib.Engine
         public virtual short ShadowOffset
         {
             get { return shadow_offset; }
-            set { shadow_offset = value; Refresh(); }
+            set { shadow_offset = value; Invalidate(); }
         }
 
         /// <summary>
         /// Draws a fancy text with shadow.
         /// </summary>
         /// <param name="gfx">Your graphics.</param>
+        /// <param name="brush">The brush.</param>
         /// <param name="location">Location of the text.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="font">The font.</param>
         public void DrawFancyText(Graphics gfx, string text, Font font, Brush brush, PointF location)
         {
             if (Shadow)
@@ -59,7 +66,10 @@ namespace PearXLib.Engine
         /// Draws a fancy text with shadow.
         /// </summary>
         /// <param name="gfx">Your graphics.</param>
+        /// <param name="brush">The brush.</param>
         /// <param name="rect">A text's rectangle.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="font">The font.</param>
         public void DrawFancyText(Graphics gfx, string text, Font font, Brush brush, Rectangle rect)
         {
             if (Shadow)
@@ -76,11 +86,20 @@ namespace PearXLib.Engine
         /// Draws a fancy text with shadow.
         /// </summary>
         /// <param name="gfx">Your graphics.</param>
-        public static void DrawFancyText(Graphics gfx, string text, Font font, Brush brush, PointF location, Color shadowcolor, bool shadow = false, short shadowoffset = 2)
+        /// <param name="text">The text.</param>
+        /// <param name="font">The font.</param>
+        /// <param name="brush">The brush.</param>
+        /// <param name="location">The text's location.</param>
+        /// <param name="shadow">Draw shadow?</param>
+        /// <param name="shadowcolor">The shadow's color.</param>
+        /// <param name="shadowoffset">The shadow's offset.</param>
+        public static void DrawFancyText(Graphics gfx, string text, Font font, Brush brush, PointF location, bool shadow = false, Color ? shadowcolor = null, short shadowoffset = 2)
         {
+            if (shadowcolor == null)
+                shadowcolor = Color.Black;
             if (shadow)
             {
-                gfx.DrawString(text, font, new SolidBrush(shadowcolor), location.X + shadowoffset, location.Y + shadowoffset);
+                gfx.DrawString(text, font, new SolidBrush(shadowcolor.Value), location.X + shadowoffset, location.Y + shadowoffset);
             }
             gfx.DrawString(text, font, brush, location);
         }
@@ -89,15 +108,23 @@ namespace PearXLib.Engine
         /// Draws a fancy text with shadow.
         /// </summary>
         /// <param name="gfx">Your graphics.</param>
-        /// <param name="rect">A text's rectangle.</param>
-        public static void DrawFancyText(Graphics gfx, string text, Font font, Brush brush, Rectangle rect, Color shadowcolor, bool shadow = false, short shadowoffset = 2)
+        /// <param name="text">The text.</param>
+        /// <param name="font">The font.</param>
+        /// <param name="brush">The brush.</param>
+        /// <param name="rect">A text's rectangle</param>
+        /// <param name="shadow">Draw shadow?</param>
+        /// <param name="shadowcolor">The shadow's color.</param>
+        /// <param name="shadowoffset">The shadow's offset.</param>
+        public static void DrawFancyText(Graphics gfx, string text, Font font, Brush brush, Rectangle rect, bool shadow = false, Color ? shadowcolor = null, short shadowoffset = 2)
         {
+            if (shadowcolor == null)
+                shadowcolor = Color.Black;
             if (shadow)
             {
                 Rectangle shadowRect = rect;
                 shadowRect.X += shadowoffset;
                 shadowRect.Y += shadowoffset;
-                gfx.DrawString(text, font, new SolidBrush(shadowcolor), shadowRect);
+                gfx.DrawString(text, font, new SolidBrush(shadowcolor.Value), shadowRect);
             }
             gfx.DrawString(text, font, brush, rect);
         }

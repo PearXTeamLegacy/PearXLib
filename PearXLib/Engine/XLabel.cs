@@ -4,11 +4,26 @@ using System.Windows.Forms;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// A beautiful label.
+    /// </summary>
+    /// <seealso cref="XTextControlBase" />
     public class XLabel : XTextControlBase
     {
         private string text;
         private bool drawinrect;
-        protected bool AlreadyDrawed;
+        /// <summary>
+        /// Is control drawn first time?
+        /// </summary>
+        protected bool FirstDrawn;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XLabel"/> class.
+        /// </summary>
+        public XLabel()
+        {
+            Paint += ControlPaint;
+        }
 
         #region Params
         /// <summary>
@@ -22,7 +37,7 @@ namespace PearXLib.Engine
             {
                 text = value;
                 AutoResize();
-                Refresh();
+                Invalidate();
             }
         }
 
@@ -37,22 +52,37 @@ namespace PearXLib.Engine
             {
                 drawinrect = value;
                 AutoResize();
-                Refresh();
+                Invalidate();
+            }
+        }
+
+        public override Font Font
+        {
+            get { return base.Font; }
+            set
+            {
+                base.Font = value;
+                AutoResize();
+                Invalidate();
             }
         }
 
         #endregion
 
-        protected override void OnPaint(PaintEventArgs e)
+        /// <summary>
+        /// Control's paint event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
+        protected void ControlPaint(object sender, PaintEventArgs e)
         {
-            base.OnPaint(e);
-            if(AlreadyDrawed == false)
+            if(!FirstDrawn)
                 AutoResize();
             if (DrawInRectangle)
                 DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new Rectangle(0, 0, Width, Height));
             else
                 DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new Point(0, 0));
-            AlreadyDrawed = true;
+            FirstDrawn = true;
 
         }
 
