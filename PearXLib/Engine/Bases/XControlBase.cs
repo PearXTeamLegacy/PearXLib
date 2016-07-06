@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
@@ -11,6 +12,9 @@ namespace PearXLib.Engine.Bases
     {
         private bool useInterpolation;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XControlBase"/> class.
+        /// </summary>
         public XControlBase()
         {
             DoubleBuffered = true;

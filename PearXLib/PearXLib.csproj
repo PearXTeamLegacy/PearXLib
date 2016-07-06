@@ -73,10 +73,9 @@
     <Compile Include="Engine\Indicator.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\InvItemBase.cs">
+    <Compile Include="Engine\Bases\InvItemBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\InvItemEventArgs.cs" />
     <Compile Include="Engine\ListBoxSelectLang.cs" />
     <Compile Include="Engine\OutsideForm.cs">
       <SubType>Form</SubType>

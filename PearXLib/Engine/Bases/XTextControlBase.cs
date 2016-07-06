@@ -13,8 +13,6 @@ namespace PearXLib.Engine.Bases
         private Color c_shadow = Color.Black;
         private short shadow_offset = 2;
 
-        
-
         /// <summary>
         /// Draw control's shadow?
         /// </summary>

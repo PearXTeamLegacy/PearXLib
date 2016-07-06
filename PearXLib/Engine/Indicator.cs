@@ -36,6 +36,15 @@ namespace PearXLib.Engine
         private Color c2 = Color.Yellow;
         private Color c3 = Color.Red;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Indicator"/> class.
+        /// </summary>
+        public Indicator()
+        {
+            Size = new Size(273, 84);
+            Paint += ControlPaint;
+        }
+
         #region Params.
         /// <summary>
         /// Type of the indicator.
@@ -76,21 +85,15 @@ namespace PearXLib.Engine
             get { return c3; }
             set { c3 = value; Refresh(); }
         }
+
+        [DefaultValue(typeof(Color), "Transparent")]
+        public override Color BackColor { get; set; } = Color.Transparent;
+
         #endregion
 
-        /// <summary>
-        /// Initializes a new Indicator.
-        /// </summary>
-        public Indicator()
+        private void ControlPaint(object sender, PaintEventArgs e)
         {
-            Size = new Size(273, 84);
-            BackColor = Color.Transparent;
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            switch(Type)
+            switch (Type)
             {
                 case IndicatorType.Gradient:
                     LinearGradientBrush lgb = new LinearGradientBrush(new Point(0, 0), new Point(Width, Height), Color3, Color1);
@@ -102,18 +105,17 @@ namespace PearXLib.Engine
                     SolidBrush b3 = new SolidBrush(Color3);
                     e.Graphics.FillRectangle(b3, 0, 0, 3, Height);
                     e.Graphics.FillRectangle(b1, Width - 3, 0, 3, Height);
-                    e.Graphics.FillRectangle(b2, (Width - 3) / 2, 0, 3, Height);
+                    e.Graphics.FillRectangle(b2, (Width - 3)/2, 0, 3, Height);
                     break;
                 case IndicatorType.ThreeTriangles:
                     b1 = new SolidBrush(Color1);
                     b2 = new SolidBrush(Color2);
                     b3 = new SolidBrush(Color3);
-                    e.Graphics.FillPolygon(b3, new PointF[] { new PointF(0, Height), new PointF(10, Height), new PointF(5, 0)});
-                    e.Graphics.FillPolygon(b1, new PointF[] { new PointF(Width, Height), new PointF(Width - 10, Height), new PointF(Width - 5, 0) });
-                    e.Graphics.FillPolygon(b2, new PointF[] { new PointF((Width - 10) / 2, Height), new PointF((Width + 10) / 2, Height), new PointF((Width / 2), 0) });
+                    e.Graphics.FillPolygon(b3, new[] {new PointF(0, Height), new PointF(10, Height), new PointF(5, 0)});
+                    e.Graphics.FillPolygon(b1, new[] {new PointF(Width, Height), new PointF(Width - 10, Height), new PointF(Width - 5, 0)});
+                    e.Graphics.FillPolygon(b2, new[] {new PointF((Width - 10f)/2, Height), new PointF((Width + 10f)/2, Height), new PointF(Width/2f, 0)});
                     break;
             }
-            base.OnPaint(e);
         }
     }
 }

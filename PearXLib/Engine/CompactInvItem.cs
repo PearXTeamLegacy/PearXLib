@@ -1,25 +1,37 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using PearXLib.Engine.Bases;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// A compact <see cref="InvItem"/> variant.
+    /// </summary>
+    /// <seealso cref="InvItemBase" />
     public class CompactInvItem : InvItemBase
     {
-        public TooltipForm Tooltip { get; set; }
+        /// <summary>
+        /// The tooltip class.
+        /// </summary>
+        public virtual TooltipForm Tooltip { get; set; } = new TooltipForm();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompactInvItem"/> class.
+        /// </summary>
         public CompactInvItem()
         {
             Size = new Size(64, 64);
-            Tooltip = new TooltipForm();
+            Paint += ControlPaint;
+            MouseEnter += ControlMouseEnter;
+            MouseLeave += ControlMouseLeave;
+            MouseMove += ControlMouseMove;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void ControlPaint(object sender, PaintEventArgs e)
         {
             if (ItemImage != null)
-            {
                 e.Graphics.DrawImage(ItemImage, 0, 0, Width, Height);
-            }
             if (ShowAmount)
             {
                 SizeF s = e.Graphics.MeasureString(ItemAmount.ToString(), Font);
@@ -27,7 +39,7 @@ namespace PearXLib.Engine
             }
         }
 
-        protected override void OnMouseEnter(EventArgs e)
+        private void ControlMouseEnter(object sender, EventArgs e)
         {
             Tooltip.NameText = ItemName;
             Tooltip.TooltipText = ItemDesc;
@@ -35,6 +47,9 @@ namespace PearXLib.Engine
             Tooltip.Show();
         }
 
+        /// <summary>
+        /// <see cref="Control.Dispose(bool)"/>
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
@@ -42,12 +57,12 @@ namespace PearXLib.Engine
             Tooltip.Dispose();
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        private void ControlMouseLeave(object sender, EventArgs e)
         {
             Tooltip.Hide();
         }
 
-        protected override void OnMouseMove(MouseEventArgs e)
+        private void ControlMouseMove(object sender, MouseEventArgs e)
         {
             UpdateTooltipPos();
         }

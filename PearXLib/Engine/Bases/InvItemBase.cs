@@ -1,9 +1,19 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
-using PearXLib.Engine.Bases;
 
-namespace PearXLib.Engine
+namespace PearXLib.Engine.Bases
 {
+    /// <summary>
+    /// Inventory Item event handler.
+    /// </summary>
+    /// <param name="sender">Sender object.</param>
+    /// <param name="e">InvItem event args. <see cref="InvItemEventArgs"/></param>
+    public delegate void InvItemEventHandler(object sender, InvItemEventArgs e);
+
+    /// <summary>
+    /// A base for all InvItem controls.
+    /// </summary>
+    /// <seealso cref="XTextControlBase" />
     public class InvItemBase : XTextControlBase
     {
         private Image _ItemImage;
@@ -16,22 +26,14 @@ namespace PearXLib.Engine
         private bool _ShowAmount = true;
 
         /// <summary>
-        /// Initializes new InvItemBase component.
+        /// Initializes a new instance of the <see cref="InvItemBase"/> class.
         /// </summary>
         public InvItemBase()
         {
-            BackColor = Color.Transparent;
             ResizeRedraw = true;
         }
 
         #region Params
-        /// <summary>
-        /// Inventory Item event handler.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">InvItem event args. <see cref="InvItemEventArgs"/></param>
-        public delegate void InvItemEventHandler(object sender, InvItemEventArgs e);
-
         /// <summary>
         /// Performs on item amount changed.
         /// </summary>
@@ -85,8 +87,7 @@ namespace PearXLib.Engine
             {
                 _ItemAmount = value;
                 Refresh();
-                if (AmountChanged != null)
-                    AmountChanged(this, new InvItemEventArgs(value));
+                OnAmountChanged(new InvItemEventArgs(value));
             }
         }
 
@@ -172,7 +173,36 @@ namespace PearXLib.Engine
         /// Control background color.
         /// </summary>
         [DefaultValue(typeof(Color), "Transparent")]
-        public override Color BackColor { get; set; }
+        public override Color BackColor { get; set; } = Color.Transparent;
         #endregion Props
+
+        /// <summary>
+        /// Raises the <see cref="E:AmountChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="InvItemEventArgs"/> instance containing the event data.</param>
+        public void OnAmountChanged(InvItemEventArgs e)
+        {
+            AmountChanged?.Invoke(this, e);
+        }
+    }
+
+    /// <summary>
+    /// Inventory Item event arguments.
+    /// </summary>
+    public class InvItemEventArgs
+    {
+        /// <summary>
+        /// Inventory Item event arguments.
+        /// </summary>
+        /// <param name="amount">Item amount.</param>
+        public InvItemEventArgs(int amount)
+        {
+            Amount = amount;
+        }
+
+        /// <summary>
+        /// Item amount.
+        /// </summary>
+        public int Amount { get; private set; }
     }
 }

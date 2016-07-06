@@ -138,7 +138,7 @@ namespace PearXLib.Engine
             e.Graphics.FillRectangle(bgBrush, 4, 4, Size.Width - 8, Size.Height - 8); // ^
 
             LinearGradientBrush lgb = new LinearGradientBrush(new Point(0, 0), new Point(Width, Height), GradientColor1, GradientColor2);
-            e.Graphics.FillRectangle(lgb, 5, 5, (float)(Width - 10) / Maximum * Value, Height - 10); //Draw progress
+            e.Graphics.FillRectangle(lgb, 5, 5, (Width - 10.0f) / Maximum * Value, Height - 10); //Draw progress
 
             Brush bf = new SolidBrush(ForeColor);
             SizeF strWH = e.Graphics.MeasureString(Text, Font);

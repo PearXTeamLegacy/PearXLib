@@ -45,6 +45,14 @@ namespace PearXLib.Engine
         private string[] listoflangs;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ListBoxSelectLang"/> class.
+        /// </summary>
+        public ListBoxSelectLang()
+        {
+            SelectedIndexChanged += ControlSelectedIndexChanged;
+        }
+
+        /// <summary>
         /// Path to LangFiles (with slash)
         /// </summary>
         public string PathToLangs
@@ -78,16 +86,11 @@ namespace PearXLib.Engine
             }
         }
 
-        /// <summary>
-        /// OnSelectedIndexChanged
-        /// </summary>
-        /// <param name="e">EventArgs</param>
-        protected override void OnSelectedIndexChanged(EventArgs e)
+        private void ControlSelectedIndexChanged(object sender, EventArgs e)
         {
-            base.OnSelectedIndexChanged(e);
-            if (SelectedIndex != -1 && SelectedIndex <= listoflangs.Length && LanguageSelected != null)
+            if (SelectedIndex != -1 && SelectedIndex <= listoflangs.Length)
             {
-                LanguageSelected(this, new LangEventArgs(listoflangs[SelectedIndex]));
+                LanguageSelected?.Invoke(this, new LangEventArgs(listoflangs[SelectedIndex]));
             }
         }
     }
