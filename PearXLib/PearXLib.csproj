@@ -122,6 +122,9 @@
     <Compile Include="Engine\XTextControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Engine\XTrackBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="FileUtils.cs" />
     <Compile Include="FlatColors.cs" />

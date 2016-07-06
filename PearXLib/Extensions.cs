@@ -17,6 +17,7 @@ namespace PearXLib
             {
                 coll[i].Dispose();
             }
+            coll.Clear();
         }
     }
 }

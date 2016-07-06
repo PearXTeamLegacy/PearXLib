@@ -9,6 +9,7 @@ namespace PearXLib.Engine
     /// <summary>
     /// An expanding icon from PearX Engine.
     /// </summary>
+    [DefaultEvent("Click")]
     public class XIcon : XControlBase
     {
         private bool mouseIn;
@@ -20,13 +21,15 @@ namespace PearXLib.Engine
         /// </summary>
         public XIcon()
         {
-            Cursor = Cursors.Hand;
             Size = new Size(64, 64);
-            Expand = 10;
-            Cursor = Cursors.Hand;
+            Paint += ControlPaint;
         }
 
         #region Params
+
+        [DefaultValue(typeof (Cursor), "Hand")]
+        public override Cursor Cursor { get; set; } = Cursors.Hand;
+
         /// <summary>
         /// Icon image.
         /// </summary>
@@ -34,7 +37,11 @@ namespace PearXLib.Engine
         public virtual Image Icon
         {
             get { return _Icon; }
-            set { _Icon = value; Refresh(); }
+            set
+            {
+                _Icon = value;
+                Invalidate();
+            }
         }
 
         /// <summary>
@@ -44,62 +51,86 @@ namespace PearXLib.Engine
         public virtual string Title
         {
             get { return _Title; }
-            set { _Title = value; Refresh(); }
+            set
+            {
+                _Title = value;
+                Invalidate();
+            }
         }
 
         /// <summary>
         /// How much to expand on mouse enter?
         /// </summary>
         [DefaultValue(10)]
-        public virtual int Expand { get; set; }
+        public virtual int Expand { get; set; } = 10;
+
         #endregion
 
         /// <summary>
         /// Title size and width.
         /// </summary>
-        public SizeF TitleWidthHeight
-        {
-            get { return CreateGraphics().MeasureString(Title, Font); }
-        }
+        public SizeF TitleWidthHeight => CreateGraphics().MeasureString(Title, Font);
 
         protected override void OnMouseEnter(EventArgs e)
         {
             mouseIn = true;
-            Refresh();
+            Invalidate();
+            base.OnMouseEnter(e);
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             mouseIn = false;
-            Refresh();
+            Invalidate();
+            base.OnMouseLeave(e);
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        /// <summary>
+        /// Control's paint event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
+        protected void ControlPaint(object sender, PaintEventArgs e)
         {
-            base.OnPaint(e);
             Brush b = new SolidBrush(ForeColor);
             SizeF strWH = e.Graphics.MeasureString(Title, Font);
-            if (Icon != null)
+            bool text = !string.IsNullOrEmpty(Title);
+            bool icon = Icon != null;
+            float x = 0, y = 0, width = 0, height = 0;
+            float textX = 0, textY = 0;
+            if (!mouseIn)
             {
-                Size s = Size;
-                if (!mouseIn)
+                x = Expand;
+                y = Expand;
+                width = Width - Expand*2;
+                if (text)
                 {
-                    if (!string.IsNullOrEmpty(Title))
-                    {
-                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2 - strWH.Height);
-
-                        e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
-                    }
-                    else
-                        e.Graphics.DrawImage(Icon, Expand, Expand, s.Width - Expand * 2, s.Height - Expand * 2);
+                    height = Height - Expand*2 - strWH.Height;
+                    textX = (Width - strWH.Width)/2;
+                    textY = Height - strWH.Height;
+                }
+                else
+                    height = Height - Expand*2;
+            }
+            else
+            {
+                if (text)
+                {
+                    width = Width;
+                    height = Height - strWH.Height;
+                    textX = (Width - strWH.Width)/2;
+                    textY = Height - strWH.Height;
                 }
                 else
                 {
-                    e.Graphics.DrawImage(Icon, 0, 0, s.Width, s.Height - strWH.Height);
-                    if(!string.IsNullOrEmpty(Title))
-                        e.Graphics.DrawString(Title, Font, b, (s.Width - strWH.Width) / 2, s.Height - strWH.Height);
+                    width = Width;
+                    height = Height;
                 }
             }
+            if (icon)
+                e.Graphics.DrawImage(Icon, x, y, width, height);
+            if(text)
+                e.Graphics.DrawString(Title, Font, b, textX, textY);
         }
     }
 }

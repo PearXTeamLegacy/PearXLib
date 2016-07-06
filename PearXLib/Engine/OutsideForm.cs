@@ -1,11 +1,12 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace PearXLib.Engine
 {
     /// <summary>
     /// A form for outside using B)
     /// </summary>
-    public class OutsideForm : XForm
+    public class OutsideForm : Form
     {
         /// <summary>
         /// Initializes new OutsizeForm
@@ -13,14 +14,10 @@ namespace PearXLib.Engine
         public OutsideForm()
         {
             TopMost = true;
-            CanMove = false;
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
-            CloseBox = false;
-            ToTrayBox = false;
             BackColor = Color.White;
-            DrawTitle = false;
-            BarImage = null;
             ShowInTaskbar = false;
             Size = new Size(256, 128);
         }

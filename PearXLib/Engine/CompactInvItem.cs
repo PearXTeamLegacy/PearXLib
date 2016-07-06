@@ -38,6 +38,7 @@ namespace PearXLib.Engine
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
+            if(disposing)
             Tooltip.Dispose();
         }
 

@@ -12,27 +12,27 @@ namespace PearXLib.Engine
         private bool useInterpolation;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XControlBase"/> class.
-        /// </summary>
-        public XControlBase()
-        {
-            DoubleBuffered = true;
-        }
-        /// <summary>
         /// Use interpolation?
         /// </summary>
         [DefaultValue(false)]
         public bool UseInterpolation
         {
             get { return useInterpolation; }
-            set { useInterpolation = value; Refresh(); }
+            set { useInterpolation = value; Invalidate(); }
         }
 
-        
+        [DefaultValue(true)]
+        protected override bool DoubleBuffered { get; set; } = true;
+
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Paint" /> event.
+        /// </summary>
+        /// <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
             if (!UseInterpolation)
                 e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            base.OnPaint(e);
         }
     }
 }
