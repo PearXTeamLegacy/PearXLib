@@ -9,10 +9,5 @@ namespace PearXLib.Engine
 {
     public class XTrackBar : XControlBase
     {
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            
-        }
     }
 }

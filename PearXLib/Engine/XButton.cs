@@ -75,31 +75,29 @@ namespace PearXLib.Engine
         public XButton()
         {
             Size = new Size(128, 64);
+            Paint += ControlPaint;
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void ControlPaint(object sender, PaintEventArgs e)
         {
-            Pen p = new Pen(Brushes.Black, 2);
-            p.LineJoin = LineJoin.Round;
+            Pen p = new Pen(Brushes.Black, 2) {LineJoin = LineJoin.Round};
             Rectangle rect = new Rectangle(1, 1, Width - 2, Height - 2);
+            Brush br = null;
             switch (State)
             {
                 case XButtonState.NONE:
-                    LinearGradientBrush lgb = new LinearGradientBrush(new PointF(0, 0), new PointF(Size.Width, Size.Height), GradientColor1, GradientColor2);
-                    e.Graphics.FillRectangle(lgb, rect);
+                    br = new LinearGradientBrush(new PointF(0, 0), new PointF(Width, Height), GradientColor1, GradientColor2);
                     break;
                 case XButtonState.FOCUSED:
-                    lgb = new LinearGradientBrush(new PointF(0, 0), new PointF(Size.Width, Size.Height), GradientColorFocused1, GradientColorFocused2);
-                    e.Graphics.FillRectangle(lgb, rect);
+                    br = new LinearGradientBrush(new PointF(0, 0), new PointF(Width, Height), GradientColorFocused1, GradientColorFocused2);
                     break;
                 case XButtonState.CLICKED:
-                    Brush b = new SolidBrush(ColorPressed);
-                    e.Graphics.FillRectangle(b, rect);
+                    br = new SolidBrush(ColorPressed);
                     break;
-
             }
+            e.Graphics.FillRectangle(br, rect);
             e.Graphics.DrawRectangle(p, rect);
-            base.OnPaint(e);
+            PaintBase(e);
         }
     }
 }
