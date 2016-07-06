@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using PearXLib.Engine.Bases;
 
 namespace PearXLib.Engine
 {
@@ -27,7 +28,7 @@ namespace PearXLib.Engine
 
         #region Params
         /// <summary>
-        /// The text on the control.
+        /// A text on the control.
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Always), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Bindable(true)]
         public override string Text
@@ -45,7 +46,7 @@ namespace PearXLib.Engine
         /// Draw the text in the rectangle?
         /// </summary>
         [DefaultValue(false)]
-        public bool DrawInRectangle
+        public virtual bool DrawInRectangle
         {
             get { return drawinrect; }
             set
@@ -69,12 +70,7 @@ namespace PearXLib.Engine
 
         #endregion
 
-        /// <summary>
-        /// Control's paint event.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
-        protected void ControlPaint(object sender, PaintEventArgs e)
+        private void ControlPaint(object sender, PaintEventArgs e)
         {
             if(!FirstDrawn)
                 AutoResize();

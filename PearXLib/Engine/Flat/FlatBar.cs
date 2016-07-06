@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace PearXLib.Engine.Flat
 {
@@ -7,32 +9,28 @@ namespace PearXLib.Engine.Flat
     /// </summary>
     public class FlatBar : XBar
     {
-        private Color gc = Color.FromArgb(41, 128, 185);
-        private Color gc2 = Color.FromArgb(41, 128, 185);
-        private Color bg = Color.FromArgb(37, 38, 41);
+        /// <summary>
+        /// Bar's left gradient color.
+        /// </summary>
+        [DefaultValue(typeof(Color), "41, 128, 185")]
+        public override Color GradientColor1 { get; set; } = FlatColors.BelizeHole;
 
         /// <summary>
-        /// <inheritDoc/>
+        /// Bar's right gradient color.
         /// </summary>
-        public override Color GradientColor1
-        {
-            get { return gc; } set { gc = value; }
-        }
+        [DefaultValue(typeof(Color), "41, 128, 185")]
+        public override Color GradientColor2 { get; set; } = FlatColors.BelizeHole;
 
         /// <summary>
-        /// <inheritDoc/>
+        /// Control's background color.
         /// </summary>
-        public override Color GradientColor2
-        {
-            get { return gc2; } set { gc2 = value; }
-        }
+        [DefaultValue(typeof(Color), "37, 38, 41")]
+        public override Color BackColor { get; set; } = Color.FromArgb(37, 38, 41);
 
         /// <summary>
-        /// <inheritDoc/>
+        /// <see cref="Control.ForeColor"/>
         /// </summary>
-        public override Color BGColor
-        {
-            get { return bg; } set { bg = value; }
-        }
+        [DefaultValue(typeof(Color), "White")]
+        public override Color ForeColor { get; set; } = Color.White;
     }
 }

@@ -2,9 +2,17 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using PearXLib.Engine.Bases;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// XBar Event Handler.
+    /// </summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">The <see cref="XBarEventArgs"/> instance containing the event data.</param>
+    public delegate void XBarEventHandler(object sender, XBarEventArgs e);
+
     /// <summary>
     /// A beautiful progress bar from PearXLib.
     /// </summary>
@@ -14,9 +22,8 @@ namespace PearXLib.Engine
         private int _Maximum = 100;
         private Color _GradientColor1 = Color.FromArgb(102, 204, 0);
         private Color _GradientColor2 = Color.White;
-        private Color _BGColor = Color.Gray;
-        private string _ProgressText = string.Empty;
-        private Color _ProgressTextColor = Color.Black;
+        private string text = "";
+        private Color _BackColor = Color.Gray;
 
         /// <summary>
         /// Initializes the new XBar component.
@@ -24,17 +31,11 @@ namespace PearXLib.Engine
         public XBar()
         {
             Size = new Size(349, 52);
-            BackColor = Color.Transparent;
             ResizeRedraw = true;
+            Paint += ControlPaint;
         }
 
-        #region Params.
-        /// <summary>
-        /// XBar event handler.
-        /// </summary>
-        /// <param name="sender">Sender object.</param>
-        /// <param name="e">XBar Event Args <see cref="XBarEventArgs"/></param>
-        public delegate void XBarEventHandler(object sender, XBarEventArgs e);
+        #region Params
 
         /// <summary>
         /// Performs on bar value changed.
@@ -50,16 +51,15 @@ namespace PearXLib.Engine
             get { return _Value; }
             set 
             {
-                if (!(value > Maximum))
+                if (value < Maximum)
                 {
-                    _Value = value; Refresh();
+                    _Value = value; Invalidate();
                 }
                 else
                 {
-                    _Value = Maximum; Refresh();
+                    _Value = Maximum; Invalidate();
                 }
-                if (ValueChanged != null)
-                    ValueChanged(this, new XBarEventArgs(value, Maximum));
+                OnValueChanged(new XBarEventArgs(Value, Maximum));
             }
         }
 
@@ -75,81 +75,107 @@ namespace PearXLib.Engine
                 if (value < Value)
                     Value = value;
                 _Maximum = value;
-                Refresh();
+                Invalidate();
             }
         }
 
         /// <summary>
-        /// Value bar gradient color 1.
+        /// Bar's left gradient color.
         /// </summary>
         [DefaultValue(typeof(Color), "102, 204, 0")]
         public virtual Color GradientColor1
         {
             get { return _GradientColor1; }
-            set { _GradientColor1 = value; Refresh(); }
+            set { _GradientColor1 = value; Invalidate(); }
         }
 
         /// <summary>
-        /// Value bar gradient color 2.
+        /// Bar's right gradient color.
         /// </summary>
         [DefaultValue(typeof(Color), "White")]
         public virtual Color GradientColor2
         {
             get { return _GradientColor2; }
-            set { _GradientColor2 = value; Refresh(); }
+            set { _GradientColor2 = value; Invalidate(); }
         }
 
         /// <summary>
-        /// Bar background color.
+        /// The text on the control.
         /// </summary>
-        [DefaultValue(typeof(Color), "Gray")]
-        public virtual Color BGColor
+        [EditorBrowsable(EditorBrowsableState.Always), Browsable(true), DesignerSerializationVisibility(DesignerSerializationVisibility.Visible), Bindable(true)]
+        public override string Text
         {
-            get { return _BGColor; }
-            set { _BGColor = value; Refresh(); }
-        }
-
-        /// <summary>
-        /// Text on bar.
-        /// </summary>
-        [DefaultValue("")]
-        public virtual string ProgressText
-        {
-            get { return _ProgressText; }
-            set { _ProgressText = value; Refresh(); }
-        }
-
-        /// <summary>
-        /// Color of a text on a bar.
-        /// </summary>
-        [DefaultValue(typeof(Color), "Black")]
-        public virtual Color ProgressTextColor
-        {
-            get { return _ProgressTextColor; }
-            set { _ProgressTextColor = value; Refresh(); }
+            get { return text; }
+            set { text = value; Invalidate(); }
         }
 
         /// <summary>
         /// Control's background color.
         /// </summary>
-        [DefaultValue(typeof(Color), "Transparent")]
-        public override Color BackColor { get; set; }
+        [DefaultValue(typeof (Color), "Gray")]
+        public new virtual Color BackColor
+        {
+            get { return _BackColor; }
+            set { _BackColor = value; Invalidate(); }
+        }
         #endregion
 
-        protected override void OnPaint(PaintEventArgs e)
+        /// <summary>
+        /// Raises the <see cref="E:ValueChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="XBarEventArgs"/> instance containing the event data.</param>
+        public void OnValueChanged(XBarEventArgs e)
         {
-            base.OnPaint(e);
-            Brush sb = new SolidBrush(BGColor);
-            Pen p = new Pen(sb, 4);
-            p.LineJoin = LineJoin.Bevel;
-            e.Graphics.DrawRectangle(p, 4, 4, Size.Width - 8, Size.Height - 8);
-            e.Graphics.FillRectangle(sb, 4, 4, Size.Width - 8, Size.Height - 8);
-
-            LinearGradientBrush lgb = new LinearGradientBrush(new Point(0, 0), new Point(Size.Width, Size.Height), GradientColor1, GradientColor2);
-            e.Graphics.FillRectangle(lgb, 5, 5, ((float)((Size.Width - 10)) / Maximum) * Value, Size.Height - 10);
-
-            Brush bf = new SolidBrush(ProgressTextColor);
-            DrawFancyText(e.Graphics, ProgressText, Font, bf, new PointF((Size.Width - e.Graphics.MeasureString(ProgressText, Font).Width) / 2, (Size.Height - e.Graphics.MeasureString(ProgressText, Font).Height) / 2));
+           ValueChanged?.Invoke(this, e); 
         }
+
+        private void ControlPaint(object sender, PaintEventArgs e)
+        {
+            Brush bgBrush = new SolidBrush(BackColor);
+            Pen bgPen = new Pen(bgBrush, 4) {LineJoin = LineJoin.Bevel};
+
+            e.Graphics.DrawRectangle(bgPen, 4, 4, Size.Width - 8, Size.Height - 8); // Draw bg
+            e.Graphics.FillRectangle(bgBrush, 4, 4, Size.Width - 8, Size.Height - 8); // ^
+
+            LinearGradientBrush lgb = new LinearGradientBrush(new Point(0, 0), new Point(Width, Height), GradientColor1, GradientColor2);
+            e.Graphics.FillRectangle(lgb, 5, 5, (float)(Width - 10) / Maximum * Value, Height - 10); //Draw progress
+
+            Brush bf = new SolidBrush(ForeColor);
+            SizeF strWH = e.Graphics.MeasureString(Text, Font);
+            DrawFancyText(e.Graphics, Text, Font, bf, new PointF((Width - strWH.Width) / 2, (Height - strWH.Height) / 2)); //Draw text
+        }
+    }
+
+    /// <summary>
+    /// XBar event arguments
+    /// </summary>
+    public class XBarEventArgs
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XBarEventArgs"/> class.
+        /// </summary>
+        /// <param name="val">Bar's value.</param>
+        /// <param name="max">Bar's maximum value.</param>
+        public XBarEventArgs(int val, int max)
+        {
+            Value = val;
+            Maximal = max;
+            InPercents = MathsUtils.GetInPercents(max, val);
+        }
+
+        /// <summary>
+        /// Bar's value.
+        /// </summary>
+        public int Value { get; private set; }
+
+        /// <summary>
+        /// Maximal bar's value.
+        /// </summary>
+        public int Maximal { get; private set; }
+
+        /// <summary>
+        /// Bar's value in percents.
+        /// </summary>
+        public double InPercents { get; private set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using PearXLib.Engine.Bases;
 
 
 namespace PearXLib.Engine
@@ -23,6 +24,8 @@ namespace PearXLib.Engine
         {
             Size = new Size(64, 64);
             Paint += ControlPaint;
+            MouseEnter += ControlMouseEnter;
+            MouseLeave += ControlMouseLeave;
         }
 
         #region Params
@@ -71,32 +74,25 @@ namespace PearXLib.Engine
         /// </summary>
         public SizeF TitleWidthHeight => CreateGraphics().MeasureString(Title, Font);
 
-        protected override void OnMouseEnter(EventArgs e)
+        private void ControlMouseEnter(object sender, EventArgs e)
         {
             mouseIn = true;
             Invalidate();
-            base.OnMouseEnter(e);
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        private void ControlMouseLeave(object sender, EventArgs e)
         {
             mouseIn = false;
             Invalidate();
-            base.OnMouseLeave(e);
         }
 
-        /// <summary>
-        /// Control's paint event.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
-        protected void ControlPaint(object sender, PaintEventArgs e)
+        private void ControlPaint(object sender, PaintEventArgs e)
         {
             Brush b = new SolidBrush(ForeColor);
             SizeF strWH = e.Graphics.MeasureString(Title, Font);
             bool text = !string.IsNullOrEmpty(Title);
             bool icon = Icon != null;
-            float x = 0, y = 0, width = 0, height = 0;
+            float x = 0, y = 0, width, height;
             float textX = 0, textY = 0;
             if (!mouseIn)
             {

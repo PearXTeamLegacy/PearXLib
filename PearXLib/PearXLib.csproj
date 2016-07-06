@@ -84,20 +84,18 @@
     <Compile Include="Engine\TooltipForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Engine\XBarEventArgs.cs" />
     <Compile Include="Engine\XButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XButtonBase.cs">
+    <Compile Include="Engine\Bases\XButtonBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XCheckboxBase.cs">
+    <Compile Include="Engine\Bases\XCheckboxBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XControlBase.cs">
+    <Compile Include="Engine\Bases\XControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XDialogBase.cs" />
     <Compile Include="Engine\XForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,7 +117,7 @@
     <Compile Include="Engine\XLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Engine\XTextControlBase.cs">
+    <Compile Include="Engine\Bases\XTextControlBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Engine\XTrackBar.cs">
@@ -184,6 +182,7 @@
   <ItemGroup>
     <None Include="Resources\DialogInfo.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

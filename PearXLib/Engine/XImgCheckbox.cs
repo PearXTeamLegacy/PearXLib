@@ -1,17 +1,27 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using PearXLib.Engine.Bases;
 
 namespace PearXLib.Engine
 {
     /// <summary>
-    /// A checkbox, maked from images.
+    /// A checkbox, made from images.
     /// </summary>
+    /// <seealso cref="XCheckboxBase" />
     public class XImgCheckbox : XCheckboxBase
     {
         private Image bg;
         private Image bg_focused;
         private Image check_focused;
         private Image check;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XImgCheckbox"/> class.
+        /// </summary>
+        public XImgCheckbox()
+        {
+            Paint += ControlPaint;
+        }
 
         #region Params
         /// <summary>
@@ -20,7 +30,7 @@ namespace PearXLib.Engine
         public Image CheckBG
         {
             get { return bg; }
-            set { bg = value; Refresh(); }
+            set { bg = value; Invalidate(); }
         }
 
         /// <summary>
@@ -29,7 +39,7 @@ namespace PearXLib.Engine
         public Image CheckFocused
         {
             get { return check_focused; }
-            set { check_focused = value; Refresh(); }
+            set { check_focused = value; Invalidate(); }
         }
 
         /// <summary>
@@ -38,7 +48,7 @@ namespace PearXLib.Engine
         public Image CheckBGFocused
         {
             get { return bg_focused; }
-            set { bg_focused = value; Refresh(); }
+            set { bg_focused = value; Invalidate(); }
         }
 
         /// <summary>
@@ -47,20 +57,17 @@ namespace PearXLib.Engine
         public Image Check
         {
             get { return check; }
-            set { check = value; Refresh(); }
+            set { check = value; Invalidate(); }
         }
         #endregion
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void ControlPaint(object sender, PaintEventArgs e)
         {
-            float width;
+            PaintBase(e);
             Image img_bg;
             Image img_check;
 
-            if (!string.IsNullOrEmpty(Text))
-                width = Width/5;
-            else
-                width = Width;
+            float width = string.IsNullOrEmpty(Text) ? Width : Height;
 
             if (State == CheckboxState.Focused)
             {
@@ -74,15 +81,10 @@ namespace PearXLib.Engine
             }
 
             if (img_bg != null)
-            {
                 e.Graphics.DrawImage(img_bg, 0, 0, width, Height);
-            }
 
-            if (img_check != null)
-            {
+            if (img_check != null && Checked)
                 e.Graphics.DrawImage(img_check, 0, 0, width, Height);
-            }
-            base.OnPaint(e);
         }
     }
 }

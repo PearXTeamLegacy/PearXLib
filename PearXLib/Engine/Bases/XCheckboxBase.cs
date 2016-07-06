@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace PearXLib.Engine
+namespace PearXLib.Engine.Bases
 {
     /// <summary>
     /// Checkbox state
@@ -21,7 +21,14 @@ namespace PearXLib.Engine
     }
 
     /// <summary>
-    /// A base for the checkboxes :P.
+    /// An EventHandler for the checkboxes.
+    /// </summary>
+    /// <param name="sender">The sender</param>
+    /// <param name="isChecked">Is checkbox checked?</param>
+    public delegate void CheckboxHandler(object sender, bool isChecked);
+
+    /// <summary>
+    /// A base for checkboxes.
     /// </summary>
     public class XCheckboxBase : XTextControlBase
     {
@@ -29,22 +36,17 @@ namespace PearXLib.Engine
         private bool chkd;
 
         /// <summary>
-        /// Initializes a new XCheckboxBase component.
+        /// Initializes a new instance of the <see cref="XCheckboxBase"/> class.
         /// </summary>
         public XCheckboxBase()
         {
             Size = new Size(160, 32);
-            State = CheckboxState.None;
-            Cursor = Cursors.Hand;
+            Click += ControlClick;
+            MouseEnter += ControlMouseEnter;
+            MouseLeave += ControlMouseLeave;
         }
 
         #region Params
-        /// <summary>
-        /// A EventHandler for the checkboxes.
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="isChecked">Is checkbox checked?</param>
-        public delegate void CheckboxHandler(object sender, bool isChecked);
 
         /// <summary>
         /// Performs on check/uncheck.
@@ -58,61 +60,72 @@ namespace PearXLib.Engine
         public override string Text
         {
             get { return text; }
-            set { text = value; Refresh(); }
+            set { text = value; Invalidate(); }
         }
 
         /// <summary>
         /// Is checkbox checked?
         /// </summary>
         [DefaultValue(false)]
-        public bool Checked
+        public virtual bool Checked
         {
             get { return chkd; }
             set
             {
                 chkd = value;
-                Refresh();
-                if(CheckedChanged != null)
-                   CheckedChanged(this, value);
+                Invalidate();
+                OnCheckedChanged(value);
             }
         }
 
         /// <summary>
         /// Checkbox's current state.
         /// </summary>
-        public CheckboxState State { get; private set; }
+        public virtual CheckboxState State { get; private set; } = CheckboxState.None;
+
+        [DefaultValue(typeof(Cursor), "Hand")]
+        public override Cursor Cursor { get; set; } = Cursors.Hand;
 
         #endregion
 
-        protected override void OnPaint(PaintEventArgs e)
+        /// <summary>
+        /// Calls the <see cref="CheckedChanged"/> event.
+        /// </summary>
+        /// <param name="isChecked">Is checkbox checked?</param>
+        public virtual void OnCheckedChanged(bool isChecked)
         {
-            base.OnPaint(e);
+            CheckedChanged?.Invoke(this, isChecked);
+        }
+
+        /// <summary>
+        /// Paints the base.
+        /// </summary>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
+        protected void PaintBase(PaintEventArgs e)
+        {
             if(!string.IsNullOrEmpty(Text))
             {
                 var pf = e.Graphics.MeasureString(Text, Font);
-                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new PointF(Width / 5, (Height - pf.Height) / 2));
+                DrawFancyText(e.Graphics, Text, Font, new SolidBrush(ForeColor), new PointF(Height, (Height - pf.Height) / 2));
             }
         }
 
-        protected override void OnClick(EventArgs e)
+        private void ControlClick(object sender, EventArgs e)
         {
             Checked = !Checked;
-            base.OnClick(e);
         }
 
-        protected override void OnMouseEnter(EventArgs e)
+        private void ControlMouseEnter(object sender, EventArgs e)
         {
             State = CheckboxState.Focused;
-            base.OnMouseEnter(e);
-            Refresh();
+            Invalidate();
         }
 
 
-        protected override void OnMouseLeave(EventArgs e)
+        private void ControlMouseLeave(object sender, EventArgs e)
         {
             State = CheckboxState.None;
-            base.OnMouseLeave(e);
-            Refresh();
+            Invalidate();
         }
     }
 }

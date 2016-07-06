@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 
-namespace PearXLib.Engine
+namespace PearXLib.Engine.Bases
 {
     /// <summary>
     /// Base for all PearXLib's text controls.

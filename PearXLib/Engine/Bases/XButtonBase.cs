@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace PearXLib.Engine
+namespace PearXLib.Engine.Bases
 {
     /// <summary>
     /// Button state enum.

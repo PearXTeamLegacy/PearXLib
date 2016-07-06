@@ -2,7 +2,7 @@
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace PearXLib.Engine
+namespace PearXLib.Engine.Bases
 {
     /// <summary>
     /// Base for all PearXLib's controls.
