@@ -153,26 +153,6 @@ namespace PearXLib.Engine {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MinimizeBox {
-            get {
-                object obj = ResourceManager.GetObject("MinimizeBox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MinimizeBoxFocused {
-            get {
-                object obj = ResourceManager.GetObject("MinimizeBoxFocused", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ToTrayBox {
             get {
                 object obj = ResourceManager.GetObject("ToTrayBox", resourceCulture);

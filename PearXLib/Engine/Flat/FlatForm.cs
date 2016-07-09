@@ -1,132 +1,140 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using PearXLib.Engine.Bases;
 
 namespace PearXLib.Engine.Flat
 {
     /// <summary>
     /// Flat Form.
     /// </summary>
-    public class FlatForm : XForm
+    public class FlatForm : XFormBase
     {
+        private Color _PanelColor = Color.FromArgb(37, 38, 41);
+        private bool _Rim = true;
+        private Color _RimColor = Color.FromArgb(18, 107, 166);
+        private bool _DrawPanel = true;
+        private int _RimSize = 1;
+        private int _BoxSizes = 32;
+
         /// <summary>
         /// Initializes a new XForm component.
         /// </summary>
         public FlatForm()
         {
-            BarImage = null;
+            
+            Boxes.CloseBox = new FlatFormBox();
+            Boxes.MaximizeBox = new FlatFormBox();
+            Boxes.ToTrayBox = new FlatFormBox();
+
+            for(int i = 0; i < Boxes.Count; i++)
+            {
+                FlatFormBox box = Boxes[i] as FlatFormBox;
+                switch (i)
+                {
+                    case 0:
+                        box.Color = Color.FromArgb(192, 57, 43);
+                        box.FocusedColor = Color.FromArgb(231, 76, 60);
+                        break;
+                    case 1:
+                        box.Color = Color.FromArgb(41, 128, 185);
+                        box.FocusedColor = Color.FromArgb(52, 152, 219);
+                        break;
+                    case 2:
+                        box.Color = Color.FromArgb(39, 174, 96);
+                        box.FocusedColor = Color.FromArgb(46, 204, 113);
+                        break;
+                }
+            }
+
             BackColor = FlatColors.NotQuiteBlack;
-            BoxesTopDistance = 1;
-            BoxesDistance = 0;
-            TextColor = Color.White;
-            base.ImageCloseBox = null;
-            base.ImageCloseBoxFocused = null;
-            base.ImageToTrayBox = null;
-            base.ImageToTrayBoxFocused = null;
-            base.ImageMaximizeBox = null;
-            base.ImageMaximizeBoxFocused = null;
-            base.ImageMinimizeBox = null;
-            base.ImageMinimizeBoxFocused = null;
+            ForeColor = Color.White;
+            Paint += ControlPaint;
         }
 
+        #region Params
 
-
-        private Color _CloseBoxColor = Color.FromArgb(192, 57, 43);
-        private Color _CloseBoxFColor = Color.FromArgb(231, 76, 60);
-        private Color _MinMaxBoxColor = Color.FromArgb(41, 128, 185);
-        private Color _MinMaxBoxFColor = Color.FromArgb(52, 152, 219);
-        private Color _ToTrayBoxColor = Color.FromArgb(39, 174, 96);
-        private Color _ToTrayBoxFColor = Color.FromArgb(46, 204, 113);
-        private Color _PanelBG = Color.FromArgb(37, 38, 41);
-        private bool _Rim = true;
-        private Color _RimColor = Color.FromArgb(18, 107, 166);
-        private bool _DrawPanel = true;
-
-        /// <summary>
-        /// Color of the close box.
-        /// </summary>
-        public Color CloseBoxColor { get { return _CloseBoxColor; } set { _CloseBoxColor = value; Refresh(); } }
-        /// <summary>
-        /// Color of the focused close box.
-        /// </summary>
-        public Color CloseBoxFColor { get { return _CloseBoxFColor; } set { _CloseBoxFColor = value; Refresh(); } }
-        /// <summary>
-        /// Color of the minimize and maximize boxes.
-        /// </summary>
-        public Color MinMaxBoxColor { get { return _MinMaxBoxColor; } set { _MinMaxBoxColor = value; Refresh(); } }
-        /// <summary>
-        /// Color of the focused minimize and maximize boxes.
-        /// </summary>
-        public Color MinMaxBoxFColor { get { return _MinMaxBoxFColor; } set { _MinMaxBoxFColor = value; Refresh(); } }
-        /// <summary>
-        /// Color of the to tray box.
-        /// </summary>
-        public Color ToTrayBoxColor { get { return _ToTrayBoxColor; } set { _ToTrayBoxColor = value; Refresh(); } }
-        /// <summary>
-        /// Color of the focused to tray box.
-        /// </summary>
-        public Color ToTrayBoxFColor { get { return _ToTrayBoxFColor; } set { _ToTrayBoxFColor = value; Refresh(); } }
         /// <summary>
         /// Color of the panel.
         /// </summary>
-        public Color PanelBG { get { return _PanelBG; } set { _PanelBG = value; Refresh(); } }
+        public Color PanelColor { get { return _PanelColor; } set { _PanelColor = value; Refresh(); } }
+
         /// <summary>
         /// Color of the form rim.
         /// </summary>
         public Color RimColor { get { return _RimColor; } set { _RimColor = value; Refresh(); } }
+
         /// <summary>
         /// Enable form rim?
         /// </summary>
+        [DefaultValue(true)]
         public bool Rim { get { return _Rim; } set { _Rim = value; Refresh(); } }
 
         /// <summary>
-        /// Draw Panel's BG?
+        /// The form rim thickness.
+        /// </summary>
+        [DefaultValue(1)]
+        public int RimSize { get { return _RimSize; } set { _RimSize = value; Refresh(); } }
+
+        /// <summary>
+        /// Draw Panel?
         /// </summary>
         [DefaultValue(true)]
-        public bool DrawPanelBG { get { return _DrawPanel; } set { _DrawPanel = value; } }
+        public bool DrawPanel { get { return _DrawPanel; } set { _DrawPanel = value; Refresh(); } }
 
-        protected override void OnPaint(PaintEventArgs e)
+        /// <summary>
+        /// Box sizes.
+        /// </summary>
+        [DefaultValue(32)]
+        public int BoxSizes { get { return _BoxSizes; } set { _BoxSizes = value; Refresh(); } }
+        #endregion
+
+        public override void UpdateRectangles()
         {
-            if(DrawPanelBG)
-                e.Graphics.FillRectangle(new SolidBrush(PanelBG), 0, 0, Size.Width, 32);
-            base.OnPaint(e);
-            if (CloseBox)
-            {
-                if (BarSt == BarState.Close)
-                {
-                    e.Graphics.FillRectangle(new SolidBrush(CloseBoxFColor), Size.Width - (32 + BoxesDistance), BoxesTopDistance, 32, 32);
-                }
-                else
-                {
-                    e.Graphics.FillRectangle(new SolidBrush(CloseBoxColor), Size.Width - (32 + BoxesDistance), BoxesTopDistance, 32, 32);
-                }
-            }
-
-            if (MaximizeBox)
-            {
-                if (BarSt == BarState.Maximize)
-                {
-                    e.Graphics.FillRectangle(new SolidBrush(MinMaxBoxFColor), Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
-                }
-                else
-                {
-                    e.Graphics.FillRectangle(new SolidBrush(MinMaxBoxColor), Size.Width - (64 + (BoxesDistance * 2)), BoxesTopDistance, 32, 32);
-                }
-            }
-
-            if (ToTrayBox)
-            {
-                if (BarSt == BarState.ToTray)
-                {
-                    e.Graphics.FillRectangle(new SolidBrush(ToTrayBoxFColor), Size.Width - (96 + (BoxesDistance * 3)), BoxesTopDistance, 32, 32);
-                }
-                else
-                {
-                    e.Graphics.FillRectangle(new SolidBrush(ToTrayBoxColor), Size.Width - (96 + (BoxesDistance * 3)), BoxesTopDistance, 32, 32);
-                }
-            }
-            if(Rim)
-                e.Graphics.DrawRectangle(new Pen(RimColor, 1), 0, 0, Size.Width - 1, Size.Height - 1);
+            Boxes.CloseBox.Rectangle = new Rectangle(Width - RimSize - BoxSizes, RimSize, BoxSizes, BoxSizes);
+            Boxes.MaximizeBox.Rectangle = new Rectangle(Width - RimSize - BoxSizes*2, RimSize, BoxSizes, BoxSizes);
+            Boxes.ToTrayBox.Rectangle = new Rectangle(Width - RimSize - BoxSizes*3, RimSize, BoxSizes, BoxSizes);
         }
+
+        private void ControlPaint(object sender, PaintEventArgs e)
+        {
+            if(DrawPanel)
+                e.Graphics.FillRectangle(new SolidBrush(PanelColor), 0, 0, Size.Width, BoxSizes);
+            for(int i = 0; i < Boxes.Count; i++)
+            {
+                FlatFormBox box = Boxes[i] as FlatFormBox;
+                Color c = box.Focused ? box.FocusedColor : box.Color;
+                e.Graphics.FillRectangle(new SolidBrush(c), box.Rectangle);
+            }
+
+            if (DrawTitle)
+            {
+                SizeF size = e.Graphics.MeasureString(Text, Font);
+                e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), RimSize, (BoxSizes - size.Height) / 2f);
+            }
+
+            if (Rim)
+            {
+                float f = RimSize/2f;
+                e.Graphics.DrawRectangle(new Pen(RimColor, RimSize), f, f, Width - RimSize, Height - RimSize);
+            }
+        }
+    }
+
+    /// <summary>
+    /// <see cref="FormBox"/> for the <see cref="FlatForm"/>
+    /// </summary>
+    /// <seealso cref="FormBox" />
+    public class FlatFormBox : FormBox
+    {
+        /// <summary>
+        /// Color for the focused box.
+        /// </summary>
+        public Color FocusedColor { get; set; }
+
+        /// <summary>
+        /// Color for the unfocused box.
+        /// </summary>
+        public Color Color { get; set; }
     }
 }

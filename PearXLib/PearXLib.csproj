@@ -47,6 +47,9 @@
     <Compile Include="EncodingAlgorithms\PXInterference.cs" />
     <Compile Include="EncodingAlgorithms\PXMultiple.cs" />
     <Compile Include="d.cs" />
+    <Compile Include="Engine\Bases\XFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Engine\CompactInvItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -65,6 +68,7 @@
     <Compile Include="Engine\Flat\FlatLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Engine\FormBox.cs" />
     <Compile Include="Engine\FormIcons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,12 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MaximizeBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MinimizeBoxFocused.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MinimizeBox.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ToTrayBox.png" />
