@@ -154,11 +154,6 @@ namespace PearXLib.Engine.Bases
 
         private void ResetBar()
         {
-            foreach (FormBox box in Boxes)
-            {
-                box.Focused = false;
-            }
-            Refresh();
             Cursor = Cursors.Default;
         }
 
