@@ -88,9 +88,12 @@ namespace PearXLib.Engine
 
             for (int i = 0; i < Boxes.Count; i++)
             {
-                XFormBox box = Boxes[i] as XFormBox;
-                Image img = box.Focused ? box.FocusedImage : box.Image;
-                e.Graphics.DrawImage(img, box.Rectangle);
+                if (Boxes[i].Enabled)
+                {
+                    XFormBox box = Boxes[i] as XFormBox;
+                    Image img = box.Focused ? box.FocusedImage : box.Image;
+                    e.Graphics.DrawImage(img, box.Rectangle);
+                }
             }
 
             if (DrawTitle)

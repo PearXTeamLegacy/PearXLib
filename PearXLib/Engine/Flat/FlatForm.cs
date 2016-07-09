@@ -102,9 +102,12 @@ namespace PearXLib.Engine.Flat
                 e.Graphics.FillRectangle(new SolidBrush(PanelColor), 0, 0, Size.Width, BoxSizes);
             for(int i = 0; i < Boxes.Count; i++)
             {
-                FlatFormBox box = Boxes[i] as FlatFormBox;
-                Color c = box.Focused ? box.FocusedColor : box.Color;
-                e.Graphics.FillRectangle(new SolidBrush(c), box.Rectangle);
+                if (Boxes[i].Enabled)
+                {
+                    FlatFormBox box = Boxes[i] as FlatFormBox;
+                    Color c = box.Focused ? box.FocusedColor : box.Color;
+                    e.Graphics.FillRectangle(new SolidBrush(c), box.Rectangle);
+                }
             }
 
             if (DrawTitle)
