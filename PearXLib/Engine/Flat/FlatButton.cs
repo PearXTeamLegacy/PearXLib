@@ -56,6 +56,11 @@ namespace PearXLib.Engine.Flat
         [DefaultValue(typeof(Color), "White")]
         public override Color ForeColor { get; set; } = Color.White;
 
+        /// <summary>
+        /// What state set for Button after MouseUp event?
+        /// </summary>
+        [DefaultValue(2)]
+        public override XButtonState MouseUpState { get; set; } = XButtonState.NONE;
         #endregion
 
         private Bitmap bm;

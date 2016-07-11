@@ -13,15 +13,15 @@ namespace PearXLib.Engine.Bases
         /// <summary>
         /// Mouse is on the button.
         /// </summary>
-        FOCUSED,
+        FOCUSED = 0,
         /// <summary>
         /// Mouse is clicked the button.
         /// </summary>
-        CLICKED,
+        CLICKED = 1,
         /// <summary>
         /// None.
         /// </summary>
-        NONE
+        NONE = 2
     }
 
     /// <summary>
@@ -36,6 +36,7 @@ namespace PearXLib.Engine.Bases
         private ContentAlignment _TextAlign = ContentAlignment.MiddleCenter;
         private XButtonState _State = XButtonState.NONE;
         private int _Border;
+        private XButtonState _MouseUpState = XButtonState.FOCUSED;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XButtonBase"/> class.
@@ -113,6 +114,12 @@ namespace PearXLib.Engine.Bases
         [DefaultValue(typeof (Cursor), "Hand")]
         public override Cursor Cursor { get; set; } = Cursors.Hand;
 
+        /// <summary>
+        /// What state set for Button after MouseUp event?
+        /// </summary>
+        [DefaultValue(0)]
+        public virtual XButtonState MouseUpState { get { return _MouseUpState; } set { _MouseUpState = value; Refresh(); } }
+
         #endregion
 
         /// <summary>
@@ -141,7 +148,7 @@ namespace PearXLib.Engine.Bases
 
         private void ControlMouseUp(object sender, MouseEventArgs e)
         {
-            State = XButtonState.FOCUSED;
+            State = MouseUpState;
         }
 
         private void ControlMouseEnter(object sender, EventArgs e)
