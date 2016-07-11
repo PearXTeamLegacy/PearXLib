@@ -84,13 +84,14 @@ namespace PearXLib.Engine.Flat
                                 Point p = new Point();
                                 Invoke(new MethodInvoker(() => { p = PointToClient(Cursor.Position); }));
                                 gr.FillRectangle(new SolidBrush(ColorFocused), rect);
-                                for (int i = 0; i <= Width * 2 + 5; i += 5)
+                                int j = (Width + Height)/36;
+                                for (int i = 0; i <= Width * 2 + j; i += j)
                                 {
                                     gr.FillEllipse(new SolidBrush(Color), p.X - i/2, p.Y - i/2, i, i);
                                     try { Invoke(new MethodInvoker(Refresh)); } catch { return; }
-                                    if (i >= (Width * 2))
+                                    if (i >= (Width*2))
                                         isDrawing = false;
-                                    Thread.Sleep(1);
+                                    Thread.Sleep(5);
                                 }
                             }
                         }).Start();
