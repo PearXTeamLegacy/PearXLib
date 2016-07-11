@@ -14,6 +14,11 @@ namespace PearXLib.Engine
         private Image _BackImageFocused;
         private Image _BackImagePressed;
 
+        public XImgButton()
+        {
+            Paint += ControlPaint;
+        }
+
         #region Properties.
         /// <summary>
         /// Button background.
@@ -44,22 +49,10 @@ namespace PearXLib.Engine
             get { return _BackImagePressed; }
             set { _BackImagePressed = value; Refresh(); }
         }
-
-        /// <summary>
-        /// A cursor for a control.
-        /// </summary>
-        [DefaultValue(typeof(Cursor), "Hand")]
-        public override Cursor Cursor { get; set; }
-
-        /// <summary>
-        /// Control background color.
-        /// </summary>
-        [DefaultValue(typeof(Color), "Transparent")]
-        public override Color BackColor { get; set; }
         #endregion
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
+        private void ControlPaint(object sender, PaintEventArgs e)
+        { 
             if (BackImage != null && BackImageFocused != null && BackImagePressed != null)
             {
                 switch (State)
@@ -76,7 +69,7 @@ namespace PearXLib.Engine
 
                 }
             }
-            base.OnPaint(e);
+            PaintBase(e);
         }
     }
 }
