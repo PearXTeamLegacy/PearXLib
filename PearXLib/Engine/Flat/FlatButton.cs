@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
 using System.ComponentModel;
@@ -60,7 +61,7 @@ namespace PearXLib.Engine.Flat
         /// What state set for Button after MouseUp event?
         /// </summary>
         [DefaultValue(2)]
-        public override XButtonState MouseUpState { get; set; } = XButtonState.NONE;
+        public override XButtonState MouseUpState { get; set; } = XButtonState.FOCUSED;
         #endregion
 
         private Bitmap bm;
@@ -80,23 +81,35 @@ namespace PearXLib.Engine.Flat
                         e.Graphics.FillRectangle(new SolidBrush(ColorFocused), rect);
                         break;
                     case XButtonState.CLICKED:
-                        bm = new Bitmap(Width, Height);
                         new Thread(() =>
                         {
-                            using (Graphics gr = Graphics.FromImage(bm))
+                            using (bm = new Bitmap(Width, Height))
                             {
-                                isDrawing = true;
-                                Point p = new Point();
-                                Invoke(new MethodInvoker(() => { p = PointToClient(Cursor.Position); }));
-                                gr.FillRectangle(new SolidBrush(ColorFocused), rect);
-                                int j = (Width + Height)/36;
-                                for (int i = 0; i <= Width * 2 + j; i += j)
+                                using (Graphics gr = Graphics.FromImage(bm))
                                 {
-                                    gr.FillEllipse(new SolidBrush(Color), p.X - i/2, p.Y - i/2, i, i);
-                                    try { Invoke(new MethodInvoker(Refresh)); } catch { return; }
-                                    if (i >= (Width*2))
-                                        isDrawing = false;
-                                    Thread.Sleep(5);
+                                    isDrawing = true;
+                                    Point p = new Point();
+                                    Invoke(new MethodInvoker(() => { p = PointToClient(Cursor.Position); }));
+                                    gr.FillRectangle(new SolidBrush(ColorFocused), rect);
+                                    int j = (Width + Height)/36;
+                                    for (int i = 0; i <= Width*2 + j; i += j)
+                                    {
+                                        gr.FillEllipse(new SolidBrush(Color), p.X - i/2, p.Y - i/2, i, i);
+                                        try
+                                        {
+                                            Invoke(new MethodInvoker(Refresh));
+                                        }
+                                        catch
+                                        {
+                                            return;
+                                        }
+                                        Thread.Sleep(5);
+                                        if (i >= (Width*2))
+                                        {
+                                            isDrawing = false;
+                                            Invoke(new MethodInvoker(() => State = XButtonState.NONE));
+                                        }
+                                    }
                                 }
                             }
                         }).Start();
