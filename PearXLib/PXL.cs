@@ -28,7 +28,7 @@ namespace PearXLib
         /// <summary>
         /// PearXLib version.
         /// </summary>
-        private const string Version = "11.07.2016";
+        private const string Version = "12.07.2016";
 
         /// <summary>
         /// Directory separator.

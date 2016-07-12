@@ -6,6 +6,10 @@ using PearXLib.Engine.Bases;
 
 namespace PearXLib.Engine
 {
+    /// <summary>
+    /// A beautiful TrackBar from PearXLib.
+    /// </summary>
+    /// <seealso cref="XControlBase" />
     public class XTrackbar : XControlBase
     {
         private TrackbarType _Type = TrackbarType.Horizontal;
@@ -13,12 +17,15 @@ namespace PearXLib.Engine
         private Color _PointerColor = FlatColors.BelizeHole;
         private Color _PointerFocusedColor = FlatColors.PeterRiver;
         private int _Maximum = 100;
-        private int _Value = 0;
+        private int _Value;
         private short _PointerSize = 15;
-        private bool Focused = false;
-        private bool Clicked = false;
+        private bool focus;
+        private bool Clicked;
         private int _LineSize = 10;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XTrackbar"/> class.
+        /// </summary>
         public XTrackbar()
         {
             Paint += OnPaint;
@@ -29,20 +36,46 @@ namespace PearXLib.Engine
             MouseMove += OnMouseMove;
         }
 
-        #region Params
+        #region Params        
+        /// <summary>
+        /// Occurs when <see cref="Value"/> changed.
+        /// </summary>
         public event XBarEventHandler ValueChanged;
 
+        /// <summary>
+        /// A type of the TrackBar.
+        /// </summary>
         [DefaultValue(0)]
         public virtual TrackbarType Type { get { return _Type; } set { _Type = value; Refresh(); } }
 
+        /// <summary>
+        /// Color of the line.
+        /// </summary>
+        [DefaultValue(typeof(Color), "127, 140, 141")]
         public virtual Color LineColor { get { return _LineColor; } set { _LineColor = value; Refresh(); } }
 
+        /// <summary>
+        /// Color of the pointer.
+        /// </summary>
+        [DefaultValue(typeof(Color), "41, 128, 185")]
         public virtual Color PointerColor { get { return _PointerColor; } set { _PointerColor = value; Refresh(); } }
 
+        /// <summary>
+        /// Color of the focused pointer.
+        /// </summary>
+        [DefaultValue(typeof(Color), "52, 152, 219")]
         public virtual Color PointerFocusedColor { get { return _PointerFocusedColor; } set { _PointerFocusedColor = value; Refresh(); } }
 
+        /// <summary>
+        /// A maximum value of the Trackbar.
+        /// </summary>
+        [DefaultValue(100)]
         public virtual int Maximum { get { return _Maximum; } set { _Maximum = value; Refresh(); } }
 
+        /// <summary>
+        /// Value of the Trackbar.
+        /// </summary>
+        [DefaultValue(0)]
         public virtual int Value
         {
             get { return _Value; }
@@ -59,19 +92,39 @@ namespace PearXLib.Engine
             
         }
 
+        /// <summary>
+        /// Size of the pointer.
+        /// </summary>
+        [DefaultValue(15)]
         public virtual short PointerSize { get { return _PointerSize; } set { _PointerSize = value; Refresh(); } }
 
+        /// <summary>
+        /// <see cref="Control.Cursor"/>
+        /// </summary>
+        [DefaultValue(typeof(Cursor), "Hand")]
         public override Cursor Cursor { get; set; } = Cursors.Hand;
 
+        /// <summary>
+        /// Width or Height of the line.
+        /// </summary>
+        [DefaultValue(10)]
         public virtual int LineSize { get { return _LineSize; } set { _LineSize = value; Refresh(); } }
 
         #endregion
 
+        /// <summary>
+        /// Raises the <see cref="E:ValueChanged" /> event.
+        /// </summary>
+        /// <param name="e">The <see cref="XBarEventArgs"/> instance containing the event data.</param>
         public virtual void OnValueChanged(XBarEventArgs e)
         {
             ValueChanged?.Invoke(this, e);
         }
 
+        /// <summary>
+        /// Gets a bar value from the cursor position.
+        /// </summary>
+        /// <param name="cursor">The cursor position.</param>
         public int GetValueByCursor(Point cursor)
         {
             switch(Type)
@@ -90,13 +143,13 @@ namespace PearXLib.Engine
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            Focused = false;
+            focus = false;
             Refresh();
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            Focused = true;
+            focus = true;
             Refresh();
         }
 
@@ -119,7 +172,7 @@ namespace PearXLib.Engine
 
         private void OnPaint(object sender, PaintEventArgs e)
         {
-            Color cPointer = Focused ? PointerFocusedColor : PointerColor;
+            Color cPointer = focus ? PointerFocusedColor : PointerColor;
             switch (Type)
             {
                 case TrackbarType.Horizontal:
@@ -138,15 +191,19 @@ namespace PearXLib.Engine
         }
     }
 
+    /// <summary>
+    /// Type of the <see cref="XTrackbar"/>.
+    /// </summary>
     public enum TrackbarType
     {
+        /// <summary>
+        /// The horizontal bar.
+        /// </summary>
         Horizontal = 0,
-        Vertical = 1
-    }
 
-    public class TrackbarEventArgs
-    {
-        public int Maximum { get; set; }
-        public int Value { get; set; }
+        /// <summary>
+        /// The vertical bar.
+        /// </summary>
+        Vertical = 1
     }
 }
