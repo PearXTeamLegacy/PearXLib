@@ -10,8 +10,8 @@ namespace PearXLib.Engine
     /// XBar Event Handler.
     /// </summary>
     /// <param name="sender">The sender.</param>
-    /// <param name="e">The <see cref="XBarEventArgs"/> instance containing the event data.</param>
-    public delegate void XBarEventHandler(object sender, XBarEventArgs e);
+    /// <param name="e">The <see cref="BarEventArgs"/> instance containing the event data.</param>
+    public delegate void BarEventHandler(object sender, BarEventArgs e);
 
     /// <summary>
     /// A beautiful progress bar from PearXLib.
@@ -40,7 +40,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Performs on bar value changed.
         /// </summary>
-        public event XBarEventHandler ValueChanged;
+        public event BarEventHandler ValueChanged;
 
         /// <summary>
         /// Progress value.
@@ -49,8 +49,10 @@ namespace PearXLib.Engine
         public virtual int Value
         {
             get { return _Value; }
-            set 
+            set
             {
+                int i = _Value;
+
                 if (value < Maximum)
                 {
                     _Value = value; Refresh();
@@ -59,7 +61,7 @@ namespace PearXLib.Engine
                 {
                     _Value = Maximum; Refresh();
                 }
-                OnValueChanged(new XBarEventArgs(Value, Maximum));
+                OnValueChanged(new BarEventArgs(Value, Maximum, i));
             }
         }
 
@@ -123,8 +125,8 @@ namespace PearXLib.Engine
         /// <summary>
         /// Raises the <see cref="E:ValueChanged" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="XBarEventArgs"/> instance containing the event data.</param>
-        public void OnValueChanged(XBarEventArgs e)
+        /// <param name="e">The <see cref="BarEventArgs"/> instance containing the event data.</param>
+        public void OnValueChanged(BarEventArgs e)
         {
            ValueChanged?.Invoke(this, e); 
         }
@@ -149,17 +151,18 @@ namespace PearXLib.Engine
     /// <summary>
     /// XBar event arguments
     /// </summary>
-    public class XBarEventArgs
+    public class BarEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="XBarEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="BarEventArgs"/> class.
         /// </summary>
         /// <param name="val">Bar's value.</param>
         /// <param name="max">Bar's maximum value.</param>
-        public XBarEventArgs(int val, int max)
+        public BarEventArgs(int val, int max, int oldVal)
         {
             Value = val;
             Maximal = max;
+            OldValue = oldVal;
             InPercents = MathsUtils.GetInPercents(max, val);
         }
 
@@ -167,6 +170,8 @@ namespace PearXLib.Engine
         /// Bar's value.
         /// </summary>
         public int Value { get; private set; }
+
+        public int OldValue { get; private set; }
 
         /// <summary>
         /// Maximal bar's value.

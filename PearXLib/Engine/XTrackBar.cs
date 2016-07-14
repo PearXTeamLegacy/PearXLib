@@ -40,7 +40,7 @@ namespace PearXLib.Engine
         /// <summary>
         /// Occurs when <see cref="Value"/> changed.
         /// </summary>
-        public event XBarEventHandler ValueChanged;
+        public event BarEventHandler ValueChanged;
 
         /// <summary>
         /// A type of the TrackBar.
@@ -81,13 +81,14 @@ namespace PearXLib.Engine
             get { return _Value; }
             set
             {
+                int i = _Value;
                 if (value < 0)
                     value = 0;
                 if (value > Maximum)
                     value = Maximum;
                 _Value = value;
-                OnValueChanged(new XBarEventArgs(Value, Maximum));
                 Refresh();
+                OnValueChanged(new BarEventArgs(Value, Maximum, i));
             } 
             
         }
@@ -115,8 +116,8 @@ namespace PearXLib.Engine
         /// <summary>
         /// Raises the <see cref="E:ValueChanged" /> event.
         /// </summary>
-        /// <param name="e">The <see cref="XBarEventArgs"/> instance containing the event data.</param>
-        public virtual void OnValueChanged(XBarEventArgs e)
+        /// <param name="e">The <see cref="BarEventArgs"/> instance containing the event data.</param>
+        public virtual void OnValueChanged(BarEventArgs e)
         {
             ValueChanged?.Invoke(this, e);
         }
