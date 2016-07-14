@@ -26,16 +26,6 @@ namespace PearXLib
          */
 
         /// <summary>
-        /// PearXLib version.
-        /// </summary>
-        private const string Version = "14.07.2016";
-
-        /// <summary>
-        /// Directory separator.
-        /// </summary>
-        public static char s = Path.DirectorySeparatorChar;
-
-        /// <summary>
         /// For TextBox.
         /// </summary>
         /// <param name="e">Arguments</param>
@@ -101,7 +91,7 @@ namespace PearXLib
         public static string GetDateTimeNow()
         {
             DateTime dt = DateTime.Now;
-            return dt.ToString("dd.MM.yyyy_HH-mm-ss");
+            return dt.ToString("yyyy.MM.dd_HH-mm-ss");
         }
 
         /// <summary>
@@ -115,22 +105,6 @@ namespace PearXLib
             int w = parent.Location.X + (parent.Size.Width - child.Size.Width)/2;
             int h = parent.Location.Y + (parent.Size.Height - child.Size.Height)/2;
             return new Point(w, h);
-        }
-
-        /// <summary>
-        /// Is cursor located on the element?
-        /// </summary>
-        /// <param name="startPoint">Start point(ex. - Location).</param>
-        /// <param name="endPoint">End point(ex. - Location + Size).</param>
-        /// <returns></returns>
-        public static bool IsCursorOnElement(Point startPoint, Point endPoint)
-        {
-            if (Control.MousePosition.X >= startPoint.X && Control.MousePosition.X <= endPoint.X &&
-                Control.MousePosition.Y >= startPoint.Y && Control.MousePosition.Y <= endPoint.Y)
-            {
-                return true;
-            }
-            return false;
         }
 
         /// <summary>
@@ -154,15 +128,6 @@ namespace PearXLib
             byte[] ascii = Encoding.ASCII.GetBytes(str);
             byte[] hashed = MD5.Create().ComputeHash(ascii);
             return BitConverter.ToString(hashed).Replace("-", "").ToLower();
-        }
-
-        /// <summary>
-        /// Gets the PearXLib's version.
-        /// </summary>
-        /// <returns>PearXLib version</returns>
-        public static string GetVersion()
-        {
-            return Version;
         }
 
         /// <summary>

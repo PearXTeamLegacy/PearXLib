@@ -37,7 +37,7 @@ namespace PearXLib
         /// </summary>
         public static string pxDir
         {
-            get { return documents + PXL.s + "PearX"; }
+            get { return documents + "/PearX"; }
         }
     }
 }
