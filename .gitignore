@@ -1,3 +1,5 @@
 PearXLib/obj/*
 PearXLib/bin/*
 .vs/*
+.directory
+*.userprefs

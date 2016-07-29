@@ -1,9 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PearXLib", "PearXLib\PearXLib.csproj", "{327BE810-0846-4D27-8F56-B90FEA81E842}"
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PearXLib", "PearXLib\PearXLib.csproj", "{4176C1E5-6FF0-44C1-B659-C248B6A743CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +9,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{327BE810-0846-4D27-8F56-B90FEA81E842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{327BE810-0846-4D27-8F56-B90FEA81E842}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{327BE810-0846-4D27-8F56-B90FEA81E842}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{327BE810-0846-4D27-8F56-B90FEA81E842}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		{4176C1E5-6FF0-44C1-B659-C248B6A743CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4176C1E5-6FF0-44C1-B659-C248B6A743CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4176C1E5-6FF0-44C1-B659-C248B6A743CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4176C1E5-6FF0-44C1-B659-C248B6A743CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

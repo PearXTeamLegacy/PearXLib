@@ -1,195 +1,67 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{327BE810-0846-4D27-8F56-B90FEA81E842}</ProjectGuid>
+    <ProjectGuid>{4176C1E5-6FF0-44C1-B659-C248B6A743CF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PearXLib</RootNamespace>
     <AssemblyName>PearXLib</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <Description>An open-source library for all PearX Team's projects.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\PearXLib.XML</DocumentationFile>
-    <Prefer32Bit>false</Prefer32Bit>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\PearXLib.xml</DocumentationFile>
+    <ConsolePause>false</ConsolePause>
+    <LangVersion>6</LangVersion>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>BeforeBuild</type>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EncodingAlgorithms\PXInterference.cs" />
-    <Compile Include="EncodingAlgorithms\PXMultiple.cs" />
-    <Compile Include="d.cs" />
-    <Compile Include="Engine\Bases\XFormBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Engine\XTrackbar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\CompactInvItem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Flat\FlatBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Flat\FlatButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Flat\FlatCheckbox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Flat\FlatForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Engine\Flat\FlatLabel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\FormBox.cs" />
-    <Compile Include="Engine\FormIcons.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FormIcons.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Engine\Indicator.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Bases\InvItemBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\ListBoxSelectLang.cs" />
-    <Compile Include="Engine\OutsideForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Engine\TooltipForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Engine\XButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Bases\XButtonBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Bases\XCheckboxBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Bases\XControlBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Engine\InvItem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XImgCheckbox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XImgButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XIcon.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\XLabel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Engine\Bases\XTextControlBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Extensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PXL.cs" />
+    <Compile Include="D.cs" />
     <Compile Include="FileUtils.cs" />
+    <Compile Include="PCUtils.cs" />
+    <Compile Include="RamInfo.cs" />
     <Compile Include="FlatColors.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
-    <Compile Include="MathsUtils.cs" />
-    <Compile Include="PCUtils.cs" />
-    <Compile Include="PXL.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MathUtils.cs" />
     <Compile Include="RandomUtils.cs" />
     <Compile Include="SocialUtils.cs" />
     <Compile Include="WebUtils.cs" />
+    <Compile Include="EncodingAlgorithms\PXInterference.cs" />
+    <Compile Include="EncodingAlgorithms\PXMultiple.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Engine\FormIcons.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>FormIcons.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="EncodingAlgorithms\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CloseBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CloseBoxFocused.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MaximizeBoxFocused.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MaximizeBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ToTrayBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ToTrayBoxFocused.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BarImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DialogWarn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DialogError.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DialogQuestion.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DialogInfo.png" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="" IncludeInNewFiles="True" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>
