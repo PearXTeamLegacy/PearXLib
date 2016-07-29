@@ -11,6 +11,11 @@ namespace PearXLib
 	    readonly string logPath;
 
 		/// <summary>
+		/// Out this log to console?
+		/// </summary>
+		public bool OutToConsole { get; set; }
+
+		/// <summary>
 		/// Log changed handler.
 		/// </summary>
 		/// <param name="sender">Sender</param>
@@ -32,12 +37,14 @@ namespace PearXLib
 		/// </summary>
 		/// <param name="logpath">Path to the log file.</param>
 		/// <param name="force">If true, removes old log file.</param>
-		public Logging(string logpath, bool force = false)
+		/// <param name="outToConsole">Out this log to console?</param>
+		public Logging(string logpath, bool outToConsole, bool force = false)
 		{
 			Directory.CreateDirectory(Path.GetDirectoryName(logpath));
 			if (force)
 				File.Delete(logpath);
 			logPath = logpath;
+			OutToConsole = outToConsole;
 		}
 
 		/// <summary>
@@ -74,6 +81,9 @@ namespace PearXLib
 			string newStr = "[" + DateTime.Now + "]" + prefix + line + "\n";
 			Log += newStr;
 			File.AppendAllText(logPath, newStr);
+
+			if (OutToConsole)
+				Console.WriteLine(newStr);
 
 			LogChanged?.Invoke(this, newStr);
 		}
