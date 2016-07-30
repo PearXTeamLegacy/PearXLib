@@ -123,5 +123,21 @@ namespace PearXLib
 			}
 			return template;
 		}
+
+		/// <summary>
+		/// Generates a random <see cref="long"/>.
+		/// </summary>
+		/// <returns>The random long.</returns>
+		/// <param name="rand">Your random</param>
+		/// <param name="max">Inclusive maximum value.</param>
+		/// <param name="min">Inclusive minimum value.</param>
+		public static long NextLong(this Random rand, long max, long min = 0)
+		{
+			byte[] buf = new byte[8];
+			rand.NextBytes(buf);
+			long longRand = BitConverter.ToInt64(buf, 0);
+
+			return (Math.Abs(longRand % ((max + 1) - min)) + min);
+		}
 	}
 }
