@@ -50,9 +50,13 @@
     <Compile Include="WebUtils.cs" />
     <Compile Include="EncodingAlgorithms\PXInterference.cs" />
     <Compile Include="EncodingAlgorithms\PXMultiple.cs" />
+    <Compile Include="GoogleApis\GoogleShortener.cs" />
+    <Compile Include="GoogleApis\GoogleUtils.cs" />
+    <Compile Include="GoogleApis\GoogleImageSearch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
+    <Folder Include="GoogleApis\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

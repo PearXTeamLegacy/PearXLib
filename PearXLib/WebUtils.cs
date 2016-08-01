@@ -30,9 +30,31 @@ namespace PearXLib
 			{
 				reqStream.Write(bytes, 0, bytes.Length);
 			}
-			using (StreamReader sr = new StreamReader(wr.GetResponse().GetResponseStream()))
+			using (WebResponse resp = wr.GetResponse())
 			{
-				return sr.ReadToEnd().Trim();
+				using (StreamReader sr = new StreamReader(resp.GetResponseStream()))
+				{
+					return sr.ReadToEnd().Trim();
+				}
+			}
+		}
+
+		/// <summary>
+		/// Sends a GET request.
+		/// </summary>
+		/// <returns>The response string.</returns>
+		/// <param name="url">URL.</param>
+		public static string SendGetRequest(string url)
+		{
+			WebRequest req = WebRequest.Create(url);
+			req.Proxy = new WebProxy();
+
+			using (WebResponse resp = req.GetResponse())
+			{
+				using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
+				{
+					return reader.ReadToEnd().Trim();
+				}
 			}
 		}
 
@@ -52,35 +74,5 @@ namespace PearXLib
 				return false;
 			}
 		}
-
-		/// <summary>
-		/// Shorts an URL. Returns JSON! De-serialize it with <![CDATA[JsonConvert.DeserializeObject<GoogleShortener>(string)]]>
-		/// </summary>
-		/// <param name="url">Full URL</param>
-		/// <param name="apiKey">Google API Key</param>
-		/// <returns>Shorten URL in JSON format</returns>
-		public static string ShortURL(string url, string apiKey)
-		{
-			return SendPOSTRequest("https://www.googleapis.com/urlshortener/v1/url?key=" + apiKey, "{\"longUrl\": \"" + url + "\"}", "application/json");
-		}
-	}
-
-	/// <summary>
-	/// A class for deserialized goo.gl response
-	/// </summary>
-	public class GoogleShortener
-	{
-		/// <summary>
-		/// ?
-		/// </summary>
-		public string kind { get; set; }
-		/// <summary>
-		/// Short URL
-		/// </summary>
-		public string id { get; set; }
-		/// <summary>
-		/// Long URL
-		/// </summary>
-		public string longUrl { get; set; }
 	}
 }
