@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web;
+
 namespace PearXLib.GoogleApis
 {
 	public class GoogleUtils
@@ -23,7 +25,8 @@ namespace PearXLib.GoogleApis
 		/// <param name="searchID">Google Custom Search ID.</param>
 		public static string SearchImages(string query, string apiKey, string searchID)
 		{
-			return WebUtils.SendGetRequest($"https://www.googleapis.com/customsearch/v1?key={apiKey}&q={query}&searchType=image&alt=json&cx={searchID}");
+			string q = HttpUtility.UrlEncode(query.Replace("&", " "));
+			return WebUtils.SendGetRequest($"https://www.googleapis.com/customsearch/v1?key={apiKey}&q={q}&searchType=image&alt=json&cx={searchID}");
 		}
 	}
 }

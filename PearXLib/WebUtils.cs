@@ -46,16 +46,8 @@ namespace PearXLib
 		/// <param name="url">URL.</param>
 		public static string SendGetRequest(string url)
 		{
-			WebRequest req = WebRequest.Create(url);
-			req.Proxy = new WebProxy();
-
-			using (WebResponse resp = req.GetResponse())
-			{
-				using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
-				{
-					return reader.ReadToEnd().Trim();
-				}
-			}
+			using (WebClient c = new WebClient())
+				return c.DownloadString(url);
 		}
 
 		/// <summary>
