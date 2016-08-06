@@ -74,7 +74,7 @@ namespace PearXLib
 			req.Method = "HEAD";
 			using (var resp = req.GetResponse())
 			{
-				return resp.Headers[HttpRequestHeader.ContentLocation];
+				return resp.Headers["Location"];
 			}
 		}
 	}
