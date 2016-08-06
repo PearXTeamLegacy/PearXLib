@@ -66,5 +66,16 @@ namespace PearXLib
 				return false;
 			}
 		}
+
+		public static string GetRedirectUrl(string url)
+		{
+			var req = (HttpWebRequest)WebRequest.Create(url);
+			req.AllowAutoRedirect = false;
+			req.Method = "HEAD";
+			using (var resp = req.GetResponse())
+			{
+				return resp.Headers[HttpRequestHeader.ContentLocation];
+			}
+		}
 	}
 }

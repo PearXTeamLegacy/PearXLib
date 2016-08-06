@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Drawing;
+using System.Numerics;
 
 namespace PearXLib
 {
@@ -60,6 +61,19 @@ namespace PearXLib
 		public static double GetInPercents(double maximum, double value)
 		{
 			return value / (maximum / 100);
+		}
+
+		/// <summary>
+		/// Gets the distance between two points.
+		/// </summary>
+		/// <returns>The distance between two points.</returns>
+		/// <param name="p1">First point.</param>
+		/// <param name="p2">Second point.</param>
+		public static double GetPointDistance(Point p1, Point p2)
+		{
+			int x = p1.X - p2.X;
+			int y = p1.Y - p2.Y;
+			return (x * x + y * y);
 		}
 	}
 

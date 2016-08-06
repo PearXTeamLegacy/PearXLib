@@ -34,6 +34,9 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Web" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\test\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,10 +57,17 @@
     <Compile Include="GoogleApis\GoogleShortener.cs" />
     <Compile Include="GoogleApis\GoogleUtils.cs" />
     <Compile Include="GoogleApis\GoogleImageSearch.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Wiki\WikiUtils.cs" />
+    <Compile Include="Wiki\WikiSummaryResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
     <Folder Include="GoogleApis\" />
+    <Folder Include="Wiki\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
