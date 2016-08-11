@@ -163,7 +163,7 @@ namespace PearXLib.Engine
             Value = val;
             Maximal = max;
             OldValue = oldVal;
-            InPercents = MathsUtils.GetInPercents(max, val);
+            InPercents = MathUtils.GetInPercents(max, val);
         }
 
         /// <summary>
