@@ -37,6 +37,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\test\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,14 +61,45 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Wiki\WikiUtils.cs" />
     <Compile Include="Wiki\WikiSummaryResponse.cs" />
+    <Compile Include="Engine\Bases\XButtonBase.cs" />
+    <Compile Include="Engine\Bases\XCheckboxBase.cs" />
+    <Compile Include="Engine\Bases\XControlBase.cs" />
+    <Compile Include="Engine\Bases\XFormBase.cs" />
+    <Compile Include="Engine\Bases\XTextControlBase.cs" />
+    <Compile Include="Engine\Flat\FlatBar.cs" />
+    <Compile Include="Engine\Flat\FlatButton.cs" />
+    <Compile Include="Engine\Flat\FlatCheckbox.cs" />
+    <Compile Include="Engine\Flat\FlatForm.cs" />
+    <Compile Include="Engine\Flat\FlatLabel.cs" />
+    <Compile Include="Engine\Bases\InvItemBase.cs" />
+    <Compile Include="Engine\CompactInvItem.cs" />
+    <Compile Include="Engine\FormBox.cs" />
+    <Compile Include="Engine\FormIcons.Designer.cs" />
+    <Compile Include="Engine\Indicator.cs" />
+    <Compile Include="Engine\InvItem.cs" />
+    <Compile Include="Engine\ListBoxSelectLang.cs" />
+    <Compile Include="Engine\OutsideForm.cs" />
+    <Compile Include="Engine\TooltipForm.cs" />
+    <Compile Include="Engine\XBar.cs" />
+    <Compile Include="Engine\XButton.cs" />
+    <Compile Include="Engine\XForm.cs" />
+    <Compile Include="Engine\XIcon.cs" />
+    <Compile Include="Engine\XImgButton.cs" />
+    <Compile Include="Engine\XImgCheckbox.cs" />
+    <Compile Include="Engine\XLabel.cs" />
+    <Compile Include="Engine\XTrackbar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
     <Folder Include="GoogleApis\" />
     <Folder Include="Wiki\" />
+    <Folder Include="Engine\" />
+    <Folder Include="Engine\Bases\" />
+    <Folder Include="Engine\Flat\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Engine\FormIcons.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -79,4 +111,4 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-</Project>
+</Project> 
