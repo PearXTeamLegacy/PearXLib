@@ -83,6 +83,10 @@ namespace PearXLib.Engine.Bases
 		/// </summary>
 		public virtual CheckboxState State { get; private set; } = CheckboxState.None;
 
+		/// <summary>
+		/// Gets or sets the cursor.
+		/// </summary>
+		/// <value>The cursor.</value>
 		[DefaultValue(typeof(Cursor), "Hand")]
 		public override Cursor Cursor { get; set; } = Cursors.Hand;
 

@@ -67,6 +67,11 @@ namespace PearXLib
 			}
 		}
 
+		/// <summary>
+		/// Gets the redirect URL from URL.
+		/// </summary>
+		/// <returns>The redirect URL.</returns>
+		/// <param name="url">URL.</param>
 		public static string GetRedirectUrl(string url)
 		{
 			var req = (HttpWebRequest)WebRequest.Create(url);

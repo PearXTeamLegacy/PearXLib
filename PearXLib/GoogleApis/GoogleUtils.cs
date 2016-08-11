@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace PearXLib.GoogleApis
 {
+	/// <summary>
+	/// PearXLib's Google API Utils.
+	/// </summary>
 	public class GoogleUtils
 	{
 		/// <summary>
