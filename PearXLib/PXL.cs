@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace PearXLib
 {
@@ -15,7 +16,7 @@ namespace PearXLib
 		/// Gets the PearXLib version.
 		/// </summary>
 		/// <value>The PearXLib version.</value>
-		public static string Version => "2.1.0";
+		public static string Version => "2.2.0";
 
 		/// <summary>
 		/// Creates a shortcut.
@@ -30,18 +31,6 @@ namespace PearXLib
 			sb.AppendLine("IconFile=" + path);
 			sb.AppendLine("IconIndex=0");
 			File.WriteAllText(filePath + ".url", sb.ToString());
-		}
-
-		/// <summary>
-		/// Replaces a first occurrence in the string.
-		/// </summary>
-		/// <param name="str">Input string.</param>
-		/// <param name="replaceFrom">Replace from...</param>
-		/// <param name="replaceTo">Replace to...</param>
-		public static void ReplaceFirst(ref string str, string replaceFrom, string replaceTo)
-		{
-			int p = str.IndexOf(replaceFrom, StringComparison.Ordinal);
-			str = str.Substring(0, p) + replaceTo + str.Substring(p + replaceFrom.Length);
 		}
 
 		/// <summary>
@@ -138,10 +127,24 @@ namespace PearXLib
 			}
 			return new PointF(x, y);
 		}
-	}
 
-	/// <summary>
-	/// An empty delegate. Special for you =).
-	/// </summary>
-	public delegate void EmptyDelegate();
+		/// <summary>
+		/// For TextBox.
+		/// </summary>
+		/// <param name="e">Arguments</param>
+		/// <returns>True or false.</returns>
+		public static bool IsNumberKey(KeyPressEventArgs e)
+		{
+			if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// An empty delegate. Special for you =).
+		/// </summary>
+		public delegate void EmptyDelegate();
+	}
 }

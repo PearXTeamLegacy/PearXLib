@@ -28,6 +28,25 @@
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\PearXLib.xml</DocumentationFile>
+    <ConsolePause>false</ConsolePause>
+    <LangVersion>6</LangVersion>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>BeforeBuild</type>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -88,6 +107,8 @@
     <Compile Include="Engine\XImgCheckbox.cs" />
     <Compile Include="Engine\XLabel.cs" />
     <Compile Include="Engine\XTrackbar.cs" />
+    <Compile Include="Alphabets.cs" />
+    <Compile Include="TextUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
