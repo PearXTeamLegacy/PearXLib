@@ -68,7 +68,6 @@
     <Compile Include="FlatColors.cs" />
     <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
-    <Compile Include="MathUtils.cs" />
     <Compile Include="RandomUtils.cs" />
     <Compile Include="SocialUtils.cs" />
     <Compile Include="WebUtils.cs" />
@@ -109,6 +108,8 @@
     <Compile Include="Engine\XTrackbar.cs" />
     <Compile Include="Alphabets.cs" />
     <Compile Include="TextUtils.cs" />
+    <Compile Include="Maths\MathUtils.cs" />
+    <Compile Include="Maths\SquareBezier.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
@@ -117,6 +118,7 @@
     <Folder Include="Engine\" />
     <Folder Include="Engine\Bases\" />
     <Folder Include="Engine\Flat\" />
+    <Folder Include="Maths\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -141,10 +141,9 @@ namespace PearXLib
 			}
 			return false;
 		}
-
-		/// <summary>
-		/// An empty delegate. Special for you =).
-		/// </summary>
-		public delegate void EmptyDelegate();
 	}
+	/// <summary>
+	/// An empty delegate. Special for you =).
+	/// </summary>
+	public delegate void EmptyDelegate();
 }
