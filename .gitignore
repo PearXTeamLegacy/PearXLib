@@ -3,3 +3,4 @@ PearXLib/bin/*
 .vs/*
 .directory
 *.userprefs
+packages/*

@@ -53,10 +53,10 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Web" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\test\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,10 +119,24 @@
     <Folder Include="Engine\Bases\" />
     <Folder Include="Engine\Flat\" />
     <Folder Include="Maths\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\BarImage.png" />
+    <None Include="Resources\CloseBox.png" />
+    <None Include="Resources\CloseBoxFocused.png" />
+    <None Include="Resources\DialogError.png" />
+    <None Include="Resources\DialogInfo.png" />
+    <None Include="Resources\DialogQuestion.png" />
+    <None Include="Resources\DialogWarn.png" />
+    <None Include="Resources\MaximizeBox.png" />
+    <None Include="Resources\MaximizeBoxFocused.png" />
+    <None Include="Resources\ToTrayBox.png" />
+    <None Include="Resources\ToTrayBoxFocused.png" />
     <None Include="packages.config" />
-    <None Include="Engine\FormIcons.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Engine\FormIcons.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
