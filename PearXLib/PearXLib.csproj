@@ -110,6 +110,7 @@
     <Compile Include="TextUtils.cs" />
     <Compile Include="Maths\MathUtils.cs" />
     <Compile Include="Maths\SquareBezier.cs" />
+    <Compile Include="Gloria\Enums\Key.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
@@ -120,6 +121,8 @@
     <Folder Include="Engine\Flat\" />
     <Folder Include="Maths\" />
     <Folder Include="Resources\" />
+    <Folder Include="Gloria\" />
+    <Folder Include="Gloria\Enums\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BarImage.png" />
