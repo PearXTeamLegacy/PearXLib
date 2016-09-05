@@ -8,6 +8,7 @@
     <RootNamespace>PearXLib</RootNamespace>
     <AssemblyName>PearXLib</AssemblyName>
     <Description>An open-source library for all PearX Team's projects.</Description>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,7 +56,7 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +80,11 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Wiki\WikiUtils.cs" />
     <Compile Include="Wiki\WikiSummaryResponse.cs" />
+    <Compile Include="Alphabets.cs" />
+    <Compile Include="TextUtils.cs" />
+    <Compile Include="Maths\MathUtils.cs" />
+    <Compile Include="Maths\SquareBezier.cs" />
+    <Compile Include="Engine\Bases\InvItemBase.cs" />
     <Compile Include="Engine\Bases\XButtonBase.cs" />
     <Compile Include="Engine\Bases\XCheckboxBase.cs" />
     <Compile Include="Engine\Bases\XControlBase.cs" />
@@ -89,7 +95,6 @@
     <Compile Include="Engine\Flat\FlatCheckbox.cs" />
     <Compile Include="Engine\Flat\FlatForm.cs" />
     <Compile Include="Engine\Flat\FlatLabel.cs" />
-    <Compile Include="Engine\Bases\InvItemBase.cs" />
     <Compile Include="Engine\CompactInvItem.cs" />
     <Compile Include="Engine\FormBox.cs" />
     <Compile Include="Engine\FormIcons.Designer.cs" />
@@ -106,23 +111,16 @@
     <Compile Include="Engine\XImgCheckbox.cs" />
     <Compile Include="Engine\XLabel.cs" />
     <Compile Include="Engine\XTrackbar.cs" />
-    <Compile Include="Alphabets.cs" />
-    <Compile Include="TextUtils.cs" />
-    <Compile Include="Maths\MathUtils.cs" />
-    <Compile Include="Maths\SquareBezier.cs" />
-    <Compile Include="Gloria\Enums\Key.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
     <Folder Include="GoogleApis\" />
     <Folder Include="Wiki\" />
     <Folder Include="Engine\" />
-    <Folder Include="Engine\Bases\" />
-    <Folder Include="Engine\Flat\" />
     <Folder Include="Maths\" />
     <Folder Include="Resources\" />
-    <Folder Include="Gloria\" />
-    <Folder Include="Gloria\Enums\" />
+    <Folder Include="Engine\Bases\" />
+    <Folder Include="Engine\Flat\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BarImage.png" />
