@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using Newtonsoft.Json;
 
 namespace PearXLib.GoogleApis
@@ -27,10 +28,11 @@ namespace PearXLib.GoogleApis
 		/// <param name="query">Search query.</param>
 		/// <param name="apiKey">Google API key.</param>
 		/// <param name="searchID">Google Custom Search ID.</param>
-		public static GoogleImageSearch.RootObject SearchImages(string query, string apiKey, string searchID)
+		public static GoogleImageSearch.RootObject SearchImages(string query, string apiKey, string searchID, int start = 1)
 		{
 			string q = HttpUtility.UrlEncode(query.Replace("&", " "));
-			string s = WebUtils.SendGetRequest($"https://www.googleapis.com/customsearch/v1?key={apiKey}&q={q}&searchType=image&alt=json&cx={searchID}");
+			string str = $"https://www.googleapis.com/customsearch/v1?key={apiKey}&q={q}&searchType=image&alt=json&start={start.ToString()}&cx={searchID}";
+			string s = WebUtils.SendGetRequest(str);
 			return JsonConvert.DeserializeObject<GoogleImageSearch.RootObject>(s);
 		}
 	}
