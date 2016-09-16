@@ -2,7 +2,7 @@
 using System.Web;
 using Newtonsoft.Json;
 
-namespace PearXLib.GoogleApis
+namespace PearXLib.WebServices.GoogleApis
 {
 	/// <summary>
 	/// PearXLib's Google API Utils.
@@ -17,7 +17,7 @@ namespace PearXLib.GoogleApis
 		/// <returns>Shorten URL in JSON format</returns>
 		public static GoogleShortener ShortURL(string url, string apiKey)
 		{
-			string s = WebUtils.SendPOSTRequest("https://www.googleapis.com/urlshortener/v1/url?key=" + apiKey, "{\"longUrl\": \"" + url + "\"}", "application/json");
+			string s = WebUtils.SendRequest("https://www.googleapis.com/urlshortener/v1/url?key=" + apiKey, "POST", "{\"longUrl\": \"" + url + "\"}", "application/json");
 			return JsonConvert.DeserializeObject<GoogleShortener>(s);
 		}
 
@@ -30,7 +30,7 @@ namespace PearXLib.GoogleApis
 		/// <param name="searchID">Google Custom Search ID.</param>
 		public static GoogleImageSearch.RootObject SearchImages(string query, string apiKey, string searchID, int start = 1)
 		{
-			string q = HttpUtility.UrlEncode(query.Replace("&", " "));
+			string q = Uri.EscapeUriString(query.Replace("&", " "));
 			string str = $"https://www.googleapis.com/customsearch/v1?key={apiKey}&q={q}&searchType=image&alt=json&start={start.ToString()}&cx={searchID}";
 			string s = WebUtils.SendGetRequest(str);
 			return JsonConvert.DeserializeObject<GoogleImageSearch.RootObject>(s);

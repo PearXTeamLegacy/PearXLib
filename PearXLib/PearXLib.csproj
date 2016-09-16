@@ -8,7 +8,6 @@
     <RootNamespace>PearXLib</RootNamespace>
     <AssemblyName>PearXLib</AssemblyName>
     <Description>An open-source library for all PearX Team's projects.</Description>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,10 +52,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\DiscoVK\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +74,6 @@
     <Compile Include="WebUtils.cs" />
     <Compile Include="EncodingAlgorithms\PXInterference.cs" />
     <Compile Include="EncodingAlgorithms\PXMultiple.cs" />
-    <Compile Include="GoogleApis\GoogleShortener.cs" />
-    <Compile Include="GoogleApis\GoogleUtils.cs" />
-    <Compile Include="GoogleApis\GoogleImageSearch.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Wiki\WikiUtils.cs" />
     <Compile Include="Wiki\WikiSummaryResponse.cs" />
@@ -111,16 +108,24 @@
     <Compile Include="Engine\XImgCheckbox.cs" />
     <Compile Include="Engine\XLabel.cs" />
     <Compile Include="Engine\XTrackbar.cs" />
+    <Compile Include="WebServices\Wolfram\Wolfram.cs" />
+    <Compile Include="WebServices\Wolfram\WolframOut.cs" />
+    <Compile Include="WebServices\PXDiscord.cs" />
+    <Compile Include="WebServices\GoogleApis\GoogleImageSearch.cs" />
+    <Compile Include="WebServices\GoogleApis\GoogleShortener.cs" />
+    <Compile Include="WebServices\GoogleApis\GoogleUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
-    <Folder Include="GoogleApis\" />
     <Folder Include="Wiki\" />
     <Folder Include="Engine\" />
     <Folder Include="Maths\" />
     <Folder Include="Resources\" />
     <Folder Include="Engine\Bases\" />
     <Folder Include="Engine\Flat\" />
+    <Folder Include="WebServices\" />
+    <Folder Include="WebServices\Wolfram\" />
+    <Folder Include="WebServices\GoogleApis\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BarImage.png" />

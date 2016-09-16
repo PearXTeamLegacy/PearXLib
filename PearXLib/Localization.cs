@@ -80,6 +80,7 @@ namespace PearXLib
 				if (s.Substring(0, 1) == "#") continue;
 
 				int p = s.IndexOf("=", StringComparison.Ordinal);
+				s.Replace("\\n\\", "\n");
 				nms.Add(s.Substring(0, p), s.Substring(p + 1, s.Length - p - 1));
 			}
 		}

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Web;
 using Newtonsoft.Json;
 
@@ -19,7 +20,7 @@ namespace PearXLib.Wiki
 		{
 			using (WebClient c = new WebClient())
 			{
-				string nm = HttpUtility.UrlEncode(name);
+				string nm = Uri.EscapeUriString(name);
 				string s = c.DownloadString(apiPhp + "?format=json&action=query&prop=extracts&exintro=&explaintext=&redirects=&titles=" + nm);
 				return JsonConvert.DeserializeObject<WikiSummaryResponse.RootObject>(s);
 			}

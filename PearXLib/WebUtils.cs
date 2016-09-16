@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -11,16 +12,17 @@ namespace PearXLib
 	public static class WebUtils
 	{
 		/// <summary>
-		/// Sends a POST request to the site.
+		/// Sends a request to the site.
 		/// </summary>
 		/// <param name="url">Site URL.</param>
+		/// <param name="method">Request method.</param>
 		/// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
 		/// <param name="contentType">Your content type.</param>
 		/// <returns>Web response.</returns>
-		public static string SendPOSTRequest(string url, string data, string contentType = "application/x-www-form-urlencoded")
+		public static string SendRequest(string url, string method, string data, string contentType = "application/x-www-form-urlencoded")
 		{
 			WebRequest wr = WebRequest.Create(url);
-			wr.Method = "POST";
+			wr.Method = method;
 			wr.ContentType = contentType;
 			wr.Proxy = new WebProxy();
 
@@ -80,6 +82,22 @@ namespace PearXLib
 			using (var resp = req.GetResponse())
 			{
 				return resp.Headers["Location"];
+			}
+		}
+
+		/// <summary>
+		/// Downloads an image from the Internet.
+		/// </summary>
+		/// <returns>Image.</returns>
+		/// <param name="url">Image URL.</param>
+		public static Image DownloadImage(string url)
+		{
+			using (WebResponse resp = WebRequest.Create(url).GetResponse())
+			{
+				using (var stream = resp.GetResponseStream())
+				{
+					return Image.FromStream(stream);
+				}
 			}
 		}
 	}

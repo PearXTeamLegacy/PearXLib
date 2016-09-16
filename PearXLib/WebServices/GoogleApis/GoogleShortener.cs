@@ -1,4 +1,4 @@
-﻿namespace PearXLib.GoogleApis
+﻿namespace PearXLib.WebServices.GoogleApis
 {
 	/// <summary>
 	/// A class for deserialized goo.gl response

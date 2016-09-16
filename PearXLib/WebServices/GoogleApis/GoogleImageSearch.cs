@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 #pragma warning disable 1591
 
-namespace PearXLib.GoogleApis
+namespace PearXLib.WebServices.GoogleApis
 {
 	/// <summary>
 	/// Class for de-serialized Google Image Search response.

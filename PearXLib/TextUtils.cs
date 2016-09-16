@@ -1,6 +1,9 @@
 ﻿using System;
 namespace PearXLib
 {
+	/// <summary>
+	/// Text utilities from PearXLib.
+	/// </summary>
 	public static class TextUtils
 	{
 		public static string ClearText(string s, string whitelistChars, bool multithreading = true)
@@ -36,7 +39,7 @@ namespace PearXLib
 		/// <summary>
 		/// Turns the specified string. If input is "abcd", output is "dcba"
 		/// </summary>
-		/// <param name="s">S.</param>
+		/// <param name="s">Input string.</param>
 		public static string Turn(string s)
 		{
 			string str = "";

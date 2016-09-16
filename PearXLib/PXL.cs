@@ -16,7 +16,7 @@ namespace PearXLib
     /// Gets the PearXLib version.
     /// </summary>
     /// <value>The PearXLib version.</value>
-    public static string Version => "2.2.0";
+    public static string Version => "2.3.1";
 
     /// <summary>
     /// Creates a shortcut.
