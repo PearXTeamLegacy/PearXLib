@@ -110,7 +110,6 @@
     <Compile Include="Engine\XTrackbar.cs" />
     <Compile Include="WebServices\Wolfram\Wolfram.cs" />
     <Compile Include="WebServices\Wolfram\WolframOut.cs" />
-    <Compile Include="WebServices\PXDiscord.cs" />
     <Compile Include="WebServices\GoogleApis\GoogleImageSearch.cs" />
     <Compile Include="WebServices\GoogleApis\GoogleShortener.cs" />
     <Compile Include="WebServices\GoogleApis\GoogleUtils.cs" />

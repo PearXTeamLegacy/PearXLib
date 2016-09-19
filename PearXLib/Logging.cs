@@ -8,7 +8,7 @@ namespace PearXLib
 	/// </summary>
 	public class Logging
 	{
-	    readonly string logPath;
+		public string LogPath { get; private set; }
 
 		/// <summary>
 		/// Out this log to console?
@@ -43,7 +43,7 @@ namespace PearXLib
 			Directory.CreateDirectory(Path.GetDirectoryName(logpath));
 			if (force)
 				File.Delete(logpath);
-			logPath = logpath;
+			LogPath = logpath;
 			OutToConsole = outToConsole;
 		}
 
@@ -61,7 +61,18 @@ namespace PearXLib
 		/// Adds a line to the log.
 		/// </summary>
 		/// <param name="line">Message text</param>
-		/// <param name="prefix">Prefix (if prefix equals "DEBUG", then log string equals "[DateTime][DEBUG]Message"</param>
+		/// <param name="prefix">Message prefix.</param>
+		/// <param name="lt">Log type</param>
+		public void Add(string line, string prefix, LogType lt)
+		{
+			AddToLog(line, $"[{lt}][{prefix}]");
+		}
+
+		/// <summary>
+		/// Adds a line to the log.
+		/// </summary>
+		/// <param name="line">Message text</param>
+		/// <param name="prefix">Message prefix.</param>
 		public void Add(string line, string prefix)
 		{
 			AddToLog(line, $"[{prefix}]");
@@ -71,16 +82,17 @@ namespace PearXLib
 		/// Adds a line to the log.
 		/// </summary>
 		/// <param name="line">Message text</param>
+		/// <param name="debug">Is this message used for debugging?</param>
 		public void Add(string line)
 		{
 			AddToLog(line, "");
 		}
 
-		private void AddToLog(string line, string prefix)
+		protected void AddToLog(string line, string prefix)
 		{
 			string newStr = "[" + DateTime.Now + "]" + prefix + line + "\n";
 			Log += newStr;
-			File.AppendAllText(logPath, newStr);
+			File.AppendAllText(LogPath, newStr);
 
 			if (OutToConsole)
 				Console.WriteLine(newStr);
@@ -94,21 +106,10 @@ namespace PearXLib
 	/// </summary>
 	public enum LogType
 	{
-		/// <summary>
-		/// Warning!
-		/// </summary>
 		Warning,
-		/// <summary>
-		/// Error!
-		/// </summary>
 		Error,
-		/// <summary>
-		/// Information.
-		/// </summary>
 		Info,
-		/// <summary>
-		/// Other.
-		/// </summary>
-		Other
-	};
+		Other,
+		Debug
+	}
 }

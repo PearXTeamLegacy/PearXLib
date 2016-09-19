@@ -23,14 +23,18 @@ namespace PearXLib
 		{
 			WebRequest wr = WebRequest.Create(url);
 			wr.Method = method;
-			wr.ContentType = contentType;
+			if (!string.IsNullOrEmpty(contentType))
+				wr.ContentType = contentType;
 			wr.Proxy = new WebProxy();
 
-			byte[] bytes = Encoding.ASCII.GetBytes(data);
-			wr.ContentLength = bytes.Length;
-			using (Stream reqStream = wr.GetRequestStream())
+			if (!string.IsNullOrEmpty(data))
 			{
-				reqStream.Write(bytes, 0, bytes.Length);
+				byte[] bytes = Encoding.ASCII.GetBytes(data);
+				wr.ContentLength = bytes.Length;
+				using (Stream reqStream = wr.GetRequestStream())
+				{
+					reqStream.Write(bytes, 0, bytes.Length);
+				}
 			}
 			using (WebResponse resp = wr.GetResponse())
 			{
