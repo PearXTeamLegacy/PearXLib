@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PearXLib</id>
+    <version>1.0.0</version>
+    <authors>PearX Team</authors>
+    <owners>PearX Team</owners>
+    <licenseUrl>https://github.com/PearXTeam/PearXLib/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/PearXTeam/PearXLib</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/PearXTeam/PearXLib/master/logo_pxl.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>An opensource library written on C#. It contains a lot of useful things.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright (c) PearX Team, 2015-2016</copyright>
+    <tags>pearxlib pxl pearxlib webclient flat material design winforms controls</tags>
+  </metadata>
+</package>
