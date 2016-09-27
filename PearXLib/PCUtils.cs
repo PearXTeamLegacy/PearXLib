@@ -23,7 +23,8 @@ namespace PearXLib
 		/// Starts an executable file.
 		/// </summary>
 		/// <param name="path">Path to .exe</param>
-		public static void RunExe(string path, string args)
+		/// <param name="args">Arguments.</param>
+		public static void RunExe(string path, string args = "")
 		{
 			ProcessStartInfo inf = new ProcessStartInfo();
 

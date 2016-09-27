@@ -8,6 +8,9 @@ namespace PearXLib
 	/// </summary>
 	public class Logging
 	{
+		/// <summary>
+		/// Path to the log file.
+		/// </summary>
 		public string LogPath { get; private set; }
 
 		/// <summary>
@@ -82,12 +85,16 @@ namespace PearXLib
 		/// Adds a line to the log.
 		/// </summary>
 		/// <param name="line">Message text</param>
-		/// <param name="debug">Is this message used for debugging?</param>
 		public void Add(string line)
 		{
 			AddToLog(line, "");
 		}
 
+		/// <summary>
+		/// Adds a string to the log file.
+		/// </summary>
+		/// <param name="line">Log line.</param>
+		/// <param name="prefix">Line prefix.</param>
 		protected void AddToLog(string line, string prefix)
 		{
 			string newStr = "[" + DateTime.Now + "]" + prefix + line + "\n";

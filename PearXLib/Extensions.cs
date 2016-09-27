@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
@@ -23,6 +22,11 @@ namespace PearXLib
 				bmp.Save(str, format);
 				return str.ToArray();
 			}
+		}
+
+		public static bool Contains(this string s, char c)
+		{
+			return s.IndexOf(c) != -1;
 		}
 	}
 }

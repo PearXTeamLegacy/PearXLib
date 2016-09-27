@@ -1,0 +1,98 @@
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Threading;
+using PearXLib.Maths;
+
+namespace PearXLib
+{
+	/// <summary>
+	/// An upgraded webclient.
+	/// </summary>
+	public class XWebClient : IDisposable
+	{
+		/// <summary>
+		/// Occurs when download progress changed.
+		/// </summary>
+		public event EventHandler<BytesRecievedEventArgs> ProgressChanged;
+
+		/// <summary>
+		/// Releases all resource used by the <see cref="T:PearXLib.XWebClient"/> object.
+		/// </summary>
+		/// <remarks>Call <see cref="Dispose"/> when you are finished using the <see cref="T:PearXLib.XWebClient"/>. The
+		/// <see cref="Dispose"/> method leaves the <see cref="T:PearXLib.XWebClient"/> in an unusable state. After calling
+		/// <see cref="Dispose"/>, you must release all references to the <see cref="T:PearXLib.XWebClient"/> so the garbage
+		/// collector can reclaim the memory that the <see cref="T:PearXLib.XWebClient"/> was occupying.</remarks>
+		public void Dispose()
+		{
+			ProgressChanged = null;
+		}
+
+		/// <summary>
+		/// Downloads the file.
+		/// </summary>
+		/// <param name="url">File URL.</param>
+		/// <param name="local">Local path.</param>
+		/// <param name="bufferSize">Buffer size.</param>
+		/// <param name="asyncEvents">If set to <c>true</c>, events should be async.</param>
+		public void DownloadFile(string url, string local, int bufferSize = 8192, bool asyncEvents = false)
+		{
+			using (FileStream fs = new FileStream(local, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
+			{
+				WebRequest req = WebRequest.Create(url);
+				using (WebResponse resp = req.GetResponse())
+				{
+					using (Stream str = resp.GetResponseStream())
+					{
+						long size = Convert.ToInt64(resp.Headers[HttpResponseHeader.ContentLength]);
+						byte[] buffer = new byte[bufferSize];
+						int i = 0;
+						long rec = 0;
+						do
+						{
+							i = str.Read(buffer, 0, buffer.Length);
+							rec += i;
+							fs.Write(buffer, 0, i);
+							if (asyncEvents)
+								new Thread(() => { ProgressChanged?.Invoke(this, new BytesRecievedEventArgs(size, rec)); }).Start();
+							else
+								ProgressChanged?.Invoke(this, new BytesRecievedEventArgs(size, rec));
+						} while (i > 0);
+					}
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// Event arguments for downloading.
+	/// </summary>
+	public class BytesRecievedEventArgs : EventArgs
+	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:PearXLib.BytesRecievedEventArgs"/> class.
+		/// </summary>
+		/// <param name="total">Total bytes to download.</param>
+		/// <param name="recieved">Recieved bytes.</param>
+		public BytesRecievedEventArgs(long total, long recieved)
+		{
+			Total = total;
+			Recieved = recieved;
+		}
+		/// <summary>
+		/// Total bytes to download.
+		/// </summary>
+		public long Total { get; set; }
+
+		/// <summary>
+		/// Recieved bytes.
+		/// </summary>
+		public long Recieved { get; set; }
+
+		/// <summary>
+		/// Recieved bytes in percents
+		/// </summary>
+		/// <value>The in percents.</value>
+		public double InPercents => MathUtils.GetInPercents(Total, Recieved);
+	}
+}

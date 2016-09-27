@@ -113,6 +113,7 @@
     <Compile Include="WebServices\GoogleApis\GoogleImageSearch.cs" />
     <Compile Include="WebServices\GoogleApis\GoogleShortener.cs" />
     <Compile Include="WebServices\GoogleApis\GoogleUtils.cs" />
+    <Compile Include="XWebClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />

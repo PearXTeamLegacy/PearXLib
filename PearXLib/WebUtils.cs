@@ -65,7 +65,11 @@ namespace PearXLib
 		{
 			try
 			{
-				return new Ping().Send(domain).Status == IPStatus.Success;
+				using (Ping p = new Ping())
+				{
+					var v = p.Send(domain).Status;
+					return v == IPStatus.Success;
+				}
 			}
 			catch
 			{

@@ -13,19 +13,13 @@ namespace PearXLib
 	public static class PXL
 	{
 		/// <summary>
-		/// Gets the PearXLib version.
-		/// </summary>
-		/// <value>The PearXLib version.</value>
-		public static string Version => "2.4.0";
-
-		/// <summary>
 		/// Creates a shortcut.
 		/// </summary>
 		/// <param name="path">Path to the executable file.</param>
 		/// <param name="shDir">Shortcut directory without slash.</param>
 		/// <param name="shName">Shortcut name.</param>
 		/// <param name="genericName">Generic name. For example: if name is "Povar File Manager", generic name should be "File Manager".</param>
-		/// <param name="linuxIconPath">Path to the icon for Linux desktop entry.</param>
+		/// <param name="linuxIconPath">Path to the icon for a Linux desktop entry.</param>
 		public static void CreateShortcut(string path, string shDir, string shName, string genericName, string linuxIconPath)
 		{
 			var sb = new StringBuilder();
@@ -82,12 +76,15 @@ namespace PearXLib
 		/// Gets a MD5 hash from the string.
 		/// </summary>
 		/// <param name="str">The string.</param>
-		/// <returns>Hashed string.</returns>
+		/// <returns>MD5 hash.</returns>
 		public static string GetMD5(string str)
 		{
-			byte[] ascii = Encoding.ASCII.GetBytes(str);
-			byte[] hashed = MD5.Create().ComputeHash(ascii);
-			return BitConverter.ToString(hashed).Replace("-", "").ToLower();
+			using (MD5 md5 = MD5.Create())
+			{
+				byte[] ascii = Encoding.ASCII.GetBytes(str);
+				byte[] hashed = md5.ComputeHash(ascii);
+				return BitConverter.ToString(hashed).Replace("-", "").ToLower();
+			}
 		}
 
 		/// <summary>
@@ -164,4 +161,19 @@ namespace PearXLib
 	/// An empty delegate. Special for you =).
 	/// </summary>
 	public delegate void EmptyDelegate();
+
+	/// <summary>
+	/// List mode.
+	/// </summary>
+	public enum ListMode
+	{
+		/// <summary>
+		/// Whitelist.
+		/// </summary>
+		Whitelist,
+		/// <summary>
+		/// Blacklist.
+		/// </summary>
+		Blacklist
+	}
 }

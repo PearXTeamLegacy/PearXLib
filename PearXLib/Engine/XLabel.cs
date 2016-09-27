@@ -90,7 +90,7 @@ namespace PearXLib.Engine
                 {
                     using (var gfx = Graphics.FromImage(bm))
                     {
-                        Size s = gfx.MeasureString(Text, Font).ToSize();
+						Size s = TextRenderer.MeasureText(Text, Font);
                         MinimumSize = s;
                         MaximumSize = s;
                         Size = s;

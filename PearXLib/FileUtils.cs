@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace PearXLib
@@ -45,34 +44,6 @@ namespace PearXLib
 			{
 				GetFilesInDir(d, toAdd);
 			}
-		}
-
-		/// <summary>
-		/// Gets a relative path to the directory or file.
-		/// </summary>
-		/// <param name="fullpath">Full path to the directory.</param>
-		/// <param name="relativepath">Relative path.</param>
-		/// <returns>Relative path to the directory.</returns>
-		public static string GetRelativePath(string fullpath, string relativepath)
-		{
-			return Uri.UnescapeDataString(new Uri(relativepath).MakeRelativeUri(new Uri(fullpath)).ToString());
-		}
-
-		/// <summary>
-		/// Gets a relative path to the directory or file.
-		/// </summary>
-		/// <param name="fullpath">Full path to the directory.</param>
-		/// <param name="relativepath">Relative path.</param>
-		/// <returns>Relative path to the directory.</returns>
-		public static string[] GetRelativePath(string[] fullpath, string relativepath)
-		{
-			List<string> result = new List<string>();
-			Uri rp = new Uri(relativepath);
-			foreach (string s in fullpath)
-			{
-				result.Add(Uri.UnescapeDataString(rp.MakeRelativeUri(new Uri(s)).ToString()));
-			}
-			return result.ToArray();
 		}
 	}
 }
