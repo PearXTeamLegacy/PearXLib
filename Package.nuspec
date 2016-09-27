@@ -14,11 +14,11 @@
     <copyright>Copyright (c) PearX Team, 2015-2016</copyright>
     <tags>pearxlib pxl pearxlib webclient flat material design winforms controls</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json"/>
+      <dependency id="Newtonsoft.Json" version="9.0.1"/>
     </dependencies>
   </metadata>
   <files>
-    <file src="PearXLib/bin/Release/PearXLib.dll" target="lib" />
-    <file src="PearXLib/bin/Release/PearXLib.xml" target="lib" />
+    <file src="PearXLib/bin/Release/PearXLib.dll" target="lib/net40" />
+    <file src="PearXLib/bin/Release/PearXLib.xml" target="lib/net40" />
   </files>
 </package>
