@@ -84,19 +84,15 @@ namespace PearXLib.Engine
 
         private void AutoResize()
         {
-            if (!DrawInRectangle)
-            {
-                using (var bm = new Bitmap(1, 1))
-                {
-                    using (var gfx = Graphics.FromImage(bm))
-                    {
-						Size s = TextRenderer.MeasureText(Text, Font);
-                        MinimumSize = s;
-                        MaximumSize = s;
-                        Size = s;
-                    }
-                }
-            }
+			if (!DrawInRectangle)
+			{
+				Size s = TextRenderer.MeasureText(Text, Font);
+				s.Height += ShadowOffset;
+				s.Width += ShadowOffset;
+				MinimumSize = s;
+				MaximumSize = s;
+				Size = s;
+			}
         }
     }
 }
