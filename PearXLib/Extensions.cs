@@ -2,6 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace PearXLib
 {
@@ -25,6 +26,12 @@ namespace PearXLib
 			}
 		}
 
+		/// <summary>
+		/// Is the string contains a character?
+		/// </summary>
+		/// <returns>If string contains a character, returns true.</returns>
+		/// <param name="s">Input string.</param>
+		/// <param name="c">Character.</param>
 		public static bool Contains(this string s, char c)
 		{
 			return s.IndexOf(c) != -1;
@@ -41,6 +48,16 @@ namespace PearXLib
 				ctrl.Dispose();
 			}
 			c.Clear();
+		}
+
+		/// <summary>
+		/// Formats an object to the JSON format.
+		/// </summary>
+		/// <returns>The JSON-formatted object.</returns>
+		/// <param name="obj">Input object.</param>
+		public static string ToJson(this object obj)
+		{
+			return JsonConvert.SerializeObject(obj);
 		}
 	}
 }
