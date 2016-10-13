@@ -36,13 +36,14 @@ namespace PearXLib
 
 	     static void GetFilesInDir(string dir, List<string> toAdd)
 		{
-			foreach (string f in Directory.GetFiles(dir))
-			{
-				toAdd.Add(f);
-			}
+			
 			foreach (string d in Directory.GetDirectories(dir))
 			{
 				GetFilesInDir(d, toAdd);
+			}
+			foreach (string f in Directory.GetFiles(dir))
+			{
+				toAdd.Add(f);
 			}
 		}
 	}
