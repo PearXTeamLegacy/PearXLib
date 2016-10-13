@@ -64,12 +64,35 @@ namespace PearXLib
 		}
 
 		/// <summary>
+		/// Converts a byte array to an icon.
+		/// </summary>
+		/// <returns>An icon.</returns>
+		/// <param name="bts">Byte array.</param>
+		public static Icon IconFromBytes(byte[] bts)
+		{
+			using (MemoryStream str = new MemoryStream(bts))
+			{
+				return new Icon(str);
+			}
+		}
+
+		/// <summary>
 		/// Gets an image from resources.
 		/// </summary>
 		/// <param name="name">Resource name.</param>
 		public static Image ImageFromResources(string name)
 		{
 			return ImageFromBytes(GetFromResources(name));
+		}
+
+		/// <summary>
+		/// Gets an icon from the resources.
+		/// </summary>
+		/// <returns>An icon.</returns>
+		/// <param name="name">Resource name.</param>
+		public static Icon IconFromResources(string name)
+		{
+			return IconFromBytes(GetFromResources(name));
 		}
 	}
 }
