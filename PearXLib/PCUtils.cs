@@ -32,14 +32,13 @@ namespace PearXLib
 			{
 				inf.FileName = path;
 				inf.Arguments = args;
-				Process.Start(inf);
 			}
 			else
 			{
 				inf.FileName = "mono";
 				inf.Arguments = path + " " + args;
-				Process.Start(inf);
 			}
+			Process.Start(inf);
 		}
 
 		/// <summary>
@@ -67,12 +66,12 @@ namespace PearXLib
 		{
 			if (IsWindows())
 			{
-				string javaKey = @"SOFTWARE\JavaSoft\Java Runtime Environment";
-				using (var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64).OpenSubKey(javaKey))
+				using (var v = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
+					   .OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
 				{
-					string currentVersion = baseKey.GetValue("CurrentVersion").ToString();
-					using (var homeKey = baseKey.OpenSubKey(currentVersion))
-						return homeKey.GetValue("JavaHome").ToString();
+					string ver = v.GetValue("CurrentVersion").ToString();
+					using (var w = v.OpenSubKey(ver))
+						return w.GetValue("JavaHome") + "\\bin\\java.exe";
 				}
 			}
 			else
