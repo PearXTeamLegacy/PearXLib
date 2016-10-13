@@ -61,8 +61,9 @@ namespace PearXLib
 		/// <summary>
 		/// Gets a path to the Java directory.
 		/// </summary>
+		/// <param name="javaw">Use javaw.exe instead of java.exe in Windows?</param>
 		/// <returns>A path to the Java folder.</returns>
-		public static string GetJavaPath()
+		public static string GetJavaPath(bool javaw = true)
 		{
 			if (IsWindows())
 			{
@@ -71,7 +72,7 @@ namespace PearXLib
 				{
 					string ver = v.GetValue("CurrentVersion").ToString();
 					using (var w = v.OpenSubKey(ver))
-						return w.GetValue("JavaHome") + "\\bin\\java.exe";
+						return w.GetValue("JavaHome") + string.Format("\\bin\\java{0}.exe", javaw ? "w" : "");
 				}
 			}
 			else
