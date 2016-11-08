@@ -19,8 +19,10 @@ namespace PearXLib
 		/// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
 		/// <param name="contentType">Your content type.</param>
 		/// <returns>Web response.</returns>
-		public static string SendRequest(string url, string method, string data, string contentType = "application/x-www-form-urlencoded")
+		public static string SendRequest(string url, string method, string data, string contentType = "application/x-www-form-urlencoded", Encoding enc = null)
 		{
+			if (enc == null)
+				enc = Encoding.UTF8;
 			WebRequest wr = WebRequest.Create(url);
 			wr.Method = method;
 			if (!string.IsNullOrEmpty(contentType))
@@ -29,7 +31,7 @@ namespace PearXLib
 
 			if (!string.IsNullOrEmpty(data))
 			{
-				byte[] bytes = Encoding.ASCII.GetBytes(data);
+				byte[] bytes = enc.GetBytes(data);
 				wr.ContentLength = bytes.Length;
 				using (Stream reqStream = wr.GetRequestStream())
 				{
