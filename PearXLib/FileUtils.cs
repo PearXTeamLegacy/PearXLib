@@ -46,5 +46,21 @@ namespace PearXLib
 				toAdd.Add(f);
 			}
 		}
+
+		public static string[] GetDirsInDir(string dir)
+		{
+			List<string> l = new List<string>();
+			GetDirsInDir(dir, ref l);
+			return l.ToArray();
+		}
+
+		static void GetDirsInDir(string dir, ref List<string> toAdd)
+		{
+			foreach (string d in Directory.GetDirectories(dir))
+			{
+				toAdd.Add(d);
+				GetDirsInDir(d, ref toAdd);
+			}
+		}
 	}
 }

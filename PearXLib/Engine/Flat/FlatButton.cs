@@ -14,6 +14,7 @@ namespace PearXLib.Engine.Flat
     {
         private Color _Color = Color.FromArgb(18, 107, 166);
         private Color _ColorFocused = Color.FromArgb(41, 128, 185);
+		private Color _ColorDisabled = Color.FromArgb(16, 52, 77);
 
         /// <summary>
         /// Initializes a new FlatButton component.
@@ -45,6 +46,16 @@ namespace PearXLib.Engine.Flat
             set { _ColorFocused = value; Refresh(); }
         }
 
+		/// <summary>
+        /// Color of the disabled button.
+        /// </summary>
+        [DefaultValue(typeof(Color), "16, 52, 77")]
+		public Color ColorDisabled
+		{
+			get { return _ColorDisabled; }
+			set { _ColorDisabled = value; Refresh(); }
+		}
+
         /// <summary>
         /// Draw control's shadow?
         /// </summary>
@@ -69,57 +80,62 @@ namespace PearXLib.Engine.Flat
 
         private void ControlPaint(object sender, PaintEventArgs e)
         {
-            if (!isDrawing)
-            {
-                Rectangle rect = new Rectangle(0, 0, Width, Height);
-                switch (State)
-                {
-                    case XButtonState.NONE:
-                        e.Graphics.FillRectangle(new SolidBrush(Color), rect);
-                        break;
-                    case XButtonState.FOCUSED:
-                        e.Graphics.FillRectangle(new SolidBrush(ColorFocused), rect);
-                        break;
-                    case XButtonState.CLICKED:
-                        new Thread(() =>
-                        {
-                            using (bm = new Bitmap(Width, Height))
-                            {
-                                using (Graphics gr = Graphics.FromImage(bm))
-                                {
-                                    isDrawing = true;
-                                    Point p = new Point();
-                                    Invoke(new MethodInvoker(() => { p = PointToClient(Cursor.Position); }));
-                                    gr.FillRectangle(new SolidBrush(ColorFocused), rect);
-                                    int j = (Width + Height)/36;
-                                    for (int i = 0; i <= Width*2 + j; i += j)
-                                    {
-                                        gr.FillEllipse(new SolidBrush(Color), p.X - i/2, p.Y - i/2, i, i);
-                                        try
-                                        {
-                                            Invoke(new MethodInvoker(Refresh));
-                                        }
-                                        catch
-                                        {
-                                            return;
-                                        }
-                                        Thread.Sleep(5);
-                                        if (i >= (Width*2))
-                                        {
-                                            isDrawing = false;
-                                            Invoke(new MethodInvoker(() => State = XButtonState.NONE));
-                                        }
-                                    }
-                                }
-                            }
-                        }).Start();
-                        break;
-                }
-            }
-            else
-            {
-                e.Graphics.DrawImage(bm, 0, 0);
-            }
+			Rectangle rect = new Rectangle(0, 0, Width, Height);
+			if (Enabled)
+			{
+				if (!isDrawing)
+				{
+					switch (State)
+					{
+						case XButtonState.NONE:
+							e.Graphics.FillRectangle(new SolidBrush(Color), rect);
+							break;
+						case XButtonState.FOCUSED:
+							e.Graphics.FillRectangle(new SolidBrush(ColorFocused), rect);
+							break;
+						case XButtonState.CLICKED:
+							new Thread(() =>
+							{
+								using (bm = new Bitmap(Width, Height))
+								{
+									using (Graphics gr = Graphics.FromImage(bm))
+									{
+										isDrawing = true;
+										Point p = new Point();
+										Invoke(new MethodInvoker(() => { p = PointToClient(Cursor.Position); }));
+										gr.FillRectangle(new SolidBrush(ColorFocused), rect);
+										int j = (Width + Height) / 36;
+										for (int i = 0; i <= Width * 2 + j; i += j)
+										{
+											gr.FillEllipse(new SolidBrush(Color), p.X - i / 2, p.Y - i / 2, i, i);
+											try
+											{
+												Invoke(new MethodInvoker(Refresh));
+											}
+											catch
+											{
+												return;
+											}
+											Thread.Sleep(5);
+											if (i >= (Width * 2))
+											{
+												isDrawing = false;
+												Invoke(new MethodInvoker(() => State = XButtonState.NONE));
+											}
+										}
+									}
+								}
+							}).Start();
+							break;
+					}
+				}
+				else
+				{
+					e.Graphics.DrawImage(bm, 0, 0);
+				}
+			}
+			else
+				e.Graphics.FillRectangle(new SolidBrush(ColorDisabled), rect);
             PaintBase(e);
         }
     }

@@ -86,6 +86,14 @@ namespace PearXLib.Engine.Bases
 		}
 
 		/// <summary>
+		/// Gets or sets a value indicating whether this <see cref="T:PearXLib.Engine.Bases.XFormBase"/> can be resized.
+		/// </summary>
+		/// <value><c>true</c> if can resized; otherwise, <c>false</c>.</value>
+		public virtual bool CanResize { get; set; } = false;
+
+		public virtual short ResizeWidth { get; set; } = 2;
+
+		/// <summary>
 		/// Current form state.
 		/// </summary>
 		public FormState State = FormState.None;
@@ -162,7 +170,7 @@ namespace PearXLib.Engine.Bases
 		/// </summary>
 		public virtual void UpdateRectangles()
 		{
-
+			
 		}
 		#endregion
 
@@ -291,6 +299,55 @@ namespace PearXLib.Engine.Bases
 		/// <summary>
 		/// 
 		/// </summary>
-		None
+		None,
+
+		/// <summary>
+		///  *##
+		/// ###
+		/// ###
+		/// </summary>
+		ResizeTL,
+		/// <summary>
+		/// ###
+		/// *##
+		/// ###
+		/// </summary>
+		ResizeL,
+		/// <summary>
+		/// ###
+		/// ###
+		/// *##
+		/// </summary>
+		ResizeBL,
+		/// <summary>
+		/// #*#
+		/// ###
+		/// ###
+		/// </summary>
+		ResizeT,
+		/// <summary>
+		/// ###
+		/// ###
+		/// #*#
+		/// </summary>
+		ResizeB,
+		/// <summary>
+		/// ##*
+		/// ###
+		/// ###
+		/// </summary>
+		ResizeTR,
+		/// <summary>
+		/// ###
+		/// ##*
+		/// ###
+		/// </summary>
+		ResizeR,
+		/// <summary>
+		/// ###
+		/// ###
+		/// ##*
+		/// </summary>
+		ResizeBR
 	}
 }

@@ -101,7 +101,6 @@
     <Compile Include="Engine\OutsideForm.cs" />
     <Compile Include="Engine\TooltipForm.cs" />
     <Compile Include="Engine\XBar.cs" />
-    <Compile Include="Engine\XButton.cs" />
     <Compile Include="Engine\XForm.cs" />
     <Compile Include="Engine\XIcon.cs" />
     <Compile Include="Engine\XImgButton.cs" />

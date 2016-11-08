@@ -35,7 +35,7 @@ namespace PearXLib.Engine.Bases
 		private ContentAlignment _ImageAlign = ContentAlignment.MiddleRight;
 		private ContentAlignment _TextAlign = ContentAlignment.MiddleCenter;
 		private XButtonState _State = XButtonState.NONE;
-		private int _Border;
+		private short _Border;
 		private XButtonState _MouseUpState = XButtonState.FOCUSED;
 
 		/// <summary>
@@ -103,7 +103,7 @@ namespace PearXLib.Engine.Bases
 		/// <summary>
 		/// The distance from button top.
 		/// </summary>
-		public int Border
+		public short Border
 		{
 			get { return _Border; }
 			set { _Border = value; Refresh(); }
@@ -143,22 +143,26 @@ namespace PearXLib.Engine.Bases
 
 		private void ControlMouseDown(object sender, MouseEventArgs e)
 		{
-			State = XButtonState.CLICKED;
+			if(Enabled)
+				State = XButtonState.CLICKED;
 		}
 
 		private void ControlMouseUp(object sender, MouseEventArgs e)
 		{
-			State = MouseUpState;
+			if(Enabled)
+				State = MouseUpState;
 		}
 
 		private void ControlMouseEnter(object sender, EventArgs e)
 		{
-			State = XButtonState.FOCUSED;
+			if (Enabled)
+				State = XButtonState.FOCUSED;
 		}
 
 		private void ControlMouseLeave(object sender, EventArgs e)
 		{
-			State = XButtonState.NONE;
+			if (Enabled)
+				State = XButtonState.NONE;
 		}
 	}
 }
