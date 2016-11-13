@@ -87,6 +87,18 @@ namespace PearXLib
 			}
 		}
 
+		public static string GetFileMD5(string path)
+		{
+			using (MD5 md5 =MD5.Create())
+			{
+				using (FileStream str = new FileStream(path, FileMode.Open, FileAccess.Read))
+				{
+					byte[] hashed = md5.ComputeHash(str);
+					return BitConverter.ToString(hashed).Replace("-", "").ToLower();
+				}
+			}
+		}
+
 		/// <summary>
 		/// Gets the control point, based from align.
 		/// </summary>
