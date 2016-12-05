@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
 namespace PearXLib
@@ -100,6 +99,22 @@ namespace PearXLib
 				l.Add(GetRelativeString(s, relative, ignoreCase, dirSepChar));
 			}
 			return l.ToArray();
+		}
+
+		/// <summary>
+		/// Repeat the specified text n times.
+		/// </summary>
+		/// <returns>The repeated text.</returns>
+		/// <param name="text">Text to repeat.</param>
+		/// <param name="times">How many times to repeat.</param>
+		public static string Repeat(string text, int times)
+		{
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < times; i++)
+			{
+				sb.Append(text);
+			}
+			return sb.ToString();
 		}
 	}
 }
