@@ -12,19 +12,29 @@ namespace PearXLib
 		/// <summary>
 		/// Gets a byte array from resources.
 		/// </summary>
-		/// <param name="name">Resource name. For example: "MyApp.Images.Cat.png"</param>
+		/// <param name="name">Resource name. For example: "MyApp.Images.Cat.png".</param>
 		public static byte[] GetFromResources(string name)
+		{
+			using (var v = StreamFromResources(name))
+			{
+				byte[] arr = new byte[v.Length];
+				v.Read(arr, 0, (int)v.Length);
+				return arr;
+			}
+		}
+
+		/// <summary>
+		/// Gets a Stream from resources.
+		/// </summary>
+		/// <returns>The Stream.</returns>
+		/// <param name="name">Resource name. For example: "MyApp.Images.Cat.png".</param>
+		public static Stream StreamFromResources(string name)
 		{
 			foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
 			{
 				if (asm.GetManifestResourceNames().Contains(name))
 				{
-					using (var v = asm.GetManifestResourceStream(name))
-					{
-						byte[] arr = new byte[v.Length];
-						v.Read(arr, 0, (int)v.Length);
-						return arr;
-					}
+					return asm.GetManifestResourceStream(name);
 				}
 			}
 			return null;
