@@ -114,6 +114,7 @@
     <Compile Include="WebServices\GoogleApis\GoogleUtils.cs" />
     <Compile Include="XWebClient.cs" />
     <Compile Include="ResourceUtils.cs" />
+    <Compile Include="SQLUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
