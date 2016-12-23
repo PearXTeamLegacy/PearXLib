@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Management;
-using System.Runtime.InteropServices;
 using Microsoft.Win32;
 
 namespace PearXLib
@@ -132,19 +131,6 @@ namespace PearXLib
 				p.WaitForExit();
 				return p.StandardOutput.ReadToEnd().Trim();
 			}
-		}
-
-
-		[DllImport("kernel32", CharSet = CharSet.Unicode)]
-		static extern int AddDllDirectory(string NewDirectory);
-
-		public static int AddDllDir(string NewDirectory)
-		{
-			if (IsWindows())
-			{
-				return AddDllDirectory(NewDirectory);
-			}
-			return -1;
 		}
 	}
 }

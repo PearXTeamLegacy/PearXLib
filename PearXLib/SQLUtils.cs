@@ -9,7 +9,7 @@
 		/// <param name="req">Formatted string.</param>
 		public static string FormatRequest(string req)
 		{
-			return req.Replace("'", @"\'").Replace("\"", "\\\"").Replace("%", @"\%").Replace("\n", @"\n").Replace("_", @"\_");
+			return req.Replace(@"\", @"\\").Replace("'", @"\'").Replace("\"", "\\\"").Replace("%", @"\%").Replace("\n", @"\n").Replace("_", @"\_");
 		}
 	}
 }
