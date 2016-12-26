@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Linq;
 using System.Numerics;
 
 namespace PearXLib.Maths
@@ -102,6 +103,27 @@ namespace PearXLib.Maths
 				pnts[i] = new PointF(sz.X * j + po1.X, sz.Y * j + po1.Y); //line size * dot number + first point
 			}
 			return pnts;
+		}
+
+		/// <summary>
+		/// Gets the gcd.
+		/// </summary>
+		/// <returns>The gcd.</returns>
+		/// <param name="vals">Vals.</param>
+		public static long GetGcd(params long[] vals)
+		{
+			for (long divider = vals.Min(); divider > 0; divider--)
+			{
+				bool success = true;
+				foreach (long l in vals)
+				{
+					if (l % divider != 0)
+						success = false;
+				}
+				if (success)
+					return divider;
+			}
+			return 0;
 		}
 	}
 
