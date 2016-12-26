@@ -115,6 +115,7 @@
     <Compile Include="XWebClient.cs" />
     <Compile Include="ResourceUtils.cs" />
     <Compile Include="SQLUtils.cs" />
+    <Compile Include="Maths\Fraction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />

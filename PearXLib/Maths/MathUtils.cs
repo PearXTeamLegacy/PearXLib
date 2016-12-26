@@ -106,67 +106,44 @@ namespace PearXLib.Maths
 		}
 
 		/// <summary>
-		/// Gets the gcd.
+		/// Gets a Greatest Common Divider. For more details, see <see cref="GetGcdEuclid"/>.
 		/// </summary>
-		/// <returns>The gcd.</returns>
-		/// <param name="vals">Vals.</param>
+		/// <returns>Greatest Common Divider.</returns>
+		/// <param name="vals">Numbers.</param>
 		public static long GetGcd(params long[] vals)
 		{
-			for (long divider = vals.Min(); divider > 0; divider--)
+			long gcdTemp = vals[0];
+			for (int i = 1; i < vals.Length; i++)
 			{
-				bool success = true;
-				foreach (long l in vals)
-				{
-					if (l % divider != 0)
-						success = false;
-				}
-				if (success)
-					return divider;
+				gcdTemp = GetGcdEuclid(gcdTemp, vals[i]);
 			}
-			return 0;
-		}
-	}
-
-	/// <summary>
-	/// A fraction class.
-	/// </summary>
-	public class Fraction
-	{
-		/// <summary>
-		/// A numerator of the fraction.
-		/// </summary>
-		public long Numerator { get; set; }
-
-		/// <summary>
-		/// A denominator of the fraction.
-		/// </summary>
-		public long Denominator { get; set; }
-
-		/// <summary>
-		/// Initializes a new fraction
-		/// </summary>
-		/// <param name="num">Numerator</param>
-		/// <param name="den">Denominator</param>
-		public Fraction(long num, long den)
-		{
-			Numerator = num;
-			Denominator = den;
+			return gcdTemp;
 		}
 
 		/// <summary>
-		/// *
+		/// Gets a Greatest Common Divider using the Euclid's algorithm.
 		/// </summary>
-		public static Fraction operator *(Fraction left, Fraction right)
+		/// <returns>Greatest Common Divider.</returns>
+		/// <param name="a">First number.</param>
+		/// <param name="b">Second number.</param>
+		public static long GetGcdEuclid(long a, long b)
 		{
-			return new Fraction(left.Numerator * right.Numerator, left.Denominator * right.Denominator);
+			var arr = new long[] { a, b };
+			return GetGcdEuclid_(arr.Max(), arr.Min());
 		}
 
-		/// <summary>
-		/// /
-		/// </summary>
-		public static Fraction operator /(Fraction left, Fraction right)
+
+		static long GetGcdEuclid_(long bigger, long lower)
 		{
-			return new Fraction(left.Numerator * right.Denominator, left.Denominator * right.Numerator);
+			if (bigger == 0 || lower == 0)
+				return 0;
+			while (lower != 0)
+			{
+				var tmp = bigger % lower;
+				bigger = lower;
+				lower = tmp;
+			}
+			return bigger;
 		}
 	}
 }
