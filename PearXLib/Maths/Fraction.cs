@@ -60,5 +60,10 @@
 			}
 			return fract;
 		}
+
+		public double ToDouble()
+		{
+			return (double)Numerator / Denominator;
+		}
 	}
 }
