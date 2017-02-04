@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.IO;
 using System.Net;
-using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Text;
 
 namespace PearXLib
@@ -18,6 +18,7 @@ namespace PearXLib
 		/// <param name="method">Request method.</param>
 		/// <param name="data">Request's content. Use &amp; to split more than one parameters. ex: login=Developer&amp;password=123456789</param>
 		/// <param name="contentType">Your content type.</param>
+		/// <param name="enc">The encoding for performing a request.</param>
 		/// <returns>Web response.</returns>
 		public static string SendRequest(string url, string method, string data, string contentType = "application/x-www-form-urlencoded", Encoding enc = null)
 		{
@@ -61,22 +62,22 @@ namespace PearXLib
 		/// <summary>
 		/// Checks for a Internet connectivity.
 		/// </summary>
-		/// <param name="domain">The domain, that you want to ping. If not presented, uses google.com</param>
+		/// <param name="url">A url for the connection check.</param>
+		/// <param name="port">A port for the connection check.</param>
 		/// <returns>True, if Internet connection is available, else returns false.</returns>
-		public static bool CheckForInternetConnection(string domain = "google.com")
+		public static bool CheckForInternetConnection(string url = "http://google.com", int port = 80)
 		{
-			try
+			using (var tcp = new TcpClient())
 			{
-				using (Ping p = new Ping())
+				try
 				{
-					var v = p.Send(domain).Status;
-					return v == IPStatus.Success;
+					tcp.Connect(url, port);
+					tcp.Close();
+					return true;
 				}
+				catch(SocketException) { }
 			}
-			catch
-			{
-				return false;
-			}
+			return false;
 		}
 
 		/// <summary>

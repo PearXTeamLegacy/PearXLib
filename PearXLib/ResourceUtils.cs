@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -38,6 +39,21 @@ namespace PearXLib
 				}
 			}
 			return null;
+		}
+
+		public static string[] GetResourcesInDomain(string domain)
+		{
+			List<string> l = new List<string>();
+			foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+			{
+				var res = asm.GetManifestResourceNames();
+				foreach (string s in res)
+				{
+					if (s.StartsWith(domain, StringComparison.Ordinal))
+						l.Add(s);
+				}
+			}
+			return l.ToArray();
 		}
 
 		/// <summary>

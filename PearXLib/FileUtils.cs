@@ -47,6 +47,11 @@ namespace PearXLib
 			}
 		}
 
+		/// <summary>
+		/// Gets all the directories in one directory.
+		/// </summary>
+		/// <returns>All the directories.</returns>
+		/// <param name="dir">Directory to search.</param>
 		public static string[] GetDirsInDir(string dir)
 		{
 			List<string> l = new List<string>();

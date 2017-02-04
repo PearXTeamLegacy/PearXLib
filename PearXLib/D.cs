@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+
 namespace PearXLib
 {
 	/// <summary>
@@ -28,6 +30,6 @@ namespace PearXLib
 		/// PearX Team's directory.
 		/// </summary>
 		/// <value>The PearX Team's directory path.</value>
-		public static string PearX => Documents + "/PearX";
+		public static string PearX => Path.Combine(Documents, "PearX");
 	}
 }

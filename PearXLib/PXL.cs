@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Security.Cryptography;
-using System.Windows.Forms;
+using System.Text;
 
 namespace PearXLib
 {
@@ -50,7 +49,7 @@ namespace PearXLib
 		/// <param name="str"></param>
 		public static string[] GetArrayFromString(string str)
 		{
-			return str.Split('\n');
+			return str.Replace("\r\n", "\n").Replace("\r", "\n").Split('\n');
 		}
 
 		/// <summary>
@@ -87,6 +86,11 @@ namespace PearXLib
 			}
 		}
 
+		/// <summary>
+		/// Gets a file's MD5
+		/// </summary>
+		/// <returns>MD5 hash.</returns>
+		/// <param name="path">File path.</param>
 		public static string GetFileMD5(string path)
 		{
 			using (MD5 md5 =MD5.Create())
@@ -96,6 +100,16 @@ namespace PearXLib
 					byte[] hashed = md5.ComputeHash(str);
 					return BitConverter.ToString(hashed).Replace("-", "").ToLower();
 				}
+			}
+		}
+
+		public static string GetSha256(string txt)
+		{
+			using (SHA256 sha = SHA256.Create())
+			{
+				byte[] utf8 = Encoding.UTF8.GetBytes(txt);
+				byte[] hash = sha.ComputeHash(utf8);
+				return BitConverter.ToString(hash).Replace("-", "");
 			}
 		}
 
@@ -152,20 +166,6 @@ namespace PearXLib
 					break;
 			}
 			return new PointF(x, y);
-		}
-
-		/// <summary>
-		/// For TextBox.
-		/// </summary>
-		/// <param name="e">Arguments</param>
-		/// <returns>True or false.</returns>
-		public static bool IsNumberKey(KeyPressEventArgs e)
-		{
-			if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-			{
-				return true;
-			}
-			return false;
 		}
 	}
 

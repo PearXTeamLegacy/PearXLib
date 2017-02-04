@@ -52,7 +52,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web" />
     <Reference Include="Newtonsoft.Json">
@@ -67,7 +66,6 @@
     <Compile Include="PCUtils.cs" />
     <Compile Include="RamInfo.cs" />
     <Compile Include="FlatColors.cs" />
-    <Compile Include="Localization.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="RandomUtils.cs" />
     <Compile Include="SocialUtils.cs" />
@@ -81,32 +79,6 @@
     <Compile Include="TextUtils.cs" />
     <Compile Include="Maths\MathUtils.cs" />
     <Compile Include="Maths\SquareBezier.cs" />
-    <Compile Include="Engine\Bases\InvItemBase.cs" />
-    <Compile Include="Engine\Bases\XButtonBase.cs" />
-    <Compile Include="Engine\Bases\XCheckboxBase.cs" />
-    <Compile Include="Engine\Bases\XControlBase.cs" />
-    <Compile Include="Engine\Bases\XFormBase.cs" />
-    <Compile Include="Engine\Bases\XTextControlBase.cs" />
-    <Compile Include="Engine\Flat\FlatBar.cs" />
-    <Compile Include="Engine\Flat\FlatButton.cs" />
-    <Compile Include="Engine\Flat\FlatCheckbox.cs" />
-    <Compile Include="Engine\Flat\FlatForm.cs" />
-    <Compile Include="Engine\Flat\FlatLabel.cs" />
-    <Compile Include="Engine\CompactInvItem.cs" />
-    <Compile Include="Engine\FormBox.cs" />
-    <Compile Include="Engine\FormIcons.Designer.cs" />
-    <Compile Include="Engine\Indicator.cs" />
-    <Compile Include="Engine\InvItem.cs" />
-    <Compile Include="Engine\ListBoxSelectLang.cs" />
-    <Compile Include="Engine\OutsideForm.cs" />
-    <Compile Include="Engine\TooltipForm.cs" />
-    <Compile Include="Engine\XBar.cs" />
-    <Compile Include="Engine\XForm.cs" />
-    <Compile Include="Engine\XIcon.cs" />
-    <Compile Include="Engine\XImgButton.cs" />
-    <Compile Include="Engine\XImgCheckbox.cs" />
-    <Compile Include="Engine\XLabel.cs" />
-    <Compile Include="Engine\XTrackbar.cs" />
     <Compile Include="WebServices\Wolfram\Wolfram.cs" />
     <Compile Include="WebServices\Wolfram\WolframOut.cs" />
     <Compile Include="WebServices\GoogleApis\GoogleImageSearch.cs" />
@@ -116,18 +88,24 @@
     <Compile Include="ResourceUtils.cs" />
     <Compile Include="SQLUtils.cs" />
     <Compile Include="Maths\Fraction.cs" />
+    <Compile Include="I18n\I18nLoader.cs" />
+    <Compile Include="I18n\I18n.cs" />
+    <Compile Include="I18n\I18nLang.cs" />
+    <Compile Include="I18n\I18nLoaderResources.cs" />
+    <Compile Include="I18n\I18nPage.cs">
+      <LogicalName>PearXLib.I18n.I18nPage.cs</LogicalName>
+    </Compile>
+    <Compile Include="MsgJson.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
     <Folder Include="Wiki\" />
-    <Folder Include="Engine\" />
     <Folder Include="Maths\" />
     <Folder Include="Resources\" />
-    <Folder Include="Engine\Bases\" />
-    <Folder Include="Engine\Flat\" />
     <Folder Include="WebServices\" />
     <Folder Include="WebServices\Wolfram\" />
     <Folder Include="WebServices\GoogleApis\" />
+    <Folder Include="I18n\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BarImage.png" />
@@ -142,9 +120,6 @@
     <None Include="Resources\ToTrayBox.png" />
     <None Include="Resources\ToTrayBoxFocused.png" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Engine\FormIcons.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

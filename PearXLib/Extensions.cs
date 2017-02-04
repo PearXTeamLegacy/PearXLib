@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Windows.Forms;
 using Newtonsoft.Json;
 
 namespace PearXLib
@@ -37,18 +36,6 @@ namespace PearXLib
 			return s.IndexOf(c) != -1;
 		}
 
-		/// <summary>
-		/// Clears and disposes all the ControlCollection's components.
-		/// </summary>
-		/// <param name="c">Control Collection.</param>
-		public static void ClearAndDispose(this Control.ControlCollection c)
-		{
-			foreach (Control ctrl in c)
-			{
-				ctrl.Dispose();
-			}
-			c.Clear();
-		}
 
 		/// <summary>
 		/// Formats an object to the JSON format.

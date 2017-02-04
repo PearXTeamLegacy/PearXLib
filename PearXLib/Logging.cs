@@ -113,10 +113,25 @@ namespace PearXLib
 	/// </summary>
 	public enum LogType
 	{
+		/// <summary>
+		/// Warning log string.
+		/// </summary>
 		Warning,
+		/// <summary>
+		/// Error log string.
+		/// </summary>
 		Error,
+		/// <summary>
+		/// Info log string.
+		/// </summary>
 		Info,
+		/// <summary>
+		/// Other log string.
+		/// </summary>
 		Other,
+		/// <summary>
+		/// Debug log string.
+		/// </summary>
 		Debug
 	}
 }
