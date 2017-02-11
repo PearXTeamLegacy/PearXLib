@@ -72,18 +72,37 @@ namespace PearXLib
 		}
 
 		/// <summary>
-		/// Gets a MD5 hash from the string.
+		/// Gets a MD5 hash from the byte array.
 		/// </summary>
-		/// <param name="str">The string.</param>
+		/// <param name="data">Input stream.</param>
 		/// <returns>MD5 hash.</returns>
-		public static string GetMD5(string str)
+		public static string GetMD5(Stream data)
 		{
 			using (MD5 md5 = MD5.Create())
 			{
-				byte[] ascii = Encoding.ASCII.GetBytes(str);
-				byte[] hashed = md5.ComputeHash(ascii);
+				byte[] hashed = md5.ComputeHash(data);
 				return BitConverter.ToString(hashed).Replace("-", "").ToLower();
 			}
+		}
+
+		/// <summary>
+		/// Gets a MD5 hash from the byte array.
+		/// </summary>
+		/// <param name="data">Input byte array.</param>
+		/// <returns>MD5 hash.</returns>
+		public static string GetMD5(byte[] data)
+		{
+			return GetMD5(new MemoryStream(data));
+		}
+
+		/// <summary>
+		/// Gets a MD5 hash from the string.
+		/// </summary>
+		/// <param name="data">Input string</param>
+		/// <returns>MD5 hash.</returns>
+		public static string GetMD5(string data)
+		{
+			return GetMD5(Encoding.ASCII.GetBytes(data));
 		}
 
 		/// <summary>
@@ -93,13 +112,9 @@ namespace PearXLib
 		/// <param name="path">File path.</param>
 		public static string GetFileMD5(string path)
 		{
-			using (MD5 md5 =MD5.Create())
+			using (FileStream str = new FileStream(path, FileMode.Open, FileAccess.Read))
 			{
-				using (FileStream str = new FileStream(path, FileMode.Open, FileAccess.Read))
-				{
-					byte[] hashed = md5.ComputeHash(str);
-					return BitConverter.ToString(hashed).Replace("-", "").ToLower();
-				}
+				return GetMD5(str);
 			}
 		}
 
