@@ -8,6 +8,9 @@ using System.Runtime.InteropServices;
 
 namespace PearXLib
 {
+	/// <summary>
+	/// PearXLib Resource Utils
+	/// </summary>
 	public static class ResourceUtils
 	{
 		/// <summary>

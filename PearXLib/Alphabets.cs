@@ -1,5 +1,10 @@
-﻿namespace PearXLib
+﻿#pragma warning disable 1591
+
+namespace PearXLib
 {
+	/// <summary>
+	/// Alphabets.
+	/// </summary>
 	public static class Alphabets
 	{
 		public const string Russian = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";

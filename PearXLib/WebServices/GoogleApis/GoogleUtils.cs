@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 using Newtonsoft.Json;
 
 namespace PearXLib.WebServices.GoogleApis
@@ -28,6 +27,7 @@ namespace PearXLib.WebServices.GoogleApis
 		/// <param name="query">Search query.</param>
 		/// <param name="apiKey">Google API key.</param>
 		/// <param name="searchID">Google Custom Search ID.</param>
+		/// <param name="start">Start search from $start entry.</param>
 		public static GoogleImageSearch.RootObject SearchImages(string query, string apiKey, string searchID, int start = 1)
 		{
 			string q = Uri.EscapeUriString(query.Replace("&", " "));

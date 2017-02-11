@@ -37,6 +37,8 @@ namespace PearXLib
 		/// <param name="local">Local path.</param>
 		/// <param name="bufferSize">Buffer size.</param>
 		/// <param name="asyncEvents">If set to <c>true</c>, events should be async.</param>
+		/// <param name="post">POST data.</param>
+		/// <param name="enc">POST encoding.</param>
 		public void DownloadFile(string url, string local, string post = null, Encoding enc = null, int bufferSize = 8192, bool asyncEvents = false)
 		{
 			using (FileStream fs = new FileStream(local, FileMode.Create, FileAccess.ReadWrite, FileShare.None))

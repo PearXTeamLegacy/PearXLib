@@ -114,10 +114,15 @@ namespace PearXLib
 			}
 		}
 
+		/// <summary>
+		/// Parses a string URL query to the Dictionary.
+		/// </summary>
+		/// <returns>The URL query.</returns>
+		/// <param name="query">Query.</param>
 		public static Dictionary<string, string> ParseUrlQuery(string query)
 		{
 			Dictionary<string, string> resp = new Dictionary<string, string>();
-			if (query.StartsWith("?"))
+			if (query.StartsWith("?", System.StringComparison.Ordinal))
 				query = query.Substring(1);
 			string[] vars = query.Split('&');
 			foreach (var v in vars)

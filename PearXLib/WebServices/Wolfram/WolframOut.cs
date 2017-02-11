@@ -1,5 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
+#pragma warning disable 1591
 
 namespace PearXLib.WebServices.Wolfram
 {

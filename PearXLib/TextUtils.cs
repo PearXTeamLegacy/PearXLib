@@ -54,53 +54,12 @@ namespace PearXLib
 		}
 
 		/// <summary>
-		/// Gets a relative string.
+		/// Gets a substring of each array entry.
 		/// </summary>
-		/// <param name="full">Full string. For example: "/home/max/files/image.png"</param>
-		/// <param name="relative">Program should make relative string with respect to this string. For example: "/home/max/files/".</param>
-		/// <param name="ignoreCase">Ignore case?</param>
-		/// <returns>Relative string. For example: "image.png".</returns>
-		public static string GetRelativeString(string full, string relative, bool ignoreCase, char? dirSepChar = null)
-		{
-			StringComparison com = ignoreCase ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
-			if (dirSepChar != null)
-			{
-				switch (dirSepChar.Value)
-				{
-					case '/':
-						full = full.Replace('\\', '/');
-						relative = relative.Replace('\\', '/');
-						break;
-					case '\\':
-						full = full.Replace('/', '\\');
-						relative = relative.Replace('/', '\\');
-						break;
-				}
-			}
-			if (full.StartsWith(relative, com))
-			{
-				return full.Substring(relative.Length);
-			}
-			return full;
-		}
-
-		/// <summary>
-		/// Gets an array of relative strings.
-		/// </summary>
-		/// <param name="full">Array of full strings. For example: "/home/max/files/image.png"</param>
-		/// <param name="relative">Program should make relative string with respect to this string. For example: "/home/max/files/".</param>
-		/// <param name="ignoreCase">Ignore case?</param>
-		/// <returns>Relative string. For example: "image.png".</returns>
-		public static string[] GetRelativeString(string[] full, string relative, bool ignoreCase, char? dirSepChar)
-		{
-			List<string> l = new List<string>();
-			foreach (string s in full)
-			{
-				l.Add(GetRelativeString(s, relative, ignoreCase, dirSepChar));
-			}
-			return l.ToArray();
-		}
-
+		/// <returns>The substring array.</returns>
+		/// <param name="list">Input list.</param>
+		/// <param name="from">Start substring from...</param>
+		/// <param name="length">Substring length.</param>
 		public static string[] Substring(this IEnumerable<string> list, int from, int length = -1)
 		{
 			List<string> lst = new List<string>();

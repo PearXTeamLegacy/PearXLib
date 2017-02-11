@@ -103,6 +103,11 @@ namespace PearXLib
 			}
 		}
 
+		/// <summary>
+		/// Gets a Sha256 hashsum from a text.
+		/// </summary>
+		/// <returns>Sha256 sum.</returns>
+		/// <param name="txt">Input text.</param>
 		public static string GetSha256(string txt)
 		{
 			using (SHA256 sha = SHA256.Create())
