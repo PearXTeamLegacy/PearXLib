@@ -87,24 +87,6 @@ namespace PearXLib.Maths
 			return l % 2 == 0;
 		}
 
-		public static PointF[] LinePoints(Point po1, Point po2, int dots)
-		{
-			PointF[] pnts = new PointF[dots]; //point array for output
-
-			var p1 = Point.Empty; //                                zero-based values (without first point)
-			var p2 = new Point(po2.X - po1.X, po2.Y - po1.Y); // ^
-
-			bool single = dots == 1; // if single dot
-			float dts = single ? 2 : dots - 1; //lines: if single dot - 2, otherwise - dots - 1.
-			PointF sz = new PointF(p2.X / dts, p2.Y / dts); // Every line size
-			for (int i = 0; i < dots; i++) // foreach dot
-			{
-				int j = single ? 1 : i; //multiplier: if single dot - 1, otherwise - i.
-				pnts[i] = new PointF(sz.X * j + po1.X, sz.Y * j + po1.Y); //line size * dot number + first point
-			}
-			return pnts;
-		}
-
 		/// <summary>
 		/// Gets a Greatest Common Divider. For more details, see <see cref="GetGcdEuclid"/>.
 		/// </summary>

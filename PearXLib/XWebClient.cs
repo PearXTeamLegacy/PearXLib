@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Threading;
 using PearXLib.Maths;
 
@@ -26,6 +27,7 @@ namespace PearXLib
 		public void Dispose()
 		{
 			ProgressChanged = null;
+			//GC.SuppressFinalize(this);
 		}
 
 		/// <summary>
@@ -35,11 +37,21 @@ namespace PearXLib
 		/// <param name="local">Local path.</param>
 		/// <param name="bufferSize">Buffer size.</param>
 		/// <param name="asyncEvents">If set to <c>true</c>, events should be async.</param>
-		public void DownloadFile(string url, string local, int bufferSize = 8192, bool asyncEvents = false)
+		public void DownloadFile(string url, string local, string post = null, Encoding enc = null, int bufferSize = 8192, bool asyncEvents = false)
 		{
 			using (FileStream fs = new FileStream(local, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
 			{
+				if (enc == null)
+					enc = Encoding.UTF8;
 				WebRequest req = WebRequest.Create(url);
+				if (post != null)
+					req.Method = "POST";
+				using (var str = req.GetRequestStream())
+				{
+					byte[] bts = enc.GetBytes(post);
+					str.Write(bts, 0, bts.Length);
+					str.Flush();
+				}
 				using (WebResponse resp = req.GetResponse())
 				{
 					using (Stream str = resp.GetResponseStream())
@@ -58,8 +70,10 @@ namespace PearXLib
 							else
 								ProgressChanged?.Invoke(this, new BytesRecievedEventArgs(size, rec));
 						} while (i > 0);
+						str.Flush();
 					}
 				}
+				fs.Flush();
 			}
 		}
 	}

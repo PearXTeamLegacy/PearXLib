@@ -61,6 +61,10 @@
 			return fract;
 		}
 
+		/// <summary>
+		/// Converts a fraction to double.
+		/// </summary>
+		/// <returns>Double.</returns>
 		public double ToDouble()
 		{
 			return (double)Numerator / Denominator;

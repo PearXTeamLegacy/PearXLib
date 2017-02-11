@@ -41,6 +41,11 @@ namespace PearXLib
 			return null;
 		}
 
+		/// <summary>
+		/// Gets all the resources in domain.
+		/// </summary>
+		/// <returns>Resource names.</returns>
+		/// <param name="domain">Resource domain.</param>
 		public static string[] GetResourcesInDomain(string domain)
 		{
 			List<string> l = new List<string>();

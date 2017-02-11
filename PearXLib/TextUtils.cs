@@ -101,6 +101,19 @@ namespace PearXLib
 			return l.ToArray();
 		}
 
+		public static string[] Substring(this IEnumerable<string> list, int from, int length = -1)
+		{
+			List<string> lst = new List<string>();
+			foreach (string str in list)
+			{
+				if (length == -1)
+					lst.Add(str.Substring(from));
+				else
+					lst.Add(str.Substring(from, length));
+			}
+			return lst.ToArray();
+		}
+
 		/// <summary>
 		/// Repeat the specified text n times.
 		/// </summary>

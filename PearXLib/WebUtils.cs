@@ -1,8 +1,10 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Web;
 
 namespace PearXLib
 {
@@ -110,6 +112,23 @@ namespace PearXLib
 					return Image.FromStream(stream);
 				}
 			}
+		}
+
+		public static Dictionary<string, string> ParseUrlQuery(string query)
+		{
+			Dictionary<string, string> resp = new Dictionary<string, string>();
+			if (query.StartsWith("?"))
+				query = query.Substring(1);
+			string[] vars = query.Split('&');
+			foreach (var v in vars)
+			{
+				if (!string.IsNullOrEmpty(v))
+				{
+					string[] data = v.Split('=');
+					resp.Add(data[0], HttpUtility.UrlDecode(data[1]));
+				}
+			}
+			return resp;
 		}
 	}
 }

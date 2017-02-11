@@ -2,6 +2,9 @@
 
 namespace PearXLib
 {
+	/// <summary>
+	/// PearXLib's SQLUtils.
+	/// </summary>
 	public static class SQLUtils
 	{
 		/// <summary>

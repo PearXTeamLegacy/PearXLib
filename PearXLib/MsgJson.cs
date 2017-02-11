@@ -1,10 +1,24 @@
 ﻿namespace PearXLib
 {
+	/// <summary>
+	/// Message + Json format, splitted by ":" character.
+	/// </summary>
 	public class MsgJson
 	{
+		/// <summary>
+		/// Message.
+		/// </summary>
 		public string Message { get; set; }
+		/// <summary>
+		/// Json.
+		/// </summary>
 		public string Json { get; set; }
 
+		/// <summary>
+		/// Parses a string to the MsgJson.
+		/// </summary>
+		/// <returns>MsgJson.</returns>
+		/// <param name="resp">Input string.</param>
 		public static MsgJson Parse(string resp)
 		{
 			MsgJson mj = new MsgJson();
