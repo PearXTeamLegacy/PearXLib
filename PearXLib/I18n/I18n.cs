@@ -65,7 +65,10 @@ namespace PearXLib.I18n
 		{
 			if(name != DefaultLangName)
 				Default = new I18nPage { Values = Loader.Load(DefaultLangName), Name = DefaultLangName };
-			Current = new I18nPage { Values = Loader.Load(name), Name = name };
+			if (Loader.Contains(name))
+				Current = new I18nPage { Values = Loader.Load(name), Name = name };
+			else
+				Current = new I18nPage { Values = Loader.Load(DefaultLangName), Name = DefaultLangName };
 		}
 
 		/// <summary>
@@ -73,9 +76,7 @@ namespace PearXLib.I18n
 		/// </summary>
 		public void Reload()
 		{
-			if(Current.Name != DefaultLangName)
-				Default = new I18nPage { Values = Loader.Load(DefaultLangName), Name = DefaultLangName };
-			Current = new I18nPage { Values = Loader.Load(Current.Name), Name = Current.Name };
+			Load(Current.Name);
 		}
 
 		/// <summary>

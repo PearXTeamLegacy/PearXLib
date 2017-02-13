@@ -99,24 +99,12 @@
     <Folder Include="EncodingAlgorithms\" />
     <Folder Include="Wiki\" />
     <Folder Include="Maths\" />
-    <Folder Include="Resources\" />
     <Folder Include="WebServices\" />
     <Folder Include="WebServices\Wolfram\" />
     <Folder Include="WebServices\GoogleApis\" />
     <Folder Include="I18n\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BarImage.png" />
-    <None Include="Resources\CloseBox.png" />
-    <None Include="Resources\CloseBoxFocused.png" />
-    <None Include="Resources\DialogError.png" />
-    <None Include="Resources\DialogInfo.png" />
-    <None Include="Resources\DialogQuestion.png" />
-    <None Include="Resources\DialogWarn.png" />
-    <None Include="Resources\MaximizeBox.png" />
-    <None Include="Resources\MaximizeBoxFocused.png" />
-    <None Include="Resources\ToTrayBox.png" />
-    <None Include="Resources\ToTrayBoxFocused.png" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

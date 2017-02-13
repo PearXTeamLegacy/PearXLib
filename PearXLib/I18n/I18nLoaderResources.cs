@@ -64,5 +64,16 @@ namespace PearXLib.I18n
 			}
 			return l;
 		}
+
+		public bool Contains(string name)
+		{
+			var l = ListLanguages();
+			foreach (var loc in l)
+			{
+				if (loc.Name == name)
+					return true;
+			}
+			return false;
+		}
 	}
 }

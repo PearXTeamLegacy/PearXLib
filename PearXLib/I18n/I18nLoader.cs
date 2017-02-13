@@ -19,5 +19,7 @@ namespace PearXLib.I18n
 		/// </summary>
 		/// <returns>A language list.</returns>
 		List<I18nLang> ListLanguages();
+
+		bool Contains(string name);
 	}
 }

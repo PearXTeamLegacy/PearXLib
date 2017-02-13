@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
 namespace PearXLib
 {
@@ -14,21 +16,22 @@ namespace PearXLib
 		/// <summary>
 		/// Creates a shortcut.
 		/// </summary>
-		/// <param name="path">Path to the executable file.</param>
-		/// <param name="shDir">Shortcut directory without slash.</param>
+		/// <param name="exec">Path to the executable file.</param>
+		/// <param name="args">Executable arguments</param>
+		/// <param name="shDir">Shortcut directory.</param>
 		/// <param name="shName">Shortcut name.</param>
 		/// <param name="genericName">Generic name. For example: if name is "Povar File Manager", generic name should be "File Manager".</param>
 		/// <param name="linuxIconPath">Path to the icon for a Linux desktop entry.</param>
-		public static void CreateShortcut(string path, string shDir, string shName, string genericName, string linuxIconPath)
+		public static void CreateShortcut(string exec, string args, string shDir, string shName, string genericName, string linuxIconPath)
 		{
 			var sb = new StringBuilder();
 			if (PCUtils.IsWindows())
 			{
 				sb.AppendLine("[InternetShortcut]");
-				sb.AppendLine("URL=file://" + path);
-				sb.AppendLine("IconFile=" + path);
+				sb.AppendLine("URL=file://" + exec);
+				sb.AppendLine("IconFile=" + exec);
 				sb.AppendLine("IconIndex=0");
-				File.WriteAllText(shDir + "/" + shName + ".url", sb.ToString());
+				File.WriteAllText(Path.Combine(shDir, shName + ".url"), sb.ToString());
 			}
 			else
 			{
@@ -38,8 +41,8 @@ namespace PearXLib
 				sb.AppendLine("Icon=" + linuxIconPath);
 				sb.AppendLine("Type=Application");
 				sb.AppendLine("StartupNotify=true");
-				sb.AppendLine("Exec=\"" + path + "\"");
-				File.WriteAllText(shDir + "/" + shName + ".desktop", sb.ToString());
+				sb.AppendLine($"Exec=\"{exec}\" {args}");
+				File.WriteAllText(Path.Combine(shDir, shName + ".desktop"), sb.ToString());
 			}
 		}
 
@@ -186,6 +189,11 @@ namespace PearXLib
 					break;
 			}
 			return new PointF(x, y);
+		}
+
+		public static void OpenUrl(string url)
+		{
+			new Thread(() => Process.Start(url)).Start();
 		}
 	}
 
