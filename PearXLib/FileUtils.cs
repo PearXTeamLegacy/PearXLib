@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace PearXLib
@@ -66,6 +67,26 @@ namespace PearXLib
 				toAdd.Add(d);
 				GetDirsInDir(d, ref toAdd);
 			}
+		}
+
+		/// <summary>
+		/// Creates a file symlink.
+		/// </summary>
+		/// <param name="file">File path.</param>
+		/// <param name="link">Symlink path.</param>
+		public static void CreateFileSymlink(string file, string link)
+		{
+			Process proc = new Process();
+			if (PCUtils.IsWindows())
+			{
+				proc.StartInfo = new ProcessStartInfo("fsutil.exe", @"hardlink create """ + link.Replace(@"""", @"\""") + @""" """ + file.Replace(@"""", @"\""") + @"""");
+			}
+			else
+			{
+				proc.StartInfo = new ProcessStartInfo("ln", @"-s """ + file.Replace(@"""", @"\""") + @""" """ + link.Replace(@"""", @"\""") + @"""");
+			}
+			proc.Start();
+			proc.WaitForExit();
 		}
 	}
 }

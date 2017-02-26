@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>PearXLib</id>
-    <version>1.3.3</version>
+    <version>1.3.4</version>
     <authors>PearX Team</authors>
     <owners>PearX Team</owners>
     <licenseUrl>https://github.com/PearXTeam/PearXLib/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/PearXTeam/PearXLib</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/PearXTeam/PearXLib/master/logo_pxl.png</iconUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>An opensource library written on C#. It contains a lot of useful things.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright (c) PearX Team, 2015-2016</copyright>
