@@ -11,7 +11,7 @@ namespace PearXLib.WebServices.Wolfram
 
 	public class WolframImage
 	{
-		public Image Image { get; set; }
+		public byte[] Image { get; set; }
 		public string Alt { get; set; }
 	}
 }

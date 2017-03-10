@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Web;
 using System.Xml;
 
@@ -35,11 +35,14 @@ namespace PearXLib.WebServices.Wolfram
 				for (int i = 0; i < ndsImg.Count; i++) //foreach subpods...
 				{
 					var attrs = ndsImg[i].Attributes;
-					pod.Images[i] = new WolframImage
+					using (WebClient cl = new WebClient())
 					{
-						Alt = attrs["alt"].Value,
-						Image = WebUtils.DownloadImage(attrs["src"].Value)
-					};
+						pod.Images[i] = new WolframImage
+						{
+							Alt = attrs["alt"].Value,
+							Image = cl.DownloadData(attrs["src"].Value)
+						};
+					}
 				}
 				lst.Add(pod);
 			}
