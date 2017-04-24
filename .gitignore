@@ -4,3 +4,4 @@ PearXLib/bin/*
 .directory
 *.userprefs
 packages/*
+*.nupkg
