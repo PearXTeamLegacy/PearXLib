@@ -26,10 +26,27 @@ namespace PearXLib
 		/// <value>The desktop directory path.</value>
 		public static string Desktop => Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-		/// <summary>
-		/// PearX Team's directory.
-		/// </summary>
-		/// <value>The PearX Team's directory path.</value>
-		public static string PearX => Path.Combine(Documents, "PearX");
+	    /// <summary>
+	    /// User home directory.
+	    /// </summary>
+	    public static string Home => Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+
+	    /// <summary>
+	    /// PearX Team's directory.
+	    /// </summary>
+	    /// <value>The PearX Team's directory path.</value>
+	    public static string PearX
+	    {
+	        get
+	        {
+	            if (PcUtils.IsWindows())
+	                return Path.Combine(Documents, "PearX");
+	            else
+	                return Path.Combine(Home, ".pearx");
+	        }
+	    }
+
+
+
 	}
 }

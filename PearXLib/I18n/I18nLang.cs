@@ -1,4 +1,4 @@
-﻿namespace PearXLib
+﻿namespace PearXLib.I18n
 {
 	/// <summary>
 	/// I18n language.

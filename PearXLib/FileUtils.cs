@@ -16,7 +16,7 @@ namespace PearXLib
 		/// <returns>If system can create file, returns true, else returns false.</returns>
 		public static bool CanCreate(string filename)
 		{
-			char[] forbiddenChars = PCUtils.IsWindows() ? new char[] { '<', '>', ':', '\"', '\\', '/', '|', '?', '*' } : new char[] { '/' };
+			char[] forbiddenChars = PcUtils.IsWindows() ? new[] { '<', '>', ':', '\"', '\\', '/', '|', '?', '*' } : new[] { '/' };
 
 			if (filename.IndexOfAny(forbiddenChars) >= 0)
 				return false;
@@ -76,8 +76,8 @@ namespace PearXLib
 		/// <param name="link">Symlink path.</param>
 		public static void CreateFileSymlink(string file, string link)
 		{
-			Process proc = new Process();
-			if (PCUtils.IsWindows())
+			var proc = new Process();
+			if (PcUtils.IsWindows())
 			{
 				proc.StartInfo = new ProcessStartInfo("fsutil.exe", @"hardlink create """ + link.Replace(@"""", @"\""") + @""" """ + file.Replace(@"""", @"\""") + @"""");
 			}

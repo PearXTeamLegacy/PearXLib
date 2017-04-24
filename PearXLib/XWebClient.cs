@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Threading;
 using PearXLib.Maths;
 
 namespace PearXLib
@@ -39,38 +38,37 @@ namespace PearXLib
 		/// <param name="asyncEvents">If set to <c>true</c>, events should be async.</param>
 		/// <param name="post">POST data.</param>
 		/// <param name="enc">POST encoding.</param>
-		public void DownloadFile(string url, string local, string post = null, Encoding enc = null, int bufferSize = 8192, bool asyncEvents = false)
+		public void DownloadFile(string url, string local, string post = null, Encoding enc = null, int bufferSize = 8192)
 		{
-			using (FileStream fs = new FileStream(local, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
+			using (var fs = new FileStream(local, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
 			{
 				if (enc == null)
 					enc = Encoding.UTF8;
 				WebRequest req = WebRequest.Create(url);
-				if (post != null)
-					req.Method = "POST";
-				using (var str = req.GetRequestStream())
-				{
-					byte[] bts = enc.GetBytes(post);
-					str.Write(bts, 0, bts.Length);
-					str.Flush();
-				}
-				using (WebResponse resp = req.GetResponse())
+			    if (post != null)
+			    {
+			        req.Method = "POST";
+			        using (var str = req.GetRequestStream())
+			        {
+			            byte[] bts = enc.GetBytes(post);
+			            str.Write(bts, 0, bts.Length);
+			            str.Flush();
+			        }
+			    }
+			    using (WebResponse resp = req.GetResponse())
 				{
 					using (Stream str = resp.GetResponseStream())
 					{
 						long size = Convert.ToInt64(resp.Headers[HttpResponseHeader.ContentLength]);
 						byte[] buffer = new byte[bufferSize];
-						int i = 0;
+						int i;
 						long rec = 0;
 						do
 						{
 							i = str.Read(buffer, 0, buffer.Length);
 							rec += i;
 							fs.Write(buffer, 0, i);
-							if (asyncEvents)
-								new Thread(() => { ProgressChanged?.Invoke(this, new BytesRecievedEventArgs(size, rec)); }).Start();
-							else
-								ProgressChanged?.Invoke(this, new BytesRecievedEventArgs(size, rec));
+							ProgressChanged?.Invoke(this, new BytesRecievedEventArgs(size, rec));
 						} while (i > 0);
 						str.Flush();
 					}

@@ -5,6 +5,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace PearXLib
 {
@@ -128,5 +129,15 @@ namespace PearXLib
 		{
 			return IconFromBytes(GetFromResources(name));
 		}
+
+	    /// <summary>
+	    /// Gets a string from the resources.
+	    /// </summary>
+	    /// <param name="name">Resource name.</param>
+	    /// <returns>A string</returns>
+	    public static string StringFromResources(string name)
+	    {
+	        return Encoding.UTF8.GetString(GetFromResources(name));
+	    }
 	}
 }

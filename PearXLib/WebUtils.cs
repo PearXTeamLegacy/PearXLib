@@ -43,7 +43,10 @@ namespace PearXLib
 			}
 			using (WebResponse resp = wr.GetResponse())
 			{
-				using (StreamReader sr = new StreamReader(resp.GetResponseStream()))
+			    var str = resp.GetResponseStream();
+			    if (str == null)
+			        return null;
+				using (StreamReader sr = new StreamReader(str))
 				{
 					return sr.ReadToEnd().Trim();
 				}
@@ -105,10 +108,12 @@ namespace PearXLib
 		/// <param name="url">Image URL.</param>
 		public static Image DownloadImage(string url)
 		{
-			using (WebResponse resp = WebRequest.Create(url).GetResponse())
+			using (var resp = WebRequest.Create(url).GetResponse())
 			{
 				using (var stream = resp.GetResponseStream())
 				{
+				    if (stream == null)
+				        return null;
 					return Image.FromStream(stream);
 				}
 			}

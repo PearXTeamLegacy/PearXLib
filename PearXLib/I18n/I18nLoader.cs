@@ -20,6 +20,10 @@ namespace PearXLib.I18n
 		/// <returns>A language list.</returns>
 		List<I18nLang> ListLanguages();
 
+	    /// <summary>
+	    /// Is this Loader contains specified language?
+	    /// </summary>
+	    /// <param name="name">Language name</param>
 		bool Contains(string name);
 	}
 }

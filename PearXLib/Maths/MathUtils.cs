@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Linq;
-using System.Numerics;
 
 namespace PearXLib.Maths
 {
@@ -40,7 +40,7 @@ namespace PearXLib.Maths
 		/// </summary>
 		/// <param name="count">Number</param>
 		/// <returns>Number of numbers!</returns>
-		public static BigInteger GetNumberOfNumbers(int count)
+		public static string GetNumberOfNumbers(int count)
 		{
 			string s = null;
 			for (int i = 1; i <= count; i++)
@@ -50,7 +50,7 @@ namespace PearXLib.Maths
 					s += i;
 				}
 			}
-			return BigInteger.Parse(s);
+		    return s;
 		}
 
 		/// <summary>
@@ -110,12 +110,12 @@ namespace PearXLib.Maths
 		/// <param name="b">Second number.</param>
 		public static long GetGcdEuclid(long a, long b)
 		{
-			var arr = new long[] { a, b };
+			var arr = new[] { a, b };
 			return GetGcdEuclid_(arr.Max(), arr.Min());
 		}
 
 
-		static long GetGcdEuclid_(long bigger, long lower)
+	    private static long GetGcdEuclid_(long bigger, long lower)
 		{
 			if (bigger == 0 || lower == 0)
 				return 0;
@@ -127,5 +127,20 @@ namespace PearXLib.Maths
 			}
 			return bigger;
 		}
+
+	    /// <summary>
+	    /// Gets the nearest to "val" value in power of "powerOf".
+	    /// </summary>
+	    /// <param name="val">Input integer.</param>
+	    /// <param name="powerOf">Power of X</param>
+	    public static int NearestPowerOf(int val, int powerOf)
+	    {
+	        int vp2 = 0;
+	        for (int i = 1; vp2 < val; i++)
+	        {
+	            vp2 = (int)Math.Pow(powerOf, i);
+	        }
+	        return vp2;
+	    }
 	}
 }

@@ -8,7 +8,7 @@ namespace PearXLib
 	/// <summary>
 	/// PearXLib Computer Utilities.
 	/// </summary>
-	public static class PCUtils
+	public static class PcUtils
 	{
 		/// <summary>
 		/// Is current OS - Windows
@@ -65,20 +65,26 @@ namespace PearXLib
 		/// <returns>A path to the Java folder.</returns>
 		public static string GetJavaPath(bool javaw = true)
 		{
-			if (IsWindows())
-			{
-				using (var v = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
-					   .OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
-				{
-					string ver = v.GetValue("CurrentVersion").ToString();
-					using (var w = v.OpenSubKey(ver))
-						return w.GetValue("JavaHome") + string.Format("\\bin\\java{0}.exe", javaw ? "w" : "");
-				}
-			}
-			else
-			{
-				return GetCommandOutput("which", "java");
-			}
+		    if (IsWindows())
+		    {
+		        using (var v = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64)
+		            .OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment"))
+		        {
+		            if (v == null)
+		                return "";
+		            string ver = v.GetValue("CurrentVersion").ToString();
+		            using (var w = v.OpenSubKey(ver))
+		            {
+		                if (w == null)
+		                    return "";
+		                return w.GetValue("JavaHome") + $"\\bin\\java{(javaw ? "w" : "")}.exe";
+		            }
+		        }
+		    }
+		    else
+		    {
+		        return GetCommandOutput("which", "java");
+		    }
 		}
 
 		/// <summary>

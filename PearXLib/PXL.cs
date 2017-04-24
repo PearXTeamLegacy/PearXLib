@@ -11,6 +11,7 @@ namespace PearXLib
 	/// <summary>
 	/// PearXLib main class.
 	/// </summary>
+	// ReSharper disable once InconsistentNaming
 	public static class PXL
 	{
 		/// <summary>
@@ -25,7 +26,7 @@ namespace PearXLib
 		public static void CreateShortcut(string exec, string args, string shDir, string shName, string genericName, string linuxIconPath)
 		{
 			var sb = new StringBuilder();
-			if (PCUtils.IsWindows())
+			if (PcUtils.IsWindows())
 			{
 				sb.AppendLine("[InternetShortcut]");
 				sb.AppendLine("URL=file://" + exec);
@@ -79,9 +80,9 @@ namespace PearXLib
 		/// </summary>
 		/// <param name="data">Input stream.</param>
 		/// <returns>MD5 hash.</returns>
-		public static string GetMD5(Stream data)
+		public static string GetMd5(Stream data)
 		{
-			using (MD5 md5 = MD5.Create())
+			using (var md5 = MD5.Create())
 			{
 				byte[] hashed = md5.ComputeHash(data);
 				return BitConverter.ToString(hashed).Replace("-", "").ToLower();
@@ -93,9 +94,9 @@ namespace PearXLib
 		/// </summary>
 		/// <param name="data">Input byte array.</param>
 		/// <returns>MD5 hash.</returns>
-		public static string GetMD5(byte[] data)
+		public static string GetMd5(byte[] data)
 		{
-			return GetMD5(new MemoryStream(data));
+			return GetMd5(new MemoryStream(data));
 		}
 
 		/// <summary>
@@ -103,9 +104,9 @@ namespace PearXLib
 		/// </summary>
 		/// <param name="data">Input string</param>
 		/// <returns>MD5 hash.</returns>
-		public static string GetMD5(string data)
+		public static string GetMd5(string data)
 		{
-			return GetMD5(Encoding.ASCII.GetBytes(data));
+			return GetMd5(Encoding.ASCII.GetBytes(data));
 		}
 
 		/// <summary>
@@ -113,11 +114,11 @@ namespace PearXLib
 		/// </summary>
 		/// <returns>MD5 hash.</returns>
 		/// <param name="path">File path.</param>
-		public static string GetFileMD5(string path)
+		public static string GetFileMd5(string path)
 		{
-			using (FileStream str = new FileStream(path, FileMode.Open, FileAccess.Read))
+			using (var str = new FileStream(path, FileMode.Open, FileAccess.Read))
 			{
-				return GetMD5(str);
+				return GetMd5(str);
 			}
 		}
 
@@ -191,6 +192,10 @@ namespace PearXLib
 			return new PointF(x, y);
 		}
 
+	    /// <summary>
+	    /// Opens a URL in a new thread.
+	    /// </summary>
+	    /// <param name="url">Url</param>
 		public static void OpenUrl(string url)
 		{
 			new Thread(() => Process.Start(url)).Start();

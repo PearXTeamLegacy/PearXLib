@@ -11,7 +11,7 @@ namespace PearXLib
 		/// <summary>
 		/// Path to the log file.
 		/// </summary>
-		public string LogPath { get; private set; }
+		public string LogPath { get; }
 
 		/// <summary>
 		/// Out this log to console?
@@ -43,7 +43,10 @@ namespace PearXLib
 		/// <param name="outToConsole">Out this log to console?</param>
 		public Logging(string logpath, bool outToConsole, bool force = false)
 		{
-			Directory.CreateDirectory(Path.GetDirectoryName(logpath));
+		    string s = Path.GetDirectoryName(logpath);
+		    if(s == null)
+		        throw new ArgumentNullException();
+			Directory.CreateDirectory(s);
 			if (force)
 				File.Delete(logpath);
 			LogPath = logpath;

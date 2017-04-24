@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -30,10 +30,12 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
-    <DebugType></DebugType>
+    <DebugType>
+    </DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\PearXLib.xml</DocumentationFile>
@@ -49,6 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
@@ -63,7 +66,7 @@
     <Compile Include="PXL.cs" />
     <Compile Include="D.cs" />
     <Compile Include="FileUtils.cs" />
-    <Compile Include="PCUtils.cs" />
+    <Compile Include="PcUtils.cs" />
     <Compile Include="RamInfo.cs" />
     <Compile Include="Logging.cs" />
     <Compile Include="RandomUtils.cs" />
@@ -84,7 +87,7 @@
     <Compile Include="WebServices\GoogleApis\GoogleUtils.cs" />
     <Compile Include="XWebClient.cs" />
     <Compile Include="ResourceUtils.cs" />
-    <Compile Include="SQLUtils.cs" />
+    <Compile Include="SqlUtils.cs" />
     <Compile Include="Maths\Fraction.cs" />
     <Compile Include="I18n\I18nLoader.cs" />
     <Compile Include="I18n\I18n.cs" />
@@ -94,6 +97,7 @@
       <LogicalName>PearXLib.I18n.I18nPage.cs</LogicalName>
     </Compile>
     <Compile Include="MsgJson.cs" />
+    <Compile Include="Maths\PointSizeUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EncodingAlgorithms\" />
@@ -117,4 +121,4 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-</Project> 
+</Project>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Web;
 using Newtonsoft.Json;
 
 namespace PearXLib.Wiki

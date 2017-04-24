@@ -30,7 +30,7 @@ namespace PearXLib
 	/// </summary>
 	public class MemInfo
 	{
-		readonly string[] mem = File.ReadAllLines("/proc/meminfo");
+		private readonly string[] mem = File.ReadAllLines("/proc/meminfo");
 
 		/// <summary>
 		/// Gets a meminfo parameter. For example "MemAvailable" or "MemTotal".
@@ -38,7 +38,7 @@ namespace PearXLib
 		/// <param name="what">Parameter name.</param>
 		public long Get(string what)
 		{
-			Regex regex = new Regex($@"^{what}:\s+(\d+)");
+			var regex = new Regex($@"^{what}:\s+(\d+)");
 			foreach (string s in mem)
 			{
 				Match m = regex.Match(s);
